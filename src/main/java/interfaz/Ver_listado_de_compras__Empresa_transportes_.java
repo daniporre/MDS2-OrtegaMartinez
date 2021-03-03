@@ -1,6 +1,0 @@
-package interfaz;
-
-public class Ver_listado_de_compras__Empresa_transportes_ extends Común_gestores {
-	public Empresa_de_transportes _empresa_de_transportes;
-	public Ver_listado_de_compras__Empresa_de_transportes_ _ver_listado_de_compras__Empresa_de_transportes_;
-}
