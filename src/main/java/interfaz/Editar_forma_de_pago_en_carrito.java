@@ -1,5 +1,0 @@
-package interfaz;
-
-public class Editar_forma_de_pago_en_carrito extends Editar_forma_de_pago_y_direccion {
-	public Carrito__Usuario_registrado_ _carrito__Usuario_registrado_;
-}
