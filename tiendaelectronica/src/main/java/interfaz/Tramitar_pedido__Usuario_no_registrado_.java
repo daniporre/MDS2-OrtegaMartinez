@@ -1,0 +1,6 @@
+package interfaz;
+
+public class Tramitar_pedido__Usuario_no_registrado_ {
+	public Ver_carrito__Usuario_no_registrado_ _ver_carrito__Usuario_no_registrado_;
+	public Crear_cuenta_Iniciar_sesión _crear_cuenta_Iniciar_sesión;
+}
