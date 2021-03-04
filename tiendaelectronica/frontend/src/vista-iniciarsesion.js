@@ -6,7 +6,7 @@ import '@vaadin/vaadin-form-layout/vaadin-form-item.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
 import '@vaadin/vaadin-form-layout/src/vaadin-form-item.js';
 
-class VistaAdministrador extends PolymerElement {
+class VistaIniciarsesion extends PolymerElement {
 
     static get template() {
         return html`
@@ -45,7 +45,7 @@ class VistaAdministrador extends PolymerElement {
     }
 
     static get is() {
-        return 'vista-administrador';
+        return 'vista-iniciarsesion';
     }
 
     static get properties() {
@@ -55,4 +55,4 @@ class VistaAdministrador extends PolymerElement {
     }
 }
 
-customElements.define(VistaAdministrador.is, VistaAdministrador);
+customElements.define(VistaIniciarsesion.is, VistaIniciarsesion);
