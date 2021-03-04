@@ -1,6 +1,7 @@
 package interfaz;
 
 public class Iniciar_sesión extends vista-iniciarsesion {
+	
 //	private Label _titulo;
 //	private Label _mail;
 //	private Label _contraseña;
