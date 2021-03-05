@@ -1,22 +1,28 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 
-class VistaVisualizarpedido extends PolymerElement {
+/**
+ * `vista-empresadetransportes`
+ *
+ * VistaEmpresadetransportes element.
+ *
+ * @customElement
+ * @polymer
+ */
+class VistaEmpresadetransportes extends PolymerElement {
 
     static get template() {
         return html`
-<style include="shared-styles">
+            <style include="shared-styles">
                 :host {
                     display: block;
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;"></vaadin-vertical-layout>
-`;
+        `;
     }
 
     static get is() {
-        return 'vista-visualizarpedido';
+        return 'vista-empresadetransportes';
     }
 
     static get properties() {
@@ -26,4 +32,4 @@ class VistaVisualizarpedido extends PolymerElement {
     }
 }
 
-customElements.define(VistaVisualizarpedido.is, VistaVisualizarpedido);
+customElements.define(VistaEmpresadetransportes.is, VistaEmpresadetransportes);

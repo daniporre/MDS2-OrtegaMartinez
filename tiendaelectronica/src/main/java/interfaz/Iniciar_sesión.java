@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Iniciar_sesión extends vista-iniciarsesion {
+import vistas.VistaIniciarsesion;
+
+public class Iniciar_sesión extends VistaIniciarsesion {
 	
 //	private Label _titulo;
 //	private Label _mail;
@@ -13,9 +15,9 @@ public class Iniciar_sesión extends vista-iniciarsesion {
 //	public Recuperar_contraseña _recuperar_contraseña;
 //	public Validar_inicio_sesión _validar_inicio_sesión;
 
-	public boolean validarInicioSesion() {
-		throw new UnsupportedOperationException();
-	}
+//	public boolean validarInicioSesion() {
+//		throw new UnsupportedOperationException();
+//	}
 
 	public void recuperarContraseña() {
 		throw new UnsupportedOperationException();

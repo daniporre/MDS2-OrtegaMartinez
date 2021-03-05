@@ -1,6 +1,6 @@
 package interfaz;
 
-import basededatos.iAdministrador;
+//import basededatos.iAdministrador;
 
 public class Administrador extends Común_Usuarios {
 //	public iAdministrador _iAdministrador;
