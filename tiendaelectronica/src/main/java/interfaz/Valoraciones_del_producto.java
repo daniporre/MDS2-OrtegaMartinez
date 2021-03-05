@@ -1,8 +1,8 @@
 package interfaz;
 
 //import interfaz.Visualizar_producto;
-import java.util.Vector;
-import Diagrama_de_clases_correcto.Valoracion_del_producto;
+//import java.util.Vector;
+//import Diagrama_de_clases_correcto.Valoracion_del_producto;
 
 public class Valoraciones_del_producto {
 //	private Label _tituloValoracionesDelProducto;
