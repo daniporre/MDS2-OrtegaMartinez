@@ -42,13 +42,14 @@ public class MainView extends VerticalLayout {
      *
      * @param service The message service. Automatically injected Spring managed bean.
      */
+	Visualizar_producto vp = new Visualizar_producto();
+	
     public MainView(@Autowired GreetService service) {
     	
     	
     	
-    	Visualizar_producto vp = new Visualizar_producto();
     	
-    	
+    	add(vp);
     	
     	
 

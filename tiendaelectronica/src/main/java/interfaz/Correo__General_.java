@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Correo__General_ {
+import vistas.VistaCorreogeneral;
+
+public class Correo__General_ extends VistaCorreogeneral {
 //	private Button _mensajesRecibidos;
 //	private Button _mensajesEnviados;
 //	public Mensajes_enviados _mensajes_enviados;
@@ -13,4 +15,5 @@ public class Correo__General_ {
 //	public void mostrarMensajesRecibidos() {
 //		throw new UnsupportedOperationException();
 //	}
+	
 }
