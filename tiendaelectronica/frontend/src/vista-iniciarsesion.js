@@ -1,8 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-form-layout/src/vaadin-form-item.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-login/src/vaadin-login-form.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-login/src/vaadin-login-form.js';
+import '@vaadin/vaadin-form-layout/src/vaadin-form-layout.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 
 class VistaIniciarsesion extends PolymerElement {
 
@@ -15,12 +17,17 @@ class VistaIniciarsesion extends PolymerElement {
                 }
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
- <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);"></vaadin-horizontal-layout>
- <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; align-self: center; justify-content: center;">
-  <vaadin-login-form id="newAccount" no-forgot-password></vaadin-login-form>
+ <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; justify-content: center; align-self: center;">
+  <vaadin-form-layout style="align-self: center; flex-shrink: 0; flex-grow: 0;">
+   <label style="width: 55%;">Crear cuenta</label>
+   <vaadin-text-field label="Email" id="mailNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
+   <vaadin-text-field label="Contraseña" id="contraseñaNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
+   <vaadin-button id="crearNuevaCuentaButton" style="width: 55%;">
+    Crear cuenta 
+   </vaadin-button>
+  </vaadin-form-layout>
   <vaadin-login-form id="logIn"></vaadin-login-form>
  </vaadin-vertical-layout>
- <vaadin-horizontal-layout class="footer" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);"></vaadin-horizontal-layout>
 </vaadin-vertical-layout>
 `;
     }

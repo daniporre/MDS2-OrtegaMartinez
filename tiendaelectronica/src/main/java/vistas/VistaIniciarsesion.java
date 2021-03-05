@@ -8,6 +8,8 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.login.LoginForm;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.textfield.TextField;
 
 /**
  * A Designer generated component for the vista-iniciarsesion template.
@@ -21,8 +23,12 @@ public class VistaIniciarsesion extends PolymerTemplate<VistaIniciarsesion.Vista
 
 	@Id("logIn")
 	private LoginForm logIn;
-	@Id("newAccount")
-	private LoginForm newAccount;
+	@Id("crearNuevaCuentaButton")
+	private Button crearNuevaCuentaButton;
+	@Id("contraseñaNuevaCuentaTF")
+	private TextField contraseñaNuevaCuentaTF;
+	@Id("mailNuevaCuentaTF")
+	private TextField mailNuevaCuentaTF;
 
 	/**
      * Creates a new VistaIniciarsesion.
@@ -37,4 +43,36 @@ public class VistaIniciarsesion extends PolymerTemplate<VistaIniciarsesion.Vista
     public interface VistaIniciarsesionModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
+	public LoginForm getLogIn() {
+		return logIn;
+	}
+
+	public void setLogIn(LoginForm logIn) {
+		this.logIn = logIn;
+	}
+
+	public Button getCrearNuevaCuentaButton() {
+		return crearNuevaCuentaButton;
+	}
+
+	public void setCrearNuevaCuentaButton(Button crearNuevaCuentaButton) {
+		this.crearNuevaCuentaButton = crearNuevaCuentaButton;
+	}
+
+	public TextField getContraseñaNuevaCuentaTF() {
+		return contraseñaNuevaCuentaTF;
+	}
+
+	public void setContraseñaNuevaCuentaTF(TextField contraseñaNuevaCuentaTF) {
+		this.contraseñaNuevaCuentaTF = contraseñaNuevaCuentaTF;
+	}
+
+	public TextField getMailNuevaCuentaTF() {
+		return mailNuevaCuentaTF;
+	}
+
+	public void setMailNuevaCuentaTF(TextField mailNuevaCuentaTF) {
+		this.mailNuevaCuentaTF = mailNuevaCuentaTF;
+	}
 }
