@@ -20,10 +20,12 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 //	}
 
 	public void recuperarContraseña() {
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void iniciarSesion() {
-		throw new UnsupportedOperationException();
+		
 	}
+		
 }
+	
