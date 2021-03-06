@@ -6,6 +6,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
+import com.vaadin.flow.dom.Element;
 
 /**
  * A Designer generated component for the vista-añadirproducto template.
@@ -17,7 +18,10 @@ import com.vaadin.flow.component.polymertemplate.Id;
 @JsModule("./src/vista-añadirproducto.js")
 public class VistaAñadirproducto extends PolymerTemplate<VistaAñadirproducto.VistaAñadirproductoModel> {
 
-    /**
+    @Id("vaadinHorizontalLayout")
+	private HorizontalLayout vaadinHorizontalLayout;
+
+	/**
      * Creates a new VistaAñadirproducto.
      */
     public VistaAñadirproducto() {
