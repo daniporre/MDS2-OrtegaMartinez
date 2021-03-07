@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Gestionar_usuarios {
+import vistas.VistaGestionarusuarios;
+
+public class Gestionar_usuarios extends VistaGestionarusuarios {
 //	private Panel _crearNuevoUsuario;
 //	private Panel _editarContraseñaUsuario;
 //	public Administrador _administrador;

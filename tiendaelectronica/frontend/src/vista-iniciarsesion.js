@@ -3,8 +3,8 @@ import '@vaadin/vaadin-form-layout/src/vaadin-form-item.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-login/src/vaadin-login-form.js';
 import '@vaadin/vaadin-form-layout/src/vaadin-form-layout.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
 
 class VistaIniciarsesion extends PolymerElement {
 
@@ -23,10 +23,10 @@ class VistaIniciarsesion extends PolymerElement {
    <vaadin-text-field label="Email" id="mailNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
    <vaadin-text-field label="Contraseña" id="contraseñaNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
    <vaadin-button id="crearNuevaCuentaButton" style="width: 55%;">
-    Crear cuenta 
+     Crear cuenta 
    </vaadin-button>
   </vaadin-form-layout>
-  <vaadin-login-form id="logIn"></vaadin-login-form>
+  <vaadin-login-form id="logIn" style="margin: var(--lumo-space-l);"></vaadin-login-form>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
 `;
