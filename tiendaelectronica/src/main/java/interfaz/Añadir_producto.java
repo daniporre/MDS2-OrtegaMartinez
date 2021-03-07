@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Añadir_producto {
+import vistas.VistaAñadirproducto;
+
+public class Añadir_producto extends VistaAñadirproducto {
 //	private TextField _nombreTF;
 //	private TextField _precio;
 //	private TextField _marca;

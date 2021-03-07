@@ -1,8 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
+import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
+import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
 
 class VistaAñadirproducto extends PolymerElement {
 
@@ -15,19 +15,47 @@ class VistaAñadirproducto extends PolymerElement {
                 }
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
- <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);" id="vaadinHorizontalLayout">
-  <vaadin-button>
-   Buscar
-  </vaadin-button>
-  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-  <vaadin-button>
-   Inicio 
-  </vaadin-button>
-  <vaadin-button>
-   Cerrar sesión
+ <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
+  <vaadin-button id="inicioButton">
+    Inicio 
   </vaadin-button>
  </vaadin-horizontal-layout>
- <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto;"></vaadin-vertical-layout>
+ <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; flex-direction: column;">
+  <vaadin-vertical-layout theme="spacing" style="flex-grow: 0; flex-direction: row; margin: var(--lumo-space-l); flex-shrink: 1;">
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
+    <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 0; align-self: stretch; width: 100%; height: 100%;" id="foto1Button">
+     <iron-icon icon="lumo:plus"></iron-icon>
+    </vaadin-button>
+    <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: center;">
+     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto2Button">
+      <iron-icon icon="lumo:plus"></iron-icon>
+     </vaadin-button>
+     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto3Button">
+      <iron-icon icon="lumo:plus"></iron-icon>
+     </vaadin-button>
+     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto4Button">
+      <iron-icon icon="lumo:plus"></iron-icon>
+     </vaadin-button>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+   <vaadin-tab></vaadin-tab>
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-items: stretch;">
+    <vaadin-text-field label="Nombre del producto" id="nombreProductoTF"></vaadin-text-field>
+    <vaadin-text-field label="Precio del producto" id="precioProductoTF"></vaadin-text-field>
+    <vaadin-text-field label="Marca del producto" id="marcaProductoTF"></vaadin-text-field>
+    <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: space-between;">
+     <h2 style="flex-shrink: 0; flex-grow: 1;">Oferta</h2>
+     <vaadin-combo-box id="ofertasProductoTF" style="flex-grow: 1; align-self: center;"></vaadin-combo-box>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
+  <vaadin-vertical-layout theme="spacing" style="margin: var(--lumo-space-l);">
+   <vaadin-text-area label="Descripcion del producto" placeholder="Añade una descripción detallada del producto." id="descripcionProductoTF" style="align-self: stretch;"></vaadin-text-area>
+   <vaadin-button theme="primary" style="align-self: flex-end;" id="guardarCambiosButton">
+     Guardar cambios 
+   </vaadin-button>
+  </vaadin-vertical-layout>
+ </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
 `;
     }

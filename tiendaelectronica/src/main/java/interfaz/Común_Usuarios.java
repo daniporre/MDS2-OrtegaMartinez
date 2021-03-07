@@ -1,5 +1,7 @@
 package interfaz;
 
+import vistas.VistaUsuarionoregistrado;
+
 //import basededatos.iComún_Usuarios;
 
 public class Común_Usuarios extends VistaUsuarionoregistrado {
