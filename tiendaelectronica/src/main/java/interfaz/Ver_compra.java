@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Ver_compra {
+import vistas.VistaVercompra;
+
+public class Ver_compra extends VistaVercompra {
 //	private Label _titulo;
 //	private Label _fecha;
 //	private Object _enviadoA;
