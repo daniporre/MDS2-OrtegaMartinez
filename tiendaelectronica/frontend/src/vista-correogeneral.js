@@ -17,17 +17,17 @@ class VistaCorreogeneral extends PolymerElement {
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
-  <vaadin-button>
-   Inicio
+  <vaadin-button id="inicioButton">
+    Inicio 
   </vaadin-button>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
   <vaadin-tabs orientation="horizontal" selected="0">
-   <vaadin-tab selected>
-    Enviados
+   <vaadin-tab selected id="pestañaEnviados">
+     Enviados 
    </vaadin-tab>
-   <vaadin-tab>
-    Recibidos
+   <vaadin-tab id="pestañaRecibidos">
+     Recibidos 
    </vaadin-tab>
   </vaadin-tabs>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
@@ -40,7 +40,7 @@ class VistaCorreogeneral extends PolymerElement {
    <label>Fecha</label>
    <vaadin-tab style="flex-grow: 0;"></vaadin-tab>
   </vaadin-horizontal-layout>
-  <vaadin-vertical-layout theme="spacing" style="align-self: stretch;"></vaadin-vertical-layout>
+  <vaadin-vertical-layout theme="spacing" style="align-self: stretch;" id="tablaMensajesVLayout"></vaadin-vertical-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
 `;
