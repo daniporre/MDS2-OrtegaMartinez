@@ -1,7 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 
 class VistaVerlistadodecompras extends PolymerElement {
 
@@ -25,7 +25,7 @@ class VistaVerlistadodecompras extends PolymerElement {
    Cerrar sesión
   </vaadin-button>
  </vaadin-horizontal-layout>
- <vaadin-vertical-layout theme="spacing" id="layoutPrincipal" style="align-self: stretch; flex-grow: 1; flex-shrink: 1; margin: var(--lumo-space-l);"></vaadin-vertical-layout>
+ <vaadin-vertical-layout theme="spacing" id="layoutPrincipal" style="flex-grow: 1; flex-shrink: 1; margin: var(--lumo-space-l); align-self: stretch; align-items: stretch;"></vaadin-vertical-layout>
 </vaadin-vertical-layout>
 `;
     }

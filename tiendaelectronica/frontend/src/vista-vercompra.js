@@ -14,7 +14,7 @@ class VistaVercompra extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%; align-items: stretch;">
  <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; margin: var(--lumo-space-m);">
   <h3 id="nombreProductoLabel" style="align-self: center;">Nombre Producto</h3>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
