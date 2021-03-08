@@ -33,7 +33,7 @@ class VistaVisualizarproducto extends PolymerElement {
     Iniciar sesión 
   </vaadin-button>
  </vaadin-horizontal-layout>
- <vaadin-vertical-layout theme="spacing" style="align-self: stretch; flex-grow: 1; margin: var(--lumo-space-l);">
+ <vaadin-vertical-layout theme="spacing" style="align-self: stretch; flex-grow: 1; margin: var(--lumo-space-xl);">
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
     <vaadin-button id="imagen1Button" style="align-self: stretch; flex-grow: 1;">
