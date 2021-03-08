@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Visualizar_pedido {
+import vistas.VistaVisualizarpedido;
+
+public class Visualizar_pedido extends VistaVisualizarpedido {
 //	private Label _fecha;
 //	private Label _enviadoA;
 //	private Label _numeroPedido;
