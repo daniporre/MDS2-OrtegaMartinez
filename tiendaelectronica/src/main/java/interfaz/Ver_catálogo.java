@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Ver_catálogo {
+import vistas.VistaVercatalogo;
+
+public class Ver_catálogo extends VistaVercatalogo {
 //	private Button _carrito;
 //	private Button _buscarProductos;
 //	public Común_Usuarios _común_Usuarios;
