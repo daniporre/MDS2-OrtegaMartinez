@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Ver_producto_en_carrito {
+import vistas.VistaVerproductoencarrito;
+
+public class Ver_producto_en_carrito extends VistaVerproductoencarrito {
 //	private event _disminuir_cantidad_de_producto;
 //	private event _aumentar_cantidad_de_producto;
 //	private event _eliminar_producto_del_carrito;
