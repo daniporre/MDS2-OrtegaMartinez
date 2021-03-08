@@ -62,7 +62,7 @@ class VistaVisualizarproducto extends PolymerElement {
      Button 
    </vaadin-button>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-   <vaadin-button theme="primary" id="aniadirAlCarritoButton">
+   <vaadin-button theme="primary" id="aniadirAlCarritoButton" style="flex-grow: 0;">
     Añadir al carrito
    </vaadin-button>
   </vaadin-horizontal-layout>
