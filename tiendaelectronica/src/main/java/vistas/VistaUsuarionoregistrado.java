@@ -44,4 +44,52 @@ public class VistaUsuarionoregistrado extends PolymerTemplate<VistaUsuarionoregi
     public interface VistaUsuarionoregistradoModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
+	public Button getInicioUNR() {
+		return inicioUNR;
+	}
+
+	public void setInicioUNR(Button inicioUNR) {
+		this.inicioUNR = inicioUNR;
+	}
+
+	public TextField getSearchBarUNR() {
+		return searchBarUNR;
+	}
+
+	public void setSearchBarUNR(TextField searchBarUNR) {
+		this.searchBarUNR = searchBarUNR;
+	}
+
+	public Button getSearchIconUNR() {
+		return searchIconUNR;
+	}
+
+	public void setSearchIconUNR(Button searchIconUNR) {
+		this.searchIconUNR = searchIconUNR;
+	}
+
+	public Button getCarritoUNR() {
+		return carritoUNR;
+	}
+
+	public void setCarritoUNR(Button carritoUNR) {
+		this.carritoUNR = carritoUNR;
+	}
+
+	public Button getIniciarSesionUNR() {
+		return iniciarSesionUNR;
+	}
+
+	public void setIniciarSesionUNR(Button iniciarSesionUNR) {
+		this.iniciarSesionUNR = iniciarSesionUNR;
+	}
+
+	public Element getAdsUNR() {
+		return adsUNR;
+	}
+
+	public void setAdsUNR(Element adsUNR) {
+		this.adsUNR = adsUNR;
+	}
 }

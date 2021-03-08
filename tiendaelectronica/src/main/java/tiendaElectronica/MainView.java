@@ -12,6 +12,7 @@ import com.vaadin.flow.server.PWA;
 
 import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
+import vistas.VistaIniciarsesion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,13 +46,14 @@ public class MainView extends VerticalLayout {
      */
 	Visualizar_producto vp = new Visualizar_producto();
 	Usuario_no_registrado unr = new Usuario_no_registrado();
+	VistaIniciarsesion login = new VistaIniciarsesion();
 	
     public MainView(@Autowired GreetService service) {
     	
     	
     	
     	
-    	add(unr);
+    	add(login);
     	
     	
 

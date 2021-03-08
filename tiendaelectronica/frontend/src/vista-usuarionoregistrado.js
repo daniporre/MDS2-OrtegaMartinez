@@ -19,7 +19,7 @@ class VistaUsuarionoregistrado extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioUNR">
-   Inicio
+    Inicio 
   </vaadin-button>
   <vaadin-text-field placeholder="Search" id="searchBarUNR" style="flex-grow: 1;">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
@@ -29,12 +29,13 @@ class VistaUsuarionoregistrado extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoUNR">
-   Carrito
+    Carrito 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
   <vaadin-button id="iniciarSesionUNR">
-   Iniciar sesion
+    Iniciar sesion 
   </vaadin-button>
+  <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
   <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;"></vaadin-vertical-layout>
