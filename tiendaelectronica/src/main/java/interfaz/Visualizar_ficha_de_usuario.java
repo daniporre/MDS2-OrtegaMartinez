@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Visualizar_ficha_de_usuario {
+import vistas.VistaVerfichadeusuario;
+
+public class Visualizar_ficha_de_usuario extends VistaVerfichadeusuario {
 //	private Label _titulo;
 //	private Label _nombre;
 //	private Label _nombreUsuario;

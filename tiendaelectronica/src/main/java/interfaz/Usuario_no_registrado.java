@@ -1,11 +1,34 @@
 package interfaz;
 
 //import basededatos.iUsuario_no_registrado;
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.login.LoginForm;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class Usuario_no_registrado extends Común_Usuarios {
-//	public iUsuario_no_registrado _iUsuario_no_registrado;
-//	public Buscar_producto _buscar_producto;
-//	public Visualizar_anuncios _visualizar_anuncios;
-//	public Visualizar_producto__Usuario_no_registrado_ _visualizar_producto__Usuario_no_registrado_;
-//	public Ver_carrito__Usuario_no_registrado_ _ver_carrito__Usuario_no_registrado_;
+	
+	
+	public VerticalLayout layout;
+	public LoginForm lg;
+
+	public Usuario_no_registrado() {
+		
+//		 layout = this.getLayoutCibernauta().as(VerticalLayout.class);
+//		 lg = new Login();
+//		 
+//		 this.getLogin().addClickListener(new ComponentEventListener() {
+//			@Override
+//			public void onComponentEvent(ComponentEvent event) {
+//				 
+//				layout.remove(ccbn);				
+//				layout.add(lg);
+//				
+//			}
+//		});
+		  
+		 
+	}
+	
+	
 }

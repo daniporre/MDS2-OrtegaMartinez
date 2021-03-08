@@ -10,6 +10,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 
+import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +44,14 @@ public class MainView extends VerticalLayout {
      * @param service The message service. Automatically injected Spring managed bean.
      */
 	Visualizar_producto vp = new Visualizar_producto();
+	Usuario_no_registrado unr = new Usuario_no_registrado();
 	
     public MainView(@Autowired GreetService service) {
     	
     	
     	
     	
-    	add(vp);
+    	add(unr);
     	
     	
 
