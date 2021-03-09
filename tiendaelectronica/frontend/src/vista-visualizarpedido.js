@@ -20,7 +20,7 @@ class VistaVisualizarpedido extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
-   Inicio
+    Inicio 
   </vaadin-button>
   <vaadin-text-field placeholder="Search" id="searchBar" style="flex-grow: 1;">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
@@ -30,11 +30,11 @@ class VistaVisualizarpedido extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoButton">
-   Carrito
+    Carrito 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
   <vaadin-button id="miCuentaButton">
-   Mi cuenta
+    Mi cuenta 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
@@ -45,7 +45,7 @@ class VistaVisualizarpedido extends PolymerElement {
     <label id="fechaPedidoLabel">fechaPedido</label>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing">
-    <h3>Ennviado a:</h3>
+    <h3>Enviado a:</h3>
     <label id="nombreUsuarioPedidoLabel">nombreUsuarioPedido</label>
    </vaadin-vertical-layout>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
@@ -70,7 +70,7 @@ class VistaVisualizarpedido extends PolymerElement {
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: flex-end;">
    <label id="valoracionEstrellasLabel" style="align-self: center;">valoracionEstrellas</label>
    <vaadin-button theme="primary" id="valorarProductoButton">
-    Valorar producto
+     Valorar producto 
    </vaadin-button>
   </vaadin-horizontal-layout>
  </vaadin-vertical-layout>
