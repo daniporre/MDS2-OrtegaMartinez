@@ -13,6 +13,7 @@ import com.vaadin.flow.server.PWA;
 import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
 import vistas.VistaIniciarsesion;
+import vistas.VistaVercatalogo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,13 +46,14 @@ public class MainView extends VerticalLayout {
      * @param service The message service. Automatically injected Spring managed bean.
      */
 	VistaIniciarsesion login = new VistaIniciarsesion();
+	VistaVercatalogo vercat = new VistaVercatalogo();
 	
-    public MainView(@Autowired GreetService service) {
+    public MainView() {
     	
     	
     	
     	
-    	add(login);
+    	add(vercat);
     	
     	
 
