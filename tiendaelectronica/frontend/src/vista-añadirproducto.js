@@ -3,6 +3,7 @@ import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
 
 class VistaAñadirproducto extends PolymerElement {
 
@@ -22,19 +23,17 @@ class VistaAñadirproducto extends PolymerElement {
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; flex-direction: column;">
   <vaadin-vertical-layout theme="spacing" style="flex-grow: 0; flex-direction: row; margin: var(--lumo-space-l); flex-shrink: 1;">
-   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
-    <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 0; align-self: stretch; width: 100%; height: 100%;" id="foto1Button">
-     <iron-icon icon="lumo:plus"></iron-icon>
-    </vaadin-button>
-    <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: center;">
-     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto2Button">
-      <iron-icon icon="lumo:plus"></iron-icon>
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-self: stretch; margin: var(--lumo-space-m);">
+    <img id="foto1Image" style="width: 100%; height: 100%;">
+    <vaadin-horizontal-layout theme="spacing" style="width: 100%; flex-grow: 0;">
+     <vaadin-button id="foto2Image">
+      imagen1
      </vaadin-button>
-     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto3Button">
-      <iron-icon icon="lumo:plus"></iron-icon>
+     <vaadin-button id="foto3Image">
+      imagen3 
      </vaadin-button>
-     <vaadin-button theme="icon" aria-label="Add new" style="flex-grow: 1;" id="foto4Button">
-      <iron-icon icon="lumo:plus"></iron-icon>
+     <vaadin-button id="foto4Image">
+      imagen4
      </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>

@@ -11,6 +11,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Image;
 
 /**
  * A Designer generated component for the vista-añadirproducto template.
@@ -34,17 +35,16 @@ public class VistaAñadirproducto extends PolymerTemplate<VistaAñadirproducto.V
 	private TextArea descripcionProductoTF;
 	@Id("guardarCambiosButton")
 	private Button guardarCambiosButton;
-	@Id("foto1Button")
-	private Button foto1Button;
-	@Id("foto2Button")
-	private Button foto2Button;
-	@Id("foto3Button")
-	private Button foto3Button;
-	@Id("foto4Button")
-	private Button foto4Button;
 	@Id("inicioButton")
 	private Button inicioButton;
-
+	@Id("foto1Image")
+	private Image foto1Image;
+	@Id("foto2Image")
+	private Button foto2Image;
+	@Id("foto3Image")
+	private Button foto3Image;
+	@Id("foto4Image")
+	private Button foto4Image;
 	/**
      * Creates a new VistaAñadirproducto.
      */
@@ -105,38 +105,6 @@ public class VistaAñadirproducto extends PolymerTemplate<VistaAñadirproducto.V
 
 	public void setGuardarCambiosButton(Button guardarCambiosButton) {
 		this.guardarCambiosButton = guardarCambiosButton;
-	}
-
-	public Button getFoto1Button() {
-		return foto1Button;
-	}
-
-	public void setFoto1Button(Button foto1Button) {
-		this.foto1Button = foto1Button;
-	}
-
-	public Button getFoto2Button() {
-		return foto2Button;
-	}
-
-	public void setFoto2Button(Button foto2Button) {
-		this.foto2Button = foto2Button;
-	}
-
-	public Button getFoto3Button() {
-		return foto3Button;
-	}
-
-	public void setFoto3Button(Button foto3Button) {
-		this.foto3Button = foto3Button;
-	}
-
-	public Button getFoto4Button() {
-		return foto4Button;
-	}
-
-	public void setFoto4Button(Button foto4Button) {
-		this.foto4Button = foto4Button;
 	}
 
 	public Button getInicioButton() {

@@ -23,7 +23,7 @@ class VistaResultadodebusqueda extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button>
-   Inicio
+    Inicio 
   </vaadin-button>
   <vaadin-text-field placeholder="Search" style="flex-grow: 1;">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
@@ -33,14 +33,14 @@ class VistaResultadodebusqueda extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button>
-   Carrito
+    Carrito 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
   <vaadin-button>
-   Iniciar sesion
+    Iniciar sesion 
   </vaadin-button>
   <vaadin-button>
-   Mi cuenta
+    Mi cuenta 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
@@ -49,33 +49,33 @@ class VistaResultadodebusqueda extends PolymerElement {
    <h3>Rango de precio</h3>
    <vaadin-radio-group value="foo" theme="vertical">
     <vaadin-radio-button name="foo">
-     Hasta 20€
+      Hasta 20€ 
     </vaadin-radio-button>
     <vaadin-radio-button name="bar" checked>
-     Hasta 50€
+      Hasta 50€ 
     </vaadin-radio-button>
     <vaadin-radio-button name="baz" checked>
-     Hasta 100€
+      Hasta 100€ 
     </vaadin-radio-button>
     <vaadin-radio-button name="foo">
-     Más de 100€
+      Más de 100€ 
     </vaadin-radio-button>
    </vaadin-radio-group>
    <h3>Marca</h3>
    <vaadin-checkbox>
-    marca1
+     marca1 
    </vaadin-checkbox>
    <vaadin-checkbox>
-    marca2
+     marca2 
    </vaadin-checkbox>
    <vaadin-checkbox>
-    marca3
+     marca3 
    </vaadin-checkbox>
    <vaadin-checkbox>
-    marca4
+     marca4 
    </vaadin-checkbox>
    <vaadin-checkbox>
-    marca5
+     marca5 
    </vaadin-checkbox>
   </vaadin-vertical-layout>
   <vaadin-vertical-layout style="flex-grow: 1; margin: var(--lumo-space-xl);">
@@ -84,6 +84,13 @@ class VistaResultadodebusqueda extends PolymerElement {
     <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
     <vaadin-combo-box style="align-self: center;"></vaadin-combo-box>
    </vaadin-horizontal-layout>
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-self: stretch;">
+    <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
+     <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;"></vaadin-vertical-layout>
+     <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;"></vaadin-vertical-layout>
+     <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-self: stretch;"></vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-vertical-layout>
   </vaadin-vertical-layout>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
