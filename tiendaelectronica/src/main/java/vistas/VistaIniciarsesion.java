@@ -18,7 +18,7 @@ import com.vaadin.flow.component.textfield.TextField;
  * does not overwrite or otherwise change this file.
  */
 @Tag("vista-iniciarsesion")
-@JsModule("./vista-iniciarsesion.js")
+@JsModule("./src/vista-iniciarsesion.js")
 public class VistaIniciarsesion extends PolymerTemplate<VistaIniciarsesion.VistaIniciarsesionModel> {
 
 	@Id("logIn")
