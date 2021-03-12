@@ -19,7 +19,7 @@ class VistaAdministrador extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
   <vaadin-button id="inicioButton">
-   Inicio
+    Inicio 
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1; flex-shrink: 0;"></vaadin-tab>
   <vaadin-button id="aniadirProductoButton">
@@ -55,7 +55,7 @@ class VistaAdministrador extends PolymerElement {
      Crear nueva categoría 
    </vaadin-button>
   </vaadin-vertical-layout>
-  <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto;" id="principalVLayout"></vaadin-vertical-layout>
+  <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: stretch;" id="principalVLayout"></vaadin-vertical-layout>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
 `;

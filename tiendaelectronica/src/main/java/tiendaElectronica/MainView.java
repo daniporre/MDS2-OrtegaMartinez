@@ -13,6 +13,8 @@ import com.vaadin.flow.server.PWA;
 import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
 import vistas.VistaIniciarsesion;
+import vistas.VistaUsuarionoregistrado;
+import vistas.VistaUsuarioregistrado;
 import vistas.VistaVercatalogo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +49,14 @@ public class MainView extends VerticalLayout {
      */
 	VistaIniciarsesion login = new VistaIniciarsesion();
 	VistaVercatalogo vercat = new VistaVercatalogo();
+	VistaUsuarionoregistrado ur = new VistaUsuarionoregistrado();
 	
     public MainView() {
     	
     	
     	
     	
-    	add(login);
+    	add(ur);
     	
     	
 

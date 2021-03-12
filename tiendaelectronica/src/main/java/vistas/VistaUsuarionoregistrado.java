@@ -8,6 +8,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.dom.Element;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 /**
  * A Designer generated component for the vista-usuarionoregistrado template.
@@ -31,6 +32,12 @@ public class VistaUsuarionoregistrado extends PolymerTemplate<VistaUsuarionoregi
 	private Button iniciarSesionUNR;
 	@Id("adsUNR")
 	private Element adsUNR;
+	@Id("catalogoVLayout")
+	private Element catalogoVLayout;
+	@Id("primerVerticalLayout")
+	private Element primerVerticalLayout;
+	@Id("cabeceraHLayout")
+	private HorizontalLayout cabeceraHLayout;
 	/**
      * Creates a new VistaUsuarionoregistrado.
      */
@@ -91,5 +98,29 @@ public class VistaUsuarionoregistrado extends PolymerTemplate<VistaUsuarionoregi
 
 	public void setAdsUNR(Element adsUNR) {
 		this.adsUNR = adsUNR;
+	}
+
+	public Element getCatalogoVLayout() {
+		return catalogoVLayout;
+	}
+
+	public void setCatalogoVLayout(Element catalogoVLayout) {
+		this.catalogoVLayout = catalogoVLayout;
+	}
+
+	public Element getPrimerVerticalLayout() {
+		return primerVerticalLayout;
+	}
+
+	public void setPrimerVerticalLayout(Element primerVerticalLayout) {
+		this.primerVerticalLayout = primerVerticalLayout;
+	}
+
+	public HorizontalLayout getCabeceraHLayout() {
+		return cabeceraHLayout;
+	}
+
+	public void setCabeceraHLayout(HorizontalLayout cabeceraHLayout) {
+		this.cabeceraHLayout = cabeceraHLayout;
 	}
 }

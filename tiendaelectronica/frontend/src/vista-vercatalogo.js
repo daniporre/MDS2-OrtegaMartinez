@@ -15,25 +15,25 @@ class VistaVercatalogo extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%; align-items: stretch;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" theme="spacing">
   <vaadin-button id="categoria1Button">
-   Categoría 1
+    Categoría 1 
   </vaadin-button>
   <vaadin-button id="categoria2Button">
-   Categoría 2
+    Categoría 2 
   </vaadin-button>
   <vaadin-button id="categoria3Button">
-   Categoría 3
+    Categoría 3 
   </vaadin-button>
   <vaadin-button id="categoria4Button">
-   Categoría 4
+    Categoría 4 
   </vaadin-button>
   <vaadin-button id="categoria5Button">
-   Categoría 5
+    Categoría 5 
   </vaadin-button>
   <vaadin-button id="categoria6Button">
-   Categoría 6
+    Categoría 6 
   </vaadin-button>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; margin: var(--lumo-space-m); align-self: stretch;">

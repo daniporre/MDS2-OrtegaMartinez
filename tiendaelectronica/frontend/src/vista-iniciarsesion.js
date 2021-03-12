@@ -1,10 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-form-layout/src/vaadin-form-item.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
-import '@vaadin/vaadin-login/src/vaadin-login-form.js';
 import '@vaadin/vaadin-form-layout/src/vaadin-form-layout.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/vaadin-login/src/vaadin-login-form.js';
 
 class VistaIniciarsesion extends PolymerElement {
 
@@ -17,7 +17,7 @@ class VistaIniciarsesion extends PolymerElement {
                 }
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
- <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; justify-content: center; align-self: center;">
+ <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; justify-content: center;">
   <vaadin-form-layout style="align-self: center; flex-shrink: 0; flex-grow: 0;">
    <label style="width: 55%;">Crear cuenta</label>
    <vaadin-text-field label="Email" id="mailNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>

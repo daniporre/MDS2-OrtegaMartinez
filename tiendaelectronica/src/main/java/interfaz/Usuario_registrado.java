@@ -1,9 +1,22 @@
 package interfaz;
 
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
+import vistas.VistaUsuarioregistrado;
+import vistas.VistaVercatalogo;
+
 //import basededatos.iUsuario_registrado;
 
-public class Usuario_registrado extends Usuario_no_registrado {
-//	public iUsuario_registrado _iUsuario_registrado;
-//	public Ver_cuenta__Usuario_registrado_ _ver_cuenta__Usuario_registrado_;
-//	public Carrito__Usuario_registrado_ _carrito__Usuario_registrado_;
+public class Usuario_registrado extends VistaUsuarioregistrado {
+
+	public VistaVercatalogo vc;
+	public VerticalLayout layoutCatalogo;
+	
+	public Usuario_registrado() {
+		vc = new VistaVercatalogo();
+		layoutCatalogo = this.getPrincipalVLayout().as(VerticalLayout.class);
+		layoutCatalogo.add(vc);
+	
+	}
+	
 }

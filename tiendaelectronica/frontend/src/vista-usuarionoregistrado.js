@@ -16,8 +16,8 @@ class VistaUsuarionoregistrado extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
- <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="primerVerticalLayout">
+ <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);" id="cabeceraHLayout">
   <vaadin-button id="inicioUNR">
     Inicio 
   </vaadin-button>
@@ -38,7 +38,7 @@ class VistaUsuarionoregistrado extends PolymerElement {
   <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
-  <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: stretch;"></vaadin-vertical-layout>
+  <vaadin-vertical-layout class="content" style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: stretch;" id="catalogoVLayout"></vaadin-vertical-layout>
   <vaadin-vertical-layout class="sidebar" style="flex-basis: calc(7*var(--lumo-size-s)); flex-shrink: 0; background-color: var(--lumo-contrast-5pct); align-items: stretch; justify-content: center;" id="adsUNR"></vaadin-vertical-layout>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
