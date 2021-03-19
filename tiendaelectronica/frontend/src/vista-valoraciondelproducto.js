@@ -11,6 +11,8 @@ class VistaValoraciondelproducto extends PolymerElement {
                 :host {
                     display: block;
                     height: 100%;
+        			width: 100%;
+
                 }
             </style>
 <vaadin-vertical-layout style="align-items: stretch;">

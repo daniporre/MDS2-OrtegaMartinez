@@ -12,6 +12,8 @@ class VistaVerproductoencarrito extends PolymerElement {
                 :host {
                     display: block;
                     height: 100%;
+        			width: 100%;
+
                 }
             </style>
 <vaadin-horizontal-layout class="content" style="width: 100%; height: 100%; flex-direction: row;">

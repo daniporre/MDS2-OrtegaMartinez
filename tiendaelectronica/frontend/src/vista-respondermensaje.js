@@ -16,6 +16,8 @@ class VistaRespondermensaje extends PolymerElement {
                 :host {
                     display: block;
                     height: 100%;
+        			width: 100%;
+
                 }
             </style>
         `;
