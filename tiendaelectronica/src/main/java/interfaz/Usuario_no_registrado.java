@@ -13,17 +13,24 @@ import vistas.VistaVercatalogo;
 
 public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 	
+	VistaUsuarionoregistrado unr = new VistaUsuarionoregistrado();
 	
+	public VistaVercatalogo vc = new VistaVercatalogo();
+	public VerticalLayout layout;
 	
 	public Usuario_no_registrado() {
+		
+		super();
+		layout = this.getCatalogoVLayout().as(VerticalLayout.class);
+		layout.add(vc);
+		
 		
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 
 			@Override
 			public void onComponentEvent(ComponentEvent event) {
-//				principalLayout.remove();
-//				principalLayout.add(lg);
+
 				Notification.show("He pulsado el boton");
 				
 			}

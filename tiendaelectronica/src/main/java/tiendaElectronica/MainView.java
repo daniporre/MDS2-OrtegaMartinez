@@ -49,9 +49,10 @@ public class MainView extends VerticalLayout {
      *
      * @param service The message service. Automatically injected Spring managed bean.
      */
-	VistaIniciarsesion login = new VistaIniciarsesion();
-	VistaVercatalogo vercat = new VistaVercatalogo();
-	VistaUsuarionoregistrado unr = new VistaUsuarionoregistrado();
+	
+	
+	Usuario_no_registrado unr = new Usuario_no_registrado();
+	
 	
     public MainView() {
     	
@@ -60,8 +61,7 @@ public class MainView extends VerticalLayout {
     	
     	add(unr);
     	
-    	
-    	
+   
     	
 
 //        // Use TextField for standard text input
