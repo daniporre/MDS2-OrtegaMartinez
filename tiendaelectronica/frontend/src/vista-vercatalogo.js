@@ -16,7 +16,7 @@ class VistaVercatalogo extends PolymerElement {
                 }
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%; align-items: stretch;">
- <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" theme="spacing">
+ <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" theme="spacing" id="categoriasHLayout">
   <vaadin-button id="categoria1Button">
     Categoría 1 
   </vaadin-button>

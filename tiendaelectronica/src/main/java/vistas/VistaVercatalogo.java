@@ -40,6 +40,8 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 	private ComboBox<String> filtrarPorCombobox;
 	@Id("productosEnCatalogoVLayout")
 	private Element productosEnCatalogoVLayout;
+	@Id("categoriasHLayout")
+	private HorizontalLayout categoriasHLayout;
 
 	/**
      * Creates a new VistaVercatalogo.
@@ -133,5 +135,13 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 
 	public void setProductosEnCatalogoVLayout(Element productosEnCatalogoVLayout) {
 		this.productosEnCatalogoVLayout = productosEnCatalogoVLayout;
+	}
+
+	public HorizontalLayout getCategoriasHLayout() {
+		return categoriasHLayout;
+	}
+
+	public void setCategoriasHLayout(HorizontalLayout categoriasHLayout) {
+		this.categoriasHLayout = categoriasHLayout;
 	}
 }

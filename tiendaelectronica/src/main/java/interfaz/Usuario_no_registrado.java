@@ -4,6 +4,7 @@ package interfaz;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.login.LoginForm;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
@@ -23,11 +24,14 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 		cabecera = this.getCabeceraHLayout();
 		layoutCatalogo.add(vc);
 		vc = new VistaVercatalogo();
-		principalLayout = this.getPrimerVerticalLayout().as(VerticalLayout.class);
+		//principalLayout = this.getPrimerVerticalLayout().as(VerticalLayout.class);
 		layoutCatalogo.add(vc);
+		
+		
 		
 		lg = new Iniciar_sesión();
 		
+		this.getIniciarSesionUNR().setVisible(false);
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 
@@ -35,7 +39,8 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 			public void onComponentEvent(ComponentEvent event) {
 //				principalLayout.remove();
 //				principalLayout.add(lg);
-				System.out.println("clic");
+				Notification.show("He pulsado el boton");
+				
 			}
 		
 		

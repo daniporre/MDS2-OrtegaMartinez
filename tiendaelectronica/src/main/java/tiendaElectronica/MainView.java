@@ -49,14 +49,14 @@ public class MainView extends VerticalLayout {
      */
 	VistaIniciarsesion login = new VistaIniciarsesion();
 	VistaVercatalogo vercat = new VistaVercatalogo();
-	VistaUsuarionoregistrado ur = new VistaUsuarionoregistrado();
+	VistaUsuarionoregistrado unr = new VistaUsuarionoregistrado();
 	
     public MainView() {
     	
     	
     	
     	
-    	add(ur);
+    	add(vercat);
     	
     	
 
