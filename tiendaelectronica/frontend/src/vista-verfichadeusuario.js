@@ -20,13 +20,13 @@ class VistaVerfichadeusuario extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button theme="icon" aria-label="Add new" id="atrasButton">
-   <iron-icon icon="lumo:plus"></iron-icon>Atrás
+   <iron-icon icon="lumo:plus"></iron-icon>Atrás 
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <label style="align-self: center;">Ver ficha de usuario</label>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
  </vaadin-horizontal-layout>
- <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; margin: var(--lumo-space-l);">
+ <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; margin: var(--lumo-space-l); height: 100%;">
   <h2>Nombre:</h2>
   <label id="nombreUsuarioLabel">nombreUsuario</label>
   <h2>Dirección:</h2>
