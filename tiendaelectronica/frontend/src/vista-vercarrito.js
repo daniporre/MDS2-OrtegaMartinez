@@ -19,7 +19,7 @@ class VistaVercarrito extends PolymerElement {
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
-   Inicio
+    Inicio 
   </vaadin-button>
   <vaadin-text-field placeholder="Search" id="searchBar" style="flex-grow: 1;">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
@@ -29,15 +29,15 @@ class VistaVercarrito extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoButton">
-   Carrito
+    Carrito 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
   <vaadin-button id="miCuentaButton">
-   Mi cuenta
+    Mi cuenta 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
   <vaadin-button id="iniciarSesionButton">
-   Iniciar sesión
+    Iniciar sesión 
   </vaadin-button>
   <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
@@ -46,7 +46,7 @@ class VistaVercarrito extends PolymerElement {
    <h2>Cesta de la compra</h2>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
    <vaadin-button id="continuarComprandoButton" style="align-self: center;">
-    Continuar comprando
+     Continuar comprando 
    </vaadin-button>
   </vaadin-horizontal-layout>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
@@ -67,7 +67,7 @@ class VistaVercarrito extends PolymerElement {
      <h4>Método de pago</h4>
      <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
      <vaadin-button id="editarPagoDireccionButton" style="align-self: center;">
-      Editar metodo de pago y dirección
+       Editar metodo de pago y dirección 
      </vaadin-button>
     </vaadin-horizontal-layout>
     <label id="metodoDePagoButton">metodoDePago</label>
@@ -91,7 +91,7 @@ class VistaVercarrito extends PolymerElement {
      <h3 id="precioTotalLabel">precioTotal</h3>
     </vaadin-horizontal-layout>
     <vaadin-button theme="primary" id="tramitarPedidoButton" style="align-self: stretch;">
-     Tramitar pedido
+      Tramitar pedido 
     </vaadin-button>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>

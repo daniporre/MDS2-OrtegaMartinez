@@ -1,8 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@polymer/iron-icon/iron-icon.js';
-import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 
 class VistaVerproductoencarrito extends PolymerElement {
 
@@ -15,9 +15,7 @@ class VistaVerproductoencarrito extends PolymerElement {
                 }
             </style>
 <vaadin-horizontal-layout class="content" style="width: 100%; height: 100%; flex-direction: row;">
- <vaadin-button theme="icon" aria-label="Add new" id="imagenProductoButton" style="align-self: center;">
-  <iron-icon icon="lumo:plus"></iron-icon>
- </vaadin-button>
+ <img style="width: 5%; height: 5%; align-self: center;">
  <vaadin-tab></vaadin-tab>
  <label id="nombreProductoLabel" style="align-self: center;">nombreProducto</label>
  <vaadin-tab style="flex-grow: 0; width: 26%;"></vaadin-tab>
@@ -36,7 +34,7 @@ class VistaVerproductoencarrito extends PolymerElement {
  <label id="totalLabel" style="align-self: center;">Label</label>
  <vaadin-tab></vaadin-tab>
  <vaadin-button id="eliminarProductoButton" style="align-self: center;">
-  Eliminar producto
+   Eliminar producto 
  </vaadin-button>
  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
 </vaadin-horizontal-layout>

@@ -47,14 +47,6 @@ public class VistaVerproductoencarrito extends PolymerTemplate<VistaVerproductoe
         // Add setters and getters for template properties here.
     }
 
-	public Button getImagenProductoButton() {
-		return imagenProductoButton;
-	}
-
-	public void setImagenProductoButton(Button imagenProductoButton) {
-		this.imagenProductoButton = imagenProductoButton;
-	}
-
 	public Label getNombreProductoLabel() {
 		return nombreProductoLabel;
 	}

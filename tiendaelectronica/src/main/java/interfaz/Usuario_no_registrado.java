@@ -14,24 +14,9 @@ import vistas.VistaVercatalogo;
 public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 	
 	
-	public VistaVercatalogo vc;
-	public VerticalLayout principalLayout;
-	public HorizontalLayout cabecera;
-	public VerticalLayout layoutCatalogo;
-	public Iniciar_sesión lg;
 	
 	public Usuario_no_registrado() {
-		cabecera = this.getCabeceraHLayout();
-		layoutCatalogo.add(vc);
-		vc = new VistaVercatalogo();
-		//principalLayout = this.getPrimerVerticalLayout().as(VerticalLayout.class);
-		layoutCatalogo.add(vc);
 		
-		
-		
-		lg = new Iniciar_sesión();
-		
-		this.getIniciarSesionUNR().setVisible(false);
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 

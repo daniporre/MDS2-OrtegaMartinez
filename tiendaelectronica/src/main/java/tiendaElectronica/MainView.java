@@ -1,5 +1,7 @@
 package tiendaElectronica;
 
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -56,7 +58,9 @@ public class MainView extends VerticalLayout {
     	
     	
     	
-    	add(vercat);
+    	add(unr);
+    	
+    	
     	
     	
 
