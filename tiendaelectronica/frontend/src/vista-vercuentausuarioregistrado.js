@@ -40,21 +40,21 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
    <label>Código postal </label>
    <label>Ciudad </label>
    <label>Provincia</label>
-   <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
-    <vaadin-button>
+   <vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout1" style="width: 100%;">
+    <vaadin-button id="vaadinButton1">
      Editar 
     </vaadin-button>
-    <vaadin-button style="flex-grow: 0; flex-shrink: 1;">
+    <vaadin-button id="vaadinButton" style="flex-grow: 0; flex-shrink: 1;">
      Guardar
     </vaadin-button>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
-  <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
-   <label>Tarjeta bancaria</label>
+  <vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout" style="flex-grow: 1;">
+   <label id="label5">Tarjeta bancaria</label>
    <label>Número de tarjeta </label>
-   <label>Fecha de vencimiento </label>
-   <label>CVS</label>
-   <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
+   <label id="label4">Fecha de vencimiento </label>
+   <label id="label3">CVS</label>
+   <vaadin-horizontal-layout theme="spacing" style="width: 100%;" id="vaadinHorizontalLayout">
     <vaadin-button>
       Editar 
     </vaadin-button>
@@ -64,9 +64,9 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
-   <label>Datos personales</label>
-   <label>Nombre</label>
-   <label draggable="true" vaadin-dnd-layout-item="true">
+   <label id="label2">Datos personales</label>
+   <label id="label1">Nombre</label>
+   <label draggable="true" vaadin-dnd-layout-item="true" id="label">
     <designer-text>
      email
     </designer-text></label>
