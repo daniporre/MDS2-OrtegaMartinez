@@ -83,7 +83,9 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>
-  <vaadin-vertical-layout theme="spacing" style="width: 100%;"></vaadin-vertical-layout>
+  <vaadin-vertical-layout theme="spacing" style="width: 100%;">
+   <label>Label</label>
+  </vaadin-vertical-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
 `;
