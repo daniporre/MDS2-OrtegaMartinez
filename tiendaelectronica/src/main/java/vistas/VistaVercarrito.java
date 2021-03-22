@@ -51,6 +51,10 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 	private H3 precioTotalLabel;
 	@Id("tramitarPedidoButton")
 	private Button tramitarPedidoButton;
+	@Id("primerVlayout")
+	private Element primerVlayout;
+	@Id("metodoYdireccionVLayout")
+	private Element metodoYdireccionVLayout;
 
 	/**
      * Creates a new VistaVercarrito.
@@ -184,5 +188,21 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 
 	public void setTramitarPedidoButton(Button tramitarPedidoButton) {
 		this.tramitarPedidoButton = tramitarPedidoButton;
+	}
+
+	public Element getPrimerVlayout() {
+		return primerVlayout;
+	}
+
+	public void setPrimerVlayout(Element primerVlayout) {
+		this.primerVlayout = primerVlayout;
+	}
+
+	public Element getMetodoYdireccionVLayout() {
+		return metodoYdireccionVLayout;
+	}
+
+	public void setMetodoYdireccionVLayout(Element metodoYdireccionVLayout) {
+		this.metodoYdireccionVLayout = metodoYdireccionVLayout;
 	}
 }

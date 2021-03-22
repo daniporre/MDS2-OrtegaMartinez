@@ -1,6 +1,8 @@
 package interfaz;
 
-public class Ver_cuenta__Usuario_registrado_ {
+import vistas.VistaVercuentausuarioregistrado;
+
+public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregistrado {
 //	private event _cerrar_sesión;
 //	private Button _correo;
 //	public Usuario_registrado _usuario_registrado;

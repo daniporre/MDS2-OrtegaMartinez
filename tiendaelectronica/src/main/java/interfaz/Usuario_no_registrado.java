@@ -16,22 +16,43 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 	VistaUsuarionoregistrado unr = new VistaUsuarionoregistrado();
 	
 	public VistaVercatalogo vc = new VistaVercatalogo();
-	public VerticalLayout layout;
+	public VerticalLayout layoutCatalogo;
+	public VerticalLayout layoutPrincipal;
+	public Iniciar_sesión lg;
+	public Ver_carrito carrito;
 	
 	public Usuario_no_registrado() {
 		
 		super();
-		layout = this.getCatalogoVLayout().as(VerticalLayout.class);
-		layout.add(vc);
+		layoutPrincipal = this.getPrimerVerticalLayout().as(VerticalLayout.class);
+		layoutCatalogo = this.getCatalogoVLayout().as(VerticalLayout.class);
+		layoutCatalogo.add(vc);
 		
-		
+		lg = new Iniciar_sesión();
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 
 			@Override
 			public void onComponentEvent(ComponentEvent event) {
 
-				Notification.show("He pulsado el boton");
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(lg);
+				
+			}
+		
+		
+		
+		});
+		
+		carrito = new Ver_carrito();
+		
+		this.getCarritoUNR().addClickListener(new ComponentEventListener() {
+
+			@Override
+			public void onComponentEvent(ComponentEvent event) {
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(carrito);
 				
 			}
 		

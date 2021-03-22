@@ -20,28 +20,7 @@ import com.vaadin.flow.component.button.Button;
 @JsModule("./src/vista-vercuentausuarioregistrado.js")
 public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercuentausuarioregistrado.VistaVercuentausuarioregistradoModel> {
 
-    @Id("label")
-	private Label label;
-	@Id("label1")
-	private Label label1;
-	@Id("label2")
-	private Label label2;
-	@Id("vaadinHorizontalLayout")
-	private HorizontalLayout vaadinHorizontalLayout;
-	@Id("label3")
-	private Label label3;
-	@Id("label4")
-	private Label label4;
-	@Id("label5")
-	private Label label5;
-	@Id("vaadinVerticalLayout")
-	private Element vaadinVerticalLayout;
-	@Id("vaadinButton")
-	private Button vaadinButton;
-	@Id("vaadinButton1")
-	private Button vaadinButton1;
-	@Id("vaadinHorizontalLayout1")
-	private HorizontalLayout vaadinHorizontalLayout1;
+   
 
 	/**
      * Creates a new VistaVercuentausuarioregistrado.
@@ -56,4 +35,5 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
     public interface VistaVercuentausuarioregistradoModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
 }

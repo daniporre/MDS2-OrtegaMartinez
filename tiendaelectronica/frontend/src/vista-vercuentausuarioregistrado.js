@@ -1,10 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
+import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 
 class VistaVercuentausuarioregistrado extends PolymerElement {
 
@@ -43,10 +43,10 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
   <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
     <h3>Dirección de entrega</h3>
-    <label>Calle y número </label>
-    <label>Código postal </label>
-    <label>Ciudad </label>
-    <label>Provincia</label>
+    <vaadin-text-field label="Calle" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Código postal" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Ciudad" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Provincia" style="align-self: stretch;"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout1" style="width: 100%;">
      <vaadin-button id="vaadinButton1">
        Editar 
@@ -58,9 +58,8 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout" style="flex-grow: 1;">
     <h3>Tarjeta bancaria</h3>
-    <label>Número de tarjeta </label>
-    <label id="label4">Fecha de vencimiento </label>
-    <label id="label3">CVS</label>
+    <vaadin-text-field label="Fecha de vencimiento" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="CVS" style="align-self: stretch;"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="width: 100%;" id="vaadinHorizontalLayout">
      <vaadin-button>
        Editar 
@@ -72,11 +71,8 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
     <h3>Datos personales </h3>
-    <label id="label1">Nombre</label>
-    <label draggable="true" vaadin-dnd-layout-item="true" id="label">
-     <designer-text>
-       email 
-     </designer-text></label>
+    <vaadin-text-field label="Nombre" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Email" style="align-self: stretch;"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
      <vaadin-button>
        Editar 

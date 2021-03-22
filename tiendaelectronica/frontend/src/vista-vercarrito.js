@@ -18,7 +18,7 @@ class VistaVercarrito extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="primerVlayout">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
     Inicio 
@@ -64,7 +64,7 @@ class VistaVercarrito extends PolymerElement {
   </vaadin-horizontal-layout>
   <vaadin-vertical-layout theme="spacing" id="productosEnCarritoVLayout" style="align-self: stretch;"></vaadin-vertical-layout>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
-   <vaadin-vertical-layout style="flex-grow: 1; flex-shrink: 1;">
+   <vaadin-vertical-layout style="flex-grow: 1; flex-shrink: 1;" id="metodoYdireccionVLayout">
     <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
      <h4>Método de pago</h4>
      <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
