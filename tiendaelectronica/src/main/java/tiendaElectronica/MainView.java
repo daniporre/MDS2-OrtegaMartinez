@@ -54,6 +54,7 @@ public class MainView extends VerticalLayout {
 	Usuario_no_registrado unr = new Usuario_no_registrado();
 	
 	
+	
     public MainView() {
     	
     	
