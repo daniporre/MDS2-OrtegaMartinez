@@ -26,6 +26,8 @@ public class VistaVerlistadodecompras extends PolymerTemplate<VistaVerlistadodec
 	private Element layoutPrincipal;
 	@Id("cerrarSesionButton")
 	private Button cerrarSesionButton;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
 
 	/**
      * Creates a new VistaVerlistadodecompras.
@@ -40,4 +42,44 @@ public class VistaVerlistadodecompras extends PolymerTemplate<VistaVerlistadodec
     public interface VistaVerlistadodecomprasModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
+	public Button getInicioButton() {
+		return inicioButton;
+	}
+
+	public void setInicioButton(Button inicioButton) {
+		this.inicioButton = inicioButton;
+	}
+
+	public Button getActualizarListaDeComprasButton() {
+		return actualizarListaDeComprasButton;
+	}
+
+	public void setActualizarListaDeComprasButton(Button actualizarListaDeComprasButton) {
+		this.actualizarListaDeComprasButton = actualizarListaDeComprasButton;
+	}
+
+	public Element getLayoutPrincipal() {
+		return layoutPrincipal;
+	}
+
+	public void setLayoutPrincipal(Element layoutPrincipal) {
+		this.layoutPrincipal = layoutPrincipal;
+	}
+
+	public Button getCerrarSesionButton() {
+		return cerrarSesionButton;
+	}
+
+	public void setCerrarSesionButton(Button cerrarSesionButton) {
+		this.cerrarSesionButton = cerrarSesionButton;
+	}
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
 }

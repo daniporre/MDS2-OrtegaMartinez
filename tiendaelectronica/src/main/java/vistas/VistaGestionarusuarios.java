@@ -106,4 +106,12 @@ public class VistaGestionarusuarios extends PolymerTemplate<VistaGestionarusuari
 	public void setCambiarContraseñaButton(Button cambiarContraseñaButton) {
 		this.cambiarContraseñaButton = cambiarContraseñaButton;
 	}
+
+	public HorizontalLayout getVaadinHorizontalLayout() {
+		return vaadinHorizontalLayout;
+	}
+
+	public void setVaadinHorizontalLayout(HorizontalLayout vaadinHorizontalLayout) {
+		this.vaadinHorizontalLayout = vaadinHorizontalLayout;
+	}
 }

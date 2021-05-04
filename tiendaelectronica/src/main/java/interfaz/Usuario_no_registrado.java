@@ -1,6 +1,8 @@
 package interfaz;
 
-//import basededatos.iUsuario_no_registrado;
+import org.orm.PersistentException;
+
+import basededatos.iUsuario_no_registrado;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.login.LoginForm;
@@ -28,13 +30,18 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 		layoutCatalogo = this.getCatalogoVLayout().as(VerticalLayout.class);
 		layoutCatalogo.add(vc);
 		
-		lg = new Iniciar_sesión();
+		try {
+			lg = new Iniciar_sesión();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 
 			@Override
 			public void onComponentEvent(ComponentEvent event) {
-
+				
 				layoutPrincipal.removeAll();
 				layoutPrincipal.add(lg);
 				

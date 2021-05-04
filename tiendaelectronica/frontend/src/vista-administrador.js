@@ -18,7 +18,7 @@ class VistaAdministrador extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
   <vaadin-button id="inicioButton">
     Inicio 
@@ -27,8 +27,8 @@ class VistaAdministrador extends PolymerElement {
   <vaadin-button id="aniadirProductoButton">
     Añadir producto 
   </vaadin-button>
-  <vaadin-button id="gestionarProductoButton">
-    Gestionar productos 
+  <vaadin-button id="gestionarUsuariosButton">
+   Gestionar usuarios
   </vaadin-button>
   <vaadin-button id="verListadoComprasButton">
     Ver listado de compras 

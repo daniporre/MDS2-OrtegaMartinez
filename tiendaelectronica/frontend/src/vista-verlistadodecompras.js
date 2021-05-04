@@ -15,16 +15,16 @@ class VistaVerlistadodecompras extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); justify-content: space-between;">
   <vaadin-button id="inicioButton">
     Inicio 
   </vaadin-button>
   <vaadin-button theme="primary" id="actualizarListaDeComprasButton">
-   Actualizar lista de compras
+    Actualizar lista de compras 
   </vaadin-button>
   <vaadin-button id="cerrarSesionButton">
-   Cerrar sesión
+    Cerrar sesión 
   </vaadin-button>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout theme="spacing" id="layoutPrincipal" style="flex-grow: 1; flex-shrink: 1; margin: var(--lumo-space-l); align-self: stretch; align-items: stretch;"></vaadin-vertical-layout>

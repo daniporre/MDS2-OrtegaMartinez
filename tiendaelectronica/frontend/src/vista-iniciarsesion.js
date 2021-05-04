@@ -18,7 +18,7 @@ class VistaIniciarsesion extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; justify-content: center;">
   <vaadin-form-layout style="align-self: center; flex-shrink: 0; flex-grow: 0;">
    <label style="width: 55%;">Crear cuenta</label>

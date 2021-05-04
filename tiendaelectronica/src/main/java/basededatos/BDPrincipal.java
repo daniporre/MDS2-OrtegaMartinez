@@ -2,6 +2,11 @@ package basededatos;
 
 import basededatosorm.Producto;
 import basededatosorm.UsuarioRegistrado;
+
+import javax.persistence.PersistenceException;
+
+import org.orm.PersistentException;
+
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
@@ -17,23 +22,29 @@ import interfaz.Encargado_de_compras;
 import interfaz.Empresa_anunciadora;
 
 public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrado, iAdministrador, iEmpresa_de_transportes, iEncargado_de_compras, iCorreo, iUsuario_no_registrado, iEmpresa_anunciadora, iComún_Usuarios {
-	public BDCorreo _bDCorreo;
-	public BDTransportistas _bDTransportistas;
-	public BDEncargados _bDEncargados;
-	public BDAdministradores _bDAdministradores;
-	public BDEntregados _bDEntregados;
-	public BDEnviados _bDEnviados;
-	public BDPendientes _bDPendientes;
-	public BDProductos _bDProductos;
-	public BDCategorias _bDCategorias;
-	public BDOfertas _bDOfertas;
-	public BDValoraciones _bDValoraciones;
-	public BDUsuarioRegistrado _bDUsuarioRegistrado;
-	public BDItems _bDItems;
-	public BDFotos _bDFotos;
+	public BDCorreo _bDCorreo = new BDCorreo();
+	public BDTransportistas _bDTransportistas = new BDTransportistas();
+	public BDEncargados _bDEncargados = new BDEncargados();
+	public BDAdministradores _bDAdministradores = new BDAdministradores();
+	public BDEntregados _bDEntregados = new BDEntregados();
+	public BDEnviados _bDEnviados = new BDEnviados();
+	public BDPendientes _bDPendientes = new BDPendientes();
+	public BDProductos _bDProductos = new BDProductos();
+	public BDCategorias _bDCategorias = new BDCategorias();
+	public BDOfertas _bDOfertas = new BDOfertas();
+	public BDValoraciones _bDValoraciones = new BDValoraciones();
+	public BDUsuarioRegistrado _bDUsuarioRegistrado = new BDUsuarioRegistrado();
+	public BDItems _bDItems = new BDItems();
+	public BDFotos _bDFotos = new BDFotos();
 
 	public void crearCuenta(String aCorreo, String aContrasenia) {
-		throw new UnsupportedOperationException();
+		try {
+			_bDUsuarioRegistrado.crearCuenta(aCorreo, aContrasenia);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error en crearCuenta BDprincipal");
+			e.printStackTrace();
+		}
 	}
 
 	public void iniciarSesion(String aCorreo, String aContrasenia) {
@@ -41,7 +52,16 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public Producto[] verCatalogo() {
-		throw new UnsupportedOperationException();
+		Producto [] ps = null;
+		try {
+			ps = this._bDProductos.obtenerProductos();
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error en verCatalogo BDPrincipal");
+			e.printStackTrace();
+		}
+		
+		return ps;
 	}
 
 	public Producto[] buscarProducto(String aNombre) {
@@ -54,11 +74,11 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 
 
 	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
-		throw new UnsupportedOperationException();
+		_bDCorreo.crearMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
 	}
 
 	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+		return _bDUsuarioRegistrado.obtenerFormaPagoDireccion(aIdUsuario);
 	}
 
 	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) {
@@ -66,27 +86,27 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.guardarDireccionEntrega(aDireccionUsuario, aCodigoPostal, aCiudad, aProvincia);
 	}
 
 	public void guardarFormaPago(String aNumeroTarjeta, String aFechaVencimiento, int aCvv) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.guardarFormaPago(aNumeroTarjeta, aFechaVencimiento, aCvv);
 	}
 
 	public void guardarDatosPersonales(String aNombre, String aEmail) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.guardarDatosPersonales(aNombre, aEmail);
 	}
 
 	public void cambiarContrasenia(String aNuevaContrasenia) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.cambiarContrasenia(aNuevaContrasenia);
 	}
 
 	public void darBajaUsuario(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.darBajaUsuario(aIdUsuario);
 	}
 
 	public void cancelarPedido(int aIdPedido) {
-		throw new UnsupportedOperationException();
+		//_bDUsuarioRegistrado.cancelarPedido(aIdPedido);
 	}
 
 	public void valorarProducto(int aIdProducto, String aValoracion) {
@@ -98,7 +118,7 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void guardarCambios(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		throw new UnsupportedOperationException();
+		
 	}
 
 	public Pedido[] actualizarListadoDeCompras() {
@@ -110,7 +130,12 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void crearUsuario(String aMail, String aContraseña) {
-		throw new UnsupportedOperationException();
+		try {
+			_bDAdministradores.crearUsuario(aMail, aContraseña);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
@@ -118,7 +143,7 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void crearNuevaOferta(String aNombreOferta, int aDescuento) {
-		throw new UnsupportedOperationException();
+		_bDOfertas.crearNuevaOferta(aNombreOferta, aDescuento);
 	}
 
 	public void crearNuevaCategoria(String aNombreCategoria) {

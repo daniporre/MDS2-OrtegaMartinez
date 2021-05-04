@@ -10,6 +10,7 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.dom.Element;
 
 /**
  * A Designer generated component for the vista-iniciarsesion template.
@@ -29,6 +30,16 @@ public class VistaIniciarsesion extends PolymerTemplate<VistaIniciarsesion.Vista
 	private TextField contraseñaNuevaCuentaTF;
 	@Id("mailNuevaCuentaTF")
 	private TextField mailNuevaCuentaTF;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
 
 	/**
      * Creates a new VistaIniciarsesion.

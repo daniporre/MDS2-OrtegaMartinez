@@ -1,12 +1,22 @@
 package basededatos;
 
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
 import basededatosorm.UsuarioRegistrado;
 
 public class BDUsuarioRegistrado {
 	public BDPrincipal _unnamed_BDPrincipal_;
 	public UsuarioRegistrado _contiene_usuarioRegistrado;
 
-	public void crearCuenta(String aCorreo, String aContrasenia) {
+	public void crearCuenta(String aCorreo, String aContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		
+		UsuarioRegistrado ur = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
+		ur.setMail(aCorreo);
+		ur.setContraseña(aContrasenia);
+		basededatosorm.UsuarioRegistradoDAO.save(ur);
+		
 		throw new UnsupportedOperationException();
 	}
 

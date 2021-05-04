@@ -24,8 +24,6 @@ public class VistaAdministrador extends PolymerTemplate<VistaAdministrador.Vista
 	private Button inicioButton;
 	@Id("aniadirProductoButton")
 	private Button aniadirProductoButton;
-	@Id("gestionarProductoButton")
-	private Button gestionarProductoButton;
 	@Id("verListadoComprasButton")
 	private Button verListadoComprasButton;
 	@Id("salirButton")
@@ -48,6 +46,10 @@ public class VistaAdministrador extends PolymerTemplate<VistaAdministrador.Vista
 	private Button nuevaCategoriaButton;
 	@Id("principalVLayout")
 	private Element principalVLayout;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
+	@Id("gestionarUsuariosButton")
+	private Button gestionarUsuariosButton;
 
 	/**
      * Creates a new VistaAdministrador.
@@ -77,14 +79,6 @@ public class VistaAdministrador extends PolymerTemplate<VistaAdministrador.Vista
 
 	public void setAniadirProductoButton(Button aniadirProductoButton) {
 		this.aniadirProductoButton = aniadirProductoButton;
-	}
-
-	public Button getGestionarProductoButton() {
-		return gestionarProductoButton;
-	}
-
-	public void setGestionarProductoButton(Button gestionarProductoButton) {
-		this.gestionarProductoButton = gestionarProductoButton;
 	}
 
 	public Button getVerListadoComprasButton() {
@@ -173,5 +167,21 @@ public class VistaAdministrador extends PolymerTemplate<VistaAdministrador.Vista
 
 	public void setPrincipalVLayout(Element principalVLayout) {
 		this.principalVLayout = principalVLayout;
+	}
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public Button getGestionarUsuariosButton() {
+		return gestionarUsuariosButton;
+	}
+
+	public void setGestionarUsuariosButton(Button gestionarUsuariosButton) {
+		this.gestionarUsuariosButton = gestionarUsuariosButton;
 	}
 }
