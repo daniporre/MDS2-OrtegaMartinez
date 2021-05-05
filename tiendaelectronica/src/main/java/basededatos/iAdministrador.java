@@ -2,9 +2,13 @@ package basededatos;
 
 import basededatosorm.Oferta;
 import interfaz.Pedido;
+
+import java.util.List;
+
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Producto;
+import basededatosorm.Usuario;
 
 public interface iAdministrador extends iComún_Usuarios {
 
@@ -39,4 +43,6 @@ public interface iAdministrador extends iComún_Usuarios {
 	public void guardarFotos(Fotos aFotos);
 
 	public Producto obtenerProducto(String aNombreProducto);
+	
+	public Usuario[] cargarUsuarios();
 }

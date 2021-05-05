@@ -14,12 +14,21 @@ public class BDUsuarioRegistrado {
 	public void crearCuenta(String aCorreo, String aContrasenia) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
 		
-		UsuarioRegistrado ur = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
-		ur.setMail(aCorreo);
-		ur.setContraseña(aContrasenia);
-		basededatosorm.UsuarioRegistradoDAO.save(ur);
+		try {
+			UsuarioRegistrado ur = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
+			ur.setMail(aCorreo);
+			ur.setContraseña(aContrasenia);
+			basededatosorm.UsuarioRegistradoDAO.save(ur);
+			
+			t.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error en BDUsuarioRegistrado crearCuenta");
+			t.rollback();
+		}
 		
-		throw new UnsupportedOperationException();
+		
+		
 	}
 
 	public void iniciarSesion(String aCorreo, String aContrasenia) {

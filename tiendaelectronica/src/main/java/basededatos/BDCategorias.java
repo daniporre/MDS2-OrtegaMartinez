@@ -1,6 +1,10 @@
 package basededatos;
 
 import java.util.Vector;
+
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
 import basededatosorm.Categoria;
 
 public class BDCategorias {
@@ -11,7 +15,12 @@ public class BDCategorias {
 		throw new UnsupportedOperationException();
 	}
 
-	public void crearNuevaCategoria(String aNombreCategoria) {
-		throw new UnsupportedOperationException();
+	public void crearNuevaCategoria(String aNombreCategoria) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+	
+		Categoria c = basededatosorm.CategoriaDAO.createCategoria();
+		c.setNombre(aNombreCategoria);
+		basededatosorm.CategoriaDAO.save(c);
+		t.commit();
 	}
 }

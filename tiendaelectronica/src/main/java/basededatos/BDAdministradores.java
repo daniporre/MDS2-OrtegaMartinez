@@ -1,5 +1,7 @@
 package basededatos;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Vector;
 
 import org.orm.PersistentException;
@@ -7,9 +9,12 @@ import org.orm.PersistentTransaction;
 
 import basededatosorm.Administrador;
 import basededatosorm.Correo;
+import basededatosorm.Encargado;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
 import basededatosorm.Producto;
+import basededatosorm.Transportista;
+import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
 import interfaz.Pedido;
 
@@ -19,12 +24,40 @@ public class BDAdministradores {
 
 	public void crearUsuario(String aMail, String aContraseña) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		try {
+			Administrador a = basededatosorm.AdministradorDAO.createAdministrador();
+			a.setMail(aMail);
+			a.setContraseña(aContraseña);
+			basededatosorm.AdministradorDAO.save(a);
+			t.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error en BDAdministradores crearUsuario");
+			t.rollback();
+		}
 		
-		Administrador a = basededatosorm.AdministradorDAO.createAdministrador();
-		a.setMail(aMail);
-		a.setContraseña(aContraseña);
-		basededatosorm.AdministradorDAO.save(a);
+		
 	}
+	
+	public Usuario[] cargarUsuarios() throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		try {
+			
+			Administrador[] ad = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
+			System.out.println("Administradores");
+			System.out.println(Arrays.toString(ad));
+			t.commit();
+			return ad;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
+		
+		
+	}
+	
 	public Oferta seleccionarOferta(String aNombreOferta) {
 		return null;
 		

@@ -3,6 +3,11 @@ package basededatos;
 import basededatosorm.Producto;
 import basededatosorm.UsuarioRegistrado;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 
 import org.orm.PersistentException;
@@ -10,6 +15,7 @@ import org.orm.PersistentException;
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
+import basededatosorm.Encargado;
 import interfaz.Pedido;
 import basededatosorm.Usuario;
 import interfaz.Usuario_no_identificado;
@@ -135,11 +141,52 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 
 	public void crearUsuario(String aMail, String aContraseña) {
 		try {
-			_bDAdministradores.crearUsuario(aMail, aContraseña);
+			if(aMail.contains("administrador")) {
+				_bDAdministradores.crearUsuario(aMail, aContraseña);
+			}
+			if(aMail.contains("encargado")) {
+				_bDEncargados.crearUsuario(aMail, aContraseña);
+			}
+			if(aMail.contains("transporte")) {
+				_bDTransportistas.crearUsuario(aMail, aContraseña);
+			}
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public Usuario[] cargarUsuarios() {
+		try {
+			
+			Usuario[] administradores = _bDAdministradores.cargarUsuarios();
+			Usuario[] encargados = _bDEncargados.cargarUsuarios();
+			Usuario[] transportistas = _bDTransportistas.cargarUsuarios();
+
+			
+			int tam = administradores.length + encargados.length + transportistas.length;
+			Usuario[] usuarios = new Usuario[tam];
+			
+			for (int i = 0; i < administradores.length; i++) {
+				usuarios[i] = administradores[i];
+			}
+			for (int i = 0; i < encargados.length; i++) {
+				usuarios[i+administradores.length] = encargados[i];
+			}
+			for (int i = 0; i < transportistas.length; i++) {
+				usuarios[i+administradores.length+encargados.length] = transportistas[i];
+			}
+			
+			return usuarios;
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
+		}
+		
+		
 	}
 
 	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {

@@ -12,6 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 
+import interfaz.Administrador;
 import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
 import vistas.VistaIniciarsesion;
@@ -53,14 +54,14 @@ public class MainView extends VerticalLayout {
 	
 	Usuario_no_registrado unr = new Usuario_no_registrado();
 	
-	
+	Administrador ad = new Administrador();
 	
     public MainView() {
     	
     	
     	
     	
-    	add(unr);
+    	add(ad);
     	
    
     }

@@ -72,7 +72,8 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 	
 	@OneToOne(optional=false, targetEntity=basededatosorm.Pedido.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="PedidoId", referencedColumnName="Id", nullable=false) }, foreignKey=@ForeignKey(name="FKUsuarioReg186138"))	
+	@JoinColumns(value={ @JoinColumn(name="PedidoId", referencedColumnName="Id", nullable=true) }, foreignKey=@ForeignKey(name="FKUsuarioReg186138"))	
+	//Cambiado de false a true
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Pedido pedido;
 	

@@ -36,6 +36,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 					
 					try {
 						bdp = new BDPrincipal();
+						
 						bdp.crearUsuario(getMailNuevaCuentaTF().getValue(), getContraseñaNuevaCuentaTF().getValue());
 						
 						
