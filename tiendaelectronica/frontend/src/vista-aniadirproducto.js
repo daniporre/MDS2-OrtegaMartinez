@@ -5,7 +5,7 @@ import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 
-class VistaAñadirproducto extends PolymerElement {
+class VistaAniadirproducto extends PolymerElement {
 
     static get template() {
         return html`
@@ -17,7 +17,7 @@ class VistaAñadirproducto extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
     Inicio 
@@ -29,13 +29,13 @@ class VistaAñadirproducto extends PolymerElement {
     <img id="foto1Image" style="width: 100%; height: 100%;">
     <vaadin-horizontal-layout theme="spacing" style="width: 100%; flex-grow: 0;">
      <vaadin-button id="foto2Image">
-      imagen1
+       imagen1 
      </vaadin-button>
      <vaadin-button id="foto3Image">
-      imagen3 
+       imagen3 
      </vaadin-button>
      <vaadin-button id="foto4Image">
-      imagen4
+       imagen4 
      </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
@@ -62,7 +62,7 @@ class VistaAñadirproducto extends PolymerElement {
     }
 
     static get is() {
-        return 'vista-añadirproducto';
+        return 'vista-aniadirproducto';
     }
 
     static get properties() {
@@ -72,4 +72,4 @@ class VistaAñadirproducto extends PolymerElement {
     }
 }
 
-customElements.define(VistaAñadirproducto.is, VistaAñadirproducto);
+customElements.define(VistaAniadirproducto.is, VistaAniadirproducto);

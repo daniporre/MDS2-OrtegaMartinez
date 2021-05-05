@@ -134,19 +134,6 @@ public class BDAdministradores {
 		return null;
 
 	}
-
-	public void crearNuevaOferta(String aNombreOferta, int aDescuento) {
-
-	}
-
-	public void crearNuevaCategoria(String aNombreCategoria) {
-
-	}
-
-	public void darBajaOferta(String aNombreOferta) {
-
-	}
-
 	public Producto visualizarProducto(int aIdProducto) {
 		return null;
 

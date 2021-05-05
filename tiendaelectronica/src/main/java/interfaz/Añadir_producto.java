@@ -1,26 +1,81 @@
 package interfaz;
 
-import vistas.VistaAñadirproducto;
+import org.orm.PersistentException;
 
-public class Añadir_producto extends VistaAñadirproducto {
-//	private TextField _nombreTF;
-//	private TextField _precio;
-//	private TextField _marca;
-//	private Label _oferta;
-//	private ComboBox _ofertaCB;
-//	private Button _guardarCambios;
-//	private Image _imagen;
-//	private Image _imagen2;
-//	private Image _imagen3;
-//	private Image _imagen4;
-//	private TextView _descripcion;
-//	private Label _descripcionL;
-//	public Administrador _administrador;
-//	public Añadir_fotos _añadir_fotos;
-//	public Seleccionar_oferta__Añadir_producto_ _seleccionar_oferta__Añadir_producto_;
-//	public Añadir_descripción_de_producto _añadir_descripción_de_producto;
-//
-//	public void guardarCambios() {
-//		throw new UnsupportedOperationException();
-//	}
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
+import basededatos.BDPrincipal;
+import basededatosorm.Oferta;
+import vistas.VistaAniadirproducto;
+import vistas.VistaGestionarusuarios;
+
+public class Añadir_producto extends VistaAniadirproducto {
+	
+	BDPrincipal bdp;
+	
+	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
+	
+	String nombre;
+	String precio;
+	String marca;
+	Oferta oferta = null;
+	String descripcion;
+	
+	
+	public Añadir_producto() {
+		inicio();
+		bdp = new BDPrincipal();
+		
+		guardarNuevoProducto();
+		
+		
+		//traer ofertas de bd
+//		Oferta[] ofertas = new Oferta[bdp.obtenerOfertas().length];
+//		
+//		if(ofertas != null)
+//			ofertas = bdp.obtenerOfertas();
+//		
+//		for (Oferta oferta : ofertas) {
+//			System.out.println(oferta.getNombreOferta()+"***");
+//		}
+		
+		
+	}
+
+	public void guardarNuevoProducto() {
+		
+		this.getGuardarCambiosButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				
+				nombre = getNombreProductoTF().getValue();
+				precio = getPrecioProductoTF().getValue();
+				marca = getMarcaProductoTF().getValue();
+//				if(!getOfertasProductoTF().getValue().isEmpty())
+//					oferta = getOfertasProductoTF().getValue();
+				descripcion = getDescripcionProductoTF().getValue();
+				
+				if(!nombre.isEmpty() && !precio.isEmpty() && !marca.isEmpty() && !descripcion.isEmpty())
+					bdp.guardarCambios(nombre, Integer.parseInt(precio), marca, oferta, descripcion);
+			}
+		});
+	}
+	
+	public void inicio() {
+		this.getInicioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				// TODO Auto-generated method stub
+				Administrador ad = new Administrador();
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(ad);
+			}
+		});
+	}
 }

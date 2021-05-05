@@ -129,7 +129,12 @@ public class BDPrincipal
 	}
 
 	public void guardarCambios(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		_bDAdministradores.guardarCambios(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
+		try {
+			_bDProductos.aniadirProducto(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Pedido[] actualizarListadoDeCompras() {
@@ -225,15 +230,35 @@ public class BDPrincipal
 	}
 
 	public void crearNuevaOferta(String aNombreOferta, int aDescuento) {
-		_bDOfertas.crearNuevaOferta(aNombreOferta, aDescuento);
+		try {
+			_bDOfertas.crearNuevaOferta(aNombreOferta, aDescuento);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Oferta[] obtenerOfertas() {
+		try {
+			return _bDOfertas.obtenerOfertas();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public void crearNuevaCategoria(String aNombreCategoria) {
-		_bDAdministradores.crearNuevaCategoria(aNombreCategoria);
+		try {
+			_bDCategorias.crearNuevaCategoria(aNombreCategoria);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void darBajaOferta(String aNombreOferta) {
-		_bDAdministradores.darBajaOferta(aNombreOferta);
+		_bDOfertas.darBajaOferta(aNombreOferta);
 	}
 
 	public void guardarFotos(Fotos aFotos) {

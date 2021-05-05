@@ -13,6 +13,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 
 import interfaz.Administrador;
+import interfaz.Añadir_producto;
 import interfaz.Usuario_no_registrado;
 import interfaz.Visualizar_producto;
 import vistas.VistaIniciarsesion;
@@ -53,6 +54,7 @@ public class MainView extends VerticalLayout {
 	
 	
 	Usuario_no_registrado unr = new Usuario_no_registrado();
+	Añadir_producto ap = new Añadir_producto();
 	
 	Administrador ad = new Administrador();
 	

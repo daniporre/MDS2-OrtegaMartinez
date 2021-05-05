@@ -9,6 +9,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
+import basededatos.BDPrincipal;
 import basededatos.iAdministrador;
 
 public class Administrador extends VistaAdministrador {
@@ -16,6 +17,7 @@ public class Administrador extends VistaAdministrador {
 	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
 	public VerticalLayout catalogoVLayout = this.getPrincipalVLayout().as(VerticalLayout.class);
 	public Ver_catálogo vc = new Ver_catálogo();
+	public BDPrincipal bdp;
 	
 	
 	public Administrador() {
@@ -23,7 +25,33 @@ public class Administrador extends VistaAdministrador {
 		VerticalLayout p = vc.getProductosEnCatalogoVLayout().as(VerticalLayout.class);
 		//aqui se añade la lista de productos que se muestran en el catalogo
 		//p.add());
+		bdp = new BDPrincipal();
 		catalogoVLayout.add(vc);
+		
+		this.getNuevaCategoriaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				// TODO Auto-generated method stub
+				if (!getNuevaCategoriaTF().getValue().isEmpty()) {
+					bdp.crearNuevaCategoria(getNuevaCategoriaTF().getValue());
+				}
+			}
+		});
+		
+		this.getCrearOfertaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				
+				int descuento = Integer.parseInt(getDescuentoTF().getValue());
+				
+				if(!getNombreOfertaTF().getValue().isEmpty()) {
+					bdp.crearNuevaOferta(getNombreOfertaTF().getValue(), descuento);
+				}
+				
+			}
+		});
 		
 		this.getSalirButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
@@ -38,19 +66,6 @@ public class Administrador extends VistaAdministrador {
 			}
 		});
 
-		this.getAniadirProductoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
-
-			@Override
-			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
-
-				Añadir_producto ap = new Añadir_producto();
-
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(ap);
-
-			}
-		});
 
 		this.getGestionarUsuariosButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
@@ -73,6 +88,20 @@ public class Administrador extends VistaAdministrador {
 				
 				layoutPrincipal.removeAll();
 				layoutPrincipal.add(vlc);;
+			}
+		});
+		
+		this.getAniadirProductoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				// TODO Auto-generated method stub
+
+				Añadir_producto ap = new Añadir_producto();
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(ap);
+
 			}
 		});
 	}

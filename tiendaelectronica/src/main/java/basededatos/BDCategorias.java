@@ -18,9 +18,16 @@ public class BDCategorias {
 	public void crearNuevaCategoria(String aNombreCategoria) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
 	
-		Categoria c = basededatosorm.CategoriaDAO.createCategoria();
-		c.setNombre(aNombreCategoria);
-		basededatosorm.CategoriaDAO.save(c);
-		t.commit();
+		try {
+			Categoria c = basededatosorm.CategoriaDAO.createCategoria();
+			c.setNombre(aNombreCategoria);
+			basededatosorm.CategoriaDAO.save(c);
+			t.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+		}
+		
 	}
 }
