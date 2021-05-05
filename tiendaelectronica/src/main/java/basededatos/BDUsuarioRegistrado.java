@@ -3,6 +3,8 @@ package basededatos;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import basededatosorm.Correo;
+import basededatosorm.Producto;
 import basededatosorm.UsuarioRegistrado;
 
 public class BDUsuarioRegistrado {
@@ -51,4 +53,35 @@ public class BDUsuarioRegistrado {
 	public void darBajaUsuario(int aIdUsuario) {
 		throw new UnsupportedOperationException();
 	}
+	public void cancelarPedido(int aIdPedido) {
+		
+	}
+
+	public void valorarProducto(int aIdProducto, String aValoracion) {
+		
+	}
+	public Producto[] buscarProducto(String aNombre) {
+		return null;
+		
+	}
+	
+	public Correo[] obtenerMensajesRecibidos() {
+		return null;
+		
+	}
+
+	public Correo[] obtenerMensajesEnviados() {
+		return null;
+		
+	}
+
+	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
+		
+	}
+
+	public Correo obtenerMensaje(String aId) {
+		return null;
+		
+	}
+	
 }

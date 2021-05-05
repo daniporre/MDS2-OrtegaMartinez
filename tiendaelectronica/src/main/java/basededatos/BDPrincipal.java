@@ -106,27 +106,31 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void cancelarPedido(int aIdPedido) {
-		//_bDUsuarioRegistrado.cancelarPedido(aIdPedido);
+		_bDUsuarioRegistrado.cancelarPedido(aIdPedido);
 	}
 
 	public void valorarProducto(int aIdProducto, String aValoracion) {
-		throw new UnsupportedOperationException();
+		_bDUsuarioRegistrado.valorarProducto(aIdProducto, aValoracion);
 	}
 
 	public Oferta seleccionarOferta(String aNombreOferta) {
-		throw new UnsupportedOperationException();
+		//return _bDAdministradores.seleccionarOferta(aNombreOferta);
+		//TODO
+		return null;
 	}
 
 	public void guardarCambios(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		
+		_bDAdministradores.guardarCambios(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
 	}
 
 	public Pedido[] actualizarListadoDeCompras() {
-		throw new UnsupportedOperationException();
+		//_bDAdministradores.actualizarListadoDeCompras();
+		//TODO 
+		return null;
 	}
 
 	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		throw new UnsupportedOperationException();
+		_bDAdministradores.editarProducto(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
 	}
 
 	public void crearUsuario(String aMail, String aContraseña) {
@@ -139,7 +143,7 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
-		throw new UnsupportedOperationException();
+		_bDCorreo.responderMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
 	}
 
 	public void crearNuevaOferta(String aNombreOferta, int aDescuento) {
@@ -147,15 +151,16 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void crearNuevaCategoria(String aNombreCategoria) {
-		throw new UnsupportedOperationException();
+		_bDAdministradores.crearNuevaCategoria(aNombreCategoria);
 	}
 
 	public void darBajaOferta(String aNombreOferta) {
-		throw new UnsupportedOperationException();
+		_bDAdministradores.darBajaOferta(aNombreOferta);
 	}
 
 	public void guardarFotos(Fotos aFotos) {
-		throw new UnsupportedOperationException();
+		//Cambiado timpo de parametro de Fotos a Fotos[]
+		//_bDFotos.guardarFotos(aFotos);
 	}
 
 	public Producto obtenerProducto(String aNombreProducto) {
@@ -171,11 +176,11 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void marcarRecibido(int aId) {
-		throw new UnsupportedOperationException();
+		//TODO	
 	}
 
 	public void marcarEntregado(int aId) {
-		throw new UnsupportedOperationException();
+		//TODO	
 	}
 
 	public UsuarioRegistrado visualizarUsuario(int aIdUsuario) {
