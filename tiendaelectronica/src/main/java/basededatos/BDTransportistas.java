@@ -6,6 +6,8 @@ import java.util.Vector;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.flow.component.notification.Notification;
+
 import basededatosorm.Administrador;
 import basededatosorm.Encargado;
 import basededatosorm.Transportista;
@@ -48,5 +50,37 @@ public class BDTransportistas {
 		}
 		
 		
+	}
+	
+	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			Transportista[] ads = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
+			int idUsuario = 0;
+
+			for (Transportista transportista : ads) {
+				if (transportista.getMail().equals(aMail)) {
+					idUsuario = transportista.getIdUsuario();
+					break;
+				}
+
+			}
+
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			Transportista ad = basededatosorm.TransportistaDAO.loadTransportistaByORMID(idUsuario);
+			Notification.show("La contraseña se ha cambiado correctamente");
+			ad.setContraseña(aNuevaContrasenia);
+
+			t.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+		}
 	}
 }

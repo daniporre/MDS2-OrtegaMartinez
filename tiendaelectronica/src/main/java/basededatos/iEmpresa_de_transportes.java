@@ -15,4 +15,6 @@ public interface iEmpresa_de_transportes {
 	public void marcarEntregado(int aId);
 
 	public UsuarioRegistrado visualizarUsuario(int aIdUsuario);
+	
+	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia);
 }

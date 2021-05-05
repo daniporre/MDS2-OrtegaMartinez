@@ -33,69 +33,16 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 		bdprincipal = new BDPrincipal();
 		usuarios = new String[bdprincipal.cargarUsuarios().length];
 		cargarCombo();	
-				
+		crearUsuario();
 
-		this.getNuevoUsuarioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+		this.getCambiarContraseñaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
-			
-			
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				// TODO Auto-generated method stub
-				if (!getNuevoUsuarioEmailTF().getValue().isEmpty()
-						&& !getNuevoUsuarioContraseñaTF().getValue().isEmpty()) {
-					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Administrador") {
-						try {
-							
-
-							String correo = getNuevoUsuarioEmailTF().getValue() + ".administrador@gmail.com";
-
-							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
-
-							Notification.show("Se ha creado un administrador con mail: "
-									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
-
-							volverAdmin();
-
-						} catch (PersistenceException e) {
-							e.printStackTrace();
-						}
-
-					}
-					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Empresa transportes") {
-
-						try {
-
-							String correo = getNuevoUsuarioEmailTF().getValue() + ".transporte@gmail.com";
-
-							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
-
-							Notification.show("Se ha creado un usuario Empresa transportes con mail: "
-									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
-
-							volverAdmin();
-						} catch (PersistenceException e) {
-							e.printStackTrace();
-						}
-
-					}
-					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Encargado de compras") {
-
-						try {
-
-							String correo = getNuevoUsuarioEmailTF().getValue() + ".encargado@gmail.com";
-
-							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
-
-							Notification.show("Se ha creado un Encargado de compras con mail: "
-									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
-
-							volverAdmin();
-						} catch (PersistenceException e) {
-							e.printStackTrace();
-						}
-
-					}
+				if (!getContraseñaUsuarioModificadaTF().getValue().isEmpty() && !getSeleccionarUsuarioComboBox().getValue().isEmpty()) {
+								
+					bdprincipal.cambiarContraseniaAdmin(getSeleccionarUsuarioComboBox().getValue(),getContraseñaUsuarioModificadaTF().getValue());
 				}
 			}
 		});
@@ -119,5 +66,69 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 		}
 		
 		getSeleccionarUsuarioComboBox().setItems(usuarios);
+	}
+	public void crearUsuario() {
+		this.getNuevoUsuarioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				// TODO Auto-generated method stub
+				if (!getNuevoUsuarioEmailTF().getValue().isEmpty()
+						&& !getNuevoUsuarioContraseñaTF().getValue().isEmpty()) {
+					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Administrador") {
+						try {
+							
+
+							String correo = getNuevoUsuarioEmailTF().getValue().toLowerCase() + ".administrador@tiendavirtual.com";
+
+							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
+
+							Notification.show("Se ha creado un administrador con mail: "
+									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
+
+							volverAdmin();
+
+						} catch (PersistenceException e) {
+							e.printStackTrace();
+						}
+
+					}
+					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Empresa transportes") {
+
+						try {
+
+							String correo = getNuevoUsuarioEmailTF().getValue().toLowerCase() + ".transporte@tiendavirtual.com";
+
+							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
+
+							Notification.show("Se ha creado un usuario Empresa transportes con mail: "
+									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
+
+							volverAdmin();
+						} catch (PersistenceException e) {
+							e.printStackTrace();
+						}
+
+					}
+					if (getRolNuevoUsuarioComboBox().getValue().toString() == "Encargado de compras") {
+
+						try {
+
+							String correo = getNuevoUsuarioEmailTF().getValue().toLowerCase() + ".encargado@tiendavirtual.com";
+
+							bdprincipal.crearUsuario(correo, getNuevoUsuarioContraseñaTF().getValue());
+
+							Notification.show("Se ha creado un Encargado de compras con mail: "
+									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
+
+							volverAdmin();
+						} catch (PersistenceException e) {
+							e.printStackTrace();
+						}
+
+					}
+				}
+			}
+		});
 	}
 }

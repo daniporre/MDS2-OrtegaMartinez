@@ -45,4 +45,6 @@ public interface iAdministrador extends iComún_Usuarios {
 	public Producto obtenerProducto(String aNombreProducto);
 	
 	public Usuario[] cargarUsuarios();
+	
+	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia);
 }

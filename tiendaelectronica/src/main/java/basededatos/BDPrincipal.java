@@ -27,7 +27,9 @@ import interfaz.Empresa_de_transportes;
 import interfaz.Encargado_de_compras;
 import interfaz.Empresa_anunciadora;
 
-public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrado, iAdministrador, iEmpresa_de_transportes, iEncargado_de_compras, iCorreo, iUsuario_no_registrado, iEmpresa_anunciadora, iComún_Usuarios {
+public class BDPrincipal
+		implements iUsuario_no_identificado, iUsuario_registrado, iAdministrador, iEmpresa_de_transportes,
+		iEncargado_de_compras, iCorreo, iUsuario_no_registrado, iEmpresa_anunciadora, iComún_Usuarios {
 	public BDCorreo _bDCorreo = new BDCorreo();
 	public BDTransportistas _bDTransportistas = new BDTransportistas();
 	public BDEncargados _bDEncargados = new BDEncargados();
@@ -58,7 +60,7 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public Producto[] verCatalogo() {
-		Producto [] ps = null;
+		Producto[] ps = null;
 		try {
 			ps = this._bDProductos.obtenerProductos();
 		} catch (PersistenceException e) {
@@ -66,7 +68,7 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 			System.out.println("error en verCatalogo BDPrincipal");
 			e.printStackTrace();
 		}
-		
+
 		return ps;
 	}
 
@@ -78,8 +80,8 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 		throw new UnsupportedOperationException();
 	}
 
-
-	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
+	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
+			String aFechaEnvio) {
 		_bDCorreo.crearMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
 	}
 
@@ -91,7 +93,8 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 		throw new UnsupportedOperationException();
 	}
 
-	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia) {
+	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad,
+			String aProvincia) {
 		_bDUsuarioRegistrado.guardarDireccionEntrega(aDireccionUsuario, aCodigoPostal, aCiudad, aProvincia);
 	}
 
@@ -120,8 +123,8 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public Oferta seleccionarOferta(String aNombreOferta) {
-		//return _bDAdministradores.seleccionarOferta(aNombreOferta);
-		//TODO
+		// return _bDAdministradores.seleccionarOferta(aNombreOferta);
+		// TODO
 		return null;
 	}
 
@@ -130,8 +133,8 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public Pedido[] actualizarListadoDeCompras() {
-		//_bDAdministradores.actualizarListadoDeCompras();
-		//TODO 
+		// _bDAdministradores.actualizarListadoDeCompras();
+		// TODO
 		return null;
 	}
 
@@ -141,13 +144,13 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 
 	public void crearUsuario(String aMail, String aContraseña) {
 		try {
-			if(aMail.contains("administrador")) {
+			if (aMail.contains("administrador")) {
 				_bDAdministradores.crearUsuario(aMail, aContraseña);
 			}
-			if(aMail.contains("encargado")) {
+			if (aMail.contains("encargado")) {
 				_bDEncargados.crearUsuario(aMail, aContraseña);
 			}
-			if(aMail.contains("transporte")) {
+			if (aMail.contains("transporte")) {
 				_bDTransportistas.crearUsuario(aMail, aContraseña);
 			}
 		} catch (PersistentException e) {
@@ -155,41 +158,69 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Usuario[] cargarUsuarios() {
 		try {
-			
+
 			Usuario[] administradores = _bDAdministradores.cargarUsuarios();
 			Usuario[] encargados = _bDEncargados.cargarUsuarios();
 			Usuario[] transportistas = _bDTransportistas.cargarUsuarios();
 
-			
 			int tam = administradores.length + encargados.length + transportistas.length;
 			Usuario[] usuarios = new Usuario[tam];
-			
+
 			for (int i = 0; i < administradores.length; i++) {
 				usuarios[i] = administradores[i];
 			}
 			for (int i = 0; i < encargados.length; i++) {
-				usuarios[i+administradores.length] = encargados[i];
+				usuarios[i + administradores.length] = encargados[i];
 			}
 			for (int i = 0; i < transportistas.length; i++) {
-				usuarios[i+administradores.length+encargados.length] = transportistas[i];
+				usuarios[i + administradores.length + encargados.length] = transportistas[i];
 			}
-			
+
 			return usuarios;
-			
+
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 			return null;
 		}
-		
-		
+
 	}
 
-	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
+	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia) {
+
+		if (aMail.contains("administrador")) {
+			try {
+				_bDAdministradores.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (aMail.contains("encargado")) {
+			try {
+				_bDEncargados.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (aMail.contains("transporte")) {
+			try {
+				_bDTransportistas.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
+			String aFechaEnvio) {
 		_bDCorreo.responderMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
 	}
 
@@ -206,8 +237,8 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void guardarFotos(Fotos aFotos) {
-		//Cambiado timpo de parametro de Fotos a Fotos[]
-		//_bDFotos.guardarFotos(aFotos);
+		// Cambiado timpo de parametro de Fotos a Fotos[]
+		// _bDFotos.guardarFotos(aFotos);
 	}
 
 	public Producto obtenerProducto(String aNombreProducto) {
@@ -223,11 +254,11 @@ public class BDPrincipal implements iUsuario_no_identificado, iUsuario_registrad
 	}
 
 	public void marcarRecibido(int aId) {
-		//TODO	
+		// TODO
 	}
 
 	public void marcarEntregado(int aId) {
-		//TODO	
+		// TODO
 	}
 
 	public UsuarioRegistrado visualizarUsuario(int aIdUsuario) {
