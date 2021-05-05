@@ -55,8 +55,33 @@ public class BDPrincipal
 		}
 	}
 
-	public void iniciarSesion(String aCorreo, String aContrasenia) {
-		throw new UnsupportedOperationException();
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) {
+		if (aCorreo.contains("administrador")) {
+			try {
+				return _bDAdministradores.iniciarSesion(aCorreo, aContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (aCorreo.contains("encargado")) {
+			try {
+				return _bDEncargados.iniciarSesion(aCorreo, aContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (aCorreo.contains("transporte")) {
+			try {
+				return _bDTransportistas.iniciarSesion(aCorreo, aContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
+		}
+		return null;
+
 	}
 
 	public Producto[] verCatalogo() {
@@ -237,7 +262,7 @@ public class BDPrincipal
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Oferta[] obtenerOfertas() {
 		try {
 			return _bDOfertas.obtenerOfertas();

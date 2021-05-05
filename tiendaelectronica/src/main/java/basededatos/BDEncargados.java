@@ -18,7 +18,8 @@ public class BDEncargados {
 	public Vector<Encargado> _contiene_encargado = new Vector<Encargado>();
 
 	public void crearUsuario(String aMail, String aContraseña) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
 		try {
 			Encargado a = basededatosorm.EncargadoDAO.createEncargado();
 			a.setMail(aMail);
@@ -31,11 +32,12 @@ public class BDEncargados {
 			t.rollback();
 		}
 	}
-	
+
 	public Usuario[] cargarUsuarios() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
 		try {
-			
+
 			Encargado[] en = basededatosorm.EncargadoDAO.listEncargadoByQuery(null, null);
 			System.out.println("Encargados");
 			System.out.println(Arrays.toString(en));
@@ -47,10 +49,9 @@ public class BDEncargados {
 			t.rollback();
 			return null;
 		}
-		
-		
+
 	}
-	
+
 	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
@@ -70,7 +71,7 @@ public class BDEncargados {
 			if (idUsuario == 0) {
 				Notification.show("El usuario no existe");
 			}
-			
+
 			Encargado ad = basededatosorm.EncargadoDAO.loadEncargadoByORMID(idUsuario);
 			Notification.show("La contraseña se ha cambiado correctamente");
 			ad.setContraseña(aNuevaContrasenia);
@@ -80,6 +81,43 @@ public class BDEncargados {
 			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
+		}
+	}
+
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			Encargado[] ads = basededatosorm.EncargadoDAO.listEncargadoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (Encargado encargado : ads) {
+				if (encargado.getMail().equals(aCorreo)) {
+					idUsuario = encargado.getIdUsuario();
+					break;
+				}
+
+			}
+
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			Encargado ad = basededatosorm.EncargadoDAO.loadEncargadoByORMID(idUsuario);
+			
+			if(ad.getContraseña().equals(aContrasenia)) {
+				return ad;
+			} else {
+				Notification.show("La contraseña es incorrecta");
+			}
+
+			t.commit();
+			return new Usuario();
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
 		}
 	}
 }

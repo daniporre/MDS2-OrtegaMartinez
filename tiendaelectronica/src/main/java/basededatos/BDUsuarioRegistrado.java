@@ -3,8 +3,11 @@ package basededatos;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import com.vaadin.flow.component.notification.Notification;
+
 import basededatosorm.Correo;
 import basededatosorm.Producto;
+import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
 
 public class BDUsuarioRegistrado {
@@ -18,8 +21,12 @@ public class BDUsuarioRegistrado {
 			UsuarioRegistrado ur = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
 			ur.setMail(aCorreo);
 			ur.setContraseña(aContrasenia);
-			basededatosorm.UsuarioRegistradoDAO.save(ur);
+			ur.setEstaOperativo(true);
 			
+			
+			basededatosorm.UsuarioRegistradoDAO.save(ur);
+			Notification.show("Nueva cuenta creada:\nMail: " + ur.getMail()
+					+ "\nContraseña: " + ur.getContraseña());
 			t.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -31,7 +38,7 @@ public class BDUsuarioRegistrado {
 		
 	}
 
-	public void iniciarSesion(String aCorreo, String aContrasenia) {
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) {
 		throw new UnsupportedOperationException();
 	}
 

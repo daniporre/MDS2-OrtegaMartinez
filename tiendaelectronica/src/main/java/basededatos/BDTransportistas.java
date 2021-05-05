@@ -18,7 +18,8 @@ public class BDTransportistas {
 	public Vector<Transportista> _contiene_transportista = new Vector<Transportista>();
 
 	public void crearUsuario(String aMail, String aContraseña) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
 		try {
 			Transportista a = basededatosorm.TransportistaDAO.createTransportista();
 			a.setMail(aMail);
@@ -31,13 +32,14 @@ public class BDTransportistas {
 			t.rollback();
 		}
 	}
-	
+
 	public Usuario[] cargarUsuarios() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
 		try {
-			
+
 			Transportista[] tr = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
-			
+
 			System.out.println("Transportistas");
 			System.out.println(Arrays.toString(tr));
 			t.commit();
@@ -48,10 +50,9 @@ public class BDTransportistas {
 			t.rollback();
 			return null;
 		}
-		
-		
+
 	}
-	
+
 	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
@@ -71,7 +72,7 @@ public class BDTransportistas {
 			if (idUsuario == 0) {
 				Notification.show("El usuario no existe");
 			}
-			
+
 			Transportista ad = basededatosorm.TransportistaDAO.loadTransportistaByORMID(idUsuario);
 			Notification.show("La contraseña se ha cambiado correctamente");
 			ad.setContraseña(aNuevaContrasenia);
@@ -81,6 +82,43 @@ public class BDTransportistas {
 			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
+		}
+	}
+
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			Transportista[] ads = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
+			int idUsuario = 0;
+
+			for (Transportista transportista : ads) {
+				if (transportista.getMail().equals(aCorreo)) {
+					idUsuario = transportista.getIdUsuario();
+					break;
+				}
+
+			}
+
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			Transportista ad = basededatosorm.TransportistaDAO.loadTransportistaByORMID(idUsuario);
+			
+			if(ad.getContraseña().equals(aContrasenia)) {
+				return ad;
+			} else {
+				Notification.show("La contraseña es incorrecta");
+			}
+
+			t.commit();
+			return new Usuario();
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
 		}
 	}
 }

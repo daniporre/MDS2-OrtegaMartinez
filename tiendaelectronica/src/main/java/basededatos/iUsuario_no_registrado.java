@@ -1,10 +1,11 @@
 package basededatos;
 
 import basededatosorm.Producto;
+import basededatosorm.Usuario;
 
 public interface iUsuario_no_registrado extends iComún_Usuarios {
 
-	public void iniciarSesion(String aCorreo, String aContrasenia);
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia);
 
 	public Producto[] verCatalogo();
 

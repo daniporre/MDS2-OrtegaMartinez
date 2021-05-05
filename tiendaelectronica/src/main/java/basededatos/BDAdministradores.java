@@ -91,6 +91,43 @@ public class BDAdministradores {
 			t.rollback();
 		}
 	}
+	
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			Administrador[] ads = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
+			int idUsuario = 0;
+
+			for (Administrador administrador : ads) {
+				if (administrador.getMail().equals(aCorreo)) {
+					idUsuario = administrador.getIdUsuario();
+					break;
+				}
+
+			}
+
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			Administrador ad = basededatosorm.AdministradorDAO.loadAdministradorByORMID(idUsuario);
+			
+			if(ad.getContraseña().equals(aContrasenia)) {
+				return ad;
+			} else {
+				Notification.show("La contraseña es incorrecta");
+			}
+
+			t.commit();
+			return new Usuario();
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
+	}
 
 	public Oferta seleccionarOferta(String aNombreOferta) {
 		return null;
