@@ -34,8 +34,7 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 	public final StringExpression codigoPostal;
 	public final StringExpression ciudad;
 	public final StringExpression provincia;
-	public final IntegerExpression pedidoId;
-	public final AssociationExpression pedido;
+	public final CollectionExpression pedidos;
 	public final CollectionExpression correos;
 	public final CollectionExpression valoracions;
 	
@@ -56,8 +55,7 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 		codigoPostal = new StringExpression("codigoPostal", this.getDetachedCriteria());
 		ciudad = new StringExpression("ciudad", this.getDetachedCriteria());
 		provincia = new StringExpression("provincia", this.getDetachedCriteria());
-		pedidoId = new IntegerExpression("pedido.id", this.getDetachedCriteria());
-		pedido = new AssociationExpression("pedido", this.getDetachedCriteria());
+		pedidos = new CollectionExpression("ORM_pedidos", this.getDetachedCriteria());
 		correos = new CollectionExpression("ORM_correos", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 	}
@@ -79,14 +77,13 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 		codigoPostal = new StringExpression("codigoPostal", this.getDetachedCriteria());
 		ciudad = new StringExpression("ciudad", this.getDetachedCriteria());
 		provincia = new StringExpression("provincia", this.getDetachedCriteria());
-		pedidoId = new IntegerExpression("pedido.id", this.getDetachedCriteria());
-		pedido = new AssociationExpression("pedido", this.getDetachedCriteria());
+		pedidos = new CollectionExpression("ORM_pedidos", this.getDetachedCriteria());
 		correos = new CollectionExpression("ORM_correos", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 	}
 	
-	public PedidoDetachedCriteria createPedidoCriteria() {
-		return new PedidoDetachedCriteria(createCriteria("pedido"));
+	public basededatosorm.PedidoDetachedCriteria createPedidosCriteria() {
+		return new basededatosorm.PedidoDetachedCriteria(createCriteria("ORM_pedidos"));
 	}
 	
 	public basededatosorm.CorreoDetachedCriteria createCorreosCriteria() {

@@ -36,7 +36,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 		this.getLogIn().addLoginListener(e -> {
 
 			bdp = new BDPrincipal();
-
+			
 			if (e.getUsername().contains("administrador")) {
 
 				Usuario us = new Usuario();
@@ -86,6 +86,23 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				}
 
 			}
+			
+			if(!e.getUsername().contains("encargado") && !e.getUsername().contains("transporte") && !e.getUsername().contains("administrador")) {
+				Usuario us = new Usuario();
+
+				us = bdp.iniciarSesion(e.getUsername(), e.getPassword());
+
+				System.out.println(us.getMail());
+
+				if (us.getMail() != null) {
+					Usuario_registrado et = new Usuario_registrado();
+
+					layoutPrincipal.removeAll();
+					layoutPrincipal.add(et);
+				}
+			}
+			
+			
 
 			this.getLogIn().addForgotPasswordListener(new ComponentEventListener<AbstractLogin.ForgotPasswordEvent>() {
 

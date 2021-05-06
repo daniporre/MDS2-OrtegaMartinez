@@ -20,27 +20,27 @@ import org.orm.criteria.*;
 
 public class EntregadoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
+	public final IntegerExpression usuarioRegistradoId;
+	public final AssociationExpression usuarioRegistrado;
 	public final IntegerExpression totalProductos;
 	public final StringExpression direccion;
 	public final DoubleExpression totalPagado;
 	public final StringExpression fechaEnvio;
 	public final StringExpression fechaRecepcion;
 	public final CollectionExpression cantidadProductos;
-	public final IntegerExpression usuarioRegistradoId;
-	public final AssociationExpression usuarioRegistrado;
 	public final StringExpression fechaEntrega;
 	
 	public EntregadoCriteria(Criteria criteria) {
 		super(criteria);
 		id = new IntegerExpression("id", this);
+		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this);
+		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
 		totalProductos = new IntegerExpression("totalProductos", this);
 		direccion = new StringExpression("direccion", this);
 		totalPagado = new DoubleExpression("totalPagado", this);
 		fechaEnvio = new StringExpression("fechaEnvio", this);
 		fechaRecepcion = new StringExpression("fechaRecepcion", this);
 		cantidadProductos = new CollectionExpression("ORM_cantidadProductos", this);
-		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.id", this);
-		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
 		fechaEntrega = new StringExpression("fechaEntrega", this);
 	}
 	
@@ -52,12 +52,12 @@ public class EntregadoCriteria extends AbstractORMCriteria {
 		this(basededatosorm.ProyectoWebPersistentManager.instance().getSession());
 	}
 	
-	public basededatosorm.ItemCriteria createCantidadProductosCriteria() {
-		return new basededatosorm.ItemCriteria(createCriteria("ORM_cantidadProductos"));
-	}
-	
 	public UsuarioRegistradoCriteria createUsuarioRegistradoCriteria() {
 		return new UsuarioRegistradoCriteria(createCriteria("usuarioRegistrado"));
+	}
+	
+	public basededatosorm.ItemCriteria createCantidadProductosCriteria() {
+		return new basededatosorm.ItemCriteria(createCriteria("ORM_cantidadProductos"));
 	}
 	
 	public Entregado uniqueEntregado() {

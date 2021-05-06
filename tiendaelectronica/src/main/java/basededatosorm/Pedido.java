@@ -31,10 +31,20 @@ public class Pedido implements Serializable {
 		return null;
 	}
 	
+	private void this_setOwner(Object owner, int key) {
+		if (key == basededatosorm.ORMConstants.KEY_PEDIDO_USUARIOREGISTRADO) {
+			this.usuarioRegistrado = (basededatosorm.UsuarioRegistrado) owner;
+		}
+	}
+	
 	@Transient	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
+		}
+		
+		public void setOwner(Object owner, int key) {
+			this_setOwner(owner, key);
 		}
 		
 	};
@@ -44,6 +54,12 @@ public class Pedido implements Serializable {
 	@GeneratedValue(generator="BASEDEDATOSORM_PEDIDO_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_PEDIDO_ID_GENERATOR", strategy="native")	
 	private int id;
+	
+	@ManyToOne(targetEntity=basededatosorm.UsuarioRegistrado.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns(value={ @JoinColumn(name="UsuarioRegistradoUsuarioIdUsuario", referencedColumnName="UsuarioIdUsuario", nullable=false) }, foreignKey=@ForeignKey(name="FKPedido874496"))	
+	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
+	private basededatosorm.UsuarioRegistrado usuarioRegistrado;
 	
 	@Column(name="TotalProductos", nullable=false, length=10)	
 	private int totalProductos;
@@ -64,11 +80,6 @@ public class Pedido implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_cantidadProductos = new java.util.HashSet();
-	
-	@OneToOne(mappedBy="pedido", targetEntity=basededatosorm.UsuarioRegistrado.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private basededatosorm.UsuarioRegistrado usuarioRegistrado;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -134,19 +145,26 @@ public class Pedido implements Serializable {
 	public final basededatosorm.ItemSetCollection cantidadProductos = new basededatosorm.ItemSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_PEDIDO_CANTIDADPRODUCTOS, basededatosorm.ORMConstants.KEY_ITEM_PEDIDO, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public void setUsuarioRegistrado(basededatosorm.UsuarioRegistrado value) {
-		if (this.usuarioRegistrado != value) {
-			basededatosorm.UsuarioRegistrado lusuarioRegistrado = this.usuarioRegistrado;
-			this.usuarioRegistrado = value;
-			if (value != null) {
-				usuarioRegistrado.setPedido(this);
-			}
-			if (lusuarioRegistrado != null && lusuarioRegistrado.getPedido() == this) {
-				lusuarioRegistrado.setPedido(null);
-			}
+		if (usuarioRegistrado != null) {
+			usuarioRegistrado.pedidos.remove(this);
+		}
+		if (value != null) {
+			value.pedidos.add(this);
 		}
 	}
 	
 	public basededatosorm.UsuarioRegistrado getUsuarioRegistrado() {
+		return usuarioRegistrado;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_UsuarioRegistrado(basededatosorm.UsuarioRegistrado value) {
+		this.usuarioRegistrado = value;
+	}
+	
+	private basededatosorm.UsuarioRegistrado getORM_UsuarioRegistrado() {
 		return usuarioRegistrado;
 	}
 	

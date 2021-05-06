@@ -95,18 +95,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="CategoriaID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>BasededatosORM.Categoria.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="Nombre">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -221,6 +209,18 @@
     <Column name="Id">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="UsuarioRegistradoUsuarioIdUsuario">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>BasededatosORM.UsuarioRegistrado.UsuarioIdUsuario</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -694,18 +694,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="PedidoId">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>BasededatosORM.Pedido.Id</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
   </Entity>
   <Entity name="Fotos" Unlogged="false" PKClustered="0">
     <Column name="IdFoto">
@@ -738,6 +726,32 @@
       <Length>10</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Categoria_Producto" Unlogged="false" PKClustered="0">
+    <Column name="CategoriaID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>BasededatosORM.Categoria.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="ProductoId">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>BasededatosORM.Producto.Id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -823,14 +837,24 @@
       <Column>IdUsuario</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKProducto904736">
-    <ReferenceTable>Producto</ReferenceTable>
+  <ForeignKey name="FKCategoria_923339">
+    <ReferenceTable>Categoria_Producto</ReferenceTable>
     <ReferencedTable>Categoria</ReferencedTable>
     <Columns>
       <Column>CategoriaID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKCategoria_276461">
+    <ReferenceTable>Categoria_Producto</ReferenceTable>
+    <ReferencedTable>Producto</ReferencedTable>
+    <Columns>
+      <Column>ProductoId</Column>
+    </Columns>
+    <RefColumns>
+      <Column>Id</Column>
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKItem306148">
@@ -853,14 +877,14 @@
       <Column>Id</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKUsuarioReg186138">
-    <ReferenceTable>UsuarioRegistrado</ReferenceTable>
-    <ReferencedTable>Pedido</ReferencedTable>
+  <ForeignKey name="FKPedido874496">
+    <ReferenceTable>Pedido</ReferenceTable>
+    <ReferencedTable>UsuarioRegistrado</ReferencedTable>
     <Columns>
-      <Column>PedidoId</Column>
+      <Column>UsuarioRegistradoUsuarioIdUsuario</Column>
     </Columns>
     <RefColumns>
-      <Column>Id</Column>
+      <Column>UsuarioIdUsuario</Column>
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKCorreo392858">

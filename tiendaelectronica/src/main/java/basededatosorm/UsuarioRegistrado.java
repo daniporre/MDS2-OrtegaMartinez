@@ -25,7 +25,10 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == basededatosorm.ORMConstants.KEY_USUARIOREGISTRADO_CORREOS) {
+		if (key == basededatosorm.ORMConstants.KEY_USUARIOREGISTRADO_PEDIDOS) {
+			return ORM_pedidos;
+		}
+		else if (key == basededatosorm.ORMConstants.KEY_USUARIOREGISTRADO_CORREOS) {
 			return ORM_correos;
 		}
 		else if (key == basededatosorm.ORMConstants.KEY_USUARIOREGISTRADO_VALORACIONS) {
@@ -70,12 +73,10 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 	@Column(name="Provincia", nullable=true, length=255)	
 	private String provincia;
 	
-	@OneToOne(optional=false, targetEntity=basededatosorm.Pedido.class, fetch=FetchType.LAZY)	
+	@OneToMany(mappedBy="usuarioRegistrado", targetEntity=basededatosorm.Pedido.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="PedidoId", referencedColumnName="Id", nullable=true) }, foreignKey=@ForeignKey(name="FKUsuarioReg186138"))	
-	//Cambiado de false a true
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private basededatosorm.Pedido pedido;
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_pedidos = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="usuarioRegistrado", targetEntity=basededatosorm.Correo.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -159,22 +160,16 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 		return provincia;
 	}
 	
-	public void setPedido(basededatosorm.Pedido value) {
-		if (this.pedido != value) {
-			basededatosorm.Pedido lpedido = this.pedido;
-			this.pedido = value;
-			if (value != null) {
-				pedido.setUsuarioRegistrado(this);
-			}
-			if (lpedido != null && lpedido.getUsuarioRegistrado() == this) {
-				lpedido.setUsuarioRegistrado(null);
-			}
-		}
+	private void setORM_Pedidos(java.util.Set value) {
+		this.ORM_pedidos = value;
 	}
 	
-	public basededatosorm.Pedido getPedido() {
-		return pedido;
+	private java.util.Set getORM_Pedidos() {
+		return ORM_pedidos;
 	}
+	
+	@Transient	
+	public final basededatosorm.PedidoSetCollection pedidos = new basededatosorm.PedidoSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_USUARIOREGISTRADO_PEDIDOS, basededatosorm.ORMConstants.KEY_PEDIDO_USUARIOREGISTRADO, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Correos(java.util.Set value) {
 		this.ORM_correos = value;

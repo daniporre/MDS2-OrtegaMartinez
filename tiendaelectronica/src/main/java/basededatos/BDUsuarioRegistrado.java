@@ -5,6 +5,7 @@ import org.orm.PersistentTransaction;
 
 import com.vaadin.flow.component.notification.Notification;
 
+import basededatosorm.Administrador;
 import basededatosorm.Correo;
 import basededatosorm.Producto;
 import basededatosorm.Usuario;
@@ -38,8 +39,41 @@ public class BDUsuarioRegistrado {
 		
 	}
 
-	public Usuario iniciarSesion(String aCorreo, String aContrasenia) {
-		throw new UnsupportedOperationException();
+	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado usuarioRegistrado : ads) {
+				if (usuarioRegistrado.getMail().equals(aCorreo)) {
+					idUsuario = usuarioRegistrado.getIdUsuario();
+					break;
+				}
+
+			}
+
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			
+			if(ad.getContraseña().equals(aContrasenia)) {
+				return ad;
+			} else {
+				Notification.show("La contraseña es incorrecta");
+			}
+
+			t.commit();
+			return new Usuario();
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
 	}
 
 	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {

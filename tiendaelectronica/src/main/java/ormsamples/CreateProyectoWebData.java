@@ -10,7 +10,7 @@ public class CreateProyectoWebData {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
 		try {
 			basededatosorm.Producto basededatosORMProducto = basededatosorm.ProductoDAO.createProducto();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : item, fotos, valoracions, precio, categoria
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : item, fotos, valoracions, categorias, precio
 			basededatosorm.ProductoDAO.save(basededatosORMProducto);
 			basededatosorm.Oferta basededatosORMOferta = basededatosorm.OfertaDAO.createOferta();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idOferta, porcentaje
@@ -19,7 +19,7 @@ public class CreateProyectoWebData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : productos
 			basededatosorm.CategoriaDAO.save(basededatosORMCategoria);
 			basededatosorm.Pedido basededatosORMPedido = basededatosorm.PedidoDAO.createPedido();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuarioRegistrado, cantidadProductos, totalPagado, totalProductos
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : cantidadProductos, totalPagado, totalProductos, usuarioRegistrado
 			basededatosorm.PedidoDAO.save(basededatosORMPedido);
 			basededatosorm.Pendiente basededatosORMPendiente = basededatosorm.PendienteDAO.createPendiente();
 			// Initialize the properties of the persistent object here
@@ -52,7 +52,7 @@ public class CreateProyectoWebData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : cantidadProducto, idPedido, idProducto, producto, pedido
 			basededatosorm.ItemDAO.save(basededatosORMItem);
 			basededatosorm.UsuarioRegistrado basededatosORMUsuarioRegistrado = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : valoracions, correos, pedido, estaOperativo, cvv, numeroTarjeta
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : valoracions, correos, pedidos, estaOperativo, cvv, numeroTarjeta
 			basededatosorm.UsuarioRegistradoDAO.save(basededatosORMUsuarioRegistrado);
 			basededatosorm.Fotos basededatosORMFotos = basededatosorm.FotosDAO.createFotos();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : numeroFoto, producto

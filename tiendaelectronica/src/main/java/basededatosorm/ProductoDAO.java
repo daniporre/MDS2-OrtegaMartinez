@@ -327,10 +327,10 @@ public class ProductoDAO {
 		}
 		
 		try {
-			if (producto.getCategoria() != null) {
-				producto.getCategoria().productos.remove(producto);
+			basededatosorm.Categoria[] lCategoriass = producto.categorias.toArray();
+			for(int i = 0; i < lCategoriass.length; i++) {
+				lCategoriass[i].productos.remove(producto);
 			}
-			
 			basededatosorm.Valoracion[] lValoracionss = producto.valoracions.toArray();
 			for(int i = 0; i < lValoracionss.length; i++) {
 				lValoracionss[i].setProducto(null);
@@ -357,10 +357,10 @@ public class ProductoDAO {
 		}
 		
 		try {
-			if (producto.getCategoria() != null) {
-				producto.getCategoria().productos.remove(producto);
+			basededatosorm.Categoria[] lCategoriass = producto.categorias.toArray();
+			for(int i = 0; i < lCategoriass.length; i++) {
+				lCategoriass[i].productos.remove(producto);
 			}
-			
 			basededatosorm.Valoracion[] lValoracionss = producto.valoracions.toArray();
 			for(int i = 0; i < lValoracionss.length; i++) {
 				lValoracionss[i].setProducto(null);

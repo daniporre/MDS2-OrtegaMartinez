@@ -24,7 +24,10 @@ public class Producto implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_VALORACIONS) {
+		if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIAS) {
+			return ORM_categorias;
+		}
+		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_VALORACIONS) {
 			return ORM_valoracions;
 		}
 		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_FOTOS) {
@@ -35,11 +38,7 @@ public class Producto implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIA) {
-			this.categoria = (basededatosorm.Categoria) owner;
-		}
-		
-		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_ITEM) {
+		if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_ITEM) {
 			this.item = (basededatosorm.Item) owner;
 		}
 	}
@@ -62,12 +61,6 @@ public class Producto implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_PRODUCTO_ID_GENERATOR", strategy="native")	
 	private int id;
 	
-	@ManyToOne(targetEntity=basededatosorm.Categoria.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="CategoriaID", referencedColumnName="ID", nullable=false) }, foreignKey=@ForeignKey(name="FKProducto904736"))	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private basededatosorm.Categoria categoria;
-	
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
 	
@@ -79,6 +72,12 @@ public class Producto implements Serializable {
 	
 	@Column(name="Marca", nullable=true, length=255)	
 	private String marca;
+	
+	@ManyToMany(targetEntity=basededatosorm.Categoria.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinTable(name="Categoria_Producto", joinColumns={ @JoinColumn(name="ProductoId") }, inverseJoinColumns={ @JoinColumn(name="CategoriaID") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_categorias = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="producto", targetEntity=basededatosorm.Valoracion.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -139,29 +138,16 @@ public class Producto implements Serializable {
 		return marca;
 	}
 	
-	public void setCategoria(basededatosorm.Categoria value) {
-		if (categoria != null) {
-			categoria.productos.remove(this);
-		}
-		if (value != null) {
-			value.productos.add(this);
-		}
+	private void setORM_Categorias(java.util.Set value) {
+		this.ORM_categorias = value;
 	}
 	
-	public basededatosorm.Categoria getCategoria() {
-		return categoria;
+	private java.util.Set getORM_Categorias() {
+		return ORM_categorias;
 	}
 	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Categoria(basededatosorm.Categoria value) {
-		this.categoria = value;
-	}
-	
-	private basededatosorm.Categoria getORM_Categoria() {
-		return categoria;
-	}
+	@Transient	
+	public final basededatosorm.CategoriaSetCollection categorias = new basededatosorm.CategoriaSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIAS, basededatosorm.ORMConstants.KEY_CATEGORIA_PRODUCTOS, basededatosorm.ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	private void setORM_Valoracions(java.util.Set value) {
 		this.ORM_valoracions = value;

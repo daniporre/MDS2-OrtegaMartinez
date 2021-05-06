@@ -323,10 +323,10 @@ public class OfertaDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Oferta oferta)throws PersistentException {
 		try {
-			if (oferta.getCategoria() != null) {
-				oferta.getCategoria().productos.remove(oferta);
+			basededatosorm.Categoria[] lCategoriass = oferta.categorias.toArray();
+			for(int i = 0; i < lCategoriass.length; i++) {
+				lCategoriass[i].productos.remove(oferta);
 			}
-			
 			basededatosorm.Valoracion[] lValoracionss = oferta.valoracions.toArray();
 			for(int i = 0; i < lValoracionss.length; i++) {
 				lValoracionss[i].setProducto(null);
@@ -349,10 +349,10 @@ public class OfertaDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Oferta oferta, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (oferta.getCategoria() != null) {
-				oferta.getCategoria().productos.remove(oferta);
+			basededatosorm.Categoria[] lCategoriass = oferta.categorias.toArray();
+			for(int i = 0; i < lCategoriass.length; i++) {
+				lCategoriass[i].productos.remove(oferta);
 			}
-			
 			basededatosorm.Valoracion[] lValoracionss = oferta.valoracions.toArray();
 			for(int i = 0; i < lValoracionss.length; i++) {
 				lValoracionss[i].setProducto(null);

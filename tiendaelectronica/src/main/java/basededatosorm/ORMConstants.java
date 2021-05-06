@@ -30,7 +30,7 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_PEDIDO_USUARIOREGISTRADO = 612283108;
 	
-	final int KEY_PRODUCTO_CATEGORIA = -931712716;
+	final int KEY_PRODUCTO_CATEGORIAS = 1181676991;
 	
 	final int KEY_PRODUCTO_FOTOS = -254407568;
 	
@@ -42,7 +42,7 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_USUARIOREGISTRADO_CORREOS = 142510012;
 	
-	final int KEY_USUARIOREGISTRADO_PEDIDO = 2029683078;
+	final int KEY_USUARIOREGISTRADO_PEDIDOS = -1504333907;
 	
 	final int KEY_USUARIOREGISTRADO_VALORACIONS = -1458546512;
 	

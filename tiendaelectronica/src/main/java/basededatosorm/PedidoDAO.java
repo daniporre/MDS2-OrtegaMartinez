@@ -335,14 +335,14 @@ public class PedidoDAO {
 		}
 		
 		try {
+			if (pedido.getUsuarioRegistrado() != null) {
+				pedido.getUsuarioRegistrado().pedidos.remove(pedido);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = pedido.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (pedido.getUsuarioRegistrado() != null) {
-				pedido.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			return delete(pedido);
 		}
 		catch(Exception e) {
@@ -365,14 +365,14 @@ public class PedidoDAO {
 		}
 		
 		try {
+			if (pedido.getUsuarioRegistrado() != null) {
+				pedido.getUsuarioRegistrado().pedidos.remove(pedido);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = pedido.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (pedido.getUsuarioRegistrado() != null) {
-				pedido.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			try {
 				session.delete(pedido);
 				return true;

@@ -78,7 +78,12 @@ public class BDPrincipal
 				e.printStackTrace();
 			}
 		} else {
-			return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
+			try {
+				return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return null;
 

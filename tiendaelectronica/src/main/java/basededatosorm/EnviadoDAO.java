@@ -327,14 +327,14 @@ public class EnviadoDAO {
 				enviado.getTransportista().enviado.remove(enviado);
 			}
 			
+			if (enviado.getUsuarioRegistrado() != null) {
+				enviado.getUsuarioRegistrado().pedidos.remove(enviado);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = enviado.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (enviado.getUsuarioRegistrado() != null) {
-				enviado.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			return delete(enviado);
 		}
 		catch(Exception e) {
@@ -349,14 +349,14 @@ public class EnviadoDAO {
 				enviado.getTransportista().enviado.remove(enviado);
 			}
 			
+			if (enviado.getUsuarioRegistrado() != null) {
+				enviado.getUsuarioRegistrado().pedidos.remove(enviado);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = enviado.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (enviado.getUsuarioRegistrado() != null) {
-				enviado.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			try {
 				session.delete(enviado);
 				return true;

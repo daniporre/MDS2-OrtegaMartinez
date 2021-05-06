@@ -58,11 +58,8 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 		
 		this.getRolNuevoUsuarioComboBox().setItems(comboItems);
 		
-		
 		for (int i = 0; i < bdprincipal.cargarUsuarios().length; i++) {
-			
 			usuarios[i] = bdprincipal.cargarUsuarios()[i].getMail();
-			System.out.println(bdprincipal.cargarUsuarios()[i].getMail());
 		}
 		
 		getSeleccionarUsuarioComboBox().setItems(usuarios);

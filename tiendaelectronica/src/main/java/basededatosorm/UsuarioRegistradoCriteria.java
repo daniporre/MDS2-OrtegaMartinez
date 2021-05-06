@@ -34,8 +34,7 @@ public class UsuarioRegistradoCriteria extends AbstractORMCriteria {
 	public final StringExpression codigoPostal;
 	public final StringExpression ciudad;
 	public final StringExpression provincia;
-	public final IntegerExpression pedidoId;
-	public final AssociationExpression pedido;
+	public final CollectionExpression pedidos;
 	public final CollectionExpression correos;
 	public final CollectionExpression valoracions;
 	
@@ -56,8 +55,7 @@ public class UsuarioRegistradoCriteria extends AbstractORMCriteria {
 		codigoPostal = new StringExpression("codigoPostal", this);
 		ciudad = new StringExpression("ciudad", this);
 		provincia = new StringExpression("provincia", this);
-		pedidoId = new IntegerExpression("pedido.id", this);
-		pedido = new AssociationExpression("pedido", this);
+		pedidos = new CollectionExpression("ORM_pedidos", this);
 		correos = new CollectionExpression("ORM_correos", this);
 		valoracions = new CollectionExpression("ORM_valoracions", this);
 	}
@@ -70,8 +68,8 @@ public class UsuarioRegistradoCriteria extends AbstractORMCriteria {
 		this(basededatosorm.ProyectoWebPersistentManager.instance().getSession());
 	}
 	
-	public PedidoCriteria createPedidoCriteria() {
-		return new PedidoCriteria(createCriteria("pedido"));
+	public basededatosorm.PedidoCriteria createPedidosCriteria() {
+		return new basededatosorm.PedidoCriteria(createCriteria("ORM_pedidos"));
 	}
 	
 	public basededatosorm.CorreoCriteria createCorreosCriteria() {

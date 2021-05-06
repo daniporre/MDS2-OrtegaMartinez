@@ -29,8 +29,10 @@ public class BDAdministradores {
 				.beginTransaction();
 		try {
 			Administrador a = basededatosorm.AdministradorDAO.createAdministrador();
+
 			a.setMail(aMail);
 			a.setContraseña(aContraseña);
+						
 			basededatosorm.AdministradorDAO.save(a);
 			t.commit();
 		} catch (Exception e) {

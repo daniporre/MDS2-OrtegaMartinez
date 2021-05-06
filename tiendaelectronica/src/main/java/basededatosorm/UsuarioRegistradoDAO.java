@@ -323,10 +323,10 @@ public class UsuarioRegistradoDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.UsuarioRegistrado usuarioRegistrado)throws PersistentException {
 		try {
-			if (usuarioRegistrado.getPedido() != null) {
-				usuarioRegistrado.getPedido().setUsuarioRegistrado(null);
+			basededatosorm.Pedido[] lPedidoss = usuarioRegistrado.pedidos.toArray();
+			for(int i = 0; i < lPedidoss.length; i++) {
+				lPedidoss[i].setUsuarioRegistrado(null);
 			}
-			
 			basededatosorm.Correo[] lCorreoss = usuarioRegistrado.correos.toArray();
 			for(int i = 0; i < lCorreoss.length; i++) {
 				lCorreoss[i].setUsuarioRegistrado(null);
@@ -345,10 +345,10 @@ public class UsuarioRegistradoDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.UsuarioRegistrado usuarioRegistrado, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (usuarioRegistrado.getPedido() != null) {
-				usuarioRegistrado.getPedido().setUsuarioRegistrado(null);
+			basededatosorm.Pedido[] lPedidoss = usuarioRegistrado.pedidos.toArray();
+			for(int i = 0; i < lPedidoss.length; i++) {
+				lPedidoss[i].setUsuarioRegistrado(null);
 			}
-			
 			basededatosorm.Correo[] lCorreoss = usuarioRegistrado.correos.toArray();
 			for(int i = 0; i < lCorreoss.length; i++) {
 				lCorreoss[i].setUsuarioRegistrado(null);

@@ -47,7 +47,7 @@ public class Categoria implements Serializable {
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
 	
-	@OneToMany(mappedBy="categoria", targetEntity=basededatosorm.Producto.class)	
+	@ManyToMany(mappedBy="ORM_categorias", targetEntity=basededatosorm.Producto.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_productos = new java.util.HashSet();
@@ -81,7 +81,7 @@ public class Categoria implements Serializable {
 	}
 	
 	@Transient	
-	public final basededatosorm.ProductoSetCollection productos = new basededatosorm.ProductoSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_CATEGORIA_PRODUCTOS, basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIA, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final basededatosorm.ProductoSetCollection productos = new basededatosorm.ProductoSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_CATEGORIA_PRODUCTOS, basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIAS, basededatosorm.ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

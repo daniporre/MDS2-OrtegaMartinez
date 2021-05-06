@@ -325,7 +325,7 @@ public class CategoriaDAO {
 		try {
 			basededatosorm.Producto[] lProductoss = categoria.productos.toArray();
 			for(int i = 0; i < lProductoss.length; i++) {
-				lProductoss[i].setCategoria(null);
+				lProductoss[i].categorias.remove(categoria);
 			}
 			return delete(categoria);
 		}
@@ -339,7 +339,7 @@ public class CategoriaDAO {
 		try {
 			basededatosorm.Producto[] lProductoss = categoria.productos.toArray();
 			for(int i = 0; i < lProductoss.length; i++) {
-				lProductoss[i].setCategoria(null);
+				lProductoss[i].categorias.remove(categoria);
 			}
 			try {
 				session.delete(categoria);

@@ -323,14 +323,14 @@ public class PendienteDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Pendiente pendiente)throws PersistentException {
 		try {
+			if (pendiente.getUsuarioRegistrado() != null) {
+				pendiente.getUsuarioRegistrado().pedidos.remove(pendiente);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = pendiente.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (pendiente.getUsuarioRegistrado() != null) {
-				pendiente.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			return delete(pendiente);
 		}
 		catch(Exception e) {
@@ -341,14 +341,14 @@ public class PendienteDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Pendiente pendiente, org.orm.PersistentSession session)throws PersistentException {
 		try {
+			if (pendiente.getUsuarioRegistrado() != null) {
+				pendiente.getUsuarioRegistrado().pedidos.remove(pendiente);
+			}
+			
 			basededatosorm.Item[] lCantidadProductoss = pendiente.cantidadProductos.toArray();
 			for(int i = 0; i < lCantidadProductoss.length; i++) {
 				lCantidadProductoss[i].setPedido(null);
 			}
-			if (pendiente.getUsuarioRegistrado() != null) {
-				pendiente.getUsuarioRegistrado().setPedido(null);
-			}
-			
 			try {
 				session.delete(pendiente);
 				return true;

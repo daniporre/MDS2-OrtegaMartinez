@@ -20,12 +20,11 @@ import org.orm.criteria.*;
 
 public class ProductoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
-	public final IntegerExpression categoriaId;
-	public final AssociationExpression categoria;
 	public final StringExpression nombre;
 	public final StringExpression descripcion;
 	public final DoubleExpression precio;
 	public final StringExpression marca;
+	public final CollectionExpression categorias;
 	public final CollectionExpression valoracions;
 	public final CollectionExpression fotos;
 	public final IntegerExpression itemId;
@@ -34,12 +33,11 @@ public class ProductoCriteria extends AbstractORMCriteria {
 	public ProductoCriteria(Criteria criteria) {
 		super(criteria);
 		id = new IntegerExpression("id", this);
-		categoriaId = new IntegerExpression("categoria.ID", this);
-		categoria = new AssociationExpression("categoria", this);
 		nombre = new StringExpression("nombre", this);
 		descripcion = new StringExpression("descripcion", this);
 		precio = new DoubleExpression("precio", this);
 		marca = new StringExpression("marca", this);
+		categorias = new CollectionExpression("ORM_categorias", this);
 		valoracions = new CollectionExpression("ORM_valoracions", this);
 		fotos = new CollectionExpression("ORM_fotos", this);
 		itemId = new IntegerExpression("item.id", this);
@@ -54,8 +52,8 @@ public class ProductoCriteria extends AbstractORMCriteria {
 		this(basededatosorm.ProyectoWebPersistentManager.instance().getSession());
 	}
 	
-	public CategoriaCriteria createCategoriaCriteria() {
-		return new CategoriaCriteria(createCriteria("categoria"));
+	public basededatosorm.CategoriaCriteria createCategoriasCriteria() {
+		return new basededatosorm.CategoriaCriteria(createCriteria("ORM_categorias"));
 	}
 	
 	public basededatosorm.ValoracionCriteria createValoracionsCriteria() {
