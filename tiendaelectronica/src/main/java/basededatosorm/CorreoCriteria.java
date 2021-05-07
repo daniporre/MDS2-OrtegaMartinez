@@ -19,7 +19,7 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CorreoCriteria extends AbstractORMCriteria {
-	public final StringExpression id;
+	public final StringExpression idCorreo;
 	public final IntegerExpression usuarioRegistradoId;
 	public final AssociationExpression usuarioRegistrado;
 	public final StringExpression asunto;
@@ -30,7 +30,7 @@ public class CorreoCriteria extends AbstractORMCriteria {
 	
 	public CorreoCriteria(Criteria criteria) {
 		super(criteria);
-		id = new StringExpression("id", this);
+		idCorreo = new StringExpression("idCorreo", this);
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this);
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
 		asunto = new StringExpression("asunto", this);

@@ -19,7 +19,7 @@ import javax.persistence.*;
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Entregado")
 @Inheritance(strategy=InheritanceType.JOINED)
-@PrimaryKeyJoinColumn(name="PedidoId", referencedColumnName="Id")
+@PrimaryKeyJoinColumn(name="PedidoIdPedido", referencedColumnName="IdPedido")
 public class Entregado extends basededatosorm.Pedido implements Serializable {
 	public Entregado() {
 	}

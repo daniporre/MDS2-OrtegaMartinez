@@ -2,6 +2,7 @@ package basededatos;
 
 import basededatosorm.Correo;
 import basededatosorm.Producto;
+import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
 
 public interface iUsuario_registrado extends iUsuario_no_registrado {
@@ -27,6 +28,8 @@ public interface iUsuario_registrado extends iUsuario_no_registrado {
 	public void guardarDatosPersonales(String aNombre, String aEmail);
 
 	public void cambiarContrasenia(String aNuevaContrasenia);
+	
+	public Usuario recuperarContrasenia(String aMail);
 
 	public void darBajaUsuario(int aIdUsuario);
 

@@ -19,37 +19,19 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class OfertaCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
-	public final StringExpression nombre;
-	public final StringExpression descripcion;
-	public final DoubleExpression precio;
-	public final StringExpression marca;
-	public final CollectionExpression categorias;
-	public final CollectionExpression valoracions;
-	public final CollectionExpression fotos;
-	public final IntegerExpression itemId;
-	public final AssociationExpression item;
+	public final IntegerExpression idOferta;
 	public final StringExpression nombreOferta;
 	public final StringExpression fechaFinOferta;
 	public final DoubleExpression porcentaje;
-	public final IntegerExpression idOferta;
+	public final CollectionExpression productos;
 	
 	public OfertaCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
-		nombre = new StringExpression("nombre", this);
-		descripcion = new StringExpression("descripcion", this);
-		precio = new DoubleExpression("precio", this);
-		marca = new StringExpression("marca", this);
-		categorias = new CollectionExpression("ORM_categorias", this);
-		valoracions = new CollectionExpression("ORM_valoracions", this);
-		fotos = new CollectionExpression("ORM_fotos", this);
-		itemId = new IntegerExpression("item.id", this);
-		item = new AssociationExpression("item", this);
+		idOferta = new IntegerExpression("idOferta", this);
 		nombreOferta = new StringExpression("nombreOferta", this);
 		fechaFinOferta = new StringExpression("fechaFinOferta", this);
 		porcentaje = new DoubleExpression("porcentaje", this);
-		idOferta = new IntegerExpression("idOferta", this);
+		productos = new CollectionExpression("ORM_productos", this);
 	}
 	
 	public OfertaCriteria(PersistentSession session) {
@@ -60,20 +42,8 @@ public class OfertaCriteria extends AbstractORMCriteria {
 		this(basededatosorm.ProyectoWebPersistentManager.instance().getSession());
 	}
 	
-	public basededatosorm.CategoriaCriteria createCategoriasCriteria() {
-		return new basededatosorm.CategoriaCriteria(createCriteria("ORM_categorias"));
-	}
-	
-	public basededatosorm.ValoracionCriteria createValoracionsCriteria() {
-		return new basededatosorm.ValoracionCriteria(createCriteria("ORM_valoracions"));
-	}
-	
-	public basededatosorm.FotosCriteria createFotosCriteria() {
-		return new basededatosorm.FotosCriteria(createCriteria("ORM_fotos"));
-	}
-	
-	public ItemCriteria createItemCriteria() {
-		return new ItemCriteria(createCriteria("item"));
+	public basededatosorm.ProductoCriteria createProductosCriteria() {
+		return new basededatosorm.ProductoCriteria(createCriteria("ORM_productos"));
 	}
 	
 	public Oferta uniqueOferta() {

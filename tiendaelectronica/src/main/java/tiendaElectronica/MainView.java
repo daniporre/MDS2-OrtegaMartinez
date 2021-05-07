@@ -56,14 +56,14 @@ public class MainView extends VerticalLayout {
 	Usuario_no_registrado unr = new Usuario_no_registrado();
 	Añadir_producto ap = new Añadir_producto();
 	
-	Administrador ad = new Administrador();
+//	Administrador ad = new Administrador();
 	
     public MainView() {
     	
     	
     	
-    	
-    	add(ad);
+    	unr.getCarritoUNR().setVisible(false);
+    	add(unr);
     	
    
     }

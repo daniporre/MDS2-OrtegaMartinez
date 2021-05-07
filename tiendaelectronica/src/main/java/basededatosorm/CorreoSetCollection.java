@@ -70,7 +70,7 @@ public class CorreoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>idCorreo</li>
 	 * <li>asunto</li>
 	 * <li>mensaje</li>
 	 * <li>remitente</li>
@@ -86,7 +86,7 @@ public class CorreoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>idCorreo</li>
 	 * <li>asunto</li>
 	 * <li>mensaje</li>
 	 * <li>remitente</li>

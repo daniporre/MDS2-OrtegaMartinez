@@ -70,7 +70,7 @@ public class PedidoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>idPedido</li>
 	 * <li>totalProductos</li>
 	 * <li>direccion</li>
 	 * <li>totalPagado</li>
@@ -86,7 +86,7 @@ public class PedidoSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>id</li>
+	 * <li>idPedido</li>
 	 * <li>totalProductos</li>
 	 * <li>direccion</li>
 	 * <li>totalPagado</li>

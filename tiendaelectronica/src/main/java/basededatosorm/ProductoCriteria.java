@@ -19,7 +19,9 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ProductoCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression idProducto;
+	public final IntegerExpression ofertaId;
+	public final AssociationExpression oferta;
 	public final StringExpression nombre;
 	public final StringExpression descripcion;
 	public final DoubleExpression precio;
@@ -32,7 +34,9 @@ public class ProductoCriteria extends AbstractORMCriteria {
 	
 	public ProductoCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
+		idProducto = new IntegerExpression("idProducto", this);
+		ofertaId = new IntegerExpression("oferta.idOferta", this);
+		oferta = new AssociationExpression("oferta", this);
 		nombre = new StringExpression("nombre", this);
 		descripcion = new StringExpression("descripcion", this);
 		precio = new DoubleExpression("precio", this);
@@ -40,7 +44,7 @@ public class ProductoCriteria extends AbstractORMCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this);
 		valoracions = new CollectionExpression("ORM_valoracions", this);
 		fotos = new CollectionExpression("ORM_fotos", this);
-		itemId = new IntegerExpression("item.id", this);
+		itemId = new IntegerExpression("item.idProducto", this);
 		item = new AssociationExpression("item", this);
 	}
 	
@@ -50,6 +54,10 @@ public class ProductoCriteria extends AbstractORMCriteria {
 	
 	public ProductoCriteria() throws PersistentException {
 		this(basededatosorm.ProyectoWebPersistentManager.instance().getSession());
+	}
+	
+	public OfertaCriteria createOfertaCriteria() {
+		return new OfertaCriteria(createCriteria("oferta"));
 	}
 	
 	public basededatosorm.CategoriaCriteria createCategoriasCriteria() {

@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class OfertaDAO {
-	public static Oferta loadOfertaByORMID(int id) throws PersistentException {
+	public static Oferta loadOfertaByORMID(int idOferta) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadOfertaByORMID(session, id);
+			return loadOfertaByORMID(session, idOferta);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta getOfertaByORMID(int id) throws PersistentException {
+	public static Oferta getOfertaByORMID(int idOferta) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getOfertaByORMID(session, id);
+			return getOfertaByORMID(session, idOferta);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta loadOfertaByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Oferta loadOfertaByORMID(int idOferta, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadOfertaByORMID(session, id, lockMode);
+			return loadOfertaByORMID(session, idOferta, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta getOfertaByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Oferta getOfertaByORMID(int idOferta, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getOfertaByORMID(session, id, lockMode);
+			return getOfertaByORMID(session, idOferta, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta loadOfertaByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Oferta loadOfertaByORMID(PersistentSession session, int idOferta) throws PersistentException {
 		try {
-			return (Oferta) session.load(basededatosorm.Oferta.class, new Integer(id));
+			return (Oferta) session.load(basededatosorm.Oferta.class, new Integer(idOferta));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta getOfertaByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Oferta getOfertaByORMID(PersistentSession session, int idOferta) throws PersistentException {
 		try {
-			return (Oferta) session.get(basededatosorm.Oferta.class, new Integer(id));
+			return (Oferta) session.get(basededatosorm.Oferta.class, new Integer(idOferta));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta loadOfertaByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Oferta loadOfertaByORMID(PersistentSession session, int idOferta, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Oferta) session.load(basededatosorm.Oferta.class, new Integer(id), lockMode);
+			return (Oferta) session.load(basededatosorm.Oferta.class, new Integer(idOferta), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class OfertaDAO {
 		}
 	}
 	
-	public static Oferta getOfertaByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Oferta getOfertaByORMID(PersistentSession session, int idOferta, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Oferta) session.get(basededatosorm.Oferta.class, new Integer(id), lockMode);
+			return (Oferta) session.get(basededatosorm.Oferta.class, new Integer(idOferta), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -323,22 +323,10 @@ public class OfertaDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Oferta oferta)throws PersistentException {
 		try {
-			basededatosorm.Categoria[] lCategoriass = oferta.categorias.toArray();
-			for(int i = 0; i < lCategoriass.length; i++) {
-				lCategoriass[i].productos.remove(oferta);
+			basededatosorm.Producto[] lProductoss = oferta.productos.toArray();
+			for(int i = 0; i < lProductoss.length; i++) {
+				lProductoss[i].setOferta(null);
 			}
-			basededatosorm.Valoracion[] lValoracionss = oferta.valoracions.toArray();
-			for(int i = 0; i < lValoracionss.length; i++) {
-				lValoracionss[i].setProducto(null);
-			}
-			basededatosorm.Fotos[] lFotoss = oferta.fotos.toArray();
-			for(int i = 0; i < lFotoss.length; i++) {
-				lFotoss[i].setProducto(null);
-			}
-			if (oferta.getItem() != null) {
-				oferta.getItem().setProducto(null);
-			}
-			
 			return delete(oferta);
 		}
 		catch(Exception e) {
@@ -349,22 +337,10 @@ public class OfertaDAO {
 	
 	public static boolean deleteAndDissociate(basededatosorm.Oferta oferta, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			basededatosorm.Categoria[] lCategoriass = oferta.categorias.toArray();
-			for(int i = 0; i < lCategoriass.length; i++) {
-				lCategoriass[i].productos.remove(oferta);
+			basededatosorm.Producto[] lProductoss = oferta.productos.toArray();
+			for(int i = 0; i < lProductoss.length; i++) {
+				lProductoss[i].setOferta(null);
 			}
-			basededatosorm.Valoracion[] lValoracionss = oferta.valoracions.toArray();
-			for(int i = 0; i < lValoracionss.length; i++) {
-				lValoracionss[i].setProducto(null);
-			}
-			basededatosorm.Fotos[] lFotoss = oferta.fotos.toArray();
-			for(int i = 0; i < lFotoss.length; i++) {
-				lFotoss[i].setProducto(null);
-			}
-			if (oferta.getItem() != null) {
-				oferta.getItem().setProducto(null);
-			}
-			
 			try {
 				session.delete(oferta);
 				return true;

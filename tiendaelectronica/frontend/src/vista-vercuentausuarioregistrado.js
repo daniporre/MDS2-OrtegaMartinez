@@ -18,7 +18,7 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout1">
  <vaadin-horizontal-layout style="width: 100%;">
   <vaadin-button id="inicio-button">
     Inicio 
@@ -43,41 +43,41 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
   <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
     <h3>Dirección de entrega</h3>
-    <vaadin-text-field label="Calle" style="align-self: stretch;"></vaadin-text-field>
-    <vaadin-text-field label="Código postal" style="align-self: stretch;"></vaadin-text-field>
-    <vaadin-text-field label="Ciudad" style="align-self: stretch;"></vaadin-text-field>
-    <vaadin-text-field label="Provincia" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Calle" style="align-self: stretch;" id="calleTF"></vaadin-text-field>
+    <vaadin-text-field label="Código postal" style="align-self: stretch;" id="codigoPostalTF"></vaadin-text-field>
+    <vaadin-text-field label="Ciudad" style="align-self: stretch;" id="ciudadTF"></vaadin-text-field>
+    <vaadin-text-field label="Provincia" style="align-self: stretch;" id="provinciaTF"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout1" style="width: 100%;">
-     <vaadin-button id="vaadinButton1">
+     <vaadin-button id="editarDireccionButton">
        Editar 
      </vaadin-button>
-     <vaadin-button id="vaadinButton" style="flex-grow: 0; flex-shrink: 1;">
+     <vaadin-button id="guardarDireccionButton" style="flex-grow: 0; flex-shrink: 1;">
        Guardar 
      </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout" style="flex-grow: 1;">
     <h3>Tarjeta bancaria</h3>
-    <vaadin-text-field label="Fecha de vencimiento" style="align-self: stretch;"></vaadin-text-field>
-    <vaadin-text-field label="CVS" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Fecha de vencimiento" style="align-self: stretch;" id="fechaVencimientoTTF"></vaadin-text-field>
+    <vaadin-text-field label="CVS" style="align-self: stretch;" id="cvsTF"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="width: 100%;" id="vaadinHorizontalLayout">
-     <vaadin-button>
+     <vaadin-button id="editarTarjetaButton">
        Editar 
      </vaadin-button>
-     <vaadin-button style="flex-grow: 0; flex-shrink: 1;">
+     <vaadin-button style="flex-grow: 0; flex-shrink: 1;" id="guardarNuevaTarjetaButton">
        Guardar 
      </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1;">
     <h3>Datos personales </h3>
-    <vaadin-text-field label="Nombre" style="align-self: stretch;"></vaadin-text-field>
-    <vaadin-text-field label="Email" style="align-self: stretch;"></vaadin-text-field>
+    <vaadin-text-field label="Nombre" style="align-self: stretch;" id="nombreTF"></vaadin-text-field>
+    <vaadin-text-field label="Email" style="align-self: stretch;" id="emailTF"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="width: 100%;">
-     <vaadin-button>
+     <vaadin-button id="editarDatosPersonalesButton">
        Editar 
      </vaadin-button>
-     <vaadin-button style="flex-grow: 0; flex-shrink: 1;">
+     <vaadin-button style="flex-grow: 0; flex-shrink: 1;" id="guardarDatosPersonalesButton">
        Guardar 
      </vaadin-button>
     </vaadin-horizontal-layout>

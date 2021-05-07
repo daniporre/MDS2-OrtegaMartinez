@@ -11,6 +11,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import basededatos.BDPrincipal;
 import basededatosorm.Usuario;
@@ -23,23 +24,27 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 //	public Crear_usuario _crear_usuario;
 //	public Cambiar_contraseña_a_usuario _cambiar_contraseña_a_usuario;
 
-	public HorizontalLayout principalHLayout = this.getVaadinHorizontalLayout();
+	public VerticalLayout principalHLayout;
 	private String[] comboItems = { "Encargado de compras", "Empresa transportes", "Administrador"};
 	public BDPrincipal bdprincipal;
 	private String[] usuarios;
+	public Usuario usuarioActivo;
 
-	public Gestionar_usuarios() {
+	public Gestionar_usuarios(Usuario administrador, VerticalLayout layoutPrincipal) {
+		principalHLayout = layoutPrincipal;
 
 		bdprincipal = new BDPrincipal();
+		usuarioActivo = administrador;
 		usuarios = new String[bdprincipal.cargarUsuarios().length];
 		cargarCombo();	
 		crearUsuario();
+		
+		
 
 		this.getCambiarContraseñaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
 				if (!getContraseñaUsuarioModificadaTF().getValue().isEmpty() && !getSeleccionarUsuarioComboBox().getValue().isEmpty()) {
 								
 					bdprincipal.cambiarContraseniaAdmin(getSeleccionarUsuarioComboBox().getValue(),getContraseñaUsuarioModificadaTF().getValue());
@@ -49,8 +54,8 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 
 	}
 
-	public void volverAdmin() {
-		Administrador ad = new Administrador();
+	public void volverAdmin(Usuario us, VerticalLayout ad) {
+		
 		principalHLayout.removeAll();
 		principalHLayout.add(ad);
 	}
@@ -83,7 +88,7 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 							Notification.show("Se ha creado un administrador con mail: "
 									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
 
-							volverAdmin();
+							volverAdmin(usuarioActivo, principalHLayout);
 
 						} catch (PersistenceException e) {
 							e.printStackTrace();
@@ -101,7 +106,7 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 							Notification.show("Se ha creado un usuario Empresa transportes con mail: "
 									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
 
-							volverAdmin();
+							volverAdmin(usuarioActivo, principalHLayout);
 						} catch (PersistenceException e) {
 							e.printStackTrace();
 						}
@@ -118,7 +123,7 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 							Notification.show("Se ha creado un Encargado de compras con mail: "
 									+ getTranslation(getNuevoUsuarioEmailTF().getValue(), comboItems));
 
-							volverAdmin();
+							volverAdmin(usuarioActivo, principalHLayout);
 						} catch (PersistenceException e) {
 							e.printStackTrace();
 						}

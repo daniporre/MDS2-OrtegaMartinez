@@ -37,9 +37,9 @@ public class ProyectoWebPersistentManager extends PersistentManager {
 	@Override
 	protected void configureMetadataSources(MetadataSources aMetadataSources) {
 		super.configureMetadataSources(aMetadataSources);
-		aMetadataSources.addAnnotatedClass(basededatosorm.Producto.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Oferta.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Categoria.class);
+		aMetadataSources.addAnnotatedClass(basededatosorm.Producto.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Pedido.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Pendiente.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Enviado.class);

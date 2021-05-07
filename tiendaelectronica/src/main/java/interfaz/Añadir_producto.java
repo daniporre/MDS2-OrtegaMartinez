@@ -5,6 +5,7 @@ import org.orm.PersistentException;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import basededatos.BDPrincipal;
@@ -19,10 +20,13 @@ public class Añadir_producto extends VistaAniadirproducto {
 	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
 	
 	String nombre;
-	String precio;
+	Double precio;
 	String marca;
 	Oferta oferta = null;
 	String descripcion;
+	private String[] nombreOfertas;
+	private String nombreOferta;
+	private Oferta ofertaSeleccionada;
 	
 	
 	public Añadir_producto() {
@@ -31,16 +35,13 @@ public class Añadir_producto extends VistaAniadirproducto {
 		
 		guardarNuevoProducto();
 		
+		nombreOfertas = new String[bdp.obtenerOfertas().length];
 		
-		//traer ofertas de bd
-//		Oferta[] ofertas = new Oferta[bdp.obtenerOfertas().length];
-//		
-//		if(ofertas != null)
-//			ofertas = bdp.obtenerOfertas();
-//		
-//		for (Oferta oferta : ofertas) {
-//			System.out.println(oferta.getNombreOferta()+"***");
-//		}
+		for (int i = 0; i < bdp.obtenerOfertas().length; i++) {
+			nombreOfertas[i] = bdp.obtenerOfertas()[i].getNombreOferta();
+		}
+		
+		this.getOfertasProductoTF().setItems(nombreOfertas);
 		
 		
 	}
@@ -53,14 +54,21 @@ public class Añadir_producto extends VistaAniadirproducto {
 			public void onComponentEvent(ClickEvent<Button> event) {
 				
 				nombre = getNombreProductoTF().getValue();
-				precio = getPrecioProductoTF().getValue();
+				precio = Double.parseDouble(getPrecioProductoTF().getValue().replace(',', '.'));
 				marca = getMarcaProductoTF().getValue();
-//				if(!getOfertasProductoTF().getValue().isEmpty())
-//					oferta = getOfertasProductoTF().getValue();
+				if(!getOfertasProductoTF().getValue().isEmpty())
+					nombreOferta = getOfertasProductoTF().getValue();
+					oferta = bdp.obtenerOferta(nombreOferta);
+					
 				descripcion = getDescripcionProductoTF().getValue();
 				
-				if(!nombre.isEmpty() && !precio.isEmpty() && !marca.isEmpty() && !descripcion.isEmpty())
-					bdp.guardarCambios(nombre, Integer.parseInt(precio), marca, oferta, descripcion);
+				if(!nombre.isEmpty() && !precio.toString().isEmpty() && !marca.isEmpty() && !descripcion.isEmpty())
+					bdp.guardarCambios(nombre, precio, marca, oferta, descripcion);
+//					Administrador a = new Administrador();
+//					
+//					layoutPrincipal.removeAll();
+//					layoutPrincipal.add(a);
+					Notification.show("Producto con nombre "+nombre+" creado correctamente");
 			}
 		});
 	}
@@ -71,10 +79,10 @@ public class Añadir_producto extends VistaAniadirproducto {
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				// TODO Auto-generated method stub
-				Administrador ad = new Administrador();
-
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(ad);
+//				Administrador ad = new Administrador();
+//
+//				layoutPrincipal.removeAll();
+//				layoutPrincipal.add(ad);
 			}
 		});
 	}

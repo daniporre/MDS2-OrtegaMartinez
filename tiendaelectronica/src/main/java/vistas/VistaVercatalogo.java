@@ -42,6 +42,16 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 	private Element productosEnCatalogoVLayout;
 	@Id("categoriasHLayout")
 	private HorizontalLayout categoriasHLayout;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
+	@Id("categoria7Button")
+	private Button categoria7Button;
+	@Id("categoria8Button")
+	private Button categoria8Button;
+	@Id("categoria9Button")
+	private Button categoria9Button;
+	@Id("categoria10Button")
+	private Button categoria10Button;
 
 	/**
      * Creates a new VistaVercatalogo.
@@ -143,5 +153,45 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 
 	public void setCategoriasHLayout(HorizontalLayout categoriasHLayout) {
 		this.categoriasHLayout = categoriasHLayout;
+	}
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public Button getCategoria7Button() {
+		return categoria7Button;
+	}
+
+	public void setCategoria7Button(Button categoria7Button) {
+		this.categoria7Button = categoria7Button;
+	}
+
+	public Button getCategoria8Button() {
+		return categoria8Button;
+	}
+
+	public void setCategoria8Button(Button categoria8Button) {
+		this.categoria8Button = categoria8Button;
+	}
+
+	public Button getCategoria9Button() {
+		return categoria9Button;
+	}
+
+	public void setCategoria9Button(Button categoria9Button) {
+		this.categoria9Button = categoria9Button;
+	}
+
+	public Button getCategoria10Button() {
+		return categoria10Button;
+	}
+
+	public void setCategoria10Button(Button categoria10Button) {
+		this.categoria10Button = categoria10Button;
 	}
 }

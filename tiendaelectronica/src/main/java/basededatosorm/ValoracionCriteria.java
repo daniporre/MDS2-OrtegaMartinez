@@ -30,7 +30,7 @@ public class ValoracionCriteria extends AbstractORMCriteria {
 		idValoracion = new IntegerExpression("idValoracion", this);
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this);
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
-		productoId = new IntegerExpression("producto.id", this);
+		productoId = new IntegerExpression("producto.idProducto", this);
 		producto = new AssociationExpression("producto", this);
 	}
 	

@@ -90,20 +90,21 @@ public class BDPrincipal
 	}
 
 	public Producto[] verCatalogo() {
-		Producto[] ps = null;
 		try {
-			ps = this._bDProductos.obtenerProductos();
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			System.out.println("error en verCatalogo BDPrincipal");
-			e.printStackTrace();
+			return this._bDProductos.obtenerProductos();
+		} catch (PersistentException e) {
+						e.printStackTrace();
+			return null;
 		}
-
-		return ps;
 	}
 
 	public Producto[] buscarProducto(String aNombre) {
-		throw new UnsupportedOperationException();
+		try {
+			return _bDProductos.obtenerProductos(aNombre);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Producto visualizarProducto(int aIdProducto) {
@@ -278,6 +279,17 @@ public class BDPrincipal
 		}
 	}
 
+	public Oferta obtenerOferta(String aNombreOferta) {
+		try {
+			return _bDOfertas.obtenerOferta(aNombreOferta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en bdprincipal obtenerOferta");
+			return null;
+		}
+	}
+
 	public void crearNuevaCategoria(String aNombreCategoria) {
 		try {
 			_bDCategorias.crearNuevaCategoria(aNombreCategoria);
@@ -288,7 +300,11 @@ public class BDPrincipal
 	}
 
 	public void darBajaOferta(String aNombreOferta) {
-		_bDOfertas.darBajaOferta(aNombreOferta);
+		try {
+			_bDOfertas.darBajaOferta(aNombreOferta);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void guardarFotos(Fotos aFotos) {
@@ -297,7 +313,13 @@ public class BDPrincipal
 	}
 
 	public Producto obtenerProducto(String aNombreProducto) {
-		throw new UnsupportedOperationException();
+		try {
+			return _bDProductos.obtenerProducto(aNombreProducto);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Usuario obtenerUsuario(int aIdUsuario) {
@@ -333,7 +355,8 @@ public class BDPrincipal
 	}
 
 	public Usuario_registrado get_Usuario_registrado() {
-		throw new UnsupportedOperationException();
+//		_bDUsuarioRegistrado.obtenerUsuarioRegistrado(0);
+		return null;
 	}
 
 	public Administrador get_Administrador() {
@@ -371,6 +394,17 @@ public class BDPrincipal
 	@Override
 	public Correo obtenerMensaje(String aId) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario recuperarContrasenia(String aMail) {
+		try {
+			_bDUsuarioRegistrado.recuperarContrasenia(aMail);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

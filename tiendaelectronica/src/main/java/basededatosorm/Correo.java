@@ -28,14 +28,14 @@ public class Correo implements Serializable {
 		if (!(aObj instanceof Correo))
 			return false;
 		Correo correo = (Correo)aObj;
-		if ((getId() != null && !getId().equals(correo.getId())) || (getId() == null && correo.getId() != null))
+		if ((getIdCorreo() != null && !getIdCorreo().equals(correo.getIdCorreo())) || (getIdCorreo() == null && correo.getIdCorreo() != null))
 			return false;
 		return true;
 	}
 	
 	public int hashCode() {
 		int hashcode = 0;
-		hashcode = hashcode + (getId() == null ? 0 : getId().hashCode());
+		hashcode = hashcode + (getIdCorreo() == null ? 0 : getIdCorreo().hashCode());
 		return hashcode;
 	}
 	
@@ -53,9 +53,9 @@ public class Correo implements Serializable {
 		
 	};
 	
-	@Column(name="Id", nullable=false, length=255)	
+	@Column(name="IdCorreo", nullable=false, length=255)	
 	@Id	
-	private String id;
+	private String idCorreo;
 	
 	@ManyToOne(targetEntity=basededatosorm.UsuarioRegistrado.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -78,16 +78,16 @@ public class Correo implements Serializable {
 	@Column(name="FechaEnvio", nullable=true, length=255)	
 	private String fechaEnvio;
 	
-	public void setId(String value) {
-		this.id = value;
+	public void setIdCorreo(String value) {
+		this.idCorreo = value;
 	}
 	
-	public String getId() {
-		return id;
+	public String getIdCorreo() {
+		return idCorreo;
 	}
 	
 	public String getORMID() {
-		return getId();
+		return getIdCorreo();
 	}
 	
 	public void setAsunto(String value) {
@@ -155,7 +155,7 @@ public class Correo implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getIdCorreo());
 	}
 	
 }

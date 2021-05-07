@@ -33,6 +33,8 @@ public class VistaUsuarioregistrado extends PolymerTemplate<VistaUsuarioregistra
 	private Element principalVLayout;
 	@Id("adsVLayout")
 	private Element adsVLayout;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
 
 	/**
      * Creates a new VistaUsuarioregistrado.
@@ -102,5 +104,13 @@ public class VistaUsuarioregistrado extends PolymerTemplate<VistaUsuarioregistra
 
 	public void setAdsVLayout(Element adsVLayout) {
 		this.adsVLayout = adsVLayout;
+	}
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
 	}
 }

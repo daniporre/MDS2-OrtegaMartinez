@@ -19,7 +19,7 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class PedidoDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression idPedido;
 	public final IntegerExpression usuarioRegistradoId;
 	public final AssociationExpression usuarioRegistrado;
 	public final IntegerExpression totalProductos;
@@ -31,7 +31,7 @@ public class PedidoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public PedidoDetachedCriteria() {
 		super(basededatosorm.Pedido.class, basededatosorm.PedidoCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		idPedido = new IntegerExpression("idPedido", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		totalProductos = new IntegerExpression("totalProductos", this.getDetachedCriteria());
@@ -44,7 +44,7 @@ public class PedidoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public PedidoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, basededatosorm.PedidoCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		idPedido = new IntegerExpression("idPedido", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		totalProductos = new IntegerExpression("totalProductos", this.getDetachedCriteria());

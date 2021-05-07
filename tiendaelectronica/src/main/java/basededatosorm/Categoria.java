@@ -38,11 +38,11 @@ public class Categoria implements Serializable {
 		
 	};
 	
-	@Column(name="ID", nullable=false, length=10)	
+	@Column(name="IdCategoria", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="BASEDEDATOSORM_CATEGORIA_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_CATEGORIA_ID_GENERATOR", strategy="native")	
-	private int ID;
+	@GeneratedValue(generator="BASEDEDATOSORM_CATEGORIA_IDCATEGORIA_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_CATEGORIA_IDCATEGORIA_GENERATOR", strategy="native")	
+	private int idCategoria;
 	
 	@Column(name="Nombre", nullable=true, length=255)	
 	private String nombre;
@@ -52,16 +52,16 @@ public class Categoria implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_productos = new java.util.HashSet();
 	
-	private void setID(int value) {
-		this.ID = value;
+	private void setIdCategoria(int value) {
+		this.idCategoria = value;
 	}
 	
-	public int getID() {
-		return ID;
+	public int getIdCategoria() {
+		return idCategoria;
 	}
 	
 	public int getORMID() {
-		return getID();
+		return getIdCategoria();
 	}
 	
 	public void setNombre(String value) {
@@ -84,7 +84,7 @@ public class Categoria implements Serializable {
 	public final basededatosorm.ProductoSetCollection productos = new basededatosorm.ProductoSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_CATEGORIA_PRODUCTOS, basededatosorm.ORMConstants.KEY_PRODUCTO_CATEGORIAS, basededatosorm.ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return String.valueOf(getIdCategoria());
 	}
 	
 }

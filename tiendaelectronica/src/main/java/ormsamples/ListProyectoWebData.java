@@ -9,17 +9,9 @@ public class ListProyectoWebData {
 	private static final int ROW_COUNT = 100;
 	
 	public void listTestData() throws PersistentException {
-		System.out.println("Listing Producto...");
-		basededatosorm.Producto[] basededatosORMProductos = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
-		int length = Math.min(basededatosORMProductos.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(basededatosORMProductos[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
 		System.out.println("Listing Oferta...");
 		basededatosorm.Oferta[] basededatosORMOfertas = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
-		length = Math.min(basededatosORMOfertas.length, ROW_COUNT);
+		int length = Math.min(basededatosORMOfertas.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(basededatosORMOfertas[i]);
 		}
@@ -30,6 +22,14 @@ public class ListProyectoWebData {
 		length = Math.min(basededatosORMCategorias.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(basededatosORMCategorias[i]);
+		}
+		System.out.println(length + " record(s) retrieved.");
+		
+		System.out.println("Listing Producto...");
+		basededatosorm.Producto[] basededatosORMProductos = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+		length = Math.min(basededatosORMProductos.length, ROW_COUNT);
+		for (int i = 0; i < length; i++) {
+			System.out.println(basededatosORMProductos[i]);
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
@@ -140,25 +140,13 @@ public class ListProyectoWebData {
 	}
 	
 	public void listByCriteria() throws PersistentException {
-		System.out.println("Listing Producto by Criteria...");
-		basededatosorm.ProductoCriteria basededatosORMProductoCriteria = new basededatosorm.ProductoCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMProductoCriteria.id.eq();
-		basededatosORMProductoCriteria.setMaxResults(ROW_COUNT);
-		basededatosorm.Producto[] basededatosORMProductos = basededatosORMProductoCriteria.listProducto();
-		int length =basededatosORMProductos== null ? 0 : Math.min(basededatosORMProductos.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(basededatosORMProductos[i]);
-		}
-		System.out.println(length + " Producto record(s) retrieved."); 
-		
 		System.out.println("Listing Oferta by Criteria...");
 		basededatosorm.OfertaCriteria basededatosORMOfertaCriteria = new basededatosorm.OfertaCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMOfertaCriteria.id.eq();
+		//basededatosORMOfertaCriteria.idOferta.eq();
 		basededatosORMOfertaCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Oferta[] basededatosORMOfertas = basededatosORMOfertaCriteria.listOferta();
-		length =basededatosORMOfertas== null ? 0 : Math.min(basededatosORMOfertas.length, ROW_COUNT); 
+		int length =basededatosORMOfertas== null ? 0 : Math.min(basededatosORMOfertas.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(basededatosORMOfertas[i]);
 		}
@@ -167,7 +155,7 @@ public class ListProyectoWebData {
 		System.out.println("Listing Categoria by Criteria...");
 		basededatosorm.CategoriaCriteria basededatosORMCategoriaCriteria = new basededatosorm.CategoriaCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMCategoriaCriteria.ID.eq();
+		//basededatosORMCategoriaCriteria.idCategoria.eq();
 		basededatosORMCategoriaCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Categoria[] basededatosORMCategorias = basededatosORMCategoriaCriteria.listCategoria();
 		length =basededatosORMCategorias== null ? 0 : Math.min(basededatosORMCategorias.length, ROW_COUNT); 
@@ -176,10 +164,22 @@ public class ListProyectoWebData {
 		}
 		System.out.println(length + " Categoria record(s) retrieved."); 
 		
+		System.out.println("Listing Producto by Criteria...");
+		basededatosorm.ProductoCriteria basededatosORMProductoCriteria = new basededatosorm.ProductoCriteria();
+		// Please uncomment the follow line and fill in parameter(s) 
+		//basededatosORMProductoCriteria.idProducto.eq();
+		basededatosORMProductoCriteria.setMaxResults(ROW_COUNT);
+		basededatosorm.Producto[] basededatosORMProductos = basededatosORMProductoCriteria.listProducto();
+		length =basededatosORMProductos== null ? 0 : Math.min(basededatosORMProductos.length, ROW_COUNT); 
+		for (int i = 0; i < length; i++) {
+			 System.out.println(basededatosORMProductos[i]);
+		}
+		System.out.println(length + " Producto record(s) retrieved."); 
+		
 		System.out.println("Listing Pedido by Criteria...");
 		basededatosorm.PedidoCriteria basededatosORMPedidoCriteria = new basededatosorm.PedidoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMPedidoCriteria.id.eq();
+		//basededatosORMPedidoCriteria.idPedido.eq();
 		basededatosORMPedidoCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Pedido[] basededatosORMPedidos = basededatosORMPedidoCriteria.listPedido();
 		length =basededatosORMPedidos== null ? 0 : Math.min(basededatosORMPedidos.length, ROW_COUNT); 
@@ -191,7 +191,7 @@ public class ListProyectoWebData {
 		System.out.println("Listing Pendiente by Criteria...");
 		basededatosorm.PendienteCriteria basededatosORMPendienteCriteria = new basededatosorm.PendienteCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMPendienteCriteria.id.eq();
+		//basededatosORMPendienteCriteria.idPedido.eq();
 		basededatosORMPendienteCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Pendiente[] basededatosORMPendientes = basededatosORMPendienteCriteria.listPendiente();
 		length =basededatosORMPendientes== null ? 0 : Math.min(basededatosORMPendientes.length, ROW_COUNT); 
@@ -203,7 +203,7 @@ public class ListProyectoWebData {
 		System.out.println("Listing Enviado by Criteria...");
 		basededatosorm.EnviadoCriteria basededatosORMEnviadoCriteria = new basededatosorm.EnviadoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMEnviadoCriteria.id.eq();
+		//basededatosORMEnviadoCriteria.idPedido.eq();
 		basededatosORMEnviadoCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Enviado[] basededatosORMEnviados = basededatosORMEnviadoCriteria.listEnviado();
 		length =basededatosORMEnviados== null ? 0 : Math.min(basededatosORMEnviados.length, ROW_COUNT); 
@@ -215,7 +215,7 @@ public class ListProyectoWebData {
 		System.out.println("Listing Entregado by Criteria...");
 		basededatosorm.EntregadoCriteria basededatosORMEntregadoCriteria = new basededatosorm.EntregadoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMEntregadoCriteria.id.eq();
+		//basededatosORMEntregadoCriteria.idPedido.eq();
 		basededatosORMEntregadoCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Entregado[] basededatosORMEntregados = basededatosORMEntregadoCriteria.listEntregado();
 		length =basededatosORMEntregados== null ? 0 : Math.min(basededatosORMEntregados.length, ROW_COUNT); 
@@ -275,7 +275,7 @@ public class ListProyectoWebData {
 		System.out.println("Listing Correo by Criteria...");
 		basededatosorm.CorreoCriteria basededatosORMCorreoCriteria = new basededatosorm.CorreoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMCorreoCriteria.id.eq();
+		//basededatosORMCorreoCriteria.idCorreo.eq();
 		basededatosORMCorreoCriteria.setMaxResults(ROW_COUNT);
 		basededatosorm.Correo[] basededatosORMCorreos = basededatosORMCorreoCriteria.listCorreo();
 		length =basededatosORMCorreos== null ? 0 : Math.min(basededatosORMCorreos.length, ROW_COUNT); 

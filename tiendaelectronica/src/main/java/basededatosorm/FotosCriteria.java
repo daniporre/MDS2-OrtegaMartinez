@@ -27,7 +27,7 @@ public class FotosCriteria extends AbstractORMCriteria {
 	public FotosCriteria(Criteria criteria) {
 		super(criteria);
 		idFoto = new IntegerExpression("idFoto", this);
-		productoId = new IntegerExpression("producto.id", this);
+		productoId = new IntegerExpression("producto.idProducto", this);
 		producto = new AssociationExpression("producto", this);
 		numeroFoto = new IntegerExpression("numeroFoto", this);
 	}

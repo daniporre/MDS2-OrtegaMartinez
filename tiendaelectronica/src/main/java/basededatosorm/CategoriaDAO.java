@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class CategoriaDAO {
-	public static Categoria loadCategoriaByORMID(int ID) throws PersistentException {
+	public static Categoria loadCategoriaByORMID(int idCategoria) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadCategoriaByORMID(session, ID);
+			return loadCategoriaByORMID(session, idCategoria);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria getCategoriaByORMID(int ID) throws PersistentException {
+	public static Categoria getCategoriaByORMID(int idCategoria) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getCategoriaByORMID(session, ID);
+			return getCategoriaByORMID(session, idCategoria);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria loadCategoriaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Categoria loadCategoriaByORMID(int idCategoria, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadCategoriaByORMID(session, ID, lockMode);
+			return loadCategoriaByORMID(session, idCategoria, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria getCategoriaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Categoria getCategoriaByORMID(int idCategoria, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getCategoriaByORMID(session, ID, lockMode);
+			return getCategoriaByORMID(session, idCategoria, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria loadCategoriaByORMID(PersistentSession session, int ID) throws PersistentException {
+	public static Categoria loadCategoriaByORMID(PersistentSession session, int idCategoria) throws PersistentException {
 		try {
-			return (Categoria) session.load(basededatosorm.Categoria.class, new Integer(ID));
+			return (Categoria) session.load(basededatosorm.Categoria.class, new Integer(idCategoria));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria getCategoriaByORMID(PersistentSession session, int ID) throws PersistentException {
+	public static Categoria getCategoriaByORMID(PersistentSession session, int idCategoria) throws PersistentException {
 		try {
-			return (Categoria) session.get(basededatosorm.Categoria.class, new Integer(ID));
+			return (Categoria) session.get(basededatosorm.Categoria.class, new Integer(idCategoria));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria loadCategoriaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Categoria loadCategoriaByORMID(PersistentSession session, int idCategoria, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Categoria) session.load(basededatosorm.Categoria.class, new Integer(ID), lockMode);
+			return (Categoria) session.load(basededatosorm.Categoria.class, new Integer(idCategoria), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class CategoriaDAO {
 		}
 	}
 	
-	public static Categoria getCategoriaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Categoria getCategoriaByORMID(PersistentSession session, int idCategoria, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Categoria) session.get(basededatosorm.Categoria.class, new Integer(ID), lockMode);
+			return (Categoria) session.get(basededatosorm.Categoria.class, new Integer(idCategoria), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

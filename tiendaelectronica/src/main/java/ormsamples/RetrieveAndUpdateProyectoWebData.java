@@ -9,15 +9,15 @@ public class RetrieveAndUpdateProyectoWebData {
 	public void retrieveAndUpdateTestData() throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
 		try {
-			basededatosorm.Producto basededatosORMProducto = basededatosorm.ProductoDAO.loadProductoByQuery(null, null);
-			// Update the properties of the persistent object
-			basededatosorm.ProductoDAO.save(basededatosORMProducto);
 			basededatosorm.Oferta basededatosORMOferta = basededatosorm.OfertaDAO.loadOfertaByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.OfertaDAO.save(basededatosORMOferta);
 			basededatosorm.Categoria basededatosORMCategoria = basededatosorm.CategoriaDAO.loadCategoriaByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.CategoriaDAO.save(basededatosORMCategoria);
+			basededatosorm.Producto basededatosORMProducto = basededatosorm.ProductoDAO.loadProductoByQuery(null, null);
+			// Update the properties of the persistent object
+			basededatosorm.ProductoDAO.save(basededatosORMProducto);
 			basededatosorm.Pedido basededatosORMPedido = basededatosorm.PedidoDAO.loadPedidoByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.PedidoDAO.save(basededatosORMPedido);
@@ -66,46 +66,46 @@ public class RetrieveAndUpdateProyectoWebData {
 	}
 	
 	public void retrieveByCriteria() throws PersistentException {
-		System.out.println("Retrieving Producto by ProductoCriteria");
-		basededatosorm.ProductoCriteria basededatosORMProductoCriteria = new basededatosorm.ProductoCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMProductoCriteria.id.eq();
-		System.out.println(basededatosORMProductoCriteria.uniqueProducto());
-		
 		System.out.println("Retrieving Oferta by OfertaCriteria");
 		basededatosorm.OfertaCriteria basededatosORMOfertaCriteria = new basededatosorm.OfertaCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMOfertaCriteria.id.eq();
+		//basededatosORMOfertaCriteria.idOferta.eq();
 		System.out.println(basededatosORMOfertaCriteria.uniqueOferta());
 		
 		System.out.println("Retrieving Categoria by CategoriaCriteria");
 		basededatosorm.CategoriaCriteria basededatosORMCategoriaCriteria = new basededatosorm.CategoriaCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMCategoriaCriteria.ID.eq();
+		//basededatosORMCategoriaCriteria.idCategoria.eq();
 		System.out.println(basededatosORMCategoriaCriteria.uniqueCategoria());
+		
+		System.out.println("Retrieving Producto by ProductoCriteria");
+		basededatosorm.ProductoCriteria basededatosORMProductoCriteria = new basededatosorm.ProductoCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//basededatosORMProductoCriteria.idProducto.eq();
+		System.out.println(basededatosORMProductoCriteria.uniqueProducto());
 		
 		System.out.println("Retrieving Pedido by PedidoCriteria");
 		basededatosorm.PedidoCriteria basededatosORMPedidoCriteria = new basededatosorm.PedidoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMPedidoCriteria.id.eq();
+		//basededatosORMPedidoCriteria.idPedido.eq();
 		System.out.println(basededatosORMPedidoCriteria.uniquePedido());
 		
 		System.out.println("Retrieving Pendiente by PendienteCriteria");
 		basededatosorm.PendienteCriteria basededatosORMPendienteCriteria = new basededatosorm.PendienteCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMPendienteCriteria.id.eq();
+		//basededatosORMPendienteCriteria.idPedido.eq();
 		System.out.println(basededatosORMPendienteCriteria.uniquePendiente());
 		
 		System.out.println("Retrieving Enviado by EnviadoCriteria");
 		basededatosorm.EnviadoCriteria basededatosORMEnviadoCriteria = new basededatosorm.EnviadoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMEnviadoCriteria.id.eq();
+		//basededatosORMEnviadoCriteria.idPedido.eq();
 		System.out.println(basededatosORMEnviadoCriteria.uniqueEnviado());
 		
 		System.out.println("Retrieving Entregado by EntregadoCriteria");
 		basededatosorm.EntregadoCriteria basededatosORMEntregadoCriteria = new basededatosorm.EntregadoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMEntregadoCriteria.id.eq();
+		//basededatosORMEntregadoCriteria.idPedido.eq();
 		System.out.println(basededatosORMEntregadoCriteria.uniqueEntregado());
 		
 		System.out.println("Retrieving Usuario by UsuarioCriteria");
@@ -135,7 +135,7 @@ public class RetrieveAndUpdateProyectoWebData {
 		System.out.println("Retrieving Correo by CorreoCriteria");
 		basededatosorm.CorreoCriteria basededatosORMCorreoCriteria = new basededatosorm.CorreoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMCorreoCriteria.id.eq();
+		//basededatosORMCorreoCriteria.idCorreo.eq();
 		System.out.println(basededatosORMCorreoCriteria.uniqueCorreo());
 		
 		System.out.println("Retrieving Valoracion by ValoracionCriteria");

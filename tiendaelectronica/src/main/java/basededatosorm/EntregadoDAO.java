@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class EntregadoDAO {
-	public static Entregado loadEntregadoByORMID(int id) throws PersistentException {
+	public static Entregado loadEntregadoByORMID(int idPedido) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadEntregadoByORMID(session, id);
+			return loadEntregadoByORMID(session, idPedido);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado getEntregadoByORMID(int id) throws PersistentException {
+	public static Entregado getEntregadoByORMID(int idPedido) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getEntregadoByORMID(session, id);
+			return getEntregadoByORMID(session, idPedido);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado loadEntregadoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Entregado loadEntregadoByORMID(int idPedido, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadEntregadoByORMID(session, id, lockMode);
+			return loadEntregadoByORMID(session, idPedido, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado getEntregadoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Entregado getEntregadoByORMID(int idPedido, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getEntregadoByORMID(session, id, lockMode);
+			return getEntregadoByORMID(session, idPedido, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado loadEntregadoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Entregado loadEntregadoByORMID(PersistentSession session, int idPedido) throws PersistentException {
 		try {
-			return (Entregado) session.load(basededatosorm.Entregado.class, new Integer(id));
+			return (Entregado) session.load(basededatosorm.Entregado.class, new Integer(idPedido));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado getEntregadoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Entregado getEntregadoByORMID(PersistentSession session, int idPedido) throws PersistentException {
 		try {
-			return (Entregado) session.get(basededatosorm.Entregado.class, new Integer(id));
+			return (Entregado) session.get(basededatosorm.Entregado.class, new Integer(idPedido));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado loadEntregadoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Entregado loadEntregadoByORMID(PersistentSession session, int idPedido, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Entregado) session.load(basededatosorm.Entregado.class, new Integer(id), lockMode);
+			return (Entregado) session.load(basededatosorm.Entregado.class, new Integer(idPedido), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class EntregadoDAO {
 		}
 	}
 	
-	public static Entregado getEntregadoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Entregado getEntregadoByORMID(PersistentSession session, int idPedido, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Entregado) session.get(basededatosorm.Entregado.class, new Integer(id), lockMode);
+			return (Entregado) session.get(basededatosorm.Entregado.class, new Integer(idPedido), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

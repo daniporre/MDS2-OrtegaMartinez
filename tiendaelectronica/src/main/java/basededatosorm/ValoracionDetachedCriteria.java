@@ -30,7 +30,7 @@ public class ValoracionDetachedCriteria extends AbstractORMDetachedCriteria {
 		idValoracion = new IntegerExpression("idValoracion", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
-		productoId = new IntegerExpression("producto.id", this.getDetachedCriteria());
+		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
 	}
 	
@@ -39,7 +39,7 @@ public class ValoracionDetachedCriteria extends AbstractORMDetachedCriteria {
 		idValoracion = new IntegerExpression("idValoracion", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
-		productoId = new IntegerExpression("producto.id", this.getDetachedCriteria());
+		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
 	}
 	

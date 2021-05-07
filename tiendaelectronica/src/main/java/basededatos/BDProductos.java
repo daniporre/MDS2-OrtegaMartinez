@@ -1,9 +1,13 @@
 package basededatos;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
+
+import com.vaadin.flow.component.notification.Notification;
 
 import basededatosorm.Producto;
 import basededatosorm.Administrador;
@@ -24,17 +28,8 @@ public class BDProductos {
 			p.setPrecio(aPrecio);
 			p.setMarca(aMarca);
 			p.setDescripcion(aDescripcion);
-			//Acceder a categorias en la bd y ponerla aqui
-//			BDCategorias c = new BDCategorias();
-//			Categoria a = new Categoria();
-//			
-//			
-//			for (Categoria cat : c.obtenerCategorias()) {
-//				a = cat;
-//			}
-//			
-//			
-//			p.setCategoria(a);
+			p.setOferta(aOferta);
+
 			basededatosorm.ProductoDAO.save(p);
 			t.commit();
 		} catch (Exception e) {
@@ -47,19 +42,106 @@ public class BDProductos {
 		
 	}
 
-	public Producto editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		throw new UnsupportedOperationException();
+	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) throws PersistentException{
+		//NO PROBADO
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		
+		try {
+
+			
+			Producto p = new Producto();
+			p = this.obtenerProducto(aNombre);
+			
+			p.setNombre(aNombre);
+			p.setPrecio(aPrecio);
+			p.setMarca(aMarca);
+			p.setOferta(aOferta);
+			p.setDescripcion(aDescripcion);
+			
+			basededatosorm.ProductoDAO.refresh(p);
+			
+			t.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+		}
+		
 	}
 
-	public Producto obtenerProducto(String aNombreProducto) {
-		throw new UnsupportedOperationException();
+	public Producto obtenerProducto(String aNombreProducto) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			Producto[] ads = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+			int idProducto = 0;
+
+			for (Producto producto : ads) {
+				if (producto.getNombre().toLowerCase().equals(aNombreProducto.toLowerCase())) {
+					idProducto = producto.getIdProducto();
+					break;
+				}
+			}
+
+			if (idProducto == 0) {
+				Notification.show("El producto no existe");
+			}
+			
+			Producto ad = basededatosorm.ProductoDAO.loadProductoByORMID(idProducto);
+			
+			t.commit();
+			System.out.println("este es el producto nombre: "+ad.getNombre());
+			return ad;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
 	}
 
-	public Producto[] obtenerProductos() {
-		throw new UnsupportedOperationException();
+	public Producto[] obtenerProductos() throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+
+		try {
+			Producto[] o = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+
+			t.commit();
+			return o;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
 	}
 
-	public Producto[] obtenerProductos(String aNombre) {
-		throw new UnsupportedOperationException();
+	public Producto[] obtenerProductos(String aNombre) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+
+		try {
+			Producto[] o = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+			ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+			
+			for (Producto producto : o) {
+				if(producto.getNombre().toLowerCase().contains(aNombre.toLowerCase())) {
+					listaProductos.add(producto);
+				}
+			}
+			Producto[] productos = new Producto[listaProductos.size()];
+			
+			listaProductos.toArray(productos);
+			t.commit();
+			return productos;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
 	}
 }

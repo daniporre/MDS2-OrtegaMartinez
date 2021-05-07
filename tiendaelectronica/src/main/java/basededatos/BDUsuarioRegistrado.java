@@ -75,6 +75,37 @@ public class BDUsuarioRegistrado {
 			return null;
 		}
 	}
+	
+	public Usuario recuperarContrasenia(String aMail) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado usuarioRegistrado : ads) {
+				if (usuarioRegistrado.getMail().equals(aMail)) {
+					idUsuario = usuarioRegistrado.getIdUsuario();
+					break;
+				}
+
+			}
+			System.out.println("idusuario; "+idUsuario);
+			if (idUsuario == 0) {
+				Notification.show("El usuario no existe");
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			
+			t.commit();
+			return ad;
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
+	}
 
 	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {
 		throw new UnsupportedOperationException();

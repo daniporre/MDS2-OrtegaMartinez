@@ -49,11 +49,11 @@ public class Pedido implements Serializable {
 		
 	};
 	
-	@Column(name="Id", nullable=false, length=10)	
+	@Column(name="IdPedido", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="BASEDEDATOSORM_PEDIDO_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_PEDIDO_ID_GENERATOR", strategy="native")	
-	private int id;
+	@GeneratedValue(generator="BASEDEDATOSORM_PEDIDO_IDPEDIDO_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_PEDIDO_IDPEDIDO_GENERATOR", strategy="native")	
+	private int idPedido;
 	
 	@ManyToOne(targetEntity=basededatosorm.UsuarioRegistrado.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -81,16 +81,16 @@ public class Pedido implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_cantidadProductos = new java.util.HashSet();
 	
-	private void setId(int value) {
-		this.id = value;
+	private void setIdPedido(int value) {
+		this.idPedido = value;
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdPedido() {
+		return idPedido;
 	}
 	
 	public int getORMID() {
-		return getId();
+		return getIdPedido();
 	}
 	
 	public void setTotalProductos(int value) {
@@ -169,7 +169,7 @@ public class Pedido implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getId());
+		return String.valueOf(getIdPedido());
 	}
 	
 }

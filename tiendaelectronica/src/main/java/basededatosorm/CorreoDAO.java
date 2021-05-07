@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class CorreoDAO {
-	public static Correo loadCorreoByORMID(String id) throws PersistentException {
+	public static Correo loadCorreoByORMID(String idCorreo) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadCorreoByORMID(session, id);
+			return loadCorreoByORMID(session, idCorreo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo getCorreoByORMID(String id) throws PersistentException {
+	public static Correo getCorreoByORMID(String idCorreo) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getCorreoByORMID(session, id);
+			return getCorreoByORMID(session, idCorreo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo loadCorreoByORMID(String id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Correo loadCorreoByORMID(String idCorreo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadCorreoByORMID(session, id, lockMode);
+			return loadCorreoByORMID(session, idCorreo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo getCorreoByORMID(String id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Correo getCorreoByORMID(String idCorreo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getCorreoByORMID(session, id, lockMode);
+			return getCorreoByORMID(session, idCorreo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo loadCorreoByORMID(PersistentSession session, String id) throws PersistentException {
+	public static Correo loadCorreoByORMID(PersistentSession session, String idCorreo) throws PersistentException {
 		try {
-			return (Correo) session.load(basededatosorm.Correo.class, id);
+			return (Correo) session.load(basededatosorm.Correo.class, idCorreo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo getCorreoByORMID(PersistentSession session, String id) throws PersistentException {
+	public static Correo getCorreoByORMID(PersistentSession session, String idCorreo) throws PersistentException {
 		try {
-			return (Correo) session.get(basededatosorm.Correo.class, id);
+			return (Correo) session.get(basededatosorm.Correo.class, idCorreo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo loadCorreoByORMID(PersistentSession session, String id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Correo loadCorreoByORMID(PersistentSession session, String idCorreo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Correo) session.load(basededatosorm.Correo.class, id, lockMode);
+			return (Correo) session.load(basededatosorm.Correo.class, idCorreo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class CorreoDAO {
 		}
 	}
 	
-	public static Correo getCorreoByORMID(PersistentSession session, String id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Correo getCorreoByORMID(PersistentSession session, String idCorreo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Correo) session.get(basededatosorm.Correo.class, id, lockMode);
+			return (Correo) session.get(basededatosorm.Correo.class, idCorreo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

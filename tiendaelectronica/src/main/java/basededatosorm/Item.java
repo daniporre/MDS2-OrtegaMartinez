@@ -48,13 +48,13 @@ public class Item implements Serializable {
 	
 	@ManyToOne(targetEntity=basededatosorm.Pedido.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="PedidoId", referencedColumnName="Id", nullable=false) }, foreignKey=@ForeignKey(name="FKItem548829"))	
+	@JoinColumns(value={ @JoinColumn(name="PedidoIdPedido", referencedColumnName="IdPedido", nullable=false) }, foreignKey=@ForeignKey(name="FKItem600544"))	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Pedido pedido;
 	
 	@OneToOne(optional=false, targetEntity=basededatosorm.Producto.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="ProductoId", referencedColumnName="Id", nullable=false) }, foreignKey=@ForeignKey(name="FKItem306148"))	
+	@JoinColumns(value={ @JoinColumn(name="ProductoIdProducto", referencedColumnName="IdProducto", nullable=false) }, foreignKey=@ForeignKey(name="FKItem423252"))	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Producto producto;
 	

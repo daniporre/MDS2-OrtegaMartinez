@@ -9,4 +9,7 @@
   margin: 0 auto;
   max-width: 250px;
 }
+.styled {
+  border-radius: 5em;
+}
 

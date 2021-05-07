@@ -30,10 +30,10 @@ public class Ver_listado_de_compras__Administrador_ extends VistaVerlistadodecom
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				// TODO Auto-generated method stub
-				Administrador ad = new Administrador();
-
-				principalVlayout.removeAll();
-				principalVlayout.add(ad);
+//				Administrador ad = new Administrador();
+//
+//				principalVlayout.removeAll();
+//				principalVlayout.add(ad);
 			}
 		});
 	}

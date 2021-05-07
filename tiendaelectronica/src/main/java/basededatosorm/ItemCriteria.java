@@ -31,9 +31,9 @@ public class ItemCriteria extends AbstractORMCriteria {
 	public ItemCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		pedidoId = new IntegerExpression("pedido.id", this);
+		pedidoId = new IntegerExpression("pedido.idPedido", this);
 		pedido = new AssociationExpression("pedido", this);
-		productoId = new IntegerExpression("producto.id", this);
+		productoId = new IntegerExpression("producto.idProducto", this);
 		producto = new AssociationExpression("producto", this);
 		idProducto = new IntegerExpression("idProducto", this);
 		idPedido = new IntegerExpression("idPedido", this);

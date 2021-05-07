@@ -27,7 +27,7 @@ public class FotosDetachedCriteria extends AbstractORMDetachedCriteria {
 	public FotosDetachedCriteria() {
 		super(basededatosorm.Fotos.class, basededatosorm.FotosCriteria.class);
 		idFoto = new IntegerExpression("idFoto", this.getDetachedCriteria());
-		productoId = new IntegerExpression("producto.id", this.getDetachedCriteria());
+		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
 		numeroFoto = new IntegerExpression("numeroFoto", this.getDetachedCriteria());
 	}
@@ -35,7 +35,7 @@ public class FotosDetachedCriteria extends AbstractORMDetachedCriteria {
 	public FotosDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, basededatosorm.FotosCriteria.class);
 		idFoto = new IntegerExpression("idFoto", this.getDetachedCriteria());
-		productoId = new IntegerExpression("producto.id", this.getDetachedCriteria());
+		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
 		numeroFoto = new IntegerExpression("numeroFoto", this.getDetachedCriteria());
 	}

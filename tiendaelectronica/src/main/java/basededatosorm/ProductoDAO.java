@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ProductoDAO {
-	public static Producto loadProductoByORMID(int id) throws PersistentException {
+	public static Producto loadProductoByORMID(int idProducto) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadProductoByORMID(session, id);
+			return loadProductoByORMID(session, idProducto);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto getProductoByORMID(int id) throws PersistentException {
+	public static Producto getProductoByORMID(int idProducto) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getProductoByORMID(session, id);
+			return getProductoByORMID(session, idProducto);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto loadProductoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Producto loadProductoByORMID(int idProducto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return loadProductoByORMID(session, id, lockMode);
+			return loadProductoByORMID(session, idProducto, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto getProductoByORMID(int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Producto getProductoByORMID(int idProducto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = basededatosorm.ProyectoWebPersistentManager.instance().getSession();
-			return getProductoByORMID(session, id, lockMode);
+			return getProductoByORMID(session, idProducto, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto loadProductoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Producto loadProductoByORMID(PersistentSession session, int idProducto) throws PersistentException {
 		try {
-			return (Producto) session.load(basededatosorm.Producto.class, new Integer(id));
+			return (Producto) session.load(basededatosorm.Producto.class, new Integer(idProducto));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto getProductoByORMID(PersistentSession session, int id) throws PersistentException {
+	public static Producto getProductoByORMID(PersistentSession session, int idProducto) throws PersistentException {
 		try {
-			return (Producto) session.get(basededatosorm.Producto.class, new Integer(id));
+			return (Producto) session.get(basededatosorm.Producto.class, new Integer(idProducto));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto loadProductoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Producto loadProductoByORMID(PersistentSession session, int idProducto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Producto) session.load(basededatosorm.Producto.class, new Integer(id), lockMode);
+			return (Producto) session.load(basededatosorm.Producto.class, new Integer(idProducto), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ProductoDAO {
 		}
 	}
 	
-	public static Producto getProductoByORMID(PersistentSession session, int id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Producto getProductoByORMID(PersistentSession session, int idProducto, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Producto) session.get(basededatosorm.Producto.class, new Integer(id), lockMode);
+			return (Producto) session.get(basededatosorm.Producto.class, new Integer(idProducto), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -322,11 +322,11 @@ public class ProductoDAO {
 	}
 	
 	public static boolean deleteAndDissociate(basededatosorm.Producto producto)throws PersistentException {
-		if (producto instanceof basededatosorm.Oferta) {
-			return basededatosorm.OfertaDAO.deleteAndDissociate((basededatosorm.Oferta) producto);
-		}
-		
 		try {
+			if (producto.getOferta() != null) {
+				producto.getOferta().productos.remove(producto);
+			}
+			
 			basededatosorm.Categoria[] lCategoriass = producto.categorias.toArray();
 			for(int i = 0; i < lCategoriass.length; i++) {
 				lCategoriass[i].productos.remove(producto);
@@ -352,11 +352,11 @@ public class ProductoDAO {
 	}
 	
 	public static boolean deleteAndDissociate(basededatosorm.Producto producto, org.orm.PersistentSession session)throws PersistentException {
-		if (producto instanceof basededatosorm.Oferta) {
-			return basededatosorm.OfertaDAO.deleteAndDissociate((basededatosorm.Oferta) producto, session);
-		}
-		
 		try {
+			if (producto.getOferta() != null) {
+				producto.getOferta().productos.remove(producto);
+			}
+			
 			basededatosorm.Categoria[] lCategoriass = producto.categorias.toArray();
 			for(int i = 0; i < lCategoriass.length; i++) {
 				lCategoriass[i].productos.remove(producto);

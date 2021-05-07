@@ -9,15 +9,15 @@ public class DeleteProyectoWebData {
 	public void deleteTestData() throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession().beginTransaction();
 		try {
-			basededatosorm.Producto basededatosORMProducto = basededatosorm.ProductoDAO.loadProductoByQuery(null, null);
-			// Delete the persistent object
-			basededatosorm.ProductoDAO.delete(basededatosORMProducto);
 			basededatosorm.Oferta basededatosORMOferta = basededatosorm.OfertaDAO.loadOfertaByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.OfertaDAO.delete(basededatosORMOferta);
 			basededatosorm.Categoria basededatosORMCategoria = basededatosorm.CategoriaDAO.loadCategoriaByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.CategoriaDAO.delete(basededatosORMCategoria);
+			basededatosorm.Producto basededatosORMProducto = basededatosorm.ProductoDAO.loadProductoByQuery(null, null);
+			// Delete the persistent object
+			basededatosorm.ProductoDAO.delete(basededatosORMProducto);
 			basededatosorm.Pedido basededatosORMPedido = basededatosorm.PedidoDAO.loadPedidoByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.PedidoDAO.delete(basededatosORMPedido);

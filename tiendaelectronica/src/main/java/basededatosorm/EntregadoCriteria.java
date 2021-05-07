@@ -19,7 +19,7 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class EntregadoCriteria extends AbstractORMCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression idPedido;
 	public final IntegerExpression usuarioRegistradoId;
 	public final AssociationExpression usuarioRegistrado;
 	public final IntegerExpression totalProductos;
@@ -32,7 +32,7 @@ public class EntregadoCriteria extends AbstractORMCriteria {
 	
 	public EntregadoCriteria(Criteria criteria) {
 		super(criteria);
-		id = new IntegerExpression("id", this);
+		idPedido = new IntegerExpression("idPedido", this);
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this);
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
 		totalProductos = new IntegerExpression("totalProductos", this);

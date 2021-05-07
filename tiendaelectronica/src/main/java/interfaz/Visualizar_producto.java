@@ -1,5 +1,6 @@
 package interfaz;
 
+import basededatosorm.Producto;
 import vistas.VistaVisualizarproducto;
 
 //import Diagrama_de_clases_correcto.Valoraciones_del_producto;
@@ -22,6 +23,10 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 //	public Ver_descripción _ver_descripción;
 //	public Valoraciones_del_producto _valoraciones_del_producto;
 
+	public Visualizar_producto(Producto p) {
+		
+	}
+	
 	public void añadirAlCarrito() {
 		throw new UnsupportedOperationException();
 	}

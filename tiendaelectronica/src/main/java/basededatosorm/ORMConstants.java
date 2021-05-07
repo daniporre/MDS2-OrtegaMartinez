@@ -26,6 +26,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_ITEM_PRODUCTO = 183270636;
 	
+	final int KEY_OFERTA_PRODUCTOS = 201277093;
+	
 	final int KEY_PEDIDO_CANTIDADPRODUCTOS = -616933449;
 	
 	final int KEY_PEDIDO_USUARIOREGISTRADO = 612283108;
@@ -35,6 +37,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_PRODUCTO_FOTOS = -254407568;
 	
 	final int KEY_PRODUCTO_ITEM = -1670680974;
+	
+	final int KEY_PRODUCTO_OFERTA = 952206800;
 	
 	final int KEY_PRODUCTO_VALORACIONS = 775869970;
 	

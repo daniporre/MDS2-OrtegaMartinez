@@ -19,7 +19,9 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression id;
+	public final IntegerExpression idProducto;
+	public final IntegerExpression ofertaId;
+	public final AssociationExpression oferta;
 	public final StringExpression nombre;
 	public final StringExpression descripcion;
 	public final DoubleExpression precio;
@@ -32,7 +34,9 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public ProductoDetachedCriteria() {
 		super(basededatosorm.Producto.class, basededatosorm.ProductoCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		idProducto = new IntegerExpression("idProducto", this.getDetachedCriteria());
+		ofertaId = new IntegerExpression("oferta.idOferta", this.getDetachedCriteria());
+		oferta = new AssociationExpression("oferta", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 		precio = new DoubleExpression("precio", this.getDetachedCriteria());
@@ -40,13 +44,15 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 		fotos = new CollectionExpression("ORM_fotos", this.getDetachedCriteria());
-		itemId = new IntegerExpression("item.id", this.getDetachedCriteria());
+		itemId = new IntegerExpression("item.idProducto", this.getDetachedCriteria());
 		item = new AssociationExpression("item", this.getDetachedCriteria());
 	}
 	
 	public ProductoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, basededatosorm.ProductoCriteria.class);
-		id = new IntegerExpression("id", this.getDetachedCriteria());
+		idProducto = new IntegerExpression("idProducto", this.getDetachedCriteria());
+		ofertaId = new IntegerExpression("oferta.idOferta", this.getDetachedCriteria());
+		oferta = new AssociationExpression("oferta", this.getDetachedCriteria());
 		nombre = new StringExpression("nombre", this.getDetachedCriteria());
 		descripcion = new StringExpression("descripcion", this.getDetachedCriteria());
 		precio = new DoubleExpression("precio", this.getDetachedCriteria());
@@ -54,8 +60,12 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 		fotos = new CollectionExpression("ORM_fotos", this.getDetachedCriteria());
-		itemId = new IntegerExpression("item.id", this.getDetachedCriteria());
+		itemId = new IntegerExpression("item.idProducto", this.getDetachedCriteria());
 		item = new AssociationExpression("item", this.getDetachedCriteria());
+	}
+	
+	public OfertaDetachedCriteria createOfertaCriteria() {
+		return new OfertaDetachedCriteria(createCriteria("oferta"));
 	}
 	
 	public basededatosorm.CategoriaDetachedCriteria createCategoriasCriteria() {
