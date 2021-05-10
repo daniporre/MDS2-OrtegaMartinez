@@ -1,5 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 
 class VistaVeroferta extends PolymerElement {
 
@@ -11,10 +11,10 @@ class VistaVeroferta extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%; align-items: center; justify-content: center;">
- <img style="width: 100%; height: 100%; align-self: center;">
- <label>Label</label>
-</vaadin-vertical-layout>
+<vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout" style="width: 100%; height: 100%; flex-direction: column;">
+ <img style="width: 100%; height: 100%; align-self: center;" id="imagenProductoOferta">
+ <label id="precioOferta">Label</label>
+</vaadin-horizontal-layout>
 `;
     }
 

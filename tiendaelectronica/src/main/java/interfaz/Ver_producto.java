@@ -34,7 +34,7 @@ public class Ver_producto extends VistaVerproducto {
 			@Override
 			public void onComponentEvent(ClickEvent<HorizontalLayout> event) {
 				// TODO Auto-generated method stub
-				layoutPrincipal.removeAll();
+				System.out.println("Producto pulsado: " + p.getNombre());
 			}
 		});
 		
