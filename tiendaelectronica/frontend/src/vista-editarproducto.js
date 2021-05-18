@@ -1,5 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 
 class VistaEditarproducto extends PolymerElement {
 
@@ -21,7 +23,7 @@ class VistaEditarproducto extends PolymerElement {
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; flex-direction: column;" id="vaadinHorizontalLayout1">
   <vaadin-vertical-layout theme="spacing" style="flex-grow: 0; margin: var(--lumo-space-l); flex-shrink: 1; flex-direction: row;" id="vaadinVerticalLayout1">
-   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; margin: var(--lumo-space-m); flex-shrink: 1; align-self: stretch;" id="vaadinVerticalLayout2">
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; margin: var(--lumo-space-m); flex-shrink: 1; align-self: stretch; width: 35%;" id="vaadinVerticalLayout2">
     <img id="foto1Image" style="width: 100%; height: 100%; flex-shrink: 1;">
     <vaadin-horizontal-layout theme="spacing" style="width: 100%; flex-grow: 0;" id="vaadinHorizontalLayout2">
      <vaadin-button id="foto2Image">
@@ -36,13 +38,21 @@ class VistaEditarproducto extends PolymerElement {
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
    <vaadin-tab id="vaadinTab"></vaadin-tab>
-   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-items: stretch;" id="vaadinVerticalLayout3">
+   <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-items: stretch; width: 50%;" id="vaadinVerticalLayout3">
     <vaadin-text-field label="Nombre del producto" id="nombreProductoTF"></vaadin-text-field>
     <vaadin-text-field label="Precio del producto" id="precioProductoTF"></vaadin-text-field>
     <vaadin-text-field label="Marca del producto" id="marcaProductoTF"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: space-between;" id="vaadinHorizontalLayout3">
-     <h2 style="flex-shrink: 0; flex-grow: 1;" id="h2">Oferta</h2>
+     <h2 style="flex-shrink: 0; flex-grow: 1; width: 45%;" id="h2">Oferta</h2>
      <vaadin-combo-box id="ofertasProductoTF" style="flex-grow: 1; align-self: center;"></vaadin-combo-box>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout theme="spacing">
+     <h2 style="flex-grow: 1; width: 45%;">Asignar categoría</h2>
+     <vaadin-combo-box id="categoriaProductoComboBox" style="align-self: center; flex-grow: 1;"></vaadin-combo-box>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout theme="spacing">
+     <h3 style="align-self: center;">Categorías a las que pertenece:</h3>
+     <vaadin-horizontal-layout theme="spacing" id="categoriasLayout" style="align-self: center; flex-grow: 1;"></vaadin-horizontal-layout>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
   </vaadin-vertical-layout>

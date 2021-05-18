@@ -33,7 +33,6 @@ public class BDProductos {
 			basededatosorm.ProductoDAO.save(p);
 			t.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			System.out.println("Error en BDProducto crearProducto");
 			t.rollback();
@@ -42,7 +41,7 @@ public class BDProductos {
 		
 	}
 
-	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) throws PersistentException{
+	public void editarProducto(Producto producto,String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) throws PersistentException{
 		//NO PROBADO
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
@@ -50,8 +49,7 @@ public class BDProductos {
 		try {
 
 			
-			Producto p = new Producto();
-			p = this.obtenerProducto(aNombre);
+			Producto p = basededatosorm.ProductoDAO.getProductoByORMID(producto.getIdProducto());
 			
 			p.setNombre(aNombre);
 			p.setPrecio(aPrecio);
@@ -59,11 +57,9 @@ public class BDProductos {
 			p.setOferta(aOferta);
 			p.setDescripcion(aDescripcion);
 			
-			basededatosorm.ProductoDAO.refresh(p);
 			
 			t.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 		}
@@ -95,7 +91,6 @@ public class BDProductos {
 			System.out.println("este es el producto nombre: "+ad.getNombre());
 			return ad;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 			return null;
@@ -112,7 +107,6 @@ public class BDProductos {
 			t.commit();
 			return o;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 			return null;
@@ -138,10 +132,26 @@ public class BDProductos {
 			t.commit();
 			return productos;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 			return null;
+		}
+	}
+	
+	public void asignarCategoriaAProducto(Producto producto, Categoria categoria) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		
+		try {
+			Producto o = basededatosorm.ProductoDAO.getProductoByORMID(producto.getIdProducto());
+			
+			o.categorias.add(categoria);
+			
+			t.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
 		}
 	}
 }

@@ -1,14 +1,33 @@
 package interfaz;
 
-import basededatosorm.Producto;
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
-public class Ver_categoría extends Visualizar_producto {
+import basededatosorm.Categoria;
+import basededatosorm.Producto;
+import basededatosorm.Usuario;
+import vistas.VistaVercategoria;
+
+public class Ver_categoría extends VistaVercategoria {
 //	private Button _categoria;
 //	public Categorías _categorías;
 
-	public Ver_categoría(Producto p) {
-		super(p);
-		// TODO Auto-generated constructor stub
+	public HorizontalLayout layoutPrincipal = this.getVaadinHorizontalLayout();
+
+	public Ver_categoría(Categoria c) {
+		super();
+		this.getCategoriaButton().setText(c.getNombre());
+
+		this.getVaadinHorizontalLayout().addClickListener(new ComponentEventListener<ClickEvent<HorizontalLayout>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<HorizontalLayout> event) {
+				// TODO Auto-generated method stub
+				System.out.println("Categoría pulsada: " + c.getNombre());
+				
+			}
+		});
 	}
 
 	public void mostrarCategoria() {

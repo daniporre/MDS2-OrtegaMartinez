@@ -55,6 +55,8 @@ public class VistaVisualizarproducto extends PolymerTemplate<VistaVisualizarprod
 	private TextArea descripcionProductoTArea;
 	@Id("valoracionesProductoVLayout")
 	private Element valoracionesProductoVLayout;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
 	/**
      * Creates a new VistaVisualizarproducto.
      */
@@ -195,5 +197,13 @@ public class VistaVisualizarproducto extends PolymerTemplate<VistaVisualizarprod
 
 	public void setValoracionesProductoVLayout(Element valoracionesProductoVLayout) {
 		this.valoracionesProductoVLayout = valoracionesProductoVLayout;
+	}
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
 	}
 }

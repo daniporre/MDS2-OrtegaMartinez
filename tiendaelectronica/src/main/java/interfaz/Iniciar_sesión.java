@@ -20,10 +20,12 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.login.AbstractLogin;
 import com.vaadin.flow.component.login.AbstractLogin.ForgotPasswordEvent;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import basededatos.BDPrincipal;
 import basededatosorm.Usuario;
+import basededatosorm.UsuarioRegistrado;
 import vistas.VistaIniciarsesion;
 
 public class Iniciar_sesión extends VistaIniciarsesion {
@@ -69,9 +71,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 					layoutPrincipal.add(ad);
 				}
 
-			}
-
-			if (e.getUsername().contains("transporte")) {
+			} else if (e.getUsername().contains("transporte")) {
 
 				us = bdp.iniciarSesion(e.getUsername(), e.getPassword());
 				usuario = us;
@@ -84,8 +84,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 					layoutPrincipal.add(et);
 				}
 
-			}
-			if (e.getUsername().contains("encargado")) {
+			} else if (e.getUsername().contains("encargado")) {
 
 				us = bdp.iniciarSesion(e.getUsername(), e.getPassword());
 				usuario = us;
@@ -98,21 +97,23 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 					layoutPrincipal.add(et);
 				}
 
-			}
-
-			if (!e.getUsername().contains("encargado") && !e.getUsername().contains("transporte")
+			} else if (!e.getUsername().contains("encargado") && !e.getUsername().contains("transporte")
 					&& !e.getUsername().contains("administrador")) {
 
-				us = bdp.iniciarSesion(e.getUsername(), e.getPassword());
-				usuario = us;
-				System.out.println(us.getMail());
+				UsuarioRegistrado usre = bdp.iniciarSesionUR(e.getUsername(), e.getPassword());
+				usuario = usre;
+				System.out.println(usre.getMail()+" ha iniciado sesion");
 
-				if (us.getMail() != null) {
-					Usuario_registrado et = new Usuario_registrado();
+				if (usre.getMail() != null && usre.getEstaOperativo()==true) {
+					Usuario_registrado et = new Usuario_registrado(usre);
 
 					layoutPrincipal.removeAll();
 					layoutPrincipal.add(et);
+				} else {
+					Notification.show("El usuario no existe o se ha dado de baja");
 				}
+			} else {
+				Notification.show("El usuario no existe o se ha dado de baja");
 			}
 
 		});
@@ -167,7 +168,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 					}
 
 				} else {
-					Notification.show("Introduce un mail y una contraseña para crear una cuenta.");
+					Notification.show("Introduce un mail y una contraseña para crear una cuenta.").setPosition(Position.MIDDLE);;
 				}
 			}
 		});

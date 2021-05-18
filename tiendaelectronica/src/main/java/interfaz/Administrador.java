@@ -22,11 +22,12 @@ public class Administrador extends VistaAdministrador {
 	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
 	public VerticalLayout catalogoVLayout = this.getPrincipalVLayout().as(VerticalLayout.class);
 	public Ver_producto vp;
-	public Ver_catálogo vc = new Ver_catálogo();
+	public Ver_catálogo vc;
 	public BDPrincipal bdp;
 	private String[] nombreOfertas;
 
 	public Administrador(Usuario administrador) {
+		vc = new Ver_catálogo(administrador, layoutPrincipal);
 		bdp = new BDPrincipal();
 		recargarOfertas();
 

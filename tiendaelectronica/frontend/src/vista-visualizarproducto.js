@@ -18,7 +18,7 @@ class VistaVisualizarproducto extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
     Inicio 
@@ -65,7 +65,7 @@ class VistaVisualizarproducto extends PolymerElement {
    </vaadin-button>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
    <vaadin-button theme="primary" id="aniadirAlCarritoButton" style="flex-grow: 0;">
-    Añadir al carrito
+     Añadir al carrito 
    </vaadin-button>
   </vaadin-horizontal-layout>
   <h3>Descripción del producto:</h3>

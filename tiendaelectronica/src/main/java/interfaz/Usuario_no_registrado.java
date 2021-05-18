@@ -1,9 +1,14 @@
 package interfaz;
 
+import java.util.Arrays;
+
 import org.orm.PersistentException;
 
 import basededatos.BDPrincipal;
 import basededatos.iUsuario_no_registrado;
+import basededatosorm.Producto;
+import basededatosorm.Usuario;
+
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.login.LoginForm;
@@ -16,9 +21,10 @@ import vistas.VistaVercatalogo;
 
 public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 	
-	public Ver_catálogo vc = new Ver_catálogo();
+	 
 	public VerticalLayout layoutCatalogo;
-	public VerticalLayout layoutPrincipal;
+	public VerticalLayout layoutPrincipal = this.getPrimerVerticalLayout().as(VerticalLayout.class);
+	public Ver_catálogo vc = new Ver_catálogo(layoutPrincipal);
 	public Iniciar_sesión lg;
 	public Ver_carrito carrito;
 	public BDPrincipal bdp = new BDPrincipal();
@@ -27,7 +33,7 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 	public Usuario_no_registrado() {
 		
 		super();
-		layoutPrincipal = this.getPrimerVerticalLayout().as(VerticalLayout.class);
+		
 		layoutCatalogo = this.getCatalogoVLayout().as(VerticalLayout.class);
 		layoutCatalogo.add(vc);
 		
@@ -39,6 +45,24 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		this.getSearchIconUNR().addClickListener(new ComponentEventListener() {
+
+			@Override
+			public void onComponentEvent(ComponentEvent event) {
+				
+				Producto[] productos = new Producto[bdp.buscarProducto(getSearchBarUNR().getValue()).length];
+				
+				productos = bdp.buscarProducto(getSearchBarUNR().getValue());
+				
+				System.out.println("productos buscados: "+Arrays.toString(productos));
+				Productos_buscados pb = new Productos_buscados(productos, layoutCatalogo);
+				
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(pb);
+				
+			}
+		});
 		
 		this.getIniciarSesionUNR().addClickListener(new ComponentEventListener() {
 

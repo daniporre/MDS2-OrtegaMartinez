@@ -21,13 +21,13 @@ public interface iUsuario_registrado extends iUsuario_no_registrado {
 
 	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario);
 
-	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia);
+	public void guardarDireccionEntrega(UsuarioRegistrado aUsuarioRegistrado, String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia);
 
-	public void guardarFormaPago(String aNumeroTarjeta, String aFechaVencimiento, int aCvv);
+	public void guardarFormaPago(UsuarioRegistrado usuario, String titular, String aNumeroTarjeta, String aFechaVencimiento, int aCvv);
 
-	public void guardarDatosPersonales(String aNombre, String aEmail);
+	public void guardarDatosPersonales(UsuarioRegistrado usuario, String aApellidos, String aNombreUsuario, String aNombre, String aEmail);
 
-	public void cambiarContrasenia(String aNuevaContrasenia);
+	public void cambiarContrasenia(UsuarioRegistrado usuario, String aNuevaContrasenia);
 	
 	public Usuario recuperarContrasenia(String aMail);
 

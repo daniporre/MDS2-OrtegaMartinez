@@ -39,6 +39,8 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
 	private TextField provinciaTF;
 	@Id("calleTF")
 	private TextField calleTF;
+	
+
 	@Id("editarDireccionButton")
 	private Button editarDireccionButton;
 	@Id("guardarDireccionButton")
@@ -59,6 +61,22 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
 	private Button editarDatosPersonalesButton;
 	@Id("guardarDatosPersonalesButton")
 	private Button guardarDatosPersonalesButton;
+	@Id("numeroTarjetaTF")
+	private TextField numeroTarjetaTF;
+	@Id("titularTarjeta")
+	private TextField titularTarjeta;
+	@Id("apellidosTF")
+	private TextField apellidosTF;
+	@Id("nombreDeUsuario")
+	private TextField nombreDeUsuario;
+	@Id("darmeDeBajaButton")
+	private Button darmeDeBajaButton;
+	@Id("cambiarContraseñaButton")
+	private Button cambiarContraseñaButton;
+	@Id("nuevaContraseñaTF")
+	private TextField nuevaContraseñaTF;
+	@Id("correoButton")
+	private Button correoButton;
 	/**
      * Creates a new VistaVercuentausuarioregistrado.
      */
@@ -215,6 +233,69 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
 
 	public void setGuardarDatosPersonalesButton(Button guardarDatosPersonalesButton) {
 		this.guardarDatosPersonalesButton = guardarDatosPersonalesButton;
+	}
+
+	public TextField getNumeroTarjetaTF() {
+		return numeroTarjetaTF;
+	}
+
+	public void setNumeroTarjetaTF(TextField numeroTarjetaTF) {
+		this.numeroTarjetaTF = numeroTarjetaTF;
+	}
+	public TextField getTitularTarjeta() {
+		return titularTarjeta;
+	}
+
+	public void setTitularTarjeta(TextField titularTarjeta) {
+		this.titularTarjeta = titularTarjeta;
+	}
+
+	public TextField getApellidosTF() {
+		return apellidosTF;
+	}
+
+	public void setApellidosTF(TextField apellidosTF) {
+		this.apellidosTF = apellidosTF;
+	}
+
+	public TextField getNombreDeUsuario() {
+		return nombreDeUsuario;
+	}
+
+	public void setNombreDeUsuario(TextField nombreDeUsuario) {
+		this.nombreDeUsuario = nombreDeUsuario;
+	}
+
+	public Button getDarmeDeBajaButton() {
+		return darmeDeBajaButton;
+	}
+
+	public void setDarmeDeBajaButton(Button darmeDeBajaButton) {
+		this.darmeDeBajaButton = darmeDeBajaButton;
+	}
+
+	public Button getCambiarContraseñaButton() {
+		return cambiarContraseñaButton;
+	}
+
+	public void setCambiarContraseñaButton(Button cambiarContraseñaButton) {
+		this.cambiarContraseñaButton = cambiarContraseñaButton;
+	}
+
+	public TextField getNuevaContraseñaTF() {
+		return nuevaContraseñaTF;
+	}
+
+	public void setNuevaContraseñaTF(TextField nuevaContraseñaTF) {
+		this.nuevaContraseñaTF = nuevaContraseñaTF;
+	}
+
+	public Button getCorreoButton() {
+		return correoButton;
+	}
+
+	public void setCorreoButton(Button correoButton) {
+		this.correoButton = correoButton;
 	}
 
 }

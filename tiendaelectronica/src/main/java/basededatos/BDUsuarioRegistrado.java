@@ -39,7 +39,7 @@ public class BDUsuarioRegistrado {
 		
 	}
 
-	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
+	public UsuarioRegistrado iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
 		try {
@@ -68,7 +68,7 @@ public class BDUsuarioRegistrado {
 			}
 
 			t.commit();
-			return new Usuario();
+			return new UsuarioRegistrado();
 		} catch (Exception e) {
 			e.printStackTrace();
 			t.rollback();
@@ -107,32 +107,139 @@ public class BDUsuarioRegistrado {
 		}
 	}
 
-	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+	public void guardarDireccionEntrega(UsuarioRegistrado usuario, String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado ur : ads) {
+				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
+					idUsuario = ur.getIdUsuario();
+					break;
+				}
+
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			ad.setDireccionUsuario(aDireccionUsuario);
+			ad.setCiudad(aCiudad);
+			ad.setProvincia(aProvincia);
+			ad.setCodigoPostal(aCodigoPostal);
+			
+			t.commit();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
+
 	}
 
-	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+	public void guardarFormaPago(UsuarioRegistrado usuario, String titular, String aNumeroTarjeta, String aFechaVencimiento, int aCvv) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado ur : ads) {
+				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
+					idUsuario = ur.getIdUsuario();
+					break;
+				}
+
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			ad.setNumeroTarjeta(Integer.parseInt(aNumeroTarjeta));
+			ad.setTitularTarjeta(titular);
+			ad.setFechaVencimientoTarjeta(aFechaVencimiento);
+			ad.setCvv(aCvv);
+			
+			
+			t.commit();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad, String aProvincia) {
-		throw new UnsupportedOperationException();
+	public void guardarDatosPersonales(UsuarioRegistrado usuario, String aNombre, String aApellidos, String aNombreUsuario, String aEmail) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado ur : ads) {
+				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
+					idUsuario = ur.getIdUsuario();
+					break;
+				}
+
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			ad.setNombre(aNombre);
+			ad.setMail(aEmail);
+			ad.setNombreUsuario(aNombreUsuario);
+			ad.setApellidos(aApellidos);
+			
+			t.commit();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void guardarFormaPago(String aNumeroTarjeta, String aFechaVencimiento, int aCvv) {
-		throw new UnsupportedOperationException();
+	public void cambiarContrasenia(UsuarioRegistrado usuario, String aNuevaContrasenia) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+
+			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			int idUsuario = 0;
+
+			for (UsuarioRegistrado ur : ads) {
+				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
+					idUsuario = ur.getIdUsuario();
+					break;
+				}
+
+			}
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+			ad.setContraseña(aNuevaContrasenia);
+			
+			t.commit();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
-	public void guardarDatosPersonales(String aNombre, String aEmail) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void cambiarContrasenia(String aNuevaContrasenia) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void darBajaUsuario(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+	public void darBajaUsuario(int aIdUsuario) throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+		try {
+			
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(aIdUsuario);
+			ad.setEstaOperativo(false);
+			
+			t.commit();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			t.rollback();
+		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 	public void cancelarPedido(int aIdPedido) {
 		
@@ -140,6 +247,14 @@ public class BDUsuarioRegistrado {
 
 	public void valorarProducto(int aIdProducto, String aValoracion) {
 		
+	}
+	
+	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {
+		throw new UnsupportedOperationException();
+	}
+
+	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) {
+		throw new UnsupportedOperationException();
 	}
 	public Producto[] buscarProducto(String aNombre) {
 		return null;

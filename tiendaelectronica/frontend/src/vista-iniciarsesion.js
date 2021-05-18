@@ -20,10 +20,11 @@ class VistaIniciarsesion extends PolymerElement {
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;" id="vaadinVerticalLayout">
  <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-items: center; flex-direction: row; justify-content: center;">
-  <vaadin-form-layout style="align-self: center; flex-shrink: 0; flex-grow: 0;">
-   <label style="width: 55%;">Crear cuenta</label>
+  <vaadin-form-layout style="align-self: center; flex-shrink: 0; flex-grow: 0; width: 25%;">
+   <h2>Crear cuenta</h2>
    <vaadin-text-field label="Email" id="mailNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
    <vaadin-text-field label="Contraseña" id="contraseñaNuevaCuentaTF" style="width: 55%;"></vaadin-text-field>
+   <ol></ol>
    <vaadin-button id="crearNuevaCuentaButton" style="width: 55%;">
      Crear cuenta 
    </vaadin-button>

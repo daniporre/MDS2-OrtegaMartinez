@@ -19,24 +19,21 @@ public class Usuario_registrado extends VistaUsuarioregistrado {
 	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
 	public VistaVercatalogo vc;
 	public VerticalLayout layoutCatalogo;
-	public static Usuario usuarioActivo;
 	
-	public Usuario_registrado() {
-		usuarioActivo = Iniciar_sesión.usuarioActivo();
-		vc = new Ver_catálogo();
+	public Usuario_registrado(UsuarioRegistrado usuario) {
+		vc = new Ver_catálogo(usuario, layoutPrincipal);
 		layoutCatalogo = this.getPrincipalVLayout().as(VerticalLayout.class);
 		layoutCatalogo.add(vc);
-		System.out.println(usuarioActivo.getMail()+" usuario");
-		miCuenta();
+		miCuenta(usuario);
 		
 	}
 	
-	public void miCuenta() {
+	public void miCuenta(UsuarioRegistrado usuario) {
 		this.getMiCuentaURButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 			
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				Ver_cuenta__Usuario_registrado_ v = new Ver_cuenta__Usuario_registrado_();
+				Ver_cuenta__Usuario_registrado_ v = new Ver_cuenta__Usuario_registrado_(usuario);
 				
 				layoutPrincipal.removeAll();
 				layoutPrincipal.add(v);
@@ -45,8 +42,6 @@ public class Usuario_registrado extends VistaUsuarioregistrado {
 		});
 	}
 	
-	public static Usuario getUsuarioActivo() {
-		return usuarioActivo;
-	}
+	
 	
 }

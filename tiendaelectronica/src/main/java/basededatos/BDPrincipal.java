@@ -12,6 +12,7 @@ import javax.persistence.PersistenceException;
 
 import org.orm.PersistentException;
 
+import basededatosorm.Categoria;
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
@@ -49,9 +50,17 @@ public class BDPrincipal
 		try {
 			_bDUsuarioRegistrado.crearCuenta(aCorreo, aContrasenia);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Error en crearCuenta BDprincipal");
 			e.printStackTrace();
+		}
+	}
+	
+	public UsuarioRegistrado iniciarSesionUR(String aCorreo, String aContrasenia) {
+		try {
+			return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 
@@ -60,28 +69,18 @@ public class BDPrincipal
 			try {
 				return _bDAdministradores.iniciarSesion(aCorreo, aContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (aCorreo.contains("encargado")) {
 			try {
 				return _bDEncargados.iniciarSesion(aCorreo, aContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (aCorreo.contains("transporte")) {
 			try {
 				return _bDTransportistas.iniciarSesion(aCorreo, aContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
-			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -124,25 +123,45 @@ public class BDPrincipal
 		throw new UnsupportedOperationException();
 	}
 
-	public void guardarDireccionEntrega(String aDireccionUsuario, String aCodigoPostal, String aCiudad,
+	public void guardarDireccionEntrega(UsuarioRegistrado aUsuario, String aDireccionUsuario, String aCodigoPostal, String aCiudad,
 			String aProvincia) {
-		_bDUsuarioRegistrado.guardarDireccionEntrega(aDireccionUsuario, aCodigoPostal, aCiudad, aProvincia);
+		try {
+			_bDUsuarioRegistrado.guardarDireccionEntrega(aUsuario, aDireccionUsuario, aCodigoPostal, aCiudad, aProvincia);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void guardarFormaPago(String aNumeroTarjeta, String aFechaVencimiento, int aCvv) {
-		_bDUsuarioRegistrado.guardarFormaPago(aNumeroTarjeta, aFechaVencimiento, aCvv);
+	public void guardarFormaPago(UsuarioRegistrado usuario, String titular, String aNumeroTarjeta, String aFechaVencimiento, int aCvv) {
+		try {
+			_bDUsuarioRegistrado.guardarFormaPago(usuario,titular,  aNumeroTarjeta, aFechaVencimiento, aCvv);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void guardarDatosPersonales(String aNombre, String aEmail) {
-		_bDUsuarioRegistrado.guardarDatosPersonales(aNombre, aEmail);
+	public void guardarDatosPersonales(UsuarioRegistrado usuario, String aNombre, String aApellidos, String aNombreUsuario, String aEmail) {
+		try {
+			_bDUsuarioRegistrado.guardarDatosPersonales(usuario, aNombre, aApellidos, aNombreUsuario, aEmail);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void cambiarContrasenia(String aNuevaContrasenia) {
-		_bDUsuarioRegistrado.cambiarContrasenia(aNuevaContrasenia);
+	public void cambiarContrasenia(UsuarioRegistrado usuario, String aNuevaContrasenia) {
+		try {
+			_bDUsuarioRegistrado.cambiarContrasenia(usuario, aNuevaContrasenia);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void darBajaUsuario(int aIdUsuario) {
-		_bDUsuarioRegistrado.darBajaUsuario(aIdUsuario);
+		try {
+			_bDUsuarioRegistrado.darBajaUsuario(aIdUsuario);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void cancelarPedido(int aIdPedido) {
@@ -163,7 +182,6 @@ public class BDPrincipal
 		try {
 			_bDProductos.aniadirProducto(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -174,8 +192,12 @@ public class BDPrincipal
 		return null;
 	}
 
-	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
-		_bDAdministradores.editarProducto(aNombre, aPrecio, aMarca, aOferta, aDescripcion);
+	public void editarProducto(Producto producto,String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+		try {
+			_bDProductos.editarProducto(producto,aNombre, aPrecio, aMarca, aOferta, aDescripcion);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void crearUsuario(String aMail, String aContraseña) {
@@ -190,7 +212,6 @@ public class BDPrincipal
 				_bDTransportistas.crearUsuario(aMail, aContraseña);
 			}
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -218,7 +239,6 @@ public class BDPrincipal
 			return usuarios;
 
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 			return null;
@@ -232,7 +252,6 @@ public class BDPrincipal
 			try {
 				_bDAdministradores.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -240,7 +259,6 @@ public class BDPrincipal
 			try {
 				_bDEncargados.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -248,7 +266,6 @@ public class BDPrincipal
 			try {
 				_bDTransportistas.cambiarContraseniaAdmin(aMail, aNuevaContrasenia);
 			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -264,7 +281,6 @@ public class BDPrincipal
 		try {
 			_bDOfertas.crearNuevaOferta(aNombreOferta, aDescuento);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -273,7 +289,6 @@ public class BDPrincipal
 		try {
 			return _bDOfertas.obtenerOfertas();
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -283,7 +298,6 @@ public class BDPrincipal
 		try {
 			return _bDOfertas.obtenerOferta(aNombreOferta);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Error en bdprincipal obtenerOferta");
 			return null;
@@ -294,8 +308,25 @@ public class BDPrincipal
 		try {
 			_bDCategorias.crearNuevaCategoria(aNombreCategoria);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public Categoria[] obtenerCategorias() {
+		try {
+			return _bDCategorias.obtenerCategorias();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Categoria obtenerCategoria(String aNombreCategoria) {
+		try {
+			return _bDCategorias.obtenerCategoria(aNombreCategoria);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 
@@ -316,7 +347,6 @@ public class BDPrincipal
 		try {
 			return _bDProductos.obtenerProducto(aNombreProducto);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -402,9 +432,17 @@ public class BDPrincipal
 		try {
 			_bDUsuarioRegistrado.recuperarContrasenia(aMail);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public void asignarCategoriaAProducto(Producto producto, Categoria categoria) {
+		try {
+			_bDProductos.asignarCategoriaAProducto(producto, categoria);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 }

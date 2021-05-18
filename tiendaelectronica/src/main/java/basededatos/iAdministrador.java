@@ -5,6 +5,7 @@ import interfaz.Pedido;
 
 import java.util.List;
 
+import basededatosorm.Categoria;
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Producto;
@@ -18,7 +19,7 @@ public interface iAdministrador extends iComún_Usuarios {
 
 	public Pedido[] actualizarListadoDeCompras();
 
-	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion);
+	public void editarProducto(Producto producto, String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion);
 
 	public void crearUsuario(String aMail, String aContraseña);
 
@@ -47,4 +48,6 @@ public interface iAdministrador extends iComún_Usuarios {
 	public Usuario[] cargarUsuarios();
 	
 	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia);
+	
+	public void asignarCategoriaAProducto(Producto producto, Categoria categoria);
 }

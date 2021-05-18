@@ -52,21 +52,21 @@ public class Ver_carrito extends VistaVercarrito {
 		
 		});
 		
-		Ver_cuenta__Usuario_registrado_ verCuentaUR = new Ver_cuenta__Usuario_registrado_();
+//		Ver_cuenta__Usuario_registrado_ verCuentaUR = new Ver_cuenta__Usuario_registrado_(usuario);
 		
-		this.getMiCuentaButton().addClickListener(new ComponentEventListener() {
-
-			@Override
-			public void onComponentEvent(ComponentEvent event) {
-
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(verCuentaUR);
-				
-			}
-		
-		
-		
-		});
+//		this.getMiCuentaButton().addClickListener(new ComponentEventListener() {
+//
+//			@Override
+//			public void onComponentEvent(ComponentEvent event) {
+//
+//				layoutPrincipal.removeAll();
+//				layoutPrincipal.add(verCuentaUR);
+//				
+//			}
+//		
+//		
+//		
+//		});
 		
 	}
 }

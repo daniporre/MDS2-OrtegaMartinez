@@ -67,6 +67,10 @@ public class VistaEditarproducto extends PolymerTemplate<VistaEditarproducto.Vis
 	private TextArea descripcionProductoTF;
 	@Id("guardarCambiosButton")
 	private Button guardarCambiosButton;
+	@Id("categoriaProductoComboBox")
+	private ComboBox<String> categoriaProductoComboBox;
+	@Id("categoriasLayout")
+	private HorizontalLayout categoriasLayout;
 
 	/**
      * Creates a new VistaEditarproducto.
@@ -81,4 +85,188 @@ public class VistaEditarproducto extends PolymerTemplate<VistaEditarproducto.Vis
     public interface VistaEditarproductoModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public HorizontalLayout getVaadinHorizontalLayout() {
+		return vaadinHorizontalLayout;
+	}
+
+	public void setVaadinHorizontalLayout(HorizontalLayout vaadinHorizontalLayout) {
+		this.vaadinHorizontalLayout = vaadinHorizontalLayout;
+	}
+
+	public Button getInicioButton() {
+		return inicioButton;
+	}
+
+	public void setInicioButton(Button inicioButton) {
+		this.inicioButton = inicioButton;
+	}
+
+	public HorizontalLayout getVaadinHorizontalLayout1() {
+		return vaadinHorizontalLayout1;
+	}
+
+	public void setVaadinHorizontalLayout1(HorizontalLayout vaadinHorizontalLayout1) {
+		this.vaadinHorizontalLayout1 = vaadinHorizontalLayout1;
+	}
+
+	public Element getVaadinVerticalLayout1() {
+		return vaadinVerticalLayout1;
+	}
+
+	public void setVaadinVerticalLayout1(Element vaadinVerticalLayout1) {
+		this.vaadinVerticalLayout1 = vaadinVerticalLayout1;
+	}
+
+	public Element getVaadinVerticalLayout2() {
+		return vaadinVerticalLayout2;
+	}
+
+	public void setVaadinVerticalLayout2(Element vaadinVerticalLayout2) {
+		this.vaadinVerticalLayout2 = vaadinVerticalLayout2;
+	}
+
+	public Image getFoto1Image() {
+		return foto1Image;
+	}
+
+	public void setFoto1Image(Image foto1Image) {
+		this.foto1Image = foto1Image;
+	}
+
+	public HorizontalLayout getVaadinHorizontalLayout2() {
+		return vaadinHorizontalLayout2;
+	}
+
+	public void setVaadinHorizontalLayout2(HorizontalLayout vaadinHorizontalLayout2) {
+		this.vaadinHorizontalLayout2 = vaadinHorizontalLayout2;
+	}
+
+	public Button getFoto2Image() {
+		return foto2Image;
+	}
+
+	public void setFoto2Image(Button foto2Image) {
+		this.foto2Image = foto2Image;
+	}
+
+	public Button getFoto3Image() {
+		return foto3Image;
+	}
+
+	public void setFoto3Image(Button foto3Image) {
+		this.foto3Image = foto3Image;
+	}
+
+	public Tab getVaadinTab() {
+		return vaadinTab;
+	}
+
+	public void setVaadinTab(Tab vaadinTab) {
+		this.vaadinTab = vaadinTab;
+	}
+
+	public Element getVaadinVerticalLayout3() {
+		return vaadinVerticalLayout3;
+	}
+
+	public void setVaadinVerticalLayout3(Element vaadinVerticalLayout3) {
+		this.vaadinVerticalLayout3 = vaadinVerticalLayout3;
+	}
+
+	public TextField getNombreProductoTF() {
+		return nombreProductoTF;
+	}
+
+	public void setNombreProductoTF(TextField nombreProductoTF) {
+		this.nombreProductoTF = nombreProductoTF;
+	}
+
+	public TextField getPrecioProductoTF() {
+		return precioProductoTF;
+	}
+
+	public void setPrecioProductoTF(TextField precioProductoTF) {
+		this.precioProductoTF = precioProductoTF;
+	}
+
+	public TextField getMarcaProductoTF() {
+		return marcaProductoTF;
+	}
+
+	public void setMarcaProductoTF(TextField marcaProductoTF) {
+		this.marcaProductoTF = marcaProductoTF;
+	}
+
+	public HorizontalLayout getVaadinHorizontalLayout3() {
+		return vaadinHorizontalLayout3;
+	}
+
+	public void setVaadinHorizontalLayout3(HorizontalLayout vaadinHorizontalLayout3) {
+		this.vaadinHorizontalLayout3 = vaadinHorizontalLayout3;
+	}
+
+	public H2 getH2() {
+		return h2;
+	}
+
+	public void setH2(H2 h2) {
+		this.h2 = h2;
+	}
+
+	public ComboBox<String> getOfertasProductoTF() {
+		return ofertasProductoTF;
+	}
+
+	public void setOfertasProductoTF(ComboBox<String> ofertasProductoTF) {
+		this.ofertasProductoTF = ofertasProductoTF;
+	}
+
+	public Element getVaadinVerticalLayout4() {
+		return vaadinVerticalLayout4;
+	}
+
+	public void setVaadinVerticalLayout4(Element vaadinVerticalLayout4) {
+		this.vaadinVerticalLayout4 = vaadinVerticalLayout4;
+	}
+
+	public TextArea getDescripcionProductoTF() {
+		return descripcionProductoTF;
+	}
+
+	public void setDescripcionProductoTF(TextArea descripcionProductoTF) {
+		this.descripcionProductoTF = descripcionProductoTF;
+	}
+
+	public Button getGuardarCambiosButton() {
+		return guardarCambiosButton;
+	}
+
+	public void setGuardarCambiosButton(Button guardarCambiosButton) {
+		this.guardarCambiosButton = guardarCambiosButton;
+	}
+
+	public ComboBox<String> getCategoriaProductoComboBox() {
+		return categoriaProductoComboBox;
+	}
+
+	public void setCategoriaProductoComboBox(ComboBox<String> categoriaProductoComboBox) {
+		this.categoriaProductoComboBox = categoriaProductoComboBox;
+	}
+
+	public HorizontalLayout getCategoriasLayout() {
+		return categoriasLayout;
+	}
+
+	public void setCategoriasLayout(HorizontalLayout categoriasLayout) {
+		this.categoriasLayout = categoriasLayout;
+	}
 }
