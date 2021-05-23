@@ -48,7 +48,8 @@ public class Ver_catálogo extends VistaVercatalogo {
 	public Ver_categoría verCategoria;
 
 	public Ver_catálogo(Usuario usuario, VerticalLayout layout) {
-
+		
+		this.getFiltrarPorCombobox().setVisible(false);
 		this.getOrdenarPorCombobox().setItems(comboOrdenar);
 
 		obtenerProductosdeBD();
@@ -64,6 +65,7 @@ public class Ver_catálogo extends VistaVercatalogo {
 
 	public Ver_catálogo(VerticalLayout layout) {
 		this.getOrdenarPorCombobox().setItems(comboOrdenar);
+		this.getFiltrarPorCombobox().setVisible(false);
 		
 		obtenerProductosdeBD();
 		ordenarComboBox(null, layout);

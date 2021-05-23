@@ -7,11 +7,11 @@ import basededatosorm.UsuarioRegistrado;
 
 public interface iUsuario_registrado extends iUsuario_no_registrado {
 
-	public Correo[] obtenerMensajesRecibidos();
+	public Correo[] obtenerMensajesRecibidos(UsuarioRegistrado usuario);
 
-	public Correo[] obtenerMensajesEnviados();
+	public Correo[] obtenerMensajesEnviados(UsuarioRegistrado usuario);
 
-	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio);
+	public void crearMensaje(UsuarioRegistrado usuario,String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio);
 
 	public Correo obtenerMensaje(String aId);
 

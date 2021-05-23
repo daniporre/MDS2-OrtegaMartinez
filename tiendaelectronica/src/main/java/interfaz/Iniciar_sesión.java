@@ -33,22 +33,20 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 	public BDPrincipal bdp;
 	public String mail;
 	public String contraseña;
-	public VerticalLayout layoutPrincipal;
 	public Usuario us = new Usuario();
 	public static Usuario usuario;
 
-	public Iniciar_sesión() throws PersistentException {
+	public Iniciar_sesión(VerticalLayout principalLayout) throws PersistentException {
 		super();
 
-		layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
-		iniciarSesion();
+		iniciarSesion(principalLayout);
 		crearCuenta();
 
 	}
 	
 	
 
-	public void iniciarSesion() {
+	public void iniciarSesion(VerticalLayout principalLayout) {
 		this.getLogIn().addLoginListener(e -> {
 			bdp = new BDPrincipal();
 
@@ -65,10 +63,10 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(us.getMail());
 
 				if (us.getMail() != null) {
-					Administrador ad = new Administrador(us);
+					Administrador ad = new Administrador(us, principalLayout);
 
-					layoutPrincipal.removeAll();
-					layoutPrincipal.add(ad);
+					principalLayout.removeAll();
+					principalLayout.add(ad);
 				}
 
 			} else if (e.getUsername().contains("transporte")) {
@@ -78,10 +76,10 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(us.getMail());
 
 				if (us.getMail() != null) {
-					Empresa_de_transportes et = new Empresa_de_transportes();
+					Empresa_de_transportes et = new Empresa_de_transportes(principalLayout);
 
-					layoutPrincipal.removeAll();
-					layoutPrincipal.add(et);
+					principalLayout.removeAll();
+					principalLayout.add(et);
 				}
 
 			} else if (e.getUsername().contains("encargado")) {
@@ -91,10 +89,10 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(us.getMail());
 
 				if (us.getMail() != null) {
-					Encargado_de_compras et = new Encargado_de_compras();
+					Encargado_de_compras et = new Encargado_de_compras(principalLayout);
 
-					layoutPrincipal.removeAll();
-					layoutPrincipal.add(et);
+					principalLayout.removeAll();
+					principalLayout.add(et);
 				}
 
 			} else if (!e.getUsername().contains("encargado") && !e.getUsername().contains("transporte")
@@ -105,10 +103,10 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(usre.getMail()+" ha iniciado sesion");
 
 				if (usre.getMail() != null && usre.getEstaOperativo()==true) {
-					Usuario_registrado et = new Usuario_registrado(usre);
+					Usuario_registrado et = new Usuario_registrado(usre, principalLayout);
 
-					layoutPrincipal.removeAll();
-					layoutPrincipal.add(et);
+					principalLayout.removeAll();
+					principalLayout.add(et);
 				} else {
 					Notification.show("El usuario no existe o se ha dado de baja");
 				}
@@ -156,7 +154,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				bdp = new BDPrincipal();
 				
 				if (!getMailNuevaCuentaTF().getValue().isEmpty()
-						&& !getContraseñaNuevaCuentaTF().getValue().isEmpty() && getMailNuevaCuentaTF().getValue().contains("@")) {
+						&& !getContraseñaNuevaCuentaTF().getValue().isEmpty() && getMailNuevaCuentaTF().getValue().contains("")) {
 
 					try {
 						bdp = new BDPrincipal();

@@ -47,7 +47,9 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 			public void onComponentEvent(ClickEvent<Button> event) {
 				if (!getContraseñaUsuarioModificadaTF().getValue().isEmpty() && !getSeleccionarUsuarioComboBox().getValue().isEmpty()) {
 								
+					
 					bdprincipal.cambiarContraseniaAdmin(getSeleccionarUsuarioComboBox().getValue(),getContraseñaUsuarioModificadaTF().getValue());
+					
 				}
 			}
 		});
@@ -57,7 +59,7 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 	public void volverAdmin(Usuario us, VerticalLayout ad) {
 		
 		principalHLayout.removeAll();
-		principalHLayout.add(ad);
+		principalHLayout.add(new Administrador(us, principalHLayout));
 	}
 	public void cargarCombo() {
 		

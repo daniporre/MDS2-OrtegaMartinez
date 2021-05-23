@@ -25,7 +25,7 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 	public final StringExpression mail;
 	public final StringExpression contraseña;
 	public final StringExpression apellidos;
-	public final IntegerExpression numeroTarjeta;
+	public final StringExpression numeroTarjeta;
 	public final StringExpression titularTarjeta;
 	public final StringExpression fechaVencimientoTarjeta;
 	public final IntegerExpression cvv;
@@ -46,7 +46,7 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 		mail = new StringExpression("mail", this.getDetachedCriteria());
 		contraseña = new StringExpression("contraseña", this.getDetachedCriteria());
 		apellidos = new StringExpression("apellidos", this.getDetachedCriteria());
-		numeroTarjeta = new IntegerExpression("numeroTarjeta", this.getDetachedCriteria());
+		numeroTarjeta = new StringExpression("numeroTarjeta", this.getDetachedCriteria());
 		titularTarjeta = new StringExpression("titularTarjeta", this.getDetachedCriteria());
 		fechaVencimientoTarjeta = new StringExpression("fechaVencimientoTarjeta", this.getDetachedCriteria());
 		cvv = new IntegerExpression("cvv", this.getDetachedCriteria());
@@ -68,7 +68,7 @@ public class UsuarioRegistradoDetachedCriteria extends AbstractORMDetachedCriter
 		mail = new StringExpression("mail", this.getDetachedCriteria());
 		contraseña = new StringExpression("contraseña", this.getDetachedCriteria());
 		apellidos = new StringExpression("apellidos", this.getDetachedCriteria());
-		numeroTarjeta = new IntegerExpression("numeroTarjeta", this.getDetachedCriteria());
+		numeroTarjeta = new StringExpression("numeroTarjeta", this.getDetachedCriteria());
 		titularTarjeta = new StringExpression("titularTarjeta", this.getDetachedCriteria());
 		fechaVencimientoTarjeta = new StringExpression("fechaVencimientoTarjeta", this.getDetachedCriteria());
 		cvv = new IntegerExpression("cvv", this.getDetachedCriteria());

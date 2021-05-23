@@ -40,7 +40,7 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 		
 		
 		try {
-			lg = new Iniciar_sesión();
+			lg = new Iniciar_sesión(layoutPrincipal);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,16 +50,17 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 
 			@Override
 			public void onComponentEvent(ComponentEvent event) {
+				if(!getSearchBarUNR().getValue().isEmpty()) {
+					Producto[] productos = new Producto[bdp.buscarProducto(getSearchBarUNR().getValue()).length];
+					
+					productos = bdp.buscarProducto(getSearchBarUNR().getValue());
+					
+					Productos_buscados pb = new Productos_buscados(productos, layoutCatalogo, layoutPrincipal);
+					
+					layoutPrincipal.removeAll();
+					layoutPrincipal.add(pb);
+				}
 				
-				Producto[] productos = new Producto[bdp.buscarProducto(getSearchBarUNR().getValue()).length];
-				
-				productos = bdp.buscarProducto(getSearchBarUNR().getValue());
-				
-				System.out.println("productos buscados: "+Arrays.toString(productos));
-				Productos_buscados pb = new Productos_buscados(productos, layoutCatalogo);
-				
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(pb);
 				
 			}
 		});
@@ -78,7 +79,7 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 		
 		});
 		
-		carrito = new Ver_carrito();
+		carrito = new Ver_carrito__Usuario_no_registrado_(layoutPrincipal);
 		
 		this.getCarritoUNR().addClickListener(new ComponentEventListener() {
 
@@ -96,24 +97,6 @@ public class Usuario_no_registrado extends VistaUsuarionoregistrado {
 		
 	
 	}
-
-//	public Usuario_no_registrado() {
-//		
-////		 layout = this.getLayoutCibernauta().as(VerticalLayout.class);
-////		 lg = new Login();
-////		 
-////		 this.getLogin().addClickListener(new ComponentEventListener() {
-////			@Override
-////			public void onComponentEvent(ComponentEvent event) {
-////				 
-////				layout.remove(ccbn);				
-////				layout.add(lg);
-////				
-////			}
-////		});
-//		  
-//		 
-//	}
 	
 	
 }

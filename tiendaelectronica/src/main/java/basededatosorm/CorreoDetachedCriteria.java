@@ -19,7 +19,7 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CorreoDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final StringExpression idCorreo;
+	public final IntegerExpression idCorreo;
 	public final IntegerExpression usuarioRegistradoId;
 	public final AssociationExpression usuarioRegistrado;
 	public final StringExpression asunto;
@@ -30,7 +30,7 @@ public class CorreoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public CorreoDetachedCriteria() {
 		super(basededatosorm.Correo.class, basededatosorm.CorreoCriteria.class);
-		idCorreo = new StringExpression("idCorreo", this.getDetachedCriteria());
+		idCorreo = new IntegerExpression("idCorreo", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		asunto = new StringExpression("asunto", this.getDetachedCriteria());
@@ -42,7 +42,7 @@ public class CorreoDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public CorreoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, basededatosorm.CorreoCriteria.class);
-		idCorreo = new StringExpression("idCorreo", this.getDetachedCriteria());
+		idCorreo = new IntegerExpression("idCorreo", this.getDetachedCriteria());
 		usuarioRegistradoId = new IntegerExpression("usuarioRegistrado.", this.getDetachedCriteria());
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		asunto = new StringExpression("asunto", this.getDetachedCriteria());

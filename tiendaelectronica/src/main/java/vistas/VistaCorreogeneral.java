@@ -27,6 +27,8 @@ public class VistaCorreogeneral extends PolymerTemplate<VistaCorreogeneral.Vista
 	private Tab pestañaRecibidos;
 	@Id("tablaMensajesVLayout")
 	private Element tablaMensajesVLayout;
+	@Id("nuevoCorreoButton")
+	private Button nuevoCorreoButton;
 
 	/**
      * Creates a new VistaCorreogeneral.
@@ -72,5 +74,13 @@ public class VistaCorreogeneral extends PolymerTemplate<VistaCorreogeneral.Vista
 
 	public void setTablaMensajesVLayout(Element tablaMensajesVLayout) {
 		this.tablaMensajesVLayout = tablaMensajesVLayout;
+	}
+
+	public Button getNuevoCorreoButton() {
+		return nuevoCorreoButton;
+	}
+
+	public void setNuevoCorreoButton(Button nuevoCorreoButton) {
+		this.nuevoCorreoButton = nuevoCorreoButton;
 	}
 }

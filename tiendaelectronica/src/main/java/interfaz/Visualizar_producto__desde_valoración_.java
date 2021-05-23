@@ -11,5 +11,7 @@ public class Visualizar_producto__desde_valoración_ extends Visualizar_producto
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public Valoración _valoración;
 }

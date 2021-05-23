@@ -23,7 +23,7 @@ public class BDUsuarioRegistrado {
 			ur.setMail(aCorreo);
 			ur.setContraseña(aContrasenia);
 			ur.setEstaOperativo(true);
-			
+			ur.setNumeroTarjeta("");
 			
 			basededatosorm.UsuarioRegistradoDAO.save(ur);
 			Notification.show("Nueva cuenta creada:\nMail: " + ur.getMail()
@@ -155,7 +155,7 @@ public class BDUsuarioRegistrado {
 			}
 			
 			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
-			ad.setNumeroTarjeta(Integer.parseInt(aNumeroTarjeta));
+			ad.setNumeroTarjeta(aNumeroTarjeta);
 			ad.setTitularTarjeta(titular);
 			ad.setFechaVencimientoTarjeta(aFechaVencimiento);
 			ad.setCvv(aCvv);
@@ -241,6 +241,22 @@ public class BDUsuarioRegistrado {
 		}
 		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
+	
+	public UsuarioRegistrado[] obtenerUsuariosRegistrados() throws PersistentException {
+		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
+				.beginTransaction();
+
+		try {
+			UsuarioRegistrado[] o = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+
+			t.commit();
+			return o;
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+			return null;
+		}
+	}
 	public void cancelarPedido(int aIdPedido) {
 		
 	}
@@ -253,8 +269,10 @@ public class BDUsuarioRegistrado {
 		throw new UnsupportedOperationException();
 	}
 
-	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) throws PersistentException {
+		UsuarioRegistrado us = basededatosorm.UsuarioRegistradoDAO.getUsuarioRegistradoByORMID(aIdUsuario);
+		
+		return us;
 	}
 	public Producto[] buscarProducto(String aNombre) {
 		return null;

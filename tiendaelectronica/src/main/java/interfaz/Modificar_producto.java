@@ -39,6 +39,7 @@ public class Modificar_producto extends VistaEditarproducto {
 		this.getMarcaProductoTF().setValue(producto.getMarca());
 		this.getDescripcionProductoTF().setValue(producto.getDescripcion());
 		cargarCategorias();
+		volverAdmin(usuario, layoutPincipal);
 		guardarCambios(producto);
 
 		if (producto.getOferta().getPorcentaje() != 0) {
@@ -79,6 +80,17 @@ public class Modificar_producto extends VistaEditarproducto {
 
 	public void añadirImagen4() {
 		throw new UnsupportedOperationException();
+	}
+	
+	public void volverAdmin(Usuario administrador, VerticalLayout layoutPrincipal) {
+		this.getInicioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Administrador(administrador, layoutPrincipal));				
+			}
+		});
 	}
 
 	public void guardarCambios(Producto producto) {
@@ -124,9 +136,7 @@ public class Modificar_producto extends VistaEditarproducto {
 		System.out.println("sdfas" + Arrays.toString(cat));
 
 		for (int i = 0; i < cat.length; i++) {
-
-			categorias[i] = bdp.obtenerCategorias()[i];
-			verCategoria = new Ver_categoría(categorias[i]);
+			verCategoria = new Ver_categoría(cat[i]);
 			categoriasLayout.add(verCategoria);
 			verCategoria.getCategoriaButton().setEnabled(false);
 		}

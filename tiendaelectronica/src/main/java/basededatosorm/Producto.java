@@ -224,7 +224,7 @@ public class Producto implements Serializable, Comparable<Producto> {
 	public String toString() {
 		return String.valueOf(getIdProducto());
 	}
-
+	
 	@Override
 	public int compareTo(Producto pro) {
 		if (this.precio < pro.getPrecio()) {

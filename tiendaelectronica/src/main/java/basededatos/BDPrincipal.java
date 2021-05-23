@@ -54,7 +54,7 @@ public class BDPrincipal
 			e.printStackTrace();
 		}
 	}
-	
+
 	public UsuarioRegistrado iniciarSesionUR(String aCorreo, String aContrasenia) {
 		try {
 			return _bDUsuarioRegistrado.iniciarSesion(aCorreo, aContrasenia);
@@ -90,9 +90,9 @@ public class BDPrincipal
 
 	public Producto[] verCatalogo() {
 		try {
-			return this._bDProductos.obtenerProductos();
+			return _bDProductos.obtenerProductos();
 		} catch (PersistentException e) {
-						e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -110,9 +110,14 @@ public class BDPrincipal
 		throw new UnsupportedOperationException();
 	}
 
-	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
-			String aFechaEnvio) {
-		_bDCorreo.crearMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
+	public void crearMensaje(UsuarioRegistrado aUsuario, String aAsunto, String aMensaje, String aRemitente,
+			String aDestinatario, String aFechaEnvio) {
+		try {
+			_bDCorreo.crearMensaje(aUsuario, aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public UsuarioRegistrado obtenerFormaPagoDireccion(int aIdUsuario) {
@@ -120,27 +125,38 @@ public class BDPrincipal
 	}
 
 	public UsuarioRegistrado obtenerUsuarioRegistrado(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+
+		UsuarioRegistrado us = null;
+		try {
+			us = _bDUsuarioRegistrado.obtenerUsuarioRegistrado(aIdUsuario);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return us;
 	}
 
-	public void guardarDireccionEntrega(UsuarioRegistrado aUsuario, String aDireccionUsuario, String aCodigoPostal, String aCiudad,
-			String aProvincia) {
+	public void guardarDireccionEntrega(UsuarioRegistrado aUsuario, String aDireccionUsuario, String aCodigoPostal,
+			String aCiudad, String aProvincia) {
 		try {
-			_bDUsuarioRegistrado.guardarDireccionEntrega(aUsuario, aDireccionUsuario, aCodigoPostal, aCiudad, aProvincia);
+			_bDUsuarioRegistrado.guardarDireccionEntrega(aUsuario, aDireccionUsuario, aCodigoPostal, aCiudad,
+					aProvincia);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void guardarFormaPago(UsuarioRegistrado usuario, String titular, String aNumeroTarjeta, String aFechaVencimiento, int aCvv) {
+	public void guardarFormaPago(UsuarioRegistrado usuario, String titular, String aNumeroTarjeta,
+			String aFechaVencimiento, int aCvv) {
 		try {
-			_bDUsuarioRegistrado.guardarFormaPago(usuario,titular,  aNumeroTarjeta, aFechaVencimiento, aCvv);
+			_bDUsuarioRegistrado.guardarFormaPago(usuario, titular, aNumeroTarjeta, aFechaVencimiento, aCvv);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void guardarDatosPersonales(UsuarioRegistrado usuario, String aNombre, String aApellidos, String aNombreUsuario, String aEmail) {
+	public void guardarDatosPersonales(UsuarioRegistrado usuario, String aNombre, String aApellidos,
+			String aNombreUsuario, String aEmail) {
 		try {
 			_bDUsuarioRegistrado.guardarDatosPersonales(usuario, aNombre, aApellidos, aNombreUsuario, aEmail);
 		} catch (PersistentException e) {
@@ -192,9 +208,10 @@ public class BDPrincipal
 		return null;
 	}
 
-	public void editarProducto(Producto producto,String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+	public void editarProducto(Producto producto, String aNombre, double aPrecio, String aMarca, Oferta aOferta,
+			String aDescripcion) {
 		try {
-			_bDProductos.editarProducto(producto,aNombre, aPrecio, aMarca, aOferta, aDescripcion);
+			_bDProductos.editarProducto(producto, aNombre, aPrecio, aMarca, aOferta, aDescripcion);
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
@@ -272,9 +289,14 @@ public class BDPrincipal
 
 	}
 
-	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
-			String aFechaEnvio) {
-		_bDCorreo.responderMensaje(aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
+	public void responderMensaje(Correo aCorreo, String aAsunto, String aMensaje, String aRemitente,
+			String aDestinatario, String aFechaEnvio) {
+		try {
+			_bDCorreo.responderMensaje(aCorreo, aAsunto, aMensaje, aRemitente, aDestinatario, aFechaEnvio);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void crearNuevaOferta(String aNombreOferta, int aDescuento) {
@@ -311,7 +333,7 @@ public class BDPrincipal
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Categoria[] obtenerCategorias() {
 		try {
 			return _bDCategorias.obtenerCategorias();
@@ -320,7 +342,7 @@ public class BDPrincipal
 			return null;
 		}
 	}
-	
+
 	public Categoria obtenerCategoria(String aNombreCategoria) {
 		try {
 			return _bDCategorias.obtenerCategoria(aNombreCategoria);
@@ -410,15 +432,26 @@ public class BDPrincipal
 	}
 
 	@Override
-	public Correo[] obtenerMensajesRecibidos() {
-		// TODO Auto-generated method stub
-		return null;
+	public Correo[] obtenerMensajesRecibidos(UsuarioRegistrado usuario) {
+		try {
+			return _bDCorreo.obtenerMensajesRecibidos(usuario);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
-	public Correo[] obtenerMensajesEnviados() {
-		// TODO Auto-generated method stub
-		return null;
+	public Correo[] obtenerMensajesEnviados(UsuarioRegistrado usuario) {
+		try {
+			return _bDCorreo.obtenerMensajesEnviados(usuario);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	@Override
@@ -430,11 +463,12 @@ public class BDPrincipal
 	@Override
 	public Usuario recuperarContrasenia(String aMail) {
 		try {
-			_bDUsuarioRegistrado.recuperarContrasenia(aMail);
+			return _bDUsuarioRegistrado.recuperarContrasenia(aMail);
 		} catch (PersistentException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
+
 	}
 
 	@Override
@@ -444,5 +478,17 @@ public class BDPrincipal
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Correo[] obtenerTodosMensajes() {
+		try {
+			return _bDCorreo.obtenerTodosMensajes();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 }

@@ -1,7 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 
 class VistaMensajesenviados extends PolymerElement {
 
@@ -15,15 +14,12 @@ class VistaMensajesenviados extends PolymerElement {
 
                 }
             </style>
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
- <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
-  <vaadin-tab></vaadin-tab>
-  <label>Cuerpo del mensaje</label>
-  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-  <label>Asunto</label>
-  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-  <label>Fecha</label>
-  <vaadin-tab></vaadin-tab>
+<vaadin-vertical-layout style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" id="vaadinVerticalLayout">
+ <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;" id="vaadinHorizontalLayout">
+  <label id="estadoLabel" style="width: 10%;">Estado</label>
+  <label id="cuerpoMensajeLabel" style="flex-grow: 1; width: 50%;">Cuerpo del mensaje</label>
+  <label id="asuntoMensajeLabel" style="flex-grow: 1; width: 15%;">Asunto</label>
+  <label id="fechaMensajeLabel" style="width: 15%;">Fecha</label>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
 `;

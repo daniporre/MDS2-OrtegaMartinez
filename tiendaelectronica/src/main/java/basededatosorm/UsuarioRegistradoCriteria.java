@@ -25,7 +25,7 @@ public class UsuarioRegistradoCriteria extends AbstractORMCriteria {
 	public final StringExpression mail;
 	public final StringExpression contraseña;
 	public final StringExpression apellidos;
-	public final IntegerExpression numeroTarjeta;
+	public final StringExpression numeroTarjeta;
 	public final StringExpression titularTarjeta;
 	public final StringExpression fechaVencimientoTarjeta;
 	public final IntegerExpression cvv;
@@ -46,7 +46,7 @@ public class UsuarioRegistradoCriteria extends AbstractORMCriteria {
 		mail = new StringExpression("mail", this);
 		contraseña = new StringExpression("contraseña", this);
 		apellidos = new StringExpression("apellidos", this);
-		numeroTarjeta = new IntegerExpression("numeroTarjeta", this);
+		numeroTarjeta = new StringExpression("numeroTarjeta", this);
 		titularTarjeta = new StringExpression("titularTarjeta", this);
 		fechaVencimientoTarjeta = new StringExpression("fechaVencimientoTarjeta", this);
 		cvv = new IntegerExpression("cvv", this);

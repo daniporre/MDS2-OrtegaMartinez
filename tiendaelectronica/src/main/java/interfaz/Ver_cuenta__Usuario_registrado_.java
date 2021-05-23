@@ -20,12 +20,12 @@ import basededatosorm.UsuarioRegistrado;
 import vistas.VistaVercuentausuarioregistrado;
 import interfaz.Usuario_no_registrado;
 
+@SuppressWarnings("serial")
 public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregistrado {
 	public static Usuario usuarioActivo;
 
-	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout1().as(VerticalLayout.class);
 
-	public Ver_cuenta__Usuario_registrado_(UsuarioRegistrado usuario) {
+	public Ver_cuenta__Usuario_registrado_(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
 
 		BDPrincipal bdp = new BDPrincipal();
 
@@ -33,10 +33,11 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 		usuarioActivo = Iniciar_sesión.usuarioActivo();
 		System.out.println(usuarioActivo);
-		Cerrar_sesión();
-		mostrarCorreo();
-		inicio();
-		rellenarDatos(usuario);
+		Cerrar_sesión(layoutPrincipal);
+		mostrarCorreo(usuario, layoutPrincipal);
+		inicio(usuario, layoutPrincipal);
+		
+		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
 
 		
 		
@@ -100,7 +101,6 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
 				desactivarActivarTextFieldsMetodoPago(true);
 				
 				String numero = getNumeroTarjetaTF().getValue();
@@ -134,7 +134,6 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
 				desactivarActivarTextFieldsDatosPersonales(true);
 				
 				String nombre = getNombreTF().getValue();
@@ -156,7 +155,6 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
 				if(getNuevaContraseñaTF().getValue()!=null) {
 					if(getNuevaContraseñaTF().getValue().toString().length()>10) {
 						bdp.cambiarContrasenia(usuario, getNuevaContraseñaTF().getValue());
@@ -176,7 +174,6 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
 				
 				bdp.darBajaUsuario(usuario.getIdUsuario());
 				Usuario_no_registrado unr = new Usuario_no_registrado();
@@ -207,7 +204,7 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 		this.getEmailTF().setReadOnly(condicion);
 	}
 
-	public void Cerrar_sesión() {
+	public void Cerrar_sesión(VerticalLayout layoutPrincipal) {
 		this.getLogoutButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
@@ -220,20 +217,29 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 		});
 	}
 
-	public void inicio() {
+	public void inicio(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
 		this.getInicioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-//				Usuario_registrado a = new Usuario_registrado();
-//				layoutPrincipal.removeAll();
-//				layoutPrincipal.add(a);
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Usuario_registrado(usuario, layoutPrincipal));
+
 			}
 		});
 	}
 
-	public void mostrarCorreo() {
+	public void mostrarCorreo(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
+		this.getCorreoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Correo__General_(usuario, layoutPrincipal));
+				
+			}
+		});
 	}
 
 	
@@ -254,7 +260,7 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 			this.getNombreTF().setValue(usuario.getNombre());
 		if(usuario.getMail()!=null)	
 			this.getEmailTF().setValue(usuario.getMail());
-		if(usuario.getNumeroTarjeta()!=0)
+		if(!usuario.getNumeroTarjeta().isEmpty())
 			getNumeroTarjetaTF().setValue(String.valueOf(usuario.getNumeroTarjeta()));
 		if(usuario.getTitularTarjeta()!=null)
 			getTitularTarjeta().setValue(usuario.getTitularTarjeta());

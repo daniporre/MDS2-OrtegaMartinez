@@ -19,21 +19,31 @@ import basededatosorm.Usuario;
 
 public class Administrador extends VistaAdministrador {
 
-	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
 	public VerticalLayout catalogoVLayout = this.getPrincipalVLayout().as(VerticalLayout.class);
 	public Ver_producto vp;
 	public Ver_catálogo vc;
 	public BDPrincipal bdp;
 	private String[] nombreOfertas;
 
-	public Administrador(Usuario administrador) {
-		vc = new Ver_catálogo(administrador, layoutPrincipal);
+	public Administrador(Usuario administrador, VerticalLayout principalLayout) {
+		vc = new Ver_catálogo(administrador, principalLayout);
 		bdp = new BDPrincipal();
 		recargarOfertas();
 
 		catalogoVLayout.add(vc);
 		
 		System.out.println(administrador.getMail()+" admin");
+		
+		this.getCorreoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				
+				principalLayout.removeAll();
+				principalLayout.add(new Correo__General_(administrador, principalLayout));
+				
+			}
+		});
 		
 
 		this.getDarBajaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -55,7 +65,12 @@ public class Administrador extends VistaAdministrador {
 			public void onComponentEvent(ClickEvent<Button> event) {
 				if (!getNuevaCategoriaTF().getValue().isEmpty()) {
 					bdp.crearNuevaCategoria(getNuevaCategoriaTF().getValue());
+					vc = new Ver_catálogo(administrador, principalLayout);
+					catalogoVLayout.removeAll();
+					catalogoVLayout.add(vc);
 				}
+				
+				
 			}
 		});
 
@@ -70,7 +85,6 @@ public class Administrador extends VistaAdministrador {
 					bdp.crearNuevaOferta(getNombreOfertaTF().getValue(), descuento);
 					recargarOfertas();
 				}
-
 			}
 		});
 
@@ -81,8 +95,8 @@ public class Administrador extends VistaAdministrador {
 
 				Usuario_no_registrado unr = new Usuario_no_registrado();
 
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(unr);
+				principalLayout.removeAll();
+				principalLayout.add(unr);
 			}
 		});
 
@@ -90,10 +104,10 @@ public class Administrador extends VistaAdministrador {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				VistaGestionarusuarios gu = new Gestionar_usuarios(administrador, layoutPrincipal);
+				VistaGestionarusuarios gu = new Gestionar_usuarios(administrador, principalLayout);
 
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(gu);
+				principalLayout.removeAll();
+				principalLayout.add(gu);
 			}
 		});
 
@@ -101,10 +115,10 @@ public class Administrador extends VistaAdministrador {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				Ver_listado_de_compras__Administrador_ vlc = new Ver_listado_de_compras__Administrador_();
+				Ver_listado_de_compras__Administrador_ vlc = new Ver_listado_de_compras__Administrador_(administrador, principalLayout);
 
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(vlc);
+				principalLayout.removeAll();
+				principalLayout.add(vlc);
 				
 			}
 		});
@@ -114,10 +128,10 @@ public class Administrador extends VistaAdministrador {
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 
-				Añadir_producto ap = new Añadir_producto();
+				Añadir_producto ap = new Añadir_producto(administrador, principalLayout);
 
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(ap);
+				principalLayout.removeAll();
+				principalLayout.add(ap);
 
 			}
 		});

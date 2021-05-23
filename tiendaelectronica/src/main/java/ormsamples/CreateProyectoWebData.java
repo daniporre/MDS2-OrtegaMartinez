@@ -43,7 +43,7 @@ public class CreateProyectoWebData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : enviado
 			basededatosorm.TransportistaDAO.save(basededatosORMTransportista);
 			basededatosorm.Correo basededatosORMCorreo = basededatosorm.CorreoDAO.createCorreo();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuarioRegistrado, idCorreo
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : usuarioRegistrado
 			basededatosorm.CorreoDAO.save(basededatosORMCorreo);
 			basededatosorm.Valoracion basededatosORMValoracion = basededatosorm.ValoracionDAO.createValoracion();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : producto, usuarioRegistrado

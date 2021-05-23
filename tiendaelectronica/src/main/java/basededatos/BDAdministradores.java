@@ -54,7 +54,6 @@ public class BDAdministradores {
 			t.commit();
 			return ad;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 			return null;

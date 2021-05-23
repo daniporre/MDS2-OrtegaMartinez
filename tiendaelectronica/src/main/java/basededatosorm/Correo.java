@@ -22,23 +22,6 @@ public class Correo implements Serializable {
 	public Correo() {
 	}
 	
-	public boolean equals(Object aObj) {
-		if (aObj == this)
-			return true;
-		if (!(aObj instanceof Correo))
-			return false;
-		Correo correo = (Correo)aObj;
-		if ((getIdCorreo() != null && !getIdCorreo().equals(correo.getIdCorreo())) || (getIdCorreo() == null && correo.getIdCorreo() != null))
-			return false;
-		return true;
-	}
-	
-	public int hashCode() {
-		int hashcode = 0;
-		hashcode = hashcode + (getIdCorreo() == null ? 0 : getIdCorreo().hashCode());
-		return hashcode;
-	}
-	
 	private void this_setOwner(Object owner, int key) {
 		if (key == basededatosorm.ORMConstants.KEY_CORREO_USUARIOREGISTRADO) {
 			this.usuarioRegistrado = (basededatosorm.UsuarioRegistrado) owner;
@@ -53,9 +36,11 @@ public class Correo implements Serializable {
 		
 	};
 	
-	@Column(name="IdCorreo", nullable=false, length=255)	
+	@Column(name="IdCorreo", nullable=false, length=10)	
 	@Id	
-	private String idCorreo;
+	@GeneratedValue(generator="BASEDEDATOSORM_CORREO_IDCORREO_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="BASEDEDATOSORM_CORREO_IDCORREO_GENERATOR", strategy="native")	
+	private int idCorreo;
 	
 	@ManyToOne(targetEntity=basededatosorm.UsuarioRegistrado.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -78,15 +63,15 @@ public class Correo implements Serializable {
 	@Column(name="FechaEnvio", nullable=true, length=255)	
 	private String fechaEnvio;
 	
-	public void setIdCorreo(String value) {
+	private void setIdCorreo(int value) {
 		this.idCorreo = value;
 	}
 	
-	public String getIdCorreo() {
+	public int getIdCorreo() {
 		return idCorreo;
 	}
 	
-	public String getORMID() {
+	public int getORMID() {
 		return getIdCorreo();
 	}
 	

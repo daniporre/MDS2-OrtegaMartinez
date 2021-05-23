@@ -10,14 +10,16 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import basededatos.BDPrincipal;
 import basededatosorm.Oferta;
+import basededatosorm.Usuario;
 import vistas.VistaAniadirproducto;
 import vistas.VistaGestionarusuarios;
 
+@SuppressWarnings("serial")
 public class Añadir_producto extends VistaAniadirproducto {
 	
 	BDPrincipal bdp;
 	
-	public VerticalLayout layoutPrincipal = this.getVaadinVerticalLayout().as(VerticalLayout.class);
+
 	
 	String nombre;
 	Double precio;
@@ -26,11 +28,10 @@ public class Añadir_producto extends VistaAniadirproducto {
 	String descripcion;
 	private String[] nombreOfertas;
 	private String nombreOferta;
-	private Oferta ofertaSeleccionada;
 	
 	
-	public Añadir_producto() {
-		inicio();
+	public Añadir_producto(Usuario usuario, VerticalLayout layoutPrincipal) {
+		inicio(usuario, layoutPrincipal);
 		bdp = new BDPrincipal();
 		
 		guardarNuevoProducto();
@@ -52,37 +53,38 @@ public class Añadir_producto extends VistaAniadirproducto {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
-				nombre = getNombreProductoTF().getValue();
-				precio = Double.parseDouble(getPrecioProductoTF().getValue().replace(',', '.'));
-				marca = getMarcaProductoTF().getValue();
-				if(!getOfertasProductoTF().getValue().isEmpty())
-					nombreOferta = getOfertasProductoTF().getValue();
-					oferta = bdp.obtenerOferta(nombreOferta);
+				if(getDescripcionProductoTF().getValue().length()<=1000) {
+					nombre = getNombreProductoTF().getValue();
+					precio = Double.parseDouble(getPrecioProductoTF().getValue().replace(',', '.'));
+					marca = getMarcaProductoTF().getValue();
+					if(!getOfertasProductoTF().getValue().isEmpty())
+						nombreOferta = getOfertasProductoTF().getValue();
+						oferta = bdp.obtenerOferta(nombreOferta);
+						
+					descripcion = getDescripcionProductoTF().getValue();
 					
-				descripcion = getDescripcionProductoTF().getValue();
+					if(!nombre.isEmpty() && !precio.toString().isEmpty() && !marca.isEmpty() && !descripcion.isEmpty())
+						bdp.guardarCambios(nombre, precio, marca, oferta, descripcion);
+//						Administrador a = new Administrador();
+//						
+//						layoutPrincipal.removeAll();
+//						layoutPrincipal.add(a);
+						Notification.show("Producto con nombre "+nombre+" creado correctamente");
+				} else {
+					Notification.show("La descripcion es demasiado larga, no puede tener mas de 1000 caracteres");
+				}
 				
-				if(!nombre.isEmpty() && !precio.toString().isEmpty() && !marca.isEmpty() && !descripcion.isEmpty())
-					bdp.guardarCambios(nombre, precio, marca, oferta, descripcion);
-//					Administrador a = new Administrador();
-//					
-//					layoutPrincipal.removeAll();
-//					layoutPrincipal.add(a);
-					Notification.show("Producto con nombre "+nombre+" creado correctamente");
 			}
 		});
 	}
 	
-	public void inicio() {
+	public void inicio(Usuario administrador, VerticalLayout layoutPrincipal) {
 		this.getInicioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				// TODO Auto-generated method stub
-//				Administrador ad = new Administrador();
-//
-//				layoutPrincipal.removeAll();
-//				layoutPrincipal.add(ad);
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Administrador(administrador, layoutPrincipal));
 			}
 		});
 	}

@@ -46,8 +46,8 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 		
 	};
 	
-	@Column(name="NumeroTarjeta", nullable=false, length=10)	
-	private int numeroTarjeta;
+	@Column(name="NumeroTarjeta", nullable=false, length=255)	
+	private String numeroTarjeta;
 	
 	@Column(name="TitularTarjeta", nullable=true, length=255)	
 	private String titularTarjeta;
@@ -88,11 +88,11 @@ public class UsuarioRegistrado extends basededatosorm.Usuario implements Seriali
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_valoracions = new java.util.HashSet();
 	
-	public void setNumeroTarjeta(int value) {
+	public void setNumeroTarjeta(String value) {
 		this.numeroTarjeta = value;
 	}
 	
-	public int getNumeroTarjeta() {
+	public String getNumeroTarjeta() {
 		return numeroTarjeta;
 	}
 	
