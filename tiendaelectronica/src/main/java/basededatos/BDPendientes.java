@@ -66,16 +66,11 @@ public class BDPendientes {
 
 		return pendiente;
 	}
-
-	public Pedido[] actualizarListadoCompras() {
-		throw new UnsupportedOperationException();
+	
+	public basededatosorm.Pendiente[] cargarPendientesUsuario(UsuarioRegistrado usuario) throws PersistentException {
+		Pendiente[] pendiente = basededatosorm.PendienteDAO.listPendienteByQuery("UsuarioRegistradoUsuarioIdUsuario = '" + usuario.getIdUsuario()+ "'", null);
+		System.out.println("caca"+Arrays.toString(pendiente));
+		return pendiente;
 	}
 
-	public void marcarRecibido(int aId) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void cancelarPedido(int aIdPedido) {
-		throw new UnsupportedOperationException();
-	}
 }

@@ -76,4 +76,9 @@ public class BDEntregados {
 	public Pedido[] actualizarListadoCompras() {
 		throw new UnsupportedOperationException();
 	}
+	
+	public basededatosorm.Entregado[] cargarEntregadosUsuario(UsuarioRegistrado usuario) throws PersistentException {
+		Entregado[] entregado = basededatosorm.EntregadoDAO.listEntregadoByQuery("UsuarioRegistradoUsuarioIdUsuario = '" + usuario.getIdUsuario()+ "'", null);
+		return entregado;
+	}
 }

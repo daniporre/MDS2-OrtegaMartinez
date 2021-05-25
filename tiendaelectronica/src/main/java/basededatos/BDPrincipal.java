@@ -549,4 +549,29 @@ public class BDPrincipal
 			e.printStackTrace();
 		}
 	}
+	
+	public basededatosorm.Pendiente[] cargarPendientesUsuario(UsuarioRegistrado usuario){
+		try {
+			return _bDPendientes.cargarPendientesUsuario(usuario);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public basededatosorm.Entregado[] cargarEntregadosUsuario(UsuarioRegistrado usuario){
+		try {
+			return _bDEntregados.cargarEntregadosUsuario(usuario);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public basededatosorm.Enviado[] cargarEnviadosUsuario(UsuarioRegistrado usuario){
+		try {
+			return _bDEnviados.cargarEnviadosUsuario(usuario);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

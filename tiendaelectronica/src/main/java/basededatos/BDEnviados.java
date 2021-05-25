@@ -1,5 +1,6 @@
 package basededatos;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
@@ -70,6 +71,11 @@ public class BDEnviados {
 	public basededatosorm.Enviado[] cargarTodosEnviados() throws PersistentException{
 		Enviado[] enviado = basededatosorm.EnviadoDAO.listEnviadoByQuery(null, null);
 
+		return enviado;
+	}
+	
+	public basededatosorm.Enviado[] cargarEnviadosUsuario(UsuarioRegistrado usuario) throws PersistentException {
+		Enviado[] enviado = basededatosorm.EnviadoDAO.listEnviadoByQuery("UsuarioRegistradoUsuarioIdUsuario = '" + usuario.getIdUsuario()+ "'", null);
 		return enviado;
 	}
 }

@@ -300,4 +300,12 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
 		this.correoButton = correoButton;
 	}
 
+	public Element getListaPedidosLayout() {
+		return listaPedidosLayout;
+	}
+
+	public void setListaPedidosLayout(Element listaPedidosLayout) {
+		this.listaPedidosLayout = listaPedidosLayout;
+	}
+
 }

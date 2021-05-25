@@ -19,6 +19,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.VaadinSession;
 
 import basededatos.BDPrincipal;
+import basededatosorm.Item;
 import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
 import vistas.VistaVercuentausuarioregistrado;
@@ -28,7 +29,8 @@ import interfaz.Usuario_no_registrado;
 public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregistrado {
 	
 	VaadinSession session = VaadinSession.getCurrent();
-
+	VerticalLayout layoutPedidos = this.getListaPedidosLayout().as(VerticalLayout.class);
+	BDPrincipal bdp = new BDPrincipal();
 
 	public Ver_cuenta__Usuario_registrado_(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
 
@@ -205,7 +207,38 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 				
 			}
 		});
+		actualizarCompras(usuario);
 		
+	}
+	
+	public void actualizarCompras(UsuarioRegistrado usuario) {
+		for (basededatosorm.Pendiente pendiente : bdp.cargarPendientesUsuario(usuario)) {
+			Item[] item = pendiente.items.toArray();
+			for (int i = 0; i < item.length; i++) {
+				
+				Ver_pedido vp = new Ver_pedido(pendiente);
+				layoutPedidos.add(vp);
+			}
+		}
+		for (basededatosorm.Enviado enviado : bdp.cargarEnviadosUsuario(usuario)) {
+			Item[] item = enviado.items.toArray();
+			for (int i = 0; i < item.length; i++) {
+				
+				Ver_pedido vp = new Ver_pedido(enviado);
+				layoutPedidos.add(vp);
+			}
+		}
+		for (basededatosorm.Entregado entregado : bdp.cargarEntregadosUsuario(usuario)) {
+			Item[] item = entregado.items.toArray();
+			for (int i = 0; i < item.length; i++) {
+				
+				Ver_pedido vp = new Ver_pedido(entregado);
+				layoutPedidos.add(vp);
+			}
+		}
+	}
+	
+	public void mostrarPedidos() {
 		
 	}
 	

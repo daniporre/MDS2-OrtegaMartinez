@@ -105,7 +105,7 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
     <h3 style="width: 15%;">Total</h3>
     <h3 style="width: 15%;">Estado</h3>
    </vaadin-horizontal-layout>
-   <vaadin-vertical-layout theme="spacing" id="listaPedidosLayout" style="align-self: stretch;"></vaadin-vertical-layout>
+   <vaadin-vertical-layout theme="spacing" id="listaPedidosLayout" style="align-self: stretch; flex-grow: 1;"></vaadin-vertical-layout>
   </vaadin-vertical-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
