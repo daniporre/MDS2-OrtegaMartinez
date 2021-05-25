@@ -25,10 +25,6 @@ public class VistaVisualizarproducto extends PolymerTemplate<VistaVisualizarprod
 
     @Id("inicioButton")
 	private Button inicioButton;
-	@Id("searchBar")
-	private TextField searchBar;
-	@Id("buscarButton")
-	private Button buscarButton;
 	@Id("verCarritoButton")
 	private Button verCarritoButton;
 	@Id("iniciarSesionButton")
@@ -77,22 +73,6 @@ public class VistaVisualizarproducto extends PolymerTemplate<VistaVisualizarprod
 
 	public void setInicioButton(Button inicioButton) {
 		this.inicioButton = inicioButton;
-	}
-
-	public TextField getSearchBar() {
-		return searchBar;
-	}
-
-	public void setSearchBar(TextField searchBar) {
-		this.searchBar = searchBar;
-	}
-
-	public Button getBuscarButton() {
-		return buscarButton;
-	}
-
-	public void setBuscarButton(Button buscarButton) {
-		this.buscarButton = buscarButton;
 	}
 
 	public Button getVerCarritoButton() {

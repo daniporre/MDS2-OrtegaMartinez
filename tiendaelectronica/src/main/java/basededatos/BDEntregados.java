@@ -11,6 +11,7 @@ import basededatosorm.Entregado;
 import basededatosorm.Enviado;
 import basededatosorm.Item;
 import basededatosorm.Pedido;
+import basededatosorm.Pendiente;
 import basededatosorm.Producto;
 import basededatosorm.ProyectoWebPersistentManager;
 import basededatosorm.UsuarioRegistrado;
@@ -68,13 +69,16 @@ public class BDEntregados {
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Error en BDPe");
+			System.out.println("Error en BDEntregados");
 			t.rollback();
 		}
 		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
-	public Pedido[] actualizarListadoCompras() {
-		throw new UnsupportedOperationException();
+	public basededatosorm.Entregado[] cargarTodosEntregados() throws PersistentException {
+
+		Entregado[] entregado = basededatosorm.EntregadoDAO.listEntregadoByQuery(null, null);
+
+		return entregado;
 	}
 	
 	public basededatosorm.Entregado[] cargarEntregadosUsuario(UsuarioRegistrado usuario) throws PersistentException {

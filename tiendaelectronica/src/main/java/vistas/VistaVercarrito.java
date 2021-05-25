@@ -25,10 +25,6 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 	private Element productosEnCarritoVLayout;
 	@Id("inicioButton")
 	private Button inicioButton;
-	@Id("searchBar")
-	private TextField searchBar;
-	@Id("buscarButton")
-	private Button buscarButton;
 	@Id("carritoButton")
 	private Button carritoButton;
 	@Id("miCuentaButton")
@@ -90,22 +86,6 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 
 	public void setInicioButton(Button inicioButton) {
 		this.inicioButton = inicioButton;
-	}
-
-	public TextField getSearchBar() {
-		return searchBar;
-	}
-
-	public void setSearchBar(TextField searchBar) {
-		this.searchBar = searchBar;
-	}
-
-	public Button getBuscarButton() {
-		return buscarButton;
-	}
-
-	public void setBuscarButton(Button buscarButton) {
-		this.buscarButton = buscarButton;
 	}
 
 	public Button getCarritoButton() {

@@ -551,6 +551,15 @@ public class BDPrincipal
 			return null;
 		}
 	}
+	public basededatosorm.Entregado[] cargarTodosEntregado() {
+		try {
+			return _bDEntregados.cargarTodosEntregados();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public void crearEntregado(UsuarioRegistrado aUsuario, Producto aProducto, basededatosorm.Enviado pedido) {
 		try {

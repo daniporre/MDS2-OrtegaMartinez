@@ -1,10 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
-import '@polymer/iron-icon/iron-icon.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
 
 class VistaVercarrito extends PolymerElement {
 
@@ -22,12 +20,6 @@ class VistaVercarrito extends PolymerElement {
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
     Inicio 
-  </vaadin-button>
-  <vaadin-text-field placeholder="Search" id="searchBar" style="flex-grow: 1;">
-   <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
-  </vaadin-text-field>
-  <vaadin-button theme="icon" aria-label="Add new" id="buscarButton">
-   <iron-icon icon="lumo:plus"></iron-icon>
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoButton">
@@ -60,7 +52,7 @@ class VistaVercarrito extends PolymerElement {
    <h3>Precio</h3>
    <vaadin-tab></vaadin-tab>
    <vaadin-button theme="primary" id="actualizarButton" style="align-self: center;">
-    Actualizar carrito
+     Actualizar carrito 
    </vaadin-button>
    <vaadin-tab style="flex-grow: 0;"></vaadin-tab>
   </vaadin-horizontal-layout>

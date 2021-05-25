@@ -19,8 +19,6 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 @JsModule("./src/vista-mensajesenviados.js")
 public class VistaMensajesenviados extends PolymerTemplate<VistaMensajesenviados.VistaMensajesenviadosModel> {
 
-    @Id("estadoLabel")
-	private Label estadoLabel;
 	@Id("cuerpoMensajeLabel")
 	private Label cuerpoMensajeLabel;
 	@Id("asuntoMensajeLabel")
@@ -45,14 +43,6 @@ public class VistaMensajesenviados extends PolymerTemplate<VistaMensajesenviados
     public interface VistaMensajesenviadosModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
-
-	public Label getEstadoLabel() {
-		return estadoLabel;
-	}
-
-	public void setEstadoLabel(Label estadoLabel) {
-		this.estadoLabel = estadoLabel;
-	}
 
 	public Label getCuerpoMensajeLabel() {
 		return cuerpoMensajeLabel;

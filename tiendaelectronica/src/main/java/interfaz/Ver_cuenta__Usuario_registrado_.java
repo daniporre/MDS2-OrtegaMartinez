@@ -36,14 +36,14 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 		BDPrincipal bdp = new BDPrincipal();
 
-		//Botones
+		// Botones
 		Cerrar_sesión(layoutPrincipal);
 		mostrarCorreo(usuario, layoutPrincipal);
 		inicio(usuario, layoutPrincipal);
 		carrito(usuario, layoutPrincipal);
-		
+
 		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
-actualizarCompras(usuario, layoutPrincipal);
+		actualizarCompras(usuario, layoutPrincipal);
 
 		desactivarActivarTextFieldsDireccion(true);
 		desactivarActivarTextFieldsMetodoPago(true);
@@ -52,68 +52,66 @@ actualizarCompras(usuario, layoutPrincipal);
 		this.getGuardarNuevaTarjetaButton().setEnabled(false);
 		this.getGuardarDatosPersonalesButton().setEnabled(false);
 //		this.getCambiarContraseñaButton().setEnabled(false);
-		
+
 		this.getEditarDireccionButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
+
 				desactivarActivarTextFieldsDireccion(false);
 				getEditarDireccionButton().setEnabled(false);
 				getGuardarDireccionButton().setEnabled(true);
-				
+
 			}
 		});
-		
-		
+
 		this.getGuardarDireccionButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				desactivarActivarTextFieldsDireccion(true);
-				
-				
+
 				String calle = getCalleTF().getValue();
 				String ciudad = getCiudadTF().getValue();
 				String cp = getCodigoPostalTF().getValue();
 				String provincia = getProvinciaTF().getValue();
-				
-				if (calle!="" && ciudad != "" && cp!="" && provincia!="") {
+
+				if (calle != "" && ciudad != "" && cp != "" && provincia != "") {
 					bdp.guardarDireccionEntrega(usuario, calle, cp, ciudad, provincia);
 				} else {
 					Notification.show("Rellena todos los datos para editarlos");
 				}
 				getGuardarDireccionButton().setEnabled(false);
 				getEditarDireccionButton().setEnabled(true);
-				
+
 			}
 		});
-		
+
 		this.getEditarTarjetaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
+
 				desactivarActivarTextFieldsMetodoPago(false);
 				getEditarTarjetaButton().setEnabled(false);
 				getGuardarNuevaTarjetaButton().setEnabled(true);
-				
+
 			}
 		});
-		
+
 		this.getGuardarNuevaTarjetaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				desactivarActivarTextFieldsMetodoPago(true);
-				
+
 				String numero = getNumeroTarjetaTF().getValue();
 				String fechaVencimiento = getFechaVencimientoTTF().getValue();
 				String cvv = getCvsTF().getValue();
 				String titular = getTitularTarjeta().getValue();
-				
-				if(numero!="" && fechaVencimiento!="" && cvv!="") {
-					bdp.guardarFormaPago(usuario,titular, numero, fechaVencimiento, Integer.parseInt(cvv));
+
+				if (numero != "" && fechaVencimiento != "" && cvv != "") {
+					bdp.guardarFormaPago(usuario, titular, numero, fechaVencimiento, Integer.parseInt(cvv));
 				} else {
 					Notification.show("Rellena todos los datos para editarlos");
 				}
@@ -121,31 +119,31 @@ actualizarCompras(usuario, layoutPrincipal);
 				getEditarTarjetaButton().setEnabled(true);
 			}
 		});
-		
+
 		this.getEditarDatosPersonalesButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
+
 				desactivarActivarTextFieldsDatosPersonales(false);
 				getEditarDatosPersonalesButton().setEnabled(false);
 				getGuardarDatosPersonalesButton().setEnabled(true);
-				
+
 			}
 		});
-		
+
 		this.getGuardarDatosPersonalesButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				desactivarActivarTextFieldsDatosPersonales(true);
-				
+
 				String nombre = getNombreTF().getValue();
 				String nombreUsuario = getNombreDeUsuario().getValue();
 				String apellidos = getApellidosTF().getValue();
 				String mail = getEmailTF().getValue();
-				
-				if(nombre!="" && nombreUsuario!="" && apellidos!="" && mail!="") {
+
+				if (nombre != "" && nombreUsuario != "" && apellidos != "" && mail != "") {
 					bdp.guardarDatosPersonales(usuario, nombre, apellidos, nombreUsuario, mail);
 				} else {
 					Notification.show("Rellena todos los datos para editarlos");
@@ -154,39 +152,37 @@ actualizarCompras(usuario, layoutPrincipal);
 				getEditarDatosPersonalesButton().setEnabled(true);
 			}
 		});
-		
+
 		this.getCambiarContraseñaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				if(getNuevaContraseñaTF().getValue()!=null) {
-					if(getNuevaContraseñaTF().getValue().toString().length()>10) {
+				if (getNuevaContraseñaTF().getValue() != null) {
+					if (getNuevaContraseñaTF().getValue().toString().length() > 10) {
 						bdp.cambiarContrasenia(usuario, getNuevaContraseñaTF().getValue());
 						Usuario_no_registrado unr = new Usuario_no_registrado(layoutPrincipal);
 						layoutPrincipal.removeAll();
 						layoutPrincipal.add(unr);
 					} else {
-						Notification.show("La contraseña debe tener al menos 10 caracteres").setPosition(Position.BOTTOM_END);
+						Notification.show("La contraseña debe tener al menos 10 caracteres")
+								.setPosition(Position.BOTTOM_END);
 					}
 				} else {
 					Notification.show("Introduce una contraseña válida");
 				}
 			}
 		});
-		
+
 		this.getDarmeDeBajaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
-				
-				
-				
+
 				Notification notification = new Notification();
 				notification.addThemeVariants(NotificationVariant.LUMO_CONTRAST);
 
-				Span label = new Span("¿Estás seguro de que quieres darte de baja? Esta operación no se puede deshacer");
-
+				Span label = new Span(
+						"¿Estás seguro de que quieres darte de baja? Esta operación no se puede deshacer");
 
 				Button botonEliminar = new Button("Darme de baja", e -> {
 					bdp.darBajaUsuario(usuario.getIdUsuario());
@@ -201,14 +197,13 @@ actualizarCompras(usuario, layoutPrincipal);
 
 				label.getStyle().set("margin-right", "0.5rem");
 				botonEliminar.getStyle().set("margin-left", "10rem");
-				
+
 				notification.setPosition(Position.MIDDLE);
 				notification.open();
-				
-				
+
 			}
 		});
-		
+
 	}
 
 	public void actualizarCompras(UsuarioRegistrado usuario, VerticalLayout principalLayout) {

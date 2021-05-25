@@ -62,8 +62,9 @@ class VistaVisualizarpedido extends PolymerElement {
   </vaadin-horizontal-layout>
   <vaadin-text-area label="Escribe una valoración del pedido" id="descripcionTextArea" style="align-self: stretch;"></vaadin-text-area>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: flex-end;">
-   <vaadin-combo-box id="valoracionCombo" style="width: 7%;"></vaadin-combo-box>
-   <vaadin-button theme="primary" id="valorarProductoButton">
+   <h3 id="dalePuntuacionLabel" style="align-self: center;">¡Dale una puntuación a este producto!</h3>
+   <vaadin-combo-box id="valoracionCombo" style="width: 7%; align-self: center;"></vaadin-combo-box>
+   <vaadin-button theme="primary" id="valorarProductoButton" style="align-self: center;">
      Valorar producto 
    </vaadin-button>
   </vaadin-horizontal-layout>

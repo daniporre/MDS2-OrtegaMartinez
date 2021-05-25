@@ -46,6 +46,8 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 	private Button valorarProductoButton;
 	@Id("valoracionCombo")
 	private ComboBox<String> valoracionCombo;
+	@Id("dalePuntuacionLabel")
+	private H3 dalePuntuacionLabel;
 
 	/**
      * Creates a new VistaVisualizarpedido.
@@ -157,5 +159,13 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 
 	public void setValoracionCombo(ComboBox<String> valoracionCombo) {
 		this.valoracionCombo = valoracionCombo;
+	}
+
+	public H3 getDalePuntuacionLabel() {
+		return dalePuntuacionLabel;
+	}
+
+	public void setDalePuntuacionLabel(H3 dalePuntuacionLabel) {
+		this.dalePuntuacionLabel = dalePuntuacionLabel;
 	}
 }

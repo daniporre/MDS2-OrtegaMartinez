@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Producto")
-public class Producto implements Serializable {
+public class Producto implements Serializable, Comparable<Producto> {
 	public Producto() {
 	}
 	
@@ -216,6 +216,17 @@ public class Producto implements Serializable {
 	
 	public String toString() {
 		return String.valueOf(getIdProducto());
+	}
+	
+	@Override
+	public int compareTo(Producto pro) {
+		if (this.precio < pro.getPrecio()) {
+			return -1;
+		}
+		if (this.precio > pro.getPrecio()) {
+			return 1;
+		}
+		return 0;
 	}
 	
 }

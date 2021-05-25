@@ -4,7 +4,6 @@ import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
-import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 
 class VistaVisualizarproducto extends PolymerElement {
 
@@ -23,13 +22,9 @@ class VistaVisualizarproducto extends PolymerElement {
   <vaadin-button id="inicioButton">
     Inicio 
   </vaadin-button>
-  <vaadin-text-field label="" placeholder="Buscar en la tienda" style="flex-grow: 1; flex-shrink: 1;" id="searchBar"></vaadin-text-field>
-  <vaadin-button id="buscarButton">
-    Buscar 
-  </vaadin-button>
   <vaadin-tab style="flex-grow: 1;" id="vaadinTab"></vaadin-tab>
   <vaadin-button id="verCarritoButton">
-   Carrito
+    Carrito 
   </vaadin-button>
   <vaadin-button id="iniciarSesionButton">
     Iniciar sesión 

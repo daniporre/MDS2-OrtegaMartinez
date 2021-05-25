@@ -20,7 +20,6 @@ public class Ver_compra extends VistaVercompra {
 
 		BDPrincipal bdp = new BDPrincipal();
 		rellenarDatos(producto, usuarioRegistrado, pedido);
-		
 
 		if (usuario.getMail().contains("encargado")) {
 			this.getEnviarPedidoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -29,7 +28,8 @@ public class Ver_compra extends VistaVercompra {
 				public void onComponentEvent(ClickEvent<Button> event) {
 					bdp.crearEnviado(usuarioRegistrado, producto, pedido);
 					getEnviarPedidoButton().setEnabled(false);
-					Notification.show("Pedido enviado, actualiza la lista de los pedidos").setPosition(Position.BOTTOM_END);
+					Notification.show("Pedido enviado, actualiza la lista de los pedidos")
+							.setPosition(Position.BOTTOM_END);
 				}
 			});
 		}
@@ -42,7 +42,7 @@ public class Ver_compra extends VistaVercompra {
 		BDPrincipal bdp = new BDPrincipal();
 		rellenarDatos(producto, usuarioRegistrado, pedido);
 		this.getEstadoPedidoLabel().setText("Enviado");
-		
+
 		if (usuario.getMail().contains("transporte")) {
 			this.getRecibidoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
@@ -54,7 +54,7 @@ public class Ver_compra extends VistaVercompra {
 				}
 			});
 		}
-		
+
 		this.getVerFichaUsuarioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
@@ -62,17 +62,24 @@ public class Ver_compra extends VistaVercompra {
 				Visualizar_ficha_de_usuario vf = new Visualizar_ficha_de_usuario(usuarioRegistrado, principalLayout);
 				principalLayout.removeAll();
 				principalLayout.add(vf);
-				
-				
+
 			}
 		});
 
 	}
-	
 
-	
-	public void rellenarDatos(Producto producto, UsuarioRegistrado usuarioRegistrado,
-			basededatosorm.Pedido pedido) {
+	public Ver_compra(Producto producto, UsuarioRegistrado usuarioRegistrado, basededatosorm.Pedido pedido,VerticalLayout principalLayout) {
+
+		BDPrincipal bdp = new BDPrincipal();
+		rellenarDatos(producto, usuarioRegistrado, pedido);
+		this.getEstadoPedidoLabel().setText("Entregado");
+
+		
+
+
+	}
+
+	public void rellenarDatos(Producto producto, UsuarioRegistrado usuarioRegistrado, basededatosorm.Pedido pedido) {
 		this.getNombreProductoLabel().setText(producto.getNombre());
 		this.getFechaPedidoLabel().setText(pedido.getFechaEnvio());
 		this.getEnviadoALabel().setText(usuarioRegistrado.getMail());

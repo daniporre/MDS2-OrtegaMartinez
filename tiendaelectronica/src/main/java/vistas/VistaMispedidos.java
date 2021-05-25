@@ -7,6 +7,7 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.dom.Element;
 
 /**
  * A Designer generated component for the vista-mispedidos template.
@@ -30,6 +31,8 @@ public class VistaMispedidos extends PolymerTemplate<VistaMispedidos.VistaMisped
 	private Button verPedidoButton;
 	@Id("cancelarPedidoButton")
 	private Button cancelarPedidoButton;
+	@Id("vaadinVerticalLayout")
+	private Element vaadinVerticalLayout;
 
 	/**
      * Creates a new VistaMispedidos.

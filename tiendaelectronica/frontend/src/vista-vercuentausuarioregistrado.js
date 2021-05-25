@@ -1,10 +1,9 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
 
 class VistaVercuentausuarioregistrado extends PolymerElement {
 
@@ -22,12 +21,6 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
  <vaadin-horizontal-layout style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" theme="spacing">
   <vaadin-button id="inicio-button">
     Inicio 
-  </vaadin-button>
-  <vaadin-text-field placeholder="Search" style="width: 40%;">
-   <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
-  </vaadin-text-field>
-  <vaadin-button theme="icon" aria-label="Add new">
-   <iron-icon icon="lumo:plus"></iron-icon>
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="correoButton">

@@ -17,8 +17,8 @@ class VistaValoraciondelproducto extends PolymerElement {
             </style>
 <vaadin-vertical-layout style="align-items: stretch;">
  <vaadin-horizontal-layout theme="spacing">
-  <label id="nombreUsuarioValoracionLabel">nombreUsuarioValoracion</label>
-  <label id="valoracionProductoLabel">valoracionProducto</label>
+  <h3 id="nombreUsuarioValoracionLabel1">Heading 3</h3>
+  <label id="valoracionProductoLabel" style="align-self: center;">valoracionProducto</label>
  </vaadin-horizontal-layout>
  <vaadin-text-area id="comentarioValoracionTArea" style="flex-grow: 0; height: 20%;" readonly></vaadin-text-area>
 </vaadin-vertical-layout>

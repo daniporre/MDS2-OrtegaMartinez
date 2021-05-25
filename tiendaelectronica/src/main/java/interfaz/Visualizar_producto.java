@@ -14,6 +14,7 @@ import basededatos.BDPrincipal;
 import basededatosorm.Producto;
 import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
+import basededatosorm.Valoracion;
 import vistas.VistaVisualizarproducto;
 
 //import Diagrama_de_clases_correcto.Valoraciones_del_producto;
@@ -21,23 +22,24 @@ import vistas.VistaVisualizarproducto;
 public class Visualizar_producto extends VistaVisualizarproducto {
 
 	BDPrincipal bdp = new BDPrincipal();
-	Producto[] productos = new Producto[bdp.buscarProducto(this.getSearchBar().getValue()).length];
 	VaadinSession session = VaadinSession.getCurrent();
+	VerticalLayout valoracionesLayout = this.getValoracionesProductoVLayout().as(VerticalLayout.class);
 
 	public Visualizar_producto(Producto p, Usuario usuario, VerticalLayout layoutprincipal) {
 		this.getIniciarSesionButton().setVisible(false);
 		this.getNombreProductoTitulo().setText(p.getNombre());
-		this.getDecuentoProductoLabel().setText((p.getOferta().getPorcentaje() + "%"));
+		this.getDecuentoProductoLabel().setText(("Descuento: "+p.getOferta().getPorcentaje() + "%"));
 		this.getDescripcionProductoTArea().setValue(p.getDescripcion());
-		buscar(usuario, layoutprincipal);
+		this.getValoracionProductoLabel().setText("");
 		añadirAlCarrito(p);
+		cargarValoraciones(p);
 		if (p.getOferta().getPorcentaje() != 0) {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProductoLabel()
-					.setText(p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
 		} else {
-			this.getPrecioProductoLabel().setText(Double.toString(p.getPrecio()) + "€");
+			this.getPrecioProductoLabel().setText("Precio: "+Double.toString(p.getPrecio()) + "€");
 		}
 		this.getReferenciaProductoLabel().setText(String.valueOf(p.getIdProducto()));
 		// TODO Acceder a bd valoraciones y buscar este producto, mostrar las suyas
@@ -65,19 +67,20 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 	public Visualizar_producto(Producto p, VerticalLayout layoutprincipal) {
 		this.getIniciarSesionButton().setVisible(true);
 		this.getNombreProductoTitulo().setText(p.getNombre());
-		this.getDecuentoProductoLabel().setText((p.getOferta().getPorcentaje() + "%"));
+		this.getDecuentoProductoLabel().setText(("Descuento: "+p.getOferta().getPorcentaje() + "%"));
 		this.getDescripcionProductoTArea().setValue(p.getDescripcion());
-		buscar(null, layoutprincipal);
+		this.getValoracionProductoLabel().setText("");
 		iniciarSesionButton(layoutprincipal);
 		añadirAlCarrito(p);
+		cargarValoraciones(p);
 
 		if (p.getOferta().getPorcentaje() != 0) {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProductoLabel()
-					.setText(p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
 		} else {
-			this.getPrecioProductoLabel().setText(Double.toString(p.getPrecio()) + "€");
+			this.getPrecioProductoLabel().setText("Precio: "+Double.toString(p.getPrecio()) + "€");
 		}
 		this.getReferenciaProductoLabel().setText(String.valueOf(p.getIdProducto()));
 		// TODO Acceder a bd valoraciones y buscar este producto, mostrar las suyas
@@ -100,36 +103,12 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 			}
 		});
 	}
-
-	public void buscar(Usuario usuario, VerticalLayout layoutprincipal) {
-
-		productos = bdp.buscarProducto(this.getSearchBar().getValue());
-
-		this.getBuscarButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
-
-			@Override
-			public void onComponentEvent(ClickEvent<Button> event) {
-
-				if (!getSearchBar().getValue().isEmpty()) {
-					if (usuario != null) {
-
-						Productos_buscados pb = new Productos_buscados((UsuarioRegistrado) usuario, productos, null,
-								layoutprincipal);
-
-						layoutprincipal.removeAll();
-						layoutprincipal.add(pb);
-					}
-					if (usuario == null) {
-
-						Productos_buscados pb = new Productos_buscados(productos, null, layoutprincipal);
-
-						layoutprincipal.removeAll();
-						layoutprincipal.add(pb);
-					}
-				}
-
-			}
-		});
+	
+	public void cargarValoraciones(Producto producto) {
+		Valoracion[] valoraciones = producto.valoracions.toArray();
+		for (Valoracion valoracion : valoraciones) {
+			valoracionesLayout.add(new Valoracion_del_producto(valoracion.getUsuarioRegistrado(), valoracion));
+		}
 	}
 
 	public void iniciarSesionButton(VerticalLayout layoutPrincipal) {

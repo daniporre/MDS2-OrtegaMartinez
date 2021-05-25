@@ -33,5 +33,5 @@ public interface iUsuario_registrado extends iUsuario_no_registrado {
 
 	public void darBajaUsuario(int aIdUsuario);
 
-	public void valorarProducto(int aIdProducto, String aValoracion);
+	public void valorarProducto(Producto aProducto, basededatosorm.Valoracion aValoracion);
 }

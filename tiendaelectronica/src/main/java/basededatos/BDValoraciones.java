@@ -29,7 +29,7 @@ public class BDValoraciones {
 
 			v.setComentario(aValoracion.getComentario());
 			v.setValor(aValoracion.getValor());
-			
+			v.setUsuarioRegistrado(aValoracion.getUsuarioRegistrado());
 			Producto p= basededatosorm.ProductoDAO.loadProductoByORMID(aProducto.getIdProducto());
 			p.valoracions.add(v);
 			
@@ -43,4 +43,5 @@ public class BDValoraciones {
 		ProyectoWebPersistentManager.instance().disposePersistentManager();
 		
 	}
+	
 }

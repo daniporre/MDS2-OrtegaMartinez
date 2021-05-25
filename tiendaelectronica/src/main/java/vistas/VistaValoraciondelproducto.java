@@ -7,6 +7,7 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.html.H3;
 
 /**
  * A Designer generated component for the vista-valoraciondelproducto template.
@@ -18,12 +19,13 @@ import com.vaadin.flow.component.textfield.TextArea;
 @JsModule("./src/vista-valoraciondelproducto.js")
 public class VistaValoraciondelproducto extends PolymerTemplate<VistaValoraciondelproducto.VistaValoraciondelproductoModel> {
 
-    @Id("nombreUsuarioValoracionLabel")
-	private Label nombreUsuarioValoracionLabel;
+
 	@Id("valoracionProductoLabel")
 	private Label valoracionProductoLabel;
 	@Id("comentarioValoracionTArea")
 	private TextArea comentarioValoracionTArea;
+	@Id("nombreUsuarioValoracionLabel1")
+	private H3 nombreUsuarioValoracionLabel1;
 
 	/**
      * Creates a new VistaValoraciondelproducto.
@@ -39,13 +41,6 @@ public class VistaValoraciondelproducto extends PolymerTemplate<VistaValoraciond
         // Add setters and getters for template properties here.
     }
 
-	public Label getNombreUsuarioValoracionLabel() {
-		return nombreUsuarioValoracionLabel;
-	}
-
-	public void setNombreUsuarioValoracionLabel(Label nombreUsuarioValoracionLabel) {
-		this.nombreUsuarioValoracionLabel = nombreUsuarioValoracionLabel;
-	}
 
 	public Label getValoracionProductoLabel() {
 		return valoracionProductoLabel;
@@ -61,5 +56,13 @@ public class VistaValoraciondelproducto extends PolymerTemplate<VistaValoraciond
 
 	public void setComentarioValoracionTArea(TextArea comentarioValoracionTArea) {
 		this.comentarioValoracionTArea = comentarioValoracionTArea;
+	}
+
+	public H3 getNombreUsuarioValoracionLabel1() {
+		return nombreUsuarioValoracionLabel1;
+	}
+
+	public void setNombreUsuarioValoracionLabel1(H3 nombreUsuarioValoracionLabel1) {
+		this.nombreUsuarioValoracionLabel1 = nombreUsuarioValoracionLabel1;
 	}
 }

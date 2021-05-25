@@ -14,8 +14,8 @@ class VistaMispedidos extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout theme="spacing" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;">
- <vaadin-horizontal-layout class="content" style="width: 100%; height: 100%; align-self: stretch;">
+<vaadin-vertical-layout id="vaadinVerticalLayout" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;">
+ <vaadin-horizontal-layout class="content" style="align-self: stretch;" theme="spacing">
   <h4 id="fechaLabel" style="width: 15%; align-self: center;">fecha</h4>
   <h4 id="referenciaLabel" style="width: 15%; align-self: center;">refer</h4>
   <h4 id="totalLabel" style="width: 15%; align-self: center;">total</h4>
