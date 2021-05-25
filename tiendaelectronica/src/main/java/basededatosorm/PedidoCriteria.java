@@ -27,7 +27,7 @@ public class PedidoCriteria extends AbstractORMCriteria {
 	public final DoubleExpression totalPagado;
 	public final StringExpression fechaEnvio;
 	public final StringExpression fechaRecepcion;
-	public final CollectionExpression cantidadProductos;
+	public final CollectionExpression items;
 	
 	public PedidoCriteria(Criteria criteria) {
 		super(criteria);
@@ -39,7 +39,7 @@ public class PedidoCriteria extends AbstractORMCriteria {
 		totalPagado = new DoubleExpression("totalPagado", this);
 		fechaEnvio = new StringExpression("fechaEnvio", this);
 		fechaRecepcion = new StringExpression("fechaRecepcion", this);
-		cantidadProductos = new CollectionExpression("ORM_cantidadProductos", this);
+		items = new CollectionExpression("ORM_items", this);
 	}
 	
 	public PedidoCriteria(PersistentSession session) {
@@ -54,8 +54,8 @@ public class PedidoCriteria extends AbstractORMCriteria {
 		return new UsuarioRegistradoCriteria(createCriteria("usuarioRegistrado"));
 	}
 	
-	public basededatosorm.ItemCriteria createCantidadProductosCriteria() {
-		return new basededatosorm.ItemCriteria(createCriteria("ORM_cantidadProductos"));
+	public basededatosorm.ItemCriteria createItemsCriteria() {
+		return new basededatosorm.ItemCriteria(createCriteria("ORM_items"));
 	}
 	
 	public Pedido uniquePedido() {

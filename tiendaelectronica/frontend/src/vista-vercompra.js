@@ -38,16 +38,16 @@ class VistaVercompra extends PolymerElement {
   </vaadin-vertical-layout>
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: flex-end; margin: var(--lumo-space-m);">
+  <label id="estadoPedidoLabel" style="align-self: center;">EstadoPedido</label>
   <vaadin-button id="verFichaUsuarioButton">
-   Ver ficha Usuario
+    Ver ficha Usuario 
   </vaadin-button>
   <vaadin-button theme="primary" id="recibidoButton">
-   Recibido
+    Recibido 
   </vaadin-button>
   <vaadin-button theme="primary" id="enviarPedidoButton">
-   Enviar pedido
+    Enviar pedido 
   </vaadin-button>
-  <label id="estadoPedidoLabel" style="align-self: center;">EstadoPedido</label>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
 `;

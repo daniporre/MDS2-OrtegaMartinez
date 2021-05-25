@@ -110,7 +110,7 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
-      <Length>1000</Length>
+      <Length>255</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -333,7 +333,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -512,76 +512,6 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="Item" Unlogged="false" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="PedidoIdPedido">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>BasededatosORM.Pedido.IdPedido</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ProductoIdProducto">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>BasededatosORM.Producto.IdProducto</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="IdProducto">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="IdPedido">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="CantidadProducto">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
   <Entity name="UsuarioRegistrado" Unlogged="false" PKClustered="0">
     <Column name="NumeroTarjeta">
       <PrimaryKey>false</PrimaryKey>
@@ -731,6 +661,43 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="Item" Unlogged="false" PKClustered="0">
+    <Column name="ID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="PedidoIdPedido">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>BasededatosORM.Pedido.IdPedido</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="ProductoIdProducto">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>BasededatosORM.Producto.IdProducto</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <Entity name="Categoria_Producto" Unlogged="false" PKClustered="0">
     <Column name="CategoriaIdCategoria">
       <PrimaryKey>true</PrimaryKey>
@@ -847,26 +814,6 @@
       <Column>IdProducto</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKItem423252">
-    <ReferenceTable>Item</ReferenceTable>
-    <ReferencedTable>Producto</ReferencedTable>
-    <Columns>
-      <Column>ProductoIdProducto</Column>
-    </Columns>
-    <RefColumns>
-      <Column>IdProducto</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKItem600544">
-    <ReferenceTable>Item</ReferenceTable>
-    <ReferencedTable>Pedido</ReferencedTable>
-    <Columns>
-      <Column>PedidoIdPedido</Column>
-    </Columns>
-    <RefColumns>
-      <Column>IdPedido</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKPedido874496">
     <ReferenceTable>Pedido</ReferenceTable>
     <ReferencedTable>UsuarioRegistrado</ReferencedTable>
@@ -935,6 +882,26 @@
     </Columns>
     <RefColumns>
       <Column>IdOferta</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKItem423252">
+    <ReferenceTable>Item</ReferenceTable>
+    <ReferencedTable>Producto</ReferencedTable>
+    <Columns>
+      <Column>ProductoIdProducto</Column>
+    </Columns>
+    <RefColumns>
+      <Column>IdProducto</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKItem600544">
+    <ReferenceTable>Item</ReferenceTable>
+    <ReferencedTable>Pedido</ReferencedTable>
+    <Columns>
+      <Column>PedidoIdPedido</Column>
+    </Columns>
+    <RefColumns>
+      <Column>IdPedido</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

@@ -1,11 +1,15 @@
 package interfaz;
 
+import java.util.ArrayList;
+
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import basededatos.BDPrincipal;
+import basededatosorm.Producto;
 import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
 import vistas.VistaCorreogeneral;
@@ -28,9 +32,13 @@ public class Correo__General_ extends VistaCorreogeneral {
 	VerticalLayout v = this.getTablaMensajesVLayout().as(VerticalLayout.class);
 	basededatosorm.Correo[] todosLosMensajes;
 	UsuarioRegistrado usuarioRegistrado;
+	VaadinSession session = VaadinSession.getCurrent();
 
 	public Correo__General_(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
-
+		System.out.println("Atrbuto de sesion: "+session.getAttribute("carrito"));
+		
+		
+		
 		this.usuarioRegistrado = usuario;
 		this.getNuevoCorreoButton().setVisible(true);
 		this.getPestañaEnviados().setVisible(true);
@@ -66,7 +74,7 @@ public class Correo__General_ extends VistaCorreogeneral {
 
 	public void recargarMensajesAdmin(Usuario usuario, VerticalLayout layoutPrincipal) {
 		System.out.println("Recargado");
-		for (basededatosorm.Correo c : todosLosMensajes) {
+		for (basededatosorm.Correo c : invArray(todosLosMensajes)) {
 			v.add(new Correo(usuario, c, layoutPrincipal));
 		}
 	}
@@ -77,7 +85,7 @@ public class Correo__General_ extends VistaCorreogeneral {
 
 		basededatosorm.Correo[] mensajesRecibidos;
 		mensajesRecibidos = ur.obtenerMensajesRecibidos(usuarioRegistrado);
-		for (basededatosorm.Correo c : mensajesRecibidos) {
+		for (basededatosorm.Correo c : invArray(mensajesRecibidos) ) {
 
 			v.add(new Correo(usuario, c, layoutPrincipal));
 		}
@@ -88,7 +96,7 @@ public class Correo__General_ extends VistaCorreogeneral {
 		basededatos.iUsuario_registrado ur = new BDPrincipal();
 		basededatosorm.Correo[] mensajesEnviados;
 		mensajesEnviados = ur.obtenerMensajesEnviados(usuarioRegistrado);
-		for (basededatosorm.Correo c : mensajesEnviados) {
+		for (basededatosorm.Correo c : invArray(mensajesEnviados)) {
 			v.add(new Correo(usuario, c, layoutPrincipal));
 		}
 	}
@@ -98,7 +106,8 @@ public class Correo__General_ extends VistaCorreogeneral {
 		basededatos.iUsuario_registrado ur = new BDPrincipal();
 		basededatosorm.Correo[] mensajesEnviados;
 		mensajesEnviados = ur.obtenerMensajesEnviados(usuarioRegistrado);
-		for (basededatosorm.Correo c : mensajesEnviados) {
+		for (basededatosorm.Correo c : invArray(mensajesEnviados)) {
+			
 			v.add(new Correo(usuario, c, layoutPrincipal));
 		}
 	}
@@ -142,5 +151,16 @@ public class Correo__General_ extends VistaCorreogeneral {
 			}
 		});
 
+	}
+	
+	public static basededatosorm.Correo[] invArray(basededatosorm.Correo[] n) {
+		basededatosorm.Correo aux;
+		for (int i = 0; i < n.length / 2; i++) {
+			aux = n[i];
+			n[i] = n[n.length - 1 - i];
+			n[n.length - 1 - i] = aux;
+		}
+
+		return n;
 	}
 }

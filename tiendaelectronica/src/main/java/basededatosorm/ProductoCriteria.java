@@ -29,8 +29,7 @@ public class ProductoCriteria extends AbstractORMCriteria {
 	public final CollectionExpression categorias;
 	public final CollectionExpression valoracions;
 	public final CollectionExpression fotos;
-	public final IntegerExpression itemId;
-	public final AssociationExpression item;
+	public final CollectionExpression items;
 	
 	public ProductoCriteria(Criteria criteria) {
 		super(criteria);
@@ -44,8 +43,7 @@ public class ProductoCriteria extends AbstractORMCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this);
 		valoracions = new CollectionExpression("ORM_valoracions", this);
 		fotos = new CollectionExpression("ORM_fotos", this);
-		itemId = new IntegerExpression("item.idProducto", this);
-		item = new AssociationExpression("item", this);
+		items = new CollectionExpression("ORM_items", this);
 	}
 	
 	public ProductoCriteria(PersistentSession session) {
@@ -72,8 +70,8 @@ public class ProductoCriteria extends AbstractORMCriteria {
 		return new basededatosorm.FotosCriteria(createCriteria("ORM_fotos"));
 	}
 	
-	public ItemCriteria createItemCriteria() {
-		return new ItemCriteria(createCriteria("item"));
+	public basededatosorm.ItemCriteria createItemsCriteria() {
+		return new basededatosorm.ItemCriteria(createCriteria("ORM_items"));
 	}
 	
 	public Producto uniqueProducto() {

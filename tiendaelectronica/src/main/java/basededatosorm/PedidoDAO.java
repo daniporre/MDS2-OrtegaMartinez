@@ -339,9 +339,9 @@ public class PedidoDAO {
 				pedido.getUsuarioRegistrado().pedidos.remove(pedido);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = pedido.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = pedido.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			return delete(pedido);
 		}
@@ -369,9 +369,9 @@ public class PedidoDAO {
 				pedido.getUsuarioRegistrado().pedidos.remove(pedido);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = pedido.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = pedido.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			try {
 				session.delete(pedido);

@@ -6,11 +6,13 @@ import vistas.VistaGestionarusuarios;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.mysql.cj.Session;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import basededatos.BDPrincipal;
 import basededatos.iAdministrador;
@@ -24,35 +26,41 @@ public class Administrador extends VistaAdministrador {
 	public Ver_catálogo vc;
 	public BDPrincipal bdp;
 	private String[] nombreOfertas;
+	VaadinSession session = VaadinSession.getCurrent();
 
 	public Administrador(Usuario administrador, VerticalLayout principalLayout) {
-		vc = new Ver_catálogo(administrador, principalLayout);
 		bdp = new BDPrincipal();
-		recargarOfertas();
+		actualizarCatalogo(administrador, principalLayout);
+		System.out.println(administrador.getMail() + " admin");
 
-		catalogoVLayout.add(vc);
-		
-		System.out.println(administrador.getMail()+" admin");
+		this.getInicioButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+				catalogoVLayout.removeAll();
+				actualizarCatalogo(administrador, principalLayout);
+			}
+		});
 		
 		this.getCorreoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
+
 				principalLayout.removeAll();
 				principalLayout.add(new Correo__General_(administrador, principalLayout));
-				
+
 			}
 		});
-		
 
 		this.getDarBajaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				if(bdp.obtenerOferta(getDarDeBajaComboBox().getValue()) == null){
-					//TODO
-					//IMplementar en la bd un metodo para traerme los productos que tiene una oferta
+				if (bdp.obtenerOferta(getDarDeBajaComboBox().getValue()) == null) {
+					// TODO
+					// IMplementar en la bd un metodo para traerme los productos que tiene una
+					// oferta
 				}
 				bdp.darBajaOferta(getDarDeBajaComboBox().getValue());
 				recargarOfertas();
@@ -69,8 +77,7 @@ public class Administrador extends VistaAdministrador {
 					catalogoVLayout.removeAll();
 					catalogoVLayout.add(vc);
 				}
-				
-				
+
 			}
 		});
 
@@ -93,8 +100,8 @@ public class Administrador extends VistaAdministrador {
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 
-				Usuario_no_registrado unr = new Usuario_no_registrado();
-
+				Usuario_no_registrado unr = new Usuario_no_registrado(principalLayout);
+				session.close();
 				principalLayout.removeAll();
 				principalLayout.add(unr);
 			}
@@ -115,11 +122,12 @@ public class Administrador extends VistaAdministrador {
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				Ver_listado_de_compras__Administrador_ vlc = new Ver_listado_de_compras__Administrador_(administrador, principalLayout);
+				Ver_listado_de_compras__Administrador_ vlc = new Ver_listado_de_compras__Administrador_(administrador,
+						principalLayout);
 
 				principalLayout.removeAll();
 				principalLayout.add(vlc);
-				
+
 			}
 		});
 
@@ -137,24 +145,31 @@ public class Administrador extends VistaAdministrador {
 		});
 	}
 
+	public void actualizarCatalogo(Usuario administrador, VerticalLayout principalLayout) {
+		vc = new Ver_catálogo(administrador, principalLayout);
+
+		recargarOfertas();
+
+		catalogoVLayout.add(vc);
+	}
+
 	public void recargarOfertas() {
 		nombreOfertas = new String[bdp.obtenerOfertas().length];
 		ArrayList<String> arr = new ArrayList<String>();
-		
-		
+
 		for (int i = 0; i < bdp.obtenerOfertas().length; i++) {
 			nombreOfertas[i] = bdp.obtenerOfertas()[i].getNombreOferta();
 		}
-		System.out.println("ofertas con ninguna: "+Arrays.toString(nombreOfertas));
+		System.out.println("ofertas con ninguna: " + Arrays.toString(nombreOfertas));
 		for (int i = 0; i < nombreOfertas.length; i++) {
-			if(!nombreOfertas[i].toLowerCase().contains("ninguna")) {
+			if (!nombreOfertas[i].toLowerCase().contains("ninguna")) {
 				arr.add(nombreOfertas[i]);
 			}
 		}
 		String[] lista = new String[arr.size()];
 		arr.toArray(lista);
 
-		System.out.println("ofertas sin ninguna: "+Arrays.toString(lista));
+		System.out.println("ofertas sin ninguna: " + Arrays.toString(lista));
 		this.getDarDeBajaComboBox().setItems(lista);
 	}
 

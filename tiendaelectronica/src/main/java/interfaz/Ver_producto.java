@@ -5,14 +5,17 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
 
 import basededatosorm.Producto;
 import basededatosorm.Usuario;
 import vistas.VistaVerproducto;
 
+@SuppressWarnings("serial")
 public class Ver_producto extends VistaVerproducto {
 
 	public HorizontalLayout layoutPrincipalVerProducto = this.getVaadinHorizontalLayout();
+	VaadinSession session = VaadinSession.getCurrent();
 
 	public Ver_producto(Producto p, Usuario usuario, VerticalLayout layoutprincipal) {
 		this.getNombreProducto().setText(p.getNombre());
@@ -40,11 +43,9 @@ public class Ver_producto extends VistaVerproducto {
 					layoutprincipal.removeAll();
 					layoutprincipal.add(mp);
 				} else if (usuario != null) {
+					System.out.println("Crear visualizar: " + p.getNombre());
 					Visualizar_producto vp = new Visualizar_producto(p, usuario, layoutprincipal);
-					layoutprincipal.removeAll();
-					layoutprincipal.add(vp);
-				} else {
-					Visualizar_producto vp = new Visualizar_producto(p, layoutprincipal);
+
 					layoutprincipal.removeAll();
 					layoutprincipal.add(vp);
 				}
@@ -73,11 +74,10 @@ public class Ver_producto extends VistaVerproducto {
 
 			@Override
 			public void onComponentEvent(ClickEvent<HorizontalLayout> event) {
-				System.out.println("Producto pulsado: " + p.getNombre());
+				System.out.println("Producto pulsadoooo: " + p.getNombre());
 
-				Visualizar_producto vp = new Visualizar_producto(p, layoutPincipal);
 				layoutPincipal.removeAll();
-				layoutPincipal.add(vp);
+				layoutPincipal.add(new Visualizar_producto(p, layoutPincipal));
 
 			}
 		});

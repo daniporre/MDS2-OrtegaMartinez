@@ -53,13 +53,13 @@ public class Responder_mensaje extends VistaRespondermensaje {
 				
 				if(administrador==null) {
 					if (!getMensajeTF().getValue().isEmpty()) {
-						bdp.responderMensaje(correo, "Re:"+getAsuntoTF().getValue(), getMensajeTF().getValue(), usuario.getMail(), "administrador", fecha);
+						bdp.responderMensaje(correo, "Re: "+getAsuntoTF().getValue(), getMensajeTF().getValue(), usuario.getMail(), "administrador", fecha);
 						principalLayout.removeAll();
 						principalLayout.add(new Correo__General_(usuario, principalLayout));
 					}
 				} else {
 					if (!getMensajeTF().getValue().isEmpty()) {
-						bdp.responderMensaje(correo, "Re:"+getAsuntoTF().getValue(), getMensajeTF().getValue(), "administrador", usuario.getMail(), fecha);
+						bdp.responderMensaje(correo, "Re: "+getAsuntoTF().getValue(), getMensajeTF().getValue(), "administrador", usuario.getMail(), fecha);
 						principalLayout.removeAll();
 						principalLayout.add(new Correo__General_(administrador, principalLayout));
 					}

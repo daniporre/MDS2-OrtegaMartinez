@@ -24,9 +24,6 @@ public class ItemDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression pedido;
 	public final IntegerExpression productoId;
 	public final AssociationExpression producto;
-	public final IntegerExpression idProducto;
-	public final IntegerExpression idPedido;
-	public final IntegerExpression cantidadProducto;
 	
 	public ItemDetachedCriteria() {
 		super(basededatosorm.Item.class, basededatosorm.ItemCriteria.class);
@@ -35,9 +32,6 @@ public class ItemDetachedCriteria extends AbstractORMDetachedCriteria {
 		pedido = new AssociationExpression("pedido", this.getDetachedCriteria());
 		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
-		idProducto = new IntegerExpression("idProducto", this.getDetachedCriteria());
-		idPedido = new IntegerExpression("idPedido", this.getDetachedCriteria());
-		cantidadProducto = new IntegerExpression("cantidadProducto", this.getDetachedCriteria());
 	}
 	
 	public ItemDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -47,9 +41,6 @@ public class ItemDetachedCriteria extends AbstractORMDetachedCriteria {
 		pedido = new AssociationExpression("pedido", this.getDetachedCriteria());
 		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
-		idProducto = new IntegerExpression("idProducto", this.getDetachedCriteria());
-		idPedido = new IntegerExpression("idPedido", this.getDetachedCriteria());
-		cantidadProducto = new IntegerExpression("cantidadProducto", this.getDetachedCriteria());
 	}
 	
 	public PedidoDetachedCriteria createPedidoCriteria() {

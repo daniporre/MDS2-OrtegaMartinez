@@ -113,14 +113,6 @@ public class ListProyectoWebData {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
-		System.out.println("Listing Item...");
-		basededatosorm.Item[] basededatosORMItems = basededatosorm.ItemDAO.listItemByQuery(null, null);
-		length = Math.min(basededatosORMItems.length, ROW_COUNT);
-		for (int i = 0; i < length; i++) {
-			System.out.println(basededatosORMItems[i]);
-		}
-		System.out.println(length + " record(s) retrieved.");
-		
 		System.out.println("Listing UsuarioRegistrado...");
 		basededatosorm.UsuarioRegistrado[] basededatosORMUsuarioRegistrados = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
 		length = Math.min(basededatosORMUsuarioRegistrados.length, ROW_COUNT);
@@ -134,6 +126,14 @@ public class ListProyectoWebData {
 		length = Math.min(basededatosORMFotoses.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(basededatosORMFotoses[i]);
+		}
+		System.out.println(length + " record(s) retrieved.");
+		
+		System.out.println("Listing Item...");
+		basededatosorm.Item[] basededatosORMItems = basededatosorm.ItemDAO.listItemByQuery(null, null);
+		length = Math.min(basededatosORMItems.length, ROW_COUNT);
+		for (int i = 0; i < length; i++) {
+			System.out.println(basededatosORMItems[i]);
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
@@ -296,18 +296,6 @@ public class ListProyectoWebData {
 		}
 		System.out.println(length + " Valoracion record(s) retrieved."); 
 		
-		System.out.println("Listing Item by Criteria...");
-		basededatosorm.ItemCriteria basededatosORMItemCriteria = new basededatosorm.ItemCriteria();
-		// Please uncomment the follow line and fill in parameter(s) 
-		//basededatosORMItemCriteria.ID.eq();
-		basededatosORMItemCriteria.setMaxResults(ROW_COUNT);
-		basededatosorm.Item[] basededatosORMItems = basededatosORMItemCriteria.listItem();
-		length =basededatosORMItems== null ? 0 : Math.min(basededatosORMItems.length, ROW_COUNT); 
-		for (int i = 0; i < length; i++) {
-			 System.out.println(basededatosORMItems[i]);
-		}
-		System.out.println(length + " Item record(s) retrieved."); 
-		
 		System.out.println("Listing UsuarioRegistrado by Criteria...");
 		basededatosorm.UsuarioRegistradoCriteria basededatosORMUsuarioRegistradoCriteria = new basededatosorm.UsuarioRegistradoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
@@ -331,6 +319,18 @@ public class ListProyectoWebData {
 			 System.out.println(basededatosORMFotoses[i]);
 		}
 		System.out.println(length + " Fotos record(s) retrieved."); 
+		
+		System.out.println("Listing Item by Criteria...");
+		basededatosorm.ItemCriteria basededatosORMItemCriteria = new basededatosorm.ItemCriteria();
+		// Please uncomment the follow line and fill in parameter(s) 
+		//basededatosORMItemCriteria.ID.eq();
+		basededatosORMItemCriteria.setMaxResults(ROW_COUNT);
+		basededatosorm.Item[] basededatosORMItems = basededatosORMItemCriteria.listItem();
+		length =basededatosORMItems== null ? 0 : Math.min(basededatosORMItems.length, ROW_COUNT); 
+		for (int i = 0; i < length; i++) {
+			 System.out.println(basededatosORMItems[i]);
+		}
+		System.out.println(length + " Item record(s) retrieved."); 
 		
 	}
 	

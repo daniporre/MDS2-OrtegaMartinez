@@ -43,8 +43,6 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 	private Label direccionUsuarioButton;
 	@Id("editarPagoDireccionButton")
 	private Button editarPagoDireccionButton;
-	@Id("ofertaProductoLabel")
-	private Label ofertaProductoLabel;
 	@Id("gastosEnvioLabel")
 	private Label gastosEnvioLabel;
 	@Id("precioTotalLabel")
@@ -55,6 +53,14 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 	private Element primerVlayout;
 	@Id("metodoYdireccionVLayout")
 	private Element metodoYdireccionVLayout;
+	@Id("ciudadLabel")
+	private Label ciudadLabel;
+	@Id("cpLabel")
+	private Label cpLabel;
+	@Id("provinciaLabel")
+	private Label provinciaLabel;
+	@Id("actualizarButton")
+	private Button actualizarButton;
 
 	/**
      * Creates a new VistaVercarrito.
@@ -158,14 +164,6 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 		this.editarPagoDireccionButton = editarPagoDireccionButton;
 	}
 
-	public Label getOfertaProductoLabel() {
-		return ofertaProductoLabel;
-	}
-
-	public void setOfertaProductoLabel(Label ofertaProductoLabel) {
-		this.ofertaProductoLabel = ofertaProductoLabel;
-	}
-
 	public Label getGastosEnvioLabel() {
 		return gastosEnvioLabel;
 	}
@@ -204,5 +202,37 @@ public class VistaVercarrito extends PolymerTemplate<VistaVercarrito.VistaVercar
 
 	public void setMetodoYdireccionVLayout(Element metodoYdireccionVLayout) {
 		this.metodoYdireccionVLayout = metodoYdireccionVLayout;
+	}
+
+	public Label getCiudadLabel() {
+		return ciudadLabel;
+	}
+
+	public void setCiudadLabel(Label ciudadLabel) {
+		this.ciudadLabel = ciudadLabel;
+	}
+
+	public Label getCpLabel() {
+		return cpLabel;
+	}
+
+	public void setCpLabel(Label cpLabel) {
+		this.cpLabel = cpLabel;
+	}
+
+	public Label getProvinciaLabel() {
+		return provinciaLabel;
+	}
+
+	public void setProvinciaLabel(Label provinciaLabel) {
+		this.provinciaLabel = provinciaLabel;
+	}
+
+	public Button getActualizarButton() {
+		return actualizarButton;
+	}
+
+	public void setActualizarButton(Button actualizarButton) {
+		this.actualizarButton = actualizarButton;
 	}
 }

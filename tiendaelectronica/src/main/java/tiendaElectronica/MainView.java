@@ -11,6 +11,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.server.VaadinSession;
 
 import interfaz.Administrador;
 import interfaz.Añadir_producto;
@@ -51,14 +52,15 @@ public class MainView extends VerticalLayout {
      *
      * @param service The message service. Automatically injected Spring managed bean.
      */
-	
+	VaadinSession session = VaadinSession.getCurrent();
 	
 	Usuario_no_registrado unr = new Usuario_no_registrado();
+	
 	
 //	Administrador ad = new Administrador();
 	
     public MainView() {
-    	
+    	session.setAttribute("unr", unr);
     	
     	
     	add(unr);

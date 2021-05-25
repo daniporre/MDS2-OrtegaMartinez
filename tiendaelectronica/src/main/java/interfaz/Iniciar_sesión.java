@@ -76,7 +76,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(us.getMail());
 
 				if (us.getMail() != null) {
-					Empresa_de_transportes et = new Empresa_de_transportes(principalLayout);
+					Empresa_de_transportes et = new Empresa_de_transportes(us, principalLayout);
 
 					principalLayout.removeAll();
 					principalLayout.add(et);
@@ -89,7 +89,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 				System.out.println(us.getMail());
 
 				if (us.getMail() != null) {
-					Encargado_de_compras et = new Encargado_de_compras(principalLayout);
+					Encargado_de_compras et = new Encargado_de_compras(us, principalLayout);
 
 					principalLayout.removeAll();
 					principalLayout.add(et);
@@ -176,7 +176,7 @@ public class Iniciar_sesión extends VistaIniciarsesion {
 //		// Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el
 //		// remitente también.
 //		String remitente = "daniporre"; // Para la dirección nomcuenta@gmail.com
-//		String clave = "20071997Dani";
+//		String clave = "";
 //
 //		Properties props = System.getProperties();
 //		props.put("mail.smtp.host", "smtp.gmail.com"); // El servidor SMTP de Google

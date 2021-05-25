@@ -48,15 +48,15 @@ public class RetrieveAndUpdateProyectoWebData {
 			basededatosorm.Valoracion basededatosORMValoracion = basededatosorm.ValoracionDAO.loadValoracionByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.ValoracionDAO.save(basededatosORMValoracion);
-			basededatosorm.Item basededatosORMItem = basededatosorm.ItemDAO.loadItemByQuery(null, null);
-			// Update the properties of the persistent object
-			basededatosorm.ItemDAO.save(basededatosORMItem);
 			basededatosorm.UsuarioRegistrado basededatosORMUsuarioRegistrado = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.UsuarioRegistradoDAO.save(basededatosORMUsuarioRegistrado);
 			basededatosorm.Fotos basededatosORMFotos = basededatosorm.FotosDAO.loadFotosByQuery(null, null);
 			// Update the properties of the persistent object
 			basededatosorm.FotosDAO.save(basededatosORMFotos);
+			basededatosorm.Item basededatosORMItem = basededatosorm.ItemDAO.loadItemByQuery(null, null);
+			// Update the properties of the persistent object
+			basededatosorm.ItemDAO.save(basededatosORMItem);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -144,12 +144,6 @@ public class RetrieveAndUpdateProyectoWebData {
 		//basededatosORMValoracionCriteria.idValoracion.eq();
 		System.out.println(basededatosORMValoracionCriteria.uniqueValoracion());
 		
-		System.out.println("Retrieving Item by ItemCriteria");
-		basededatosorm.ItemCriteria basededatosORMItemCriteria = new basededatosorm.ItemCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//basededatosORMItemCriteria.ID.eq();
-		System.out.println(basededatosORMItemCriteria.uniqueItem());
-		
 		System.out.println("Retrieving UsuarioRegistrado by UsuarioRegistradoCriteria");
 		basededatosorm.UsuarioRegistradoCriteria basededatosORMUsuarioRegistradoCriteria = new basededatosorm.UsuarioRegistradoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
@@ -161,6 +155,12 @@ public class RetrieveAndUpdateProyectoWebData {
 		// Please uncomment the follow line and fill in parameter(s)
 		//basededatosORMFotosCriteria.idFoto.eq();
 		System.out.println(basededatosORMFotosCriteria.uniqueFotos());
+		
+		System.out.println("Retrieving Item by ItemCriteria");
+		basededatosorm.ItemCriteria basededatosORMItemCriteria = new basededatosorm.ItemCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//basededatosORMItemCriteria.ID.eq();
+		System.out.println(basededatosORMItemCriteria.uniqueItem());
 		
 	}
 	

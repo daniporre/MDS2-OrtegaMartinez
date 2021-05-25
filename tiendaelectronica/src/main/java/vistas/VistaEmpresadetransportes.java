@@ -32,10 +32,10 @@ public class VistaEmpresadetransportes extends PolymerTemplate<VistaEmpresadetra
 	private Button inicioButton;
 	@Id("vaadinTab1")
 	private Tab vaadinTab1;
-	@Id("reload-button")
-	private Button reloadButton;
 	@Id("vaadinVerticalLayout1")
 	private Element vaadinVerticalLayout1;
+	@Id("reload-button")
+	private Button reloadButton;
 
 	/**
      * Creates a new VistaEmpresadetransportes.
@@ -50,4 +50,68 @@ public class VistaEmpresadetransportes extends PolymerTemplate<VistaEmpresadetra
     public interface VistaEmpresadetransportesModel extends TemplateModel {
         // Add setters and getters for template properties here.
     }
+
+	public Element getVaadinVerticalLayout() {
+		return vaadinVerticalLayout;
+	}
+
+	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
+		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public HorizontalLayout getHeader() {
+		return header;
+	}
+
+	public void setHeader(HorizontalLayout header) {
+		this.header = header;
+	}
+
+	public Button getLogOutButton() {
+		return logOutButton;
+	}
+
+	public void setLogOutButton(Button logOutButton) {
+		this.logOutButton = logOutButton;
+	}
+
+	public Tab getVaadinTab() {
+		return vaadinTab;
+	}
+
+	public void setVaadinTab(Tab vaadinTab) {
+		this.vaadinTab = vaadinTab;
+	}
+
+	public Button getInicioButton() {
+		return inicioButton;
+	}
+
+	public void setInicioButton(Button inicioButton) {
+		this.inicioButton = inicioButton;
+	}
+
+	public Tab getVaadinTab1() {
+		return vaadinTab1;
+	}
+
+	public void setVaadinTab1(Tab vaadinTab1) {
+		this.vaadinTab1 = vaadinTab1;
+	}
+
+	public Button getReloadButton() {
+		return reloadButton;
+	}
+
+	public void setReloadButton(Button reloadButton) {
+		this.reloadButton = reloadButton;
+	}
+
+	public Element getVaadinVerticalLayout1() {
+		return vaadinVerticalLayout1;
+	}
+
+	public void setVaadinVerticalLayout1(Element vaadinVerticalLayout1) {
+		this.vaadinVerticalLayout1 = vaadinVerticalLayout1;
+	}
 }

@@ -1,10 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
-import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 
 class VistaVercarrito extends PolymerElement {
 
@@ -55,12 +55,14 @@ class VistaVercarrito extends PolymerElement {
    <h3>Descripción</h3>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
    <vaadin-tab></vaadin-tab>
-   <h3>Cantidad</h3>
    <vaadin-tab></vaadin-tab>
+   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
    <h3>Precio</h3>
    <vaadin-tab></vaadin-tab>
-   <h3>Subtotal</h3>
-   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
+   <vaadin-button theme="primary" id="actualizarButton" style="align-self: center;">
+    Actualizar carrito
+   </vaadin-button>
+   <vaadin-tab style="flex-grow: 0;"></vaadin-tab>
   </vaadin-horizontal-layout>
   <vaadin-vertical-layout theme="spacing" id="productosEnCarritoVLayout" style="align-self: stretch;"></vaadin-vertical-layout>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
@@ -75,13 +77,11 @@ class VistaVercarrito extends PolymerElement {
     <label id="metodoDePagoButton">metodoDePago</label>
     <h4>Dirección</h4>
     <label id="direccionUsuarioButton">direccionUsuario</label>
+    <label id="ciudadLabel">ciudad</label>
+    <label id="cpLabel">Label</label>
+    <label id="provinciaLabel">Label</label>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; flex-shrink: 0;">
-    <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
-     <h4>Oferta disponible</h4>
-     <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-     <label id="ofertaProductoLabel" style="align-self: center;">ofertaProducto</label>
-    </vaadin-horizontal-layout>
     <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
      <h3>Gastos de envío</h3>
      <vaadin-tab style="flex-grow: 1;"></vaadin-tab>

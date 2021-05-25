@@ -9,6 +9,7 @@ import com.vaadin.flow.component.notification.Notification;
 
 import basededatosorm.Categoria;
 import basededatosorm.Oferta;
+import basededatosorm.ProyectoWebPersistentManager;
 
 public class BDCategorias {
 	public BDPrincipal _unnamed_BDPrincipal_;
@@ -42,7 +43,6 @@ public class BDCategorias {
 			e.printStackTrace();
 			t.rollback();
 		}
-		
 	}
 	
 	public Categoria obtenerCategoria(String aNombreCategoria) throws PersistentException {

@@ -52,20 +52,11 @@ public class Item implements Serializable {
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Pedido pedido;
 	
-	@OneToOne(optional=false, targetEntity=basededatosorm.Producto.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@ManyToOne(targetEntity=basededatosorm.Producto.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns(value={ @JoinColumn(name="ProductoIdProducto", referencedColumnName="IdProducto", nullable=false) }, foreignKey=@ForeignKey(name="FKItem423252"))	
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Producto producto;
-	
-	@Column(name="IdProducto", nullable=false, length=10)	
-	private int idProducto;
-	
-	@Column(name="IdPedido", nullable=false, length=10)	
-	private int idPedido;
-	
-	@Column(name="CantidadProducto", nullable=false, length=10)	
-	private int cantidadProducto;
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -79,40 +70,12 @@ public class Item implements Serializable {
 		return getID();
 	}
 	
-	public void setIdProducto(int value) {
-		this.idProducto = value;
-	}
-	
-	public int getIdProducto() {
-		return idProducto;
-	}
-	
-	public void setIdPedido(int value) {
-		this.idPedido = value;
-	}
-	
-	public int getIdPedido() {
-		return idPedido;
-	}
-	
-	public void setCantidadProducto(int value) {
-		this.cantidadProducto = value;
-	}
-	
-	public int getCantidadProducto() {
-		return cantidadProducto;
-	}
-	
 	public void setProducto(basededatosorm.Producto value) {
-		if (this.producto != value) {
-			basededatosorm.Producto lproducto = this.producto;
-			this.producto = value;
-			if (value != null) {
-				producto.setItem(this);
-			}
-			if (lproducto != null && lproducto.getItem() == this) {
-				lproducto.setItem(null);
-			}
+		if (producto != null) {
+			producto.items.remove(this);
+		}
+		if (value != null) {
+			value.items.add(this);
 		}
 	}
 	
@@ -120,12 +83,23 @@ public class Item implements Serializable {
 		return producto;
 	}
 	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Producto(basededatosorm.Producto value) {
+		this.producto = value;
+	}
+	
+	private basededatosorm.Producto getORM_Producto() {
+		return producto;
+	}
+	
 	public void setPedido(basededatosorm.Pedido value) {
 		if (pedido != null) {
-			pedido.cantidadProductos.remove(this);
+			pedido.items.remove(this);
 		}
 		if (value != null) {
-			value.cantidadProductos.add(this);
+			value.items.add(this);
 		}
 	}
 	

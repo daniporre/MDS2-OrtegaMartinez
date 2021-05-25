@@ -27,7 +27,7 @@ public class EnviadoCriteria extends AbstractORMCriteria {
 	public final DoubleExpression totalPagado;
 	public final StringExpression fechaEnvio;
 	public final StringExpression fechaRecepcion;
-	public final CollectionExpression cantidadProductos;
+	public final CollectionExpression items;
 	public final IntegerExpression transportistaId;
 	public final AssociationExpression transportista;
 	
@@ -41,7 +41,7 @@ public class EnviadoCriteria extends AbstractORMCriteria {
 		totalPagado = new DoubleExpression("totalPagado", this);
 		fechaEnvio = new StringExpression("fechaEnvio", this);
 		fechaRecepcion = new StringExpression("fechaRecepcion", this);
-		cantidadProductos = new CollectionExpression("ORM_cantidadProductos", this);
+		items = new CollectionExpression("ORM_items", this);
 		transportistaId = new IntegerExpression("transportista.", this);
 		transportista = new AssociationExpression("transportista", this);
 	}
@@ -62,8 +62,8 @@ public class EnviadoCriteria extends AbstractORMCriteria {
 		return new UsuarioRegistradoCriteria(createCriteria("usuarioRegistrado"));
 	}
 	
-	public basededatosorm.ItemCriteria createCantidadProductosCriteria() {
-		return new basededatosorm.ItemCriteria(createCriteria("ORM_cantidadProductos"));
+	public basededatosorm.ItemCriteria createItemsCriteria() {
+		return new basededatosorm.ItemCriteria(createCriteria("ORM_items"));
 	}
 	
 	public Enviado uniqueEnviado() {

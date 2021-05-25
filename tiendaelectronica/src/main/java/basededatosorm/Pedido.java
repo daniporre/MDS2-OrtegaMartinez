@@ -24,8 +24,8 @@ public class Pedido implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == basededatosorm.ORMConstants.KEY_PEDIDO_CANTIDADPRODUCTOS) {
-			return ORM_cantidadProductos;
+		if (key == basededatosorm.ORMConstants.KEY_PEDIDO_ITEMS) {
+			return ORM_items;
 		}
 		
 		return null;
@@ -79,7 +79,7 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy="pedido", targetEntity=basededatosorm.Item.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_cantidadProductos = new java.util.HashSet();
+	private java.util.Set ORM_items = new java.util.HashSet();
 	
 	private void setIdPedido(int value) {
 		this.idPedido = value;
@@ -133,16 +133,16 @@ public class Pedido implements Serializable {
 		return fechaRecepcion;
 	}
 	
-	private void setORM_CantidadProductos(java.util.Set value) {
-		this.ORM_cantidadProductos = value;
+	private void setORM_Items(java.util.Set value) {
+		this.ORM_items = value;
 	}
 	
-	private java.util.Set getORM_CantidadProductos() {
-		return ORM_cantidadProductos;
+	private java.util.Set getORM_Items() {
+		return ORM_items;
 	}
 	
 	@Transient	
-	public final basededatosorm.ItemSetCollection cantidadProductos = new basededatosorm.ItemSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_PEDIDO_CANTIDADPRODUCTOS, basededatosorm.ORMConstants.KEY_ITEM_PEDIDO, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final basededatosorm.ItemSetCollection items = new basededatosorm.ItemSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_PEDIDO_ITEMS, basededatosorm.ORMConstants.KEY_ITEM_PEDIDO, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public void setUsuarioRegistrado(basededatosorm.UsuarioRegistrado value) {
 		if (usuarioRegistrado != null) {

@@ -24,9 +24,6 @@ public class ItemCriteria extends AbstractORMCriteria {
 	public final AssociationExpression pedido;
 	public final IntegerExpression productoId;
 	public final AssociationExpression producto;
-	public final IntegerExpression idProducto;
-	public final IntegerExpression idPedido;
-	public final IntegerExpression cantidadProducto;
 	
 	public ItemCriteria(Criteria criteria) {
 		super(criteria);
@@ -35,9 +32,6 @@ public class ItemCriteria extends AbstractORMCriteria {
 		pedido = new AssociationExpression("pedido", this);
 		productoId = new IntegerExpression("producto.idProducto", this);
 		producto = new AssociationExpression("producto", this);
-		idProducto = new IntegerExpression("idProducto", this);
-		idPedido = new IntegerExpression("idPedido", this);
-		cantidadProducto = new IntegerExpression("cantidadProducto", this);
 	}
 	
 	public ItemCriteria(PersistentSession session) {

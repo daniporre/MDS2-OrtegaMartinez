@@ -49,7 +49,8 @@ public class Gestionar_usuarios extends VistaGestionarusuarios {
 								
 					
 					bdprincipal.cambiarContraseniaAdmin(getSeleccionarUsuarioComboBox().getValue(),getContraseñaUsuarioModificadaTF().getValue());
-					
+					layoutPrincipal.removeAll();
+					layoutPrincipal.add(new Administrador(administrador, layoutPrincipal));
 				}
 			}
 		});

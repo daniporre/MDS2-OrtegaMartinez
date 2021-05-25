@@ -9,6 +9,7 @@ import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.dom.Element;
+import com.vaadin.flow.component.html.H3;
 
 /**
  * A Designer generated component for the vista-vercatalogo template.
@@ -33,6 +34,8 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 	private HorizontalLayout categoriasHLayout;
 	@Id("vaadinVerticalLayout")
 	private Element vaadinVerticalLayout;
+	@Id("categoriaLabel")
+	private H3 categoriaLabel;
 	
 
 	/**
@@ -97,6 +100,14 @@ public class VistaVercatalogo extends PolymerTemplate<VistaVercatalogo.VistaVerc
 
 	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
 		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public H3 getCategoriaLabel() {
+		return categoriaLabel;
+	}
+
+	public void setCategoriaLabel(H3 categoriaLabel) {
+		this.categoriaLabel = categoriaLabel;
 	}
 
 	

@@ -25,17 +25,16 @@ public class Ver_categoría extends VistaVercategoria {
 			public void onComponentEvent(ClickEvent<HorizontalLayout> event) {
 				// TODO Auto-generated method stub
 				System.out.println("Categoría pulsada: " + c.getNombre());
-				if(getCategoriaButton().isEnabled()==true) {
-					getCategoriaButton().setEnabled(false);
-				} 
-				if(getCategoriaButton().isEnabled()==false) {
-					getCategoriaButton().setEnabled(true);
-				} 
+//				if(getCategoriaButton().isEnabled()==true) {
+//					getCategoriaButton().setEnabled(false);
+//				} else if(getCategoriaButton().isEnabled()==false) {
+//					getCategoriaButton().setEnabled(true);
+//				} 
 			}
 		});
 	}
 
 	public void mostrarCategoria() {
-		throw new UnsupportedOperationException();
+		
 	}
 }

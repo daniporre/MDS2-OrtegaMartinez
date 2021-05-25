@@ -17,6 +17,7 @@ import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
 import basededatosorm.Encargado;
+import basededatosorm.Enviado;
 import interfaz.Pedido;
 import basededatosorm.Usuario;
 import interfaz.Usuario_no_identificado;
@@ -490,5 +491,62 @@ public class BDPrincipal
 			return null;
 		}
 
+	}
+	@Override
+	public Producto[] obtenerProductosConCategoria(Categoria categoria) {
+		try {
+			return _bDProductos.obtenerProductosConCategoria(categoria);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void crearPedido(UsuarioRegistrado aUsuario, Producto[] aProductos, Double precioTotal) {
+		try {
+			_bDPendientes.crearPedido(aUsuario, aProductos, precioTotal);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public basededatosorm.Pendiente[] cargarTodosPendientes() {
+		try {
+			return _bDPendientes.cargarTodosPendientes();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void crearEnviado(UsuarioRegistrado aUsuario, Producto aProducto, basededatosorm.Pendiente pedido) {
+		try {
+			_bDEnviados.crearEnviado(aUsuario, aProducto, pedido);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public basededatosorm.Enviado[] cargarTodosEnviados() {
+		try {
+			return _bDEnviados.cargarTodosEnviados();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void crearEntregado(UsuarioRegistrado aUsuario, Producto aProducto, basededatosorm.Enviado pedido) {
+		try {
+			 _bDEntregados.crearEntregado(aUsuario, aProducto, pedido);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

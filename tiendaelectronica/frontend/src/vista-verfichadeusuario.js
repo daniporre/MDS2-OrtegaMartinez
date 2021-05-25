@@ -1,9 +1,8 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
 
 class VistaVerfichadeusuario extends PolymerElement {
 
@@ -19,8 +18,8 @@ class VistaVerfichadeusuario extends PolymerElement {
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
-  <vaadin-button theme="icon" aria-label="Add new" id="atrasButton">
-   <iron-icon icon="lumo:plus"></iron-icon>Atrás 
+  <vaadin-button id="atrasButton">
+   Inicio
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <label style="align-self: center;">Ver ficha de usuario</label>
@@ -31,7 +30,6 @@ class VistaVerfichadeusuario extends PolymerElement {
   <label id="nombreUsuarioLabel">nombreUsuario</label>
   <h2>Dirección:</h2>
   <label id="calleUsuarioLabel">calleUsuario</label>
-  <label id="numeroPortalUsuarioLabel">numeroPortalUsuario</label>
   <label id="codigoPostalUsuarioLabel">codigoPostalUsuario</label>
   <label id="cuidadUsuarioLabel">cuidadUsuario</label>
   <label id="provinciaUsuarioLabel">provinciaUsuario</label>

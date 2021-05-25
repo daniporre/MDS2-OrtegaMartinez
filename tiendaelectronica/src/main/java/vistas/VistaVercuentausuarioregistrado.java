@@ -77,6 +77,8 @@ public class VistaVercuentausuarioregistrado extends PolymerTemplate<VistaVercue
 	private TextField nuevaContraseñaTF;
 	@Id("correoButton")
 	private Button correoButton;
+	@Id("listaPedidosLayout")
+	private Element listaPedidosLayout;
 	/**
      * Creates a new VistaVercuentausuarioregistrado.
      */

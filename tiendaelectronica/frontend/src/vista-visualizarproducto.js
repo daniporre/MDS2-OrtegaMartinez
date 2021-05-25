@@ -29,11 +29,12 @@ class VistaVisualizarproducto extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;" id="vaadinTab"></vaadin-tab>
   <vaadin-button id="verCarritoButton">
-    Ver carrito 
+   Carrito
   </vaadin-button>
   <vaadin-button id="iniciarSesionButton">
     Iniciar sesión 
   </vaadin-button>
+  <vaadin-tab></vaadin-tab>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout theme="spacing" style="align-self: stretch; flex-grow: 1; margin: var(--lumo-space-xl);">
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">

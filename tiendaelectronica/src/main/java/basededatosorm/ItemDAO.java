@@ -324,11 +324,11 @@ public class ItemDAO {
 	public static boolean deleteAndDissociate(basededatosorm.Item item)throws PersistentException {
 		try {
 			if (item.getPedido() != null) {
-				item.getPedido().cantidadProductos.remove(item);
+				item.getPedido().items.remove(item);
 			}
 			
 			if (item.getProducto() != null) {
-				item.getProducto().setItem(null);
+				item.getProducto().items.remove(item);
 			}
 			
 			return delete(item);
@@ -342,11 +342,11 @@ public class ItemDAO {
 	public static boolean deleteAndDissociate(basededatosorm.Item item, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (item.getPedido() != null) {
-				item.getPedido().cantidadProductos.remove(item);
+				item.getPedido().items.remove(item);
 			}
 			
 			if (item.getProducto() != null) {
-				item.getProducto().setItem(null);
+				item.getProducto().items.remove(item);
 			}
 			
 			try {

@@ -25,7 +25,7 @@ class VistaVercatalogo extends PolymerElement {
    <h5>Ordenar por:</h5>
    <vaadin-combo-box id="ordenarPorCombobox" style="align-self: center;"></vaadin-combo-box>
    <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-   <h5>Filtrar por:</h5>
+   <h3 id="categoriaLabel">Categoria</h3>
    <vaadin-combo-box id="filtrarPorCombobox" style="align-self: center;"></vaadin-combo-box>
   </vaadin-horizontal-layout>
   <vaadin-vertical-layout theme="spacing" id="productosEnCatalogoVLayout" style="flex-grow: 1; align-self: stretch;background-color: var(--lumo-contrast-1pct);"></vaadin-vertical-layout>

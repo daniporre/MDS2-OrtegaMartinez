@@ -50,9 +50,9 @@ public class ProyectoWebPersistentManager extends PersistentManager {
 		aMetadataSources.addAnnotatedClass(basededatosorm.Transportista.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Correo.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Valoracion.class);
-		aMetadataSources.addAnnotatedClass(basededatosorm.Item.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.UsuarioRegistrado.class);
 		aMetadataSources.addAnnotatedClass(basededatosorm.Fotos.class);
+		aMetadataSources.addAnnotatedClass(basededatosorm.Item.class);
 	}
 	
 	public String getProjectName() {

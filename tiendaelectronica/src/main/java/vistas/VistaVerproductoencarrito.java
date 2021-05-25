@@ -18,20 +18,14 @@ import com.vaadin.flow.component.html.Label;
 @JsModule("./src/vista-verproductoencarrito.js")
 public class VistaVerproductoencarrito extends PolymerTemplate<VistaVerproductoencarrito.VistaVerproductoencarritoModel> {
 
-    @Id("imagenProductoButton")
-	private Button imagenProductoButton;
 	@Id("nombreProductoLabel")
 	private Label nombreProductoLabel;
-	@Id("decrementarButton")
-	private Button decrementarButton;
-	@Id("cantidadProductosLabel")
-	private Label cantidadProductosLabel;
 	@Id("aumentarButton")
 	private Button aumentarButton;
 	@Id("precioLabel")
 	private Label precioLabel;
-	@Id("totalLabel")
-	private Label totalLabel;
+	@Id("eliminarProductoButton")
+	private Button eliminarProductoButton;
 
 	/**
      * Creates a new VistaVerproductoencarrito.
@@ -55,22 +49,6 @@ public class VistaVerproductoencarrito extends PolymerTemplate<VistaVerproductoe
 		this.nombreProductoLabel = nombreProductoLabel;
 	}
 
-	public Button getDecrementarButton() {
-		return decrementarButton;
-	}
-
-	public void setDecrementarButton(Button decrementarButton) {
-		this.decrementarButton = decrementarButton;
-	}
-
-	public Label getCantidadProductosLabel() {
-		return cantidadProductosLabel;
-	}
-
-	public void setCantidadProductosLabel(Label cantidadProductosLabel) {
-		this.cantidadProductosLabel = cantidadProductosLabel;
-	}
-
 	public Button getAumentarButton() {
 		return aumentarButton;
 	}
@@ -87,11 +65,11 @@ public class VistaVerproductoencarrito extends PolymerTemplate<VistaVerproductoe
 		this.precioLabel = precioLabel;
 	}
 
-	public Label getTotalLabel() {
-		return totalLabel;
+	public Button getEliminarProductoButton() {
+		return eliminarProductoButton;
 	}
 
-	public void setTotalLabel(Label totalLabel) {
-		this.totalLabel = totalLabel;
+	public void setEliminarProductoButton(Button eliminarProductoButton) {
+		this.eliminarProductoButton = eliminarProductoButton;
 	}
 }

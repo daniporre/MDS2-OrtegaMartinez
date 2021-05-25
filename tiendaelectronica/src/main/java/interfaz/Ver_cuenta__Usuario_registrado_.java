@@ -8,11 +8,15 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.CompositionStartEvent;
 import com.vaadin.flow.component.CompositionUpdateEvent;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.Notification.Position;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.server.VaadinSession;
 
 import basededatos.BDPrincipal;
 import basededatosorm.Usuario;
@@ -22,25 +26,22 @@ import interfaz.Usuario_no_registrado;
 
 @SuppressWarnings("serial")
 public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregistrado {
-	public static Usuario usuarioActivo;
+	
+	VaadinSession session = VaadinSession.getCurrent();
 
 
 	public Ver_cuenta__Usuario_registrado_(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
 
 		BDPrincipal bdp = new BDPrincipal();
 
-		System.out.println("Usuario registrado dentro: " + usuario.getMail());
-
-		usuarioActivo = Iniciar_sesión.usuarioActivo();
-		System.out.println(usuarioActivo);
+		//Botones
 		Cerrar_sesión(layoutPrincipal);
 		mostrarCorreo(usuario, layoutPrincipal);
 		inicio(usuario, layoutPrincipal);
+		carrito(usuario, layoutPrincipal);
 		
 		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
 
-		
-		
 		desactivarActivarTextFieldsDireccion(true);
 		desactivarActivarTextFieldsMetodoPago(true);
 		desactivarActivarTextFieldsDatosPersonales(true);
@@ -158,11 +159,11 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 				if(getNuevaContraseñaTF().getValue()!=null) {
 					if(getNuevaContraseñaTF().getValue().toString().length()>10) {
 						bdp.cambiarContrasenia(usuario, getNuevaContraseñaTF().getValue());
-						Usuario_no_registrado unr = new Usuario_no_registrado();
+						Usuario_no_registrado unr = new Usuario_no_registrado(layoutPrincipal);
 						layoutPrincipal.removeAll();
 						layoutPrincipal.add(unr);
 					} else {
-						Notification.show("La contraseña debe tener al menos 10 caracteres").setPosition(Position.BOTTOM_END);;
+						Notification.show("La contraseña debe tener al menos 10 caracteres").setPosition(Position.BOTTOM_END);
 					}
 				} else {
 					Notification.show("Introduce una contraseña válida");
@@ -175,10 +176,33 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				
-				bdp.darBajaUsuario(usuario.getIdUsuario());
-				Usuario_no_registrado unr = new Usuario_no_registrado();
-				layoutPrincipal.removeAll();
-				layoutPrincipal.add(unr);
+				
+				
+				
+				Notification notification = new Notification();
+				notification.addThemeVariants(NotificationVariant.LUMO_CONTRAST);
+
+				Span label = new Span("¿Estás seguro de que quieres darte de baja? Esta operación no se puede deshacer");
+
+
+				Button botonEliminar = new Button("Darme de baja", e -> {
+					bdp.darBajaUsuario(usuario.getIdUsuario());
+					Usuario_no_registrado unr = new Usuario_no_registrado(layoutPrincipal);
+					layoutPrincipal.removeAll();
+					layoutPrincipal.add(unr);
+					notification.close();
+				});
+				botonEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+				notification.add(label, botonEliminar);
+
+				label.getStyle().set("margin-right", "0.5rem");
+				botonEliminar.getStyle().set("margin-left", "10rem");
+				
+				notification.setPosition(Position.MIDDLE);
+				notification.open();
+				
+				
 			}
 		});
 		
@@ -209,7 +233,8 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				Usuario_no_registrado a = new Usuario_no_registrado();
+				session.close();
+				Usuario_no_registrado a = new Usuario_no_registrado(layoutPrincipal);
 				layoutPrincipal.removeAll();
 				layoutPrincipal.add(a);
 
@@ -239,6 +264,24 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 				layoutPrincipal.add(new Correo__General_(usuario, layoutPrincipal));
 				
 			}
+		});
+	}
+	
+	public void carrito(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
+		Ver_carrito carrito;
+		
+		carrito = new Ver_carrito(usuario, layoutPrincipal);
+
+		this.getCarritoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(carrito);
+
+			}
+
 		});
 	}
 

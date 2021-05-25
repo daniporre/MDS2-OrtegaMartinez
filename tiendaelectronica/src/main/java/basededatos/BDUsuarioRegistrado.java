@@ -20,6 +20,7 @@ public class BDUsuarioRegistrado {
 		
 		try {
 			UsuarioRegistrado ur = basededatosorm.UsuarioRegistradoDAO.createUsuarioRegistrado();
+			
 			ur.setMail(aCorreo);
 			ur.setContraseña(aContrasenia);
 			ur.setEstaOperativo(true);
@@ -112,18 +113,18 @@ public class BDUsuarioRegistrado {
 				.beginTransaction();
 		try {
 
-			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
-			int idUsuario = 0;
-
-			for (UsuarioRegistrado ur : ads) {
-				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
-					idUsuario = ur.getIdUsuario();
-					break;
-				}
-
-			}
-			
-			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
+//			UsuarioRegistrado[] ads = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+//			int idUsuario = 0;
+//
+//			for (UsuarioRegistrado ur : ads) {
+//				if (ur.getMail().toLowerCase().equals(usuario.getMail().toLowerCase()) && ur.getContraseña().equals(usuario.getContraseña())) {
+//					idUsuario = ur.getIdUsuario();
+//					break;
+//				}
+//
+//			}
+			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByQuery("mail = '" + usuario.getMail()+ "'", null);
+//			UsuarioRegistrado ad = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByORMID(idUsuario);
 			ad.setDireccionUsuario(aDireccionUsuario);
 			ad.setCiudad(aCiudad);
 			ad.setProvincia(aProvincia);
@@ -245,17 +246,18 @@ public class BDUsuarioRegistrado {
 	public UsuarioRegistrado[] obtenerUsuariosRegistrados() throws PersistentException {
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
-
+		UsuarioRegistrado[] o = null;
 		try {
-			UsuarioRegistrado[] o = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
+			o = basededatosorm.UsuarioRegistradoDAO.listUsuarioRegistradoByQuery(null, null);
 
 			t.commit();
-			return o;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			t.rollback();
-			return null;
 		}
+		basededatosorm.ProyectoWebPersistentManager.instance().disposePersistentManager();
+		return o;
 	}
 	public void cancelarPedido(int aIdPedido) {
 		
@@ -273,29 +275,6 @@ public class BDUsuarioRegistrado {
 		UsuarioRegistrado us = basededatosorm.UsuarioRegistradoDAO.getUsuarioRegistradoByORMID(aIdUsuario);
 		
 		return us;
-	}
-	public Producto[] buscarProducto(String aNombre) {
-		return null;
-		
-	}
-	
-	public Correo[] obtenerMensajesRecibidos() {
-		return null;
-		
-	}
-
-	public Correo[] obtenerMensajesEnviados() {
-		return null;
-		
-	}
-
-	public void crearMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario, String aFechaEnvio) {
-		
-	}
-
-	public Correo obtenerMensaje(String aId) {
-		return null;
-		
 	}
 	
 }

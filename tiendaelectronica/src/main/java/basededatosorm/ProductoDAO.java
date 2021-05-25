@@ -339,10 +339,10 @@ public class ProductoDAO {
 			for(int i = 0; i < lFotoss.length; i++) {
 				lFotoss[i].setProducto(null);
 			}
-			if (producto.getItem() != null) {
-				producto.getItem().setProducto(null);
+			basededatosorm.Item[] lItemss = producto.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setProducto(null);
 			}
-			
 			return delete(producto);
 		}
 		catch(Exception e) {
@@ -369,10 +369,10 @@ public class ProductoDAO {
 			for(int i = 0; i < lFotoss.length; i++) {
 				lFotoss[i].setProducto(null);
 			}
-			if (producto.getItem() != null) {
-				producto.getItem().setProducto(null);
+			basededatosorm.Item[] lItemss = producto.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setProducto(null);
 			}
-			
 			try {
 				session.delete(producto);
 				return true;

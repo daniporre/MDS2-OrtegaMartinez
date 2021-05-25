@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Table(name="Producto")
-public class Producto implements Serializable, Comparable<Producto> {
+public class Producto implements Serializable {
 	public Producto() {
 	}
 	
@@ -32,6 +32,9 @@ public class Producto implements Serializable, Comparable<Producto> {
 		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_FOTOS) {
 			return ORM_fotos;
 		}
+		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_ITEMS) {
+			return ORM_items;
+		}
 		
 		return null;
 	}
@@ -39,10 +42,6 @@ public class Producto implements Serializable, Comparable<Producto> {
 	private void this_setOwner(Object owner, int key) {
 		if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_OFERTA) {
 			this.oferta = (basededatosorm.Oferta) owner;
-		}
-		
-		else if (key == basededatosorm.ORMConstants.KEY_PRODUCTO_ITEM) {
-			this.item = (basededatosorm.Item) owner;
 		}
 	}
 	
@@ -98,10 +97,10 @@ public class Producto implements Serializable, Comparable<Producto> {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_fotos = new java.util.HashSet();
 	
-	@OneToOne(mappedBy="producto", targetEntity=basededatosorm.Item.class, fetch=FetchType.LAZY)	
+	@OneToMany(mappedBy="producto", targetEntity=basededatosorm.Item.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
-	private basededatosorm.Item item;
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM_items = new java.util.HashSet();
 	
 	private void setIdProducto(int value) {
 		this.idProducto = value;
@@ -204,36 +203,19 @@ public class Producto implements Serializable, Comparable<Producto> {
 		return oferta;
 	}
 	
-	public void setItem(basededatosorm.Item value) {
-		if (this.item != value) {
-			basededatosorm.Item litem = this.item;
-			this.item = value;
-			if (value != null) {
-				item.setProducto(this);
-			}
-			if (litem != null && litem.getProducto() == this) {
-				litem.setProducto(null);
-			}
-		}
+	private void setORM_Items(java.util.Set value) {
+		this.ORM_items = value;
 	}
 	
-	public basededatosorm.Item getItem() {
-		return item;
+	private java.util.Set getORM_Items() {
+		return ORM_items;
 	}
+	
+	@Transient	
+	public final basededatosorm.ItemSetCollection items = new basededatosorm.ItemSetCollection(this, _ormAdapter, basededatosorm.ORMConstants.KEY_PRODUCTO_ITEMS, basededatosorm.ORMConstants.KEY_ITEM_PRODUCTO, basededatosorm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getIdProducto());
-	}
-	
-	@Override
-	public int compareTo(Producto pro) {
-		if (this.precio < pro.getPrecio()) {
-			return -1;
-		}
-		if (this.precio > pro.getPrecio()) {
-			return 1;
-		}
-		return 0;
 	}
 	
 }

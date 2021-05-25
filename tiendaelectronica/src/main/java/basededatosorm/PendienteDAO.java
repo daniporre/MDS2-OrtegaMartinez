@@ -327,9 +327,9 @@ public class PendienteDAO {
 				pendiente.getUsuarioRegistrado().pedidos.remove(pendiente);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = pendiente.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = pendiente.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			return delete(pendiente);
 		}
@@ -345,9 +345,9 @@ public class PendienteDAO {
 				pendiente.getUsuarioRegistrado().pedidos.remove(pendiente);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = pendiente.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = pendiente.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			try {
 				session.delete(pendiente);

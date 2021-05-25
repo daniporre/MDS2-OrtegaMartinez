@@ -40,45 +40,50 @@ public class Ver_catálogo extends VistaVercatalogo {
 	public Ver_oferta vpo;
 	public BDPrincipal bdp = new BDPrincipal();
 	public String[] comboOrdenar = { "Más caros primero", "Más baratos primero" };
-	public Producto[] p = new Producto[bdp.verCatalogo().length];
+	public Producto[] productosAMostrar = new Producto[bdp.verCatalogo().length];
 	public ArrayList<Producto> productoEnOfertaAL = new ArrayList<Producto>();
 	public Producto[] productoEnOferta;
 	public ArrayList<Producto> arr = new ArrayList<Producto>();
 	public Categoria[] categorias = new Categoria[bdp.obtenerCategorias().length];
 	public Ver_categoría verCategoria;
+	Usuario usuario;
+	VerticalLayout principalLayout;
 
-	public Ver_catálogo(Usuario usuario, VerticalLayout layout) {
+	public Ver_catálogo(Usuario usuario, VerticalLayout principalLayout) {
+		this.usuario = usuario;
+		this.principalLayout = principalLayout;
 		
 		this.getFiltrarPorCombobox().setVisible(false);
 		this.getOrdenarPorCombobox().setItems(comboOrdenar);
+		getCategoriaLabel().setText("");
 
 		obtenerProductosdeBD();
-		ordenarComboBox(usuario, layout);
+		ordenarComboBox(usuario, principalLayout);
 
-		actualizarCatalogo(usuario, layout);
+		actualizarCatalogo(usuario, principalLayout);
 
 		obtenerProductosEnOferta();
-		actualizarListaOfertas();
-		actualizarListaCategorias();
+		actualizarListaOfertas(principalLayout);
+		actualizarListaCategorias(usuario, principalLayout);
 
 	}
 
 	public Ver_catálogo(VerticalLayout layout) {
 		this.getOrdenarPorCombobox().setItems(comboOrdenar);
 		this.getFiltrarPorCombobox().setVisible(false);
+		getCategoriaLabel().setText("");
 		
 		obtenerProductosdeBD();
 		ordenarComboBox(null, layout);
 		obtenerProductosEnOferta();
-		actualizarListaOfertas();
-		actualizarListaCategorias();
+		actualizarListaOfertasUNR(layout);
+		actualizarListaCategorias(null, layout);
 		actualizarCatalogoUNR(layout);
-
 	}
 
 	public void obtenerProductosdeBD() {
 		for (int i = 0; i < bdp.verCatalogo().length; i++) {
-			p[i] = bdp.verCatalogo()[i];
+			productosAMostrar[i] = bdp.verCatalogo()[i];
 		}
 	}
 
@@ -96,8 +101,8 @@ public class Ver_catálogo extends VistaVercatalogo {
 	}
 
 	public void actualizarCatalogo(Usuario usuario, VerticalLayout layoutPincipal) {
-		for (int i = 0; i < p.length; i++) {
-			vp = new Ver_producto(p[i], usuario, layoutPincipal);
+		for (int i = 0; i < productosAMostrar.length; i++) {
+			vp = new Ver_producto(productosAMostrar[i], usuario, layoutPincipal);
 			vp.getVaadinHorizontalLayout().setAlignItems(Alignment.STRETCH);
 			v.setAlignItems(Alignment.STRETCH);
 			// Aqui hay que acceder a la bd para obtener las imagenes del producto con su id
@@ -107,8 +112,8 @@ public class Ver_catálogo extends VistaVercatalogo {
 	}
 
 	public void actualizarCatalogoUNR(VerticalLayout layoutPincipal) {
-		for (int i = 0; i < p.length; i++) {
-			vp = new Ver_producto(p[i], layoutPincipal);
+		for (int i = 0; i < productosAMostrar.length; i++) {
+			vp = new Ver_producto(productosAMostrar[i], layoutPincipal);
 			vp.getVaadinHorizontalLayout().setAlignItems(Alignment.STRETCH);
 			v.setAlignItems(Alignment.STRETCH);
 			// Aqui hay que acceder a la bd para obtener las imagenes del producto con su id
@@ -117,19 +122,46 @@ public class Ver_catálogo extends VistaVercatalogo {
 		}
 	}
 
-	public void actualizarListaOfertas() {
+	public void actualizarListaOfertas(VerticalLayout layoutPincipal) {
 		for (int i = 0; i < productoEnOferta.length; i++) {
-			vpo = new Ver_oferta(productoEnOferta[i]);
+			vpo = new Ver_oferta(productoEnOferta[i], usuario, layoutPincipal);
+			// Aqui hay que acceder a la bd para obtener las imagenes del producto con su id
+			// en p[i]
+			ofertas.add(vpo);
+		}
+	}
+	
+	public void actualizarListaOfertasUNR(VerticalLayout layoutPincipal) {
+		for (int i = 0; i < productoEnOferta.length; i++) {
+			vpo = new Ver_oferta(productoEnOferta[i], layoutPincipal);
 			// Aqui hay que acceder a la bd para obtener las imagenes del producto con su id
 			// en p[i]
 			ofertas.add(vpo);
 		}
 	}
 
-	public void actualizarListaCategorias() {
+	public void actualizarListaCategorias(Usuario usuario, VerticalLayout layout) {
 		for (int i = 0; i < bdp.obtenerCategorias().length; i++) {
 			categorias[i] = bdp.obtenerCategorias()[i];
 			verCategoria = new Ver_categoría(categorias[i]);
+			int aux = i;
+			verCategoria.getVaadinHorizontalLayout().addClickListener(new ComponentEventListener<ClickEvent<HorizontalLayout>>() {
+
+				@Override
+				public void onComponentEvent(ClickEvent<HorizontalLayout> event) {
+					
+					productosAMostrar = bdp.obtenerProductosConCategoria(categorias[aux]);
+					getCategoriaLabel().setText("Categoría: "+categorias[aux].getNombre());
+					v.removeAll();
+					if(usuario!=null) {
+						actualizarCatalogo(usuario, layout);
+					} else {
+						actualizarCatalogoUNR(layout);
+					}
+					
+				}
+			});
+			
 			categoriasLayout.add(verCategoria);
 		}
 	}
@@ -142,7 +174,7 @@ public class Ver_catálogo extends VistaVercatalogo {
 		this.getOrdenarPorCombobox().addValueChangeListener(event -> {
 			if (getOrdenarPorCombobox().getValue() == "Más baratos primero") {
 				obtenerProductosdeBD();
-				Arrays.sort(p);
+				Arrays.sort(productosAMostrar);
 				getProductosEnCatalogoVLayout().removeAllChildren();
 				if(usuario!=null) {
 					actualizarCatalogo(usuario, layoutPincipal);
@@ -154,8 +186,8 @@ public class Ver_catálogo extends VistaVercatalogo {
 
 			if (getOrdenarPorCombobox().getValue() == "Más caros primero") {
 				obtenerProductosdeBD();
-				Arrays.sort(p);
-				invArray(p);
+				Arrays.sort(productosAMostrar);
+				invArray(productosAMostrar);
 				getProductosEnCatalogoVLayout().removeAllChildren();
 				if(usuario!=null) {
 					actualizarCatalogo(usuario, layoutPincipal);

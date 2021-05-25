@@ -32,7 +32,7 @@ public class Productos_buscados extends VistaProductosbuscados {
 	public Productos_buscados(UsuarioRegistrado usuario, Producto[] productos, VerticalLayout layout, VerticalLayout layoutPrincipal) {
 		this.getIniciarSesionButton().setVisible(false);
 
-		actualizarCatalogo(usuario, productos, layout);
+		actualizarCatalogo(usuario, productos, layoutPrincipal);
 		ordenarComboBox(productos, usuario, layout);
 		ordenarPorPrecio(productos, layout);
 		filtrarPorMarca(productos, layout);
@@ -49,12 +49,34 @@ public class Productos_buscados extends VistaProductosbuscados {
 				
 			}
 		});
+		
+		this.getMiCuentaButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Ver_cuenta__Usuario_registrado_(usuario, layoutPrincipal));
+				
+			}
+		});
+		
+		this.getCarritoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Ver_carrito(usuario, layoutPrincipal));
+				
+			}
+		});
 	}
 
 	public Productos_buscados(Producto[] productos, VerticalLayout layout,VerticalLayout layoutPrincipal) {
 		this.getMiCuentaButton().setVisible(false);
 
-		actualizarCatalogoUNR(productos, layout);
+		actualizarCatalogoUNR(productos, layoutPrincipal);
 		ordenarComboBox(productos, null, layout);
 		ordenarPorPrecio(productos, layout);
 		filtrarPorMarca(productos, layout);
@@ -66,7 +88,18 @@ public class Productos_buscados extends VistaProductosbuscados {
 			public void onComponentEvent(ClickEvent<Button> event) {
 
 				layoutPrincipal.removeAll();
-				layoutPrincipal.add(new Usuario_no_registrado());
+				layoutPrincipal.add(new Usuario_no_registrado(layoutPrincipal));
+				
+			}
+		});
+		
+		this.getCarritoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+
+			@Override
+			public void onComponentEvent(ClickEvent<Button> event) {
+
+				layoutPrincipal.removeAll();
+				layoutPrincipal.add(new Ver_carrito__Usuario_no_registrado_(layoutPrincipal));
 				
 			}
 		});

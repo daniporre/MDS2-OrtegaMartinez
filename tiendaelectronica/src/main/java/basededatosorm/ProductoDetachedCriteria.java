@@ -29,8 +29,7 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression categorias;
 	public final CollectionExpression valoracions;
 	public final CollectionExpression fotos;
-	public final IntegerExpression itemId;
-	public final AssociationExpression item;
+	public final CollectionExpression items;
 	
 	public ProductoDetachedCriteria() {
 		super(basededatosorm.Producto.class, basededatosorm.ProductoCriteria.class);
@@ -44,8 +43,7 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 		fotos = new CollectionExpression("ORM_fotos", this.getDetachedCriteria());
-		itemId = new IntegerExpression("item.idProducto", this.getDetachedCriteria());
-		item = new AssociationExpression("item", this.getDetachedCriteria());
+		items = new CollectionExpression("ORM_items", this.getDetachedCriteria());
 	}
 	
 	public ProductoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -60,8 +58,7 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 		categorias = new CollectionExpression("ORM_categorias", this.getDetachedCriteria());
 		valoracions = new CollectionExpression("ORM_valoracions", this.getDetachedCriteria());
 		fotos = new CollectionExpression("ORM_fotos", this.getDetachedCriteria());
-		itemId = new IntegerExpression("item.idProducto", this.getDetachedCriteria());
-		item = new AssociationExpression("item", this.getDetachedCriteria());
+		items = new CollectionExpression("ORM_items", this.getDetachedCriteria());
 	}
 	
 	public OfertaDetachedCriteria createOfertaCriteria() {
@@ -80,8 +77,8 @@ public class ProductoDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new basededatosorm.FotosDetachedCriteria(createCriteria("ORM_fotos"));
 	}
 	
-	public ItemDetachedCriteria createItemCriteria() {
-		return new ItemDetachedCriteria(createCriteria("item"));
+	public basededatosorm.ItemDetachedCriteria createItemsCriteria() {
+		return new basededatosorm.ItemDetachedCriteria(createCriteria("ORM_items"));
 	}
 	
 	public Producto uniqueProducto(PersistentSession session) {

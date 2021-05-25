@@ -331,9 +331,9 @@ public class EnviadoDAO {
 				enviado.getUsuarioRegistrado().pedidos.remove(enviado);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = enviado.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = enviado.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			return delete(enviado);
 		}
@@ -353,9 +353,9 @@ public class EnviadoDAO {
 				enviado.getUsuarioRegistrado().pedidos.remove(enviado);
 			}
 			
-			basededatosorm.Item[] lCantidadProductoss = enviado.cantidadProductos.toArray();
-			for(int i = 0; i < lCantidadProductoss.length; i++) {
-				lCantidadProductoss[i].setPedido(null);
+			basededatosorm.Item[] lItemss = enviado.items.toArray();
+			for(int i = 0; i < lItemss.length; i++) {
+				lItemss[i].setPedido(null);
 			}
 			try {
 				session.delete(enviado);

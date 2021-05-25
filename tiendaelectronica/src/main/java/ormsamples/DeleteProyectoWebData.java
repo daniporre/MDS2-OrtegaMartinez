@@ -48,15 +48,15 @@ public class DeleteProyectoWebData {
 			basededatosorm.Valoracion basededatosORMValoracion = basededatosorm.ValoracionDAO.loadValoracionByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.ValoracionDAO.delete(basededatosORMValoracion);
-			basededatosorm.Item basededatosORMItem = basededatosorm.ItemDAO.loadItemByQuery(null, null);
-			// Delete the persistent object
-			basededatosorm.ItemDAO.delete(basededatosORMItem);
 			basededatosorm.UsuarioRegistrado basededatosORMUsuarioRegistrado = basededatosorm.UsuarioRegistradoDAO.loadUsuarioRegistradoByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.UsuarioRegistradoDAO.delete(basededatosORMUsuarioRegistrado);
 			basededatosorm.Fotos basededatosORMFotos = basededatosorm.FotosDAO.loadFotosByQuery(null, null);
 			// Delete the persistent object
 			basededatosorm.FotosDAO.delete(basededatosORMFotos);
+			basededatosorm.Item basededatosORMItem = basededatosorm.ItemDAO.loadItemByQuery(null, null);
+			// Delete the persistent object
+			basededatosorm.ItemDAO.delete(basededatosORMItem);
 			t.commit();
 		}
 		catch (Exception e) {

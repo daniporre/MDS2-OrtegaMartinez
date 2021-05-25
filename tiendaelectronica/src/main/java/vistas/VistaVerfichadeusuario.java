@@ -6,6 +6,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.polymertemplate.Id;
+import com.vaadin.flow.component.button.Button;
 
 /**
  * A Designer generated component for the vista-verfichadeusuario template.
@@ -21,14 +22,14 @@ public class VistaVerfichadeusuario extends PolymerTemplate<VistaVerfichadeusuar
 	private Label nombreUsuarioLabel;
 	@Id("calleUsuarioLabel")
 	private Label calleUsuarioLabel;
-	@Id("numeroPortalUsuarioLabel")
-	private Label numeroPortalUsuarioLabel;
 	@Id("codigoPostalUsuarioLabel")
 	private Label codigoPostalUsuarioLabel;
 	@Id("cuidadUsuarioLabel")
 	private Label cuidadUsuarioLabel;
 	@Id("provinciaUsuarioLabel")
 	private Label provinciaUsuarioLabel;
+	@Id("atrasButton")
+	private Button atrasButton;
 
 	/**
      * Creates a new VistaVerfichadeusuario.
@@ -60,14 +61,6 @@ public class VistaVerfichadeusuario extends PolymerTemplate<VistaVerfichadeusuar
 		this.calleUsuarioLabel = calleUsuarioLabel;
 	}
 
-	public Label getNumeroPortalUsuarioLabel() {
-		return numeroPortalUsuarioLabel;
-	}
-
-	public void setNumeroPortalUsuarioLabel(Label numeroPortalUsuarioLabel) {
-		this.numeroPortalUsuarioLabel = numeroPortalUsuarioLabel;
-	}
-
 	public Label getCodigoPostalUsuarioLabel() {
 		return codigoPostalUsuarioLabel;
 	}
@@ -90,5 +83,13 @@ public class VistaVerfichadeusuario extends PolymerTemplate<VistaVerfichadeusuar
 
 	public void setProvinciaUsuarioLabel(Label provinciaUsuarioLabel) {
 		this.provinciaUsuarioLabel = provinciaUsuarioLabel;
+	}
+
+	public Button getAtrasButton() {
+		return atrasButton;
+	}
+
+	public void setAtrasButton(Button atrasButton) {
+		this.atrasButton = atrasButton;
 	}
 }

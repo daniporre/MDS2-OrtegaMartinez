@@ -31,7 +31,7 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="correoButton">
-   Correo 
+    Correo 
   </vaadin-button>
   <vaadin-button id="carrito-button">
     Carrito 
@@ -89,17 +89,23 @@ class VistaVercuentausuarioregistrado extends PolymerElement {
     <vaadin-text-field id="nuevaContraseñaTF" style="align-self: stretch;" placeholder="Introduce tu nueva contraseña"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
      <vaadin-button theme="primary" id="cambiarContraseñaButton">
-      Cambiar contraseña 
+       Cambiar contraseña 
      </vaadin-button>
      <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
      <vaadin-button theme="primary error" id="darmeDeBajaButton">
-      Darme de baja
+       Darme de baja 
      </vaadin-button>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>
   <vaadin-vertical-layout theme="spacing" style="width: 100%;">
-   <label>Label</label>
+   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch;">
+    <h3 style="width: 15%;">Fecha</h3>
+    <h3 style="width: 15%;">Referencia</h3>
+    <h3 style="width: 15%;">Total</h3>
+    <h3 style="width: 15%;">Estado</h3>
+   </vaadin-horizontal-layout>
+   <vaadin-vertical-layout theme="spacing" id="listaPedidosLayout" style="align-self: stretch;"></vaadin-vertical-layout>
   </vaadin-vertical-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>

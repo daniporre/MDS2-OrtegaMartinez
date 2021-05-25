@@ -9,5 +9,4 @@ public interface iEncargado_de_compras {
 	
 	public Usuario[] cargarUsuarios();
 	
-	public void cambiarContraseniaAdmin(String aMail, String aNuevaContrasenia);
 }

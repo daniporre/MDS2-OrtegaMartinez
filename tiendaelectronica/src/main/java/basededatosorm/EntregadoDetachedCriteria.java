@@ -27,7 +27,7 @@ public class EntregadoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final DoubleExpression totalPagado;
 	public final StringExpression fechaEnvio;
 	public final StringExpression fechaRecepcion;
-	public final CollectionExpression cantidadProductos;
+	public final CollectionExpression items;
 	public final StringExpression fechaEntrega;
 	
 	public EntregadoDetachedCriteria() {
@@ -40,7 +40,7 @@ public class EntregadoDetachedCriteria extends AbstractORMDetachedCriteria {
 		totalPagado = new DoubleExpression("totalPagado", this.getDetachedCriteria());
 		fechaEnvio = new StringExpression("fechaEnvio", this.getDetachedCriteria());
 		fechaRecepcion = new StringExpression("fechaRecepcion", this.getDetachedCriteria());
-		cantidadProductos = new CollectionExpression("ORM_cantidadProductos", this.getDetachedCriteria());
+		items = new CollectionExpression("ORM_items", this.getDetachedCriteria());
 		fechaEntrega = new StringExpression("fechaEntrega", this.getDetachedCriteria());
 	}
 	
@@ -54,7 +54,7 @@ public class EntregadoDetachedCriteria extends AbstractORMDetachedCriteria {
 		totalPagado = new DoubleExpression("totalPagado", this.getDetachedCriteria());
 		fechaEnvio = new StringExpression("fechaEnvio", this.getDetachedCriteria());
 		fechaRecepcion = new StringExpression("fechaRecepcion", this.getDetachedCriteria());
-		cantidadProductos = new CollectionExpression("ORM_cantidadProductos", this.getDetachedCriteria());
+		items = new CollectionExpression("ORM_items", this.getDetachedCriteria());
 		fechaEntrega = new StringExpression("fechaEntrega", this.getDetachedCriteria());
 	}
 	
@@ -62,8 +62,8 @@ public class EntregadoDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new UsuarioRegistradoDetachedCriteria(createCriteria("usuarioRegistrado"));
 	}
 	
-	public basededatosorm.ItemDetachedCriteria createCantidadProductosCriteria() {
-		return new basededatosorm.ItemDetachedCriteria(createCriteria("ORM_cantidadProductos"));
+	public basededatosorm.ItemDetachedCriteria createItemsCriteria() {
+		return new basededatosorm.ItemDetachedCriteria(createCriteria("ORM_items"));
 	}
 	
 	public Entregado uniqueEntregado(PersistentSession session) {
