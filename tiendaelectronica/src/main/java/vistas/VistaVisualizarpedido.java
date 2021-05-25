@@ -10,6 +10,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.combobox.ComboBox;
 
 /**
  * A Designer generated component for the vista-visualizarpedido template.
@@ -29,8 +30,6 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 	private Label label2;
 	@Id("inicioButton")
 	private Button inicioButton;
-	@Id("searchBar")
-	private TextField searchBar;
 	@Id("carritoButton")
 	private Button carritoButton;
 	@Id("miCuentaButton")
@@ -39,14 +38,14 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 	private H3 nombreProductoPedido;
 	@Id("imagenPedido")
 	private Button imagenPedido;
-	@Id("valoracionEstrellasLabel")
-	private Label valoracionEstrellasLabel;
 	@Id("descripcionTextArea")
 	private TextArea descripcionTextArea;
 	@Id("precioPedidoLabel")
 	private Label precioPedidoLabel;
 	@Id("valorarProductoButton")
 	private Button valorarProductoButton;
+	@Id("valoracionCombo")
+	private ComboBox<String> valoracionCombo;
 
 	/**
      * Creates a new VistaVisualizarpedido.
@@ -62,6 +61,8 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
         // Add setters and getters for template properties here.
     }
 
+    
+    
 	public Label getLabel() {
 		return label;
 	}
@@ -92,14 +93,6 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 
 	public void setInicioButton(Button inicioButton) {
 		this.inicioButton = inicioButton;
-	}
-
-	public TextField getSearchBar() {
-		return searchBar;
-	}
-
-	public void setSearchBar(TextField searchBar) {
-		this.searchBar = searchBar;
 	}
 
 	public Button getCarritoButton() {
@@ -134,14 +127,6 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 		this.imagenPedido = imagenPedido;
 	}
 
-	public Label getValoracionEstrellasLabel() {
-		return valoracionEstrellasLabel;
-	}
-
-	public void setValoracionEstrellasLabel(Label valoracionEstrellasLabel) {
-		this.valoracionEstrellasLabel = valoracionEstrellasLabel;
-	}
-
 	public TextArea getDescripcionTextArea() {
 		return descripcionTextArea;
 	}
@@ -164,5 +149,13 @@ public class VistaVisualizarpedido extends PolymerTemplate<VistaVisualizarpedido
 
 	public void setValorarProductoButton(Button valorarProductoButton) {
 		this.valorarProductoButton = valorarProductoButton;
+	}
+
+	public ComboBox<String> getValoracionCombo() {
+		return valoracionCombo;
+	}
+
+	public void setValoracionCombo(ComboBox<String> valoracionCombo) {
+		this.valoracionCombo = valoracionCombo;
 	}
 }

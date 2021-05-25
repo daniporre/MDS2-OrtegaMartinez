@@ -27,7 +27,7 @@ import interfaz.Usuario_no_registrado;
 
 @SuppressWarnings("serial")
 public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregistrado {
-	
+
 	VaadinSession session = VaadinSession.getCurrent();
 	VerticalLayout layoutPedidos = this.getListaPedidosLayout().as(VerticalLayout.class);
 	BDPrincipal bdp = new BDPrincipal();
@@ -43,6 +43,7 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 		carrito(usuario, layoutPrincipal);
 		
 		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
+actualizarCompras(usuario, layoutPrincipal);
 
 		desactivarActivarTextFieldsDireccion(true);
 		desactivarActivarTextFieldsMetodoPago(true);
@@ -207,53 +208,54 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 				
 			}
 		});
-		actualizarCompras(usuario);
 		
 	}
-	
-	public void actualizarCompras(UsuarioRegistrado usuario) {
+
+	public void actualizarCompras(UsuarioRegistrado usuario, VerticalLayout principalLayout) {
 		for (basededatosorm.Pendiente pendiente : bdp.cargarPendientesUsuario(usuario)) {
 			Item[] item = pendiente.items.toArray();
 			for (int i = 0; i < item.length; i++) {
-				
-				Ver_pedido vp = new Ver_pedido(pendiente);
+
+				Ver_pedido vp = new Ver_pedido(usuario, pendiente, principalLayout);
 				layoutPedidos.add(vp);
 			}
 		}
 		for (basededatosorm.Enviado enviado : bdp.cargarEnviadosUsuario(usuario)) {
 			Item[] item = enviado.items.toArray();
 			for (int i = 0; i < item.length; i++) {
-				
-				Ver_pedido vp = new Ver_pedido(enviado);
+
+				Ver_pedido vp = new Ver_pedido(usuario, enviado, principalLayout);
 				layoutPedidos.add(vp);
 			}
 		}
 		for (basededatosorm.Entregado entregado : bdp.cargarEntregadosUsuario(usuario)) {
 			Item[] item = entregado.items.toArray();
 			for (int i = 0; i < item.length; i++) {
-				
-				Ver_pedido vp = new Ver_pedido(entregado);
+
+				Ver_pedido vp = new Ver_pedido(usuario, entregado, principalLayout);
 				layoutPedidos.add(vp);
 			}
 		}
 	}
-	
+
 	public void mostrarPedidos() {
-		
+
 	}
-	
+
 	public void desactivarActivarTextFieldsDireccion(Boolean condicion) {
 		this.getCiudadTF().setReadOnly(condicion);
 		this.getCalleTF().setReadOnly(condicion);
 		this.getCodigoPostalTF().setReadOnly(condicion);
 		this.getProvinciaTF().setReadOnly(condicion);
 	}
+
 	public void desactivarActivarTextFieldsMetodoPago(Boolean condicion) {
 		this.getFechaVencimientoTTF().setReadOnly(condicion);
 		this.getCvsTF().setReadOnly(condicion);
 		this.getNumeroTarjetaTF().setReadOnly(condicion);
 		this.getTitularTarjeta().setReadOnly(condicion);
 	}
+
 	public void desactivarActivarTextFieldsDatosPersonales(Boolean condicion) {
 		this.getNombreDeUsuario().setReadOnly(condicion);
 		this.getNombreTF().setReadOnly(condicion);
@@ -292,17 +294,17 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
-				
+
 				layoutPrincipal.removeAll();
 				layoutPrincipal.add(new Correo__General_(usuario, layoutPrincipal));
-				
+
 			}
 		});
 	}
-	
+
 	public void carrito(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
 		Ver_carrito carrito;
-		
+
 		carrito = new Ver_carrito(usuario, layoutPrincipal);
 
 		this.getCarritoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -318,40 +320,32 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 		});
 	}
 
-	
 	public void rellenarDatos(UsuarioRegistrado usuario) {
-		if (usuario.getDireccionUsuario()!=null)
+		if (usuario.getDireccionUsuario() != null)
 			this.getCalleTF().setValue(usuario.getDireccionUsuario());
-		if(usuario.getCodigoPostal()!=null)
+		if (usuario.getCodigoPostal() != null)
 			this.getCodigoPostalTF().setValue(usuario.getCodigoPostal());
-		if(usuario.getCiudad()!=null)
+		if (usuario.getCiudad() != null)
 			this.getCiudadTF().setValue(usuario.getCiudad());
-		if(usuario.getProvincia()!=null)
+		if (usuario.getProvincia() != null)
 			this.getProvinciaTF().setValue(usuario.getProvincia());
-		if(usuario.getFechaVencimientoTarjeta()!=null)
+		if (usuario.getFechaVencimientoTarjeta() != null)
 			this.getFechaVencimientoTTF().setValue(usuario.getFechaVencimientoTarjeta());
-		if(usuario.getCvv()!=0)
+		if (usuario.getCvv() != 0)
 			this.getCvsTF().setValue(String.valueOf(usuario.getCvv()));
-		if(usuario.getNombre()!=null)
+		if (usuario.getNombre() != null)
 			this.getNombreTF().setValue(usuario.getNombre());
-		if(usuario.getMail()!=null)	
+		if (usuario.getMail() != null)
 			this.getEmailTF().setValue(usuario.getMail());
-		if(!usuario.getNumeroTarjeta().isEmpty())
+		if (!usuario.getNumeroTarjeta().isEmpty())
 			getNumeroTarjetaTF().setValue(String.valueOf(usuario.getNumeroTarjeta()));
-		if(usuario.getTitularTarjeta()!=null)
+		if (usuario.getTitularTarjeta() != null)
 			getTitularTarjeta().setValue(usuario.getTitularTarjeta());
-		if(usuario.getApellidos()!=null)
+		if (usuario.getApellidos() != null)
 			getApellidosTF().setValue(usuario.getApellidos());
-		if(usuario.getNombreUsuario()!=null)
+		if (usuario.getNombreUsuario() != null)
 			getNombreDeUsuario().setValue(usuario.getNombreUsuario());
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

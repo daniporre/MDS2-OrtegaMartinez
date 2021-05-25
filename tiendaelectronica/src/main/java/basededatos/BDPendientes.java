@@ -72,5 +72,13 @@ public class BDPendientes {
 		System.out.println("caca"+Arrays.toString(pendiente));
 		return pendiente;
 	}
+	
+	public void cancelarPedido(Pendiente aPedido) throws PersistentException {
+		for (int i = 0; i < aPedido.items.toArray().length; i++) {
+			basededatosorm.ItemDAO.deleteAndDissociate(basededatosorm.ItemDAO.loadItemByORMID(aPedido.items.toArray()[i].getID()));
+		}
+		basededatosorm.PendienteDAO.deleteAndDissociate(basededatosorm.PendienteDAO.loadPendienteByORMID(aPedido.getIdPedido()));
+		
+	}
 
 }

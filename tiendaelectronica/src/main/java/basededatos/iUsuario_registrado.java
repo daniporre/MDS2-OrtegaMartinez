@@ -33,7 +33,5 @@ public interface iUsuario_registrado extends iUsuario_no_registrado {
 
 	public void darBajaUsuario(int aIdUsuario);
 
-	public void cancelarPedido(int aIdPedido);
-
 	public void valorarProducto(int aIdProducto, String aValoracion);
 }

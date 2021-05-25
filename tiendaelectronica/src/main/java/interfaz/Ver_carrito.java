@@ -107,6 +107,9 @@ public class Ver_carrito extends VistaVercarrito {
 					
 					
 					bdp.crearPedido(usuario, ps, precioTotal);
+					productos.removeAll(productos);
+					layoutPrincipal.removeAll();
+					layoutPrincipal.add(new Ver_cuenta__Usuario_registrado_(usuario, layoutPrincipal));
 				}
 				
 			}

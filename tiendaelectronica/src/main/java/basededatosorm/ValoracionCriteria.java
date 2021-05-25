@@ -24,6 +24,8 @@ public class ValoracionCriteria extends AbstractORMCriteria {
 	public final AssociationExpression usuarioRegistrado;
 	public final IntegerExpression productoId;
 	public final AssociationExpression producto;
+	public final StringExpression comentario;
+	public final IntegerExpression valor;
 	
 	public ValoracionCriteria(Criteria criteria) {
 		super(criteria);
@@ -32,6 +34,8 @@ public class ValoracionCriteria extends AbstractORMCriteria {
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this);
 		productoId = new IntegerExpression("producto.idProducto", this);
 		producto = new AssociationExpression("producto", this);
+		comentario = new StringExpression("comentario", this);
+		valor = new IntegerExpression("valor", this);
 	}
 	
 	public ValoracionCriteria(PersistentSession session) {

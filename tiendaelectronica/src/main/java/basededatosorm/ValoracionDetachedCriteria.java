@@ -24,6 +24,8 @@ public class ValoracionDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression usuarioRegistrado;
 	public final IntegerExpression productoId;
 	public final AssociationExpression producto;
+	public final StringExpression comentario;
+	public final IntegerExpression valor;
 	
 	public ValoracionDetachedCriteria() {
 		super(basededatosorm.Valoracion.class, basededatosorm.ValoracionCriteria.class);
@@ -32,6 +34,8 @@ public class ValoracionDetachedCriteria extends AbstractORMDetachedCriteria {
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
+		comentario = new StringExpression("comentario", this.getDetachedCriteria());
+		valor = new IntegerExpression("valor", this.getDetachedCriteria());
 	}
 	
 	public ValoracionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -41,6 +45,8 @@ public class ValoracionDetachedCriteria extends AbstractORMDetachedCriteria {
 		usuarioRegistrado = new AssociationExpression("usuarioRegistrado", this.getDetachedCriteria());
 		productoId = new IntegerExpression("producto.idProducto", this.getDetachedCriteria());
 		producto = new AssociationExpression("producto", this.getDetachedCriteria());
+		comentario = new StringExpression("comentario", this.getDetachedCriteria());
+		valor = new IntegerExpression("valor", this.getDetachedCriteria());
 	}
 	
 	public UsuarioRegistradoDetachedCriteria createUsuarioRegistradoCriteria() {

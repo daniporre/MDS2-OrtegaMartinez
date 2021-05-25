@@ -58,6 +58,12 @@ public class Valoracion implements Serializable {
 	@org.hibernate.annotations.LazyToOne(value=org.hibernate.annotations.LazyToOneOption.NO_PROXY)	
 	private basededatosorm.Producto producto;
 	
+	@Column(name="Comentario", nullable=true, length=255)	
+	private String comentario;
+	
+	@Column(name="Valor", nullable=false, length=10)	
+	private int valor;
+	
 	private void setIdValoracion(int value) {
 		this.idValoracion = value;
 	}
@@ -68,6 +74,22 @@ public class Valoracion implements Serializable {
 	
 	public int getORMID() {
 		return getIdValoracion();
+	}
+	
+	public void setComentario(String value) {
+		this.comentario = value;
+	}
+	
+	public String getComentario() {
+		return comentario;
+	}
+	
+	public void setValor(int value) {
+		this.valor = value;
+	}
+	
+	public int getValor() {
+		return valor;
 	}
 	
 	public void setProducto(basededatosorm.Producto value) {

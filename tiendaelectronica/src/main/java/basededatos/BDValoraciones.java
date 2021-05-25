@@ -8,6 +8,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import basededatosorm.Pendiente;
+import basededatosorm.Producto;
 import basededatosorm.ProyectoWebPersistentManager;
 import basededatosorm.Valoracion;
 
@@ -19,16 +20,20 @@ public class BDValoraciones {
 		throw new UnsupportedOperationException();
 	}
 
-	public void valorarProducto(int aIdProducto, String aValoracion) throws PersistentException {
+	public void valorarProducto(Producto aProducto, basededatosorm.Valoracion aValoracion) throws PersistentException {
 		
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
 		try {
-			Valoracion p = basededatosorm.ValoracionDAO.createValoracion();
+			Valoracion v = basededatosorm.ValoracionDAO.createValoracion();
 
+			v.setComentario(aValoracion.getComentario());
+			v.setValor(aValoracion.getValor());
 			
+			Producto p= basededatosorm.ProductoDAO.loadProductoByORMID(aProducto.getIdProducto());
+			p.valoracions.add(v);
 			
-			basededatosorm.ValoracionDAO.save(p);
+			basededatosorm.ValoracionDAO.save(v);
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -144,6 +144,7 @@ public class BDProductos {
 		try {
 			Producto o = basededatosorm.ProductoDAO.getProductoByORMID(producto.getIdProducto());
 
+			
 			o.categorias.add(categoria);
 
 			t.commit();

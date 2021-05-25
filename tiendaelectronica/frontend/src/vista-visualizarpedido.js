@@ -1,11 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
-import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
 
 class VistaVisualizarpedido extends PolymerElement {
 
@@ -23,12 +22,6 @@ class VistaVisualizarpedido extends PolymerElement {
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct);">
   <vaadin-button id="inicioButton">
     Inicio 
-  </vaadin-button>
-  <vaadin-text-field placeholder="Search" id="searchBar" style="flex-grow: 1;">
-   <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
-  </vaadin-text-field>
-  <vaadin-button theme="icon" aria-label="Add new" id="buscarButton">
-   <iron-icon icon="lumo:plus"></iron-icon>
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoButton">
@@ -63,14 +56,13 @@ class VistaVisualizarpedido extends PolymerElement {
    <vaadin-vertical-layout theme="spacing">
     <h3 id="nombreProductoPedido">nombreProductoPedido</h3>
     <vaadin-horizontal-layout theme="spacing">
-     <label>TOTAL</label>
      <label id="precioPedidoLabel">precioPedido</label>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>
   <vaadin-text-area label="Escribe una valoración del pedido" id="descripcionTextArea" style="align-self: stretch;"></vaadin-text-area>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: flex-end;">
-   <label id="valoracionEstrellasLabel" style="align-self: center;">valoracionEstrellas</label>
+   <vaadin-combo-box id="valoracionCombo" style="width: 7%;"></vaadin-combo-box>
    <vaadin-button theme="primary" id="valorarProductoButton">
      Valorar producto 
    </vaadin-button>

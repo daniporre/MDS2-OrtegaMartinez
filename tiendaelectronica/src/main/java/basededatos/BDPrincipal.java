@@ -16,6 +16,7 @@ import basededatosorm.Categoria;
 import basededatosorm.Correo;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
+import basededatosorm.Pendiente;
 import basededatosorm.Encargado;
 import basededatosorm.Enviado;
 import interfaz.Pedido;
@@ -181,12 +182,22 @@ public class BDPrincipal
 		}
 	}
 
-	public void cancelarPedido(int aIdPedido) {
-		_bDUsuarioRegistrado.cancelarPedido(aIdPedido);
+	public void cancelarPedido(Pendiente aPedido) {
+		try {
+			_bDPendientes.cancelarPedido(aPedido);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public void valorarProducto(int aIdProducto, String aValoracion) {
-		_bDUsuarioRegistrado.valorarProducto(aIdProducto, aValoracion);
+	public void valorarProducto(Producto aProducto, basededatosorm.Valoracion aValoracion) {
+		try {
+			_bDValoraciones.valorarProducto(aProducto, aValoracion);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Oferta seleccionarOferta(String aNombreOferta) {
