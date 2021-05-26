@@ -47,7 +47,7 @@ class VistaCorreogeneral extends PolymerElement {
    <h3 style="width: 10%;">Fecha</h3>
    <vaadin-tab></vaadin-tab>
   </vaadin-horizontal-layout>
-  <vaadin-vertical-layout theme="spacing" style="align-self: stretch; flex-grow: 1;" id="tablaMensajesVLayout"></vaadin-vertical-layout>
+  <vaadin-vertical-layout style="flex-grow: 1; width: 100%;" id="tablaMensajesVLayout"></vaadin-vertical-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
 `;

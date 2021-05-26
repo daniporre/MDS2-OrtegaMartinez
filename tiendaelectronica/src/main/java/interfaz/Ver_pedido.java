@@ -25,7 +25,7 @@ public class Ver_pedido extends VistaMispedidos {
 	public Ver_pedido(UsuarioRegistrado usuario, Pendiente pedido, VerticalLayout principalLayout) {
 		this.getEstadoLabel().setText("Pendiente");
 		this.getFechaLabel().setText(pedido.getFechaEnvio());
-		this.getReferenciaLabel().setText(Integer.toString(pedido.getIdPedido()));
+		this.getReferenciaLabel().setText("Referencia: "+Integer.toString(pedido.getIdPedido()));
 		this.getTotalLabel().setText(Double.toString(pedido.getTotalPagado()));
 		
 		this.getCancelarPedidoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -71,7 +71,7 @@ public class Ver_pedido extends VistaMispedidos {
 	public Ver_pedido(UsuarioRegistrado usuario, Enviado pedido, VerticalLayout principalLayout) {
 		this.getEstadoLabel().setText("Enviado");
 		this.getFechaLabel().setText(pedido.getFechaEnvio());
-		this.getReferenciaLabel().setText(Integer.toString(pedido.getIdPedido()));
+		this.getReferenciaLabel().setText("Referencia: "+Integer.toString(pedido.getIdPedido()));
 		this.getTotalLabel().setText(Double.toString(pedido.getTotalPagado()));
 		this.getCancelarPedidoButton().setVisible(false);
 		this.getVerPedidoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -87,7 +87,7 @@ public class Ver_pedido extends VistaMispedidos {
 	public Ver_pedido(UsuarioRegistrado usuario, Entregado pedido, VerticalLayout principalLayout) {
 		this.getEstadoLabel().setText("Entregado");
 		this.getFechaLabel().setText(pedido.getFechaEnvio());
-		this.getReferenciaLabel().setText(Integer.toString(pedido.getIdPedido()));
+		this.getReferenciaLabel().setText("Referencia: "+Integer.toString(pedido.getIdPedido()));
 		this.getTotalLabel().setText(Double.toString(pedido.getTotalPagado()));
 		this.getCancelarPedidoButton().setVisible(false);
 		this.getVerPedidoButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {

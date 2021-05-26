@@ -7,6 +7,8 @@ import org.orm.PersistentException;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.server.VaadinSession;
 
@@ -140,7 +142,7 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 				if(session!=null) {
 					ArrayList<Producto> arr = (ArrayList<Producto>) session.getAttribute("carrito");
 					arr.add(producto);
-					
+					Notification.show("Producto añadido al carrito").setPosition(Position.BOTTOM_END);
 					System.out.println(arr.toString());
 				}
 

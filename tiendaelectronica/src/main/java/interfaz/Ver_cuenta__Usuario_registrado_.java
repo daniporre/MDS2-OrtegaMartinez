@@ -15,6 +15,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.VaadinSession;
 
@@ -41,6 +42,7 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 		mostrarCorreo(usuario, layoutPrincipal);
 		inicio(usuario, layoutPrincipal);
 		carrito(usuario, layoutPrincipal);
+		layoutPedidos.setAlignSelf(Alignment.STRETCH);
 
 		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
 		actualizarCompras(usuario, layoutPrincipal);

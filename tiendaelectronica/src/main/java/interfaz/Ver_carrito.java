@@ -8,10 +8,13 @@ import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.server.VaadinSession;
 
 import basededatos.BDPrincipal;
+import basededatos.BDUsuarioRegistrado;
 import basededatosorm.Producto;
 import basededatosorm.UsuarioRegistrado;
 import vistas.VistaVercarrito;
@@ -30,6 +33,7 @@ public class Ver_carrito extends VistaVercarrito {
 	Double precioTotal;
 
 	public Ver_carrito() {
+		
 	}
 
 	public Ver_carrito(UsuarioRegistrado usuario, VerticalLayout layoutPrincipal) {
@@ -39,16 +43,18 @@ public class Ver_carrito extends VistaVercarrito {
 		this.getCarritoButton().setVisible(false);
 		this.getIniciarSesionButton().setVisible(false);
 		this.getMiCuentaButton().setVisible(true);
-		this.usuario = usuario;
+		this.usuario=bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario());
+		
 
 		if (!productos.isEmpty()) {
 			this.getTramitarPedidoButton().setEnabled(true);
 		} else {
 			this.getTramitarPedidoButton().setEnabled(false);
 		}
-
-		BDPrincipal bdp = new BDPrincipal();
+		
 		cargarProductosCarrito();
+		actualizarButton();
+		tramitarPedido();
 		rellenarDatos(bdp.obtenerUsuarioRegistrado(usuario.getIdUsuario()));
 
 		this.getEditarPagoDireccionButton().addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
@@ -91,8 +97,7 @@ public class Ver_carrito extends VistaVercarrito {
 			}
 
 		});
-		actualizarButton();
-		tramitarPedido();
+		
 	}
 	
 	public void tramitarPedido() {
@@ -110,6 +115,8 @@ public class Ver_carrito extends VistaVercarrito {
 					productos.removeAll(productos);
 					layoutPrincipal.removeAll();
 					layoutPrincipal.add(new Ver_cuenta__Usuario_registrado_(usuario, layoutPrincipal));
+				} else {
+					Notification.show("Ha ocurrido un error, comprueba tus datos de envio y pago.").setPosition(Position.BOTTOM_END);
 				}
 				
 			}
@@ -117,12 +124,12 @@ public class Ver_carrito extends VistaVercarrito {
 	}
 	
 	public boolean comprobarPagoyDireccion() {
-		return (!usuario.getCiudad().isEmpty()&&
-				!usuario.getCodigoPostal().isEmpty()&&
-				!usuario.getProvincia().isEmpty()&&
-				!usuario.getDireccionUsuario().isEmpty()&&
-				!usuario.getNumeroTarjeta().isEmpty()&&
-				!usuario.getFechaVencimientoTarjeta().isEmpty()&&
+		return (usuario.getCiudad()!=null&&
+				usuario.getCodigoPostal()!=null&&
+				usuario.getProvincia()!=null&&
+				usuario.getDireccionUsuario()!=null&&
+				usuario.getNumeroTarjeta()!=null&&
+				usuario.getFechaVencimientoTarjeta()!=null&&
 				usuario.getCvv()!=0)  ?  true : false;
 	}
 
@@ -182,13 +189,20 @@ public class Ver_carrito extends VistaVercarrito {
 
 	public void rellenarDatos(UsuarioRegistrado us) {
 		// metodo de pago
-		String numbers = us.getNumeroTarjeta().substring(Math.max(0, us.getNumeroTarjeta().length() - 4));
-		this.getMetodoDePagoButton().setText("Tarjeta con el número: " + "****-****-****-" + numbers);
+		if(us.getNumeroTarjeta()!=null) {
+			String numbers = us.getNumeroTarjeta().substring(Math.max(0, us.getNumeroTarjeta().length() - 4));
+			this.getMetodoDePagoButton().setText("Tarjeta con el número: " + "****-****-****-" + numbers);
+		}
+		
 		// direccion
-		this.getDireccionUsuarioButton().setText("Calle: " + us.getDireccionUsuario());
-		this.getCiudadLabel().setText("Ciudad: " + us.getCiudad());
-		this.getCpLabel().setText("CP: " + us.getCodigoPostal());
-		this.getProvinciaLabel().setText("Provincia: " + us.getProvincia());
+		if(us.getDireccionUsuario()!=null)
+			this.getDireccionUsuarioButton().setText("Calle: " + us.getDireccionUsuario());
+		if(us.getCiudad()!=null)
+			this.getCiudadLabel().setText("Ciudad: " + us.getCiudad());
+		if(us.getCodigoPostal()!=null)
+			this.getCpLabel().setText("CP: " + us.getCodigoPostal());
+		if(us.getProvincia()!=null)
+			this.getProvinciaLabel().setText("Provincia: " + us.getProvincia());
 		// gastos de envio
 		this.getGastosEnvioLabel().setText("Tarifa fija: 4,99€");
 

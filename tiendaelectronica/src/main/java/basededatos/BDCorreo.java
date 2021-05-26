@@ -28,18 +28,7 @@ public class BDCorreo {
 		System.out.println("obtener mensajes recibidos");
 
 		Correo[] p = basededatosorm.CorreoDAO.listCorreoByQuery("destinatario = '" + usuario.getMail()+ "'", null);
-//		ArrayList<Correo> arr = new ArrayList<Correo>();
-//		Correo[] correosEnviados;
-//
-//		for (Correo correo : o) {
-//			if (correo.getUsuarioRegistrado().getIdUsuario() == usuario.getIdUsuario()
-//					&& correo.getRemitente().contains("administrador")) {
-//				arr.add(correo);
-//			}
-//		}
-//		correosEnviados = new Correo[arr.size()];
-//		arr.toArray(correosEnviados);
-//				
+		
 		return p;
 
 	}
@@ -48,17 +37,6 @@ public class BDCorreo {
 		System.out.println("obtener mensajes enviados");
 
 		Correo[] o = basededatosorm.CorreoDAO.listCorreoByQuery("remitente = '" + usuario.getMail()+ "'", null);
-//		ArrayList<Correo> arr = new ArrayList<Correo>();
-//		Correo[] correosEnviados;
-//
-//		for (Correo correo : o) {
-//			if (correo.getUsuarioRegistrado().getIdUsuario() == usuario.getIdUsuario()
-//					&& correo.getDestinatario().contains("administrador")) {
-//				arr.add(correo);
-//			}
-//		}
-//		correosEnviados = new Correo[arr.size()];
-//		arr.toArray(correosEnviados);
 		
 		return o;
 

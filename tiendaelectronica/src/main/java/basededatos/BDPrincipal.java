@@ -423,25 +423,25 @@ public class BDPrincipal
 		return null;
 	}
 
-	public Administrador get_Administrador() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Empresa_de_transportes get_Empresa_de_transportes() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Encargado_de_compras get_Encargado_de_compras() {
-		throw new UnsupportedOperationException();
-	}
-
-	public interfaz.Correo get_Correo() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Empresa_anunciadora get_Empresa_anunciadora() {
-		throw new UnsupportedOperationException();
-	}
+//	public Administrador get_Administrador() {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public Empresa_de_transportes get_Empresa_de_transportes() {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public Encargado_de_compras get_Encargado_de_compras() {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public interfaz.Correo get_Correo() {
+//		throw new UnsupportedOperationException();
+//	}
+//
+//	public Empresa_anunciadora get_Empresa_anunciadora() {
+//		throw new UnsupportedOperationException();
+//	}
 
 	@Override
 	public Correo[] obtenerMensajesRecibidos(UsuarioRegistrado usuario) {

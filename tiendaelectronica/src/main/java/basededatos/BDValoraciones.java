@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 
+import org.hibernate.Session;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -21,7 +22,7 @@ public class BDValoraciones {
 	}
 
 	public void valorarProducto(Producto aProducto, basededatosorm.Valoracion aValoracion) throws PersistentException {
-		
+
 		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
 				.beginTransaction();
 		try {

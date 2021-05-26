@@ -44,6 +44,7 @@ public class Ver_producto_en_carrito extends VistaVerproductoencarrito {
 				if(session!=null) {
 					ArrayList<Producto> arr = (ArrayList<Producto>) session.getAttribute("carrito");
 					arr.add(producto);
+					Notification.show("Producto añadido, pulsa en actualizar el carrito").setPosition(Position.BOTTOM_END);
 				}
 			}
 		});
@@ -60,7 +61,7 @@ public class Ver_producto_en_carrito extends VistaVerproductoencarrito {
 					arr.remove(producto);
 					getEliminarProductoButton().setEnabled(false);
 					
-					Notification.show("Pulsa en actualizar el carrito").setPosition(Position.BOTTOM_END);
+					Notification.show("Producto eliminado, pulsa en actualizar el carrito").setPosition(Position.BOTTOM_END);
 				}
 			}
 		});

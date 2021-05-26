@@ -14,15 +14,21 @@ class VistaMispedidos extends PolymerElement {
                     height: 100%;
                 }
             </style>
-<vaadin-vertical-layout id="vaadinVerticalLayout" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;">
+<vaadin-vertical-layout id="vaadinVerticalLayout" style="flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center; align-items: stretch; padding: var(--lumo-space-s);">
  <vaadin-horizontal-layout class="content" style="align-self: stretch;" theme="spacing">
-  <h4 id="fechaLabel" style="width: 15%; align-self: center;">fecha</h4>
-  <h4 id="referenciaLabel" style="width: 15%; align-self: center;">refer</h4>
-  <h4 id="totalLabel" style="width: 15%; align-self: center;">total</h4>
-  <h4 id="estadoLabel" style="width: 15%; align-self: center;">estado</h4>
+  <h4 id="fechaLabel" style="align-self: center;">fecha</h4>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
+  <h4 id="referenciaLabel" style="align-self: center;">refer</h4>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
+  <h4 id="totalLabel" style="align-self: center;">total</h4>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
+  <h4 id="estadoLabel" style="align-self: center; flex-grow: 0;">estado</h4>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="verPedidoButton" style="align-self: center;">
    Ver pedido
   </vaadin-button>
+  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-tab></vaadin-tab>
   <vaadin-button theme="primary error" id="cancelarPedidoButton" style="align-self: center;">
    Cancelar Pedido

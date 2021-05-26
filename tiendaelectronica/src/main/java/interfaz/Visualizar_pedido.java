@@ -139,6 +139,7 @@ public class Visualizar_pedido extends VistaVisualizarpedido {
 					valoracion.setUsuarioRegistrado(usuario);
 					valoracion.setValor(Integer.parseInt(getValoracionCombo().getValue()));
 
+					
 					bdp.valorarProducto(producto, valoracion);
 					Notification.show("Valoración enviada").setPosition(Position.BOTTOM_END);
 
