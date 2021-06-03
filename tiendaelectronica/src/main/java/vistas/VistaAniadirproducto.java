@@ -39,14 +39,22 @@ public class VistaAniadirproducto extends PolymerTemplate<VistaAniadirproducto.V
 	private Button inicioButton;
 	@Id("foto1Image")
 	private Image foto1Image;
-	@Id("foto2Image")
-	private Button foto2Image;
-	@Id("foto3Image")
-	private Button foto3Image;
-	@Id("foto4Image")
-	private Button foto4Image;
 	@Id("vaadinVerticalLayout")
 	private Element vaadinVerticalLayout;
+	@Id("foto2Image")
+	private Image foto2Image;
+	@Id("foto3Image")
+	private Image foto3Image;
+	@Id("foto4Image")
+	private Image foto4Image;
+	@Id("imagen1TFsrc")
+	private TextField imagen1TFsrc;
+	@Id("imagen2TFsrc")
+	private TextField imagen2TFsrc;
+	@Id("imagen3TFsrc")
+	private TextField imagen3TFsrc;
+	@Id("imagen4TFsrc")
+	private TextField imagen4TFsrc;
 	/**
      * Creates a new VistaAniadirproducto.
      */
@@ -125,35 +133,67 @@ public class VistaAniadirproducto extends PolymerTemplate<VistaAniadirproducto.V
 		this.foto1Image = foto1Image;
 	}
 
-	public Button getFoto2Image() {
-		return foto2Image;
-	}
-
-	public void setFoto2Image(Button foto2Image) {
-		this.foto2Image = foto2Image;
-	}
-
-	public Button getFoto3Image() {
-		return foto3Image;
-	}
-
-	public void setFoto3Image(Button foto3Image) {
-		this.foto3Image = foto3Image;
-	}
-
-	public Button getFoto4Image() {
-		return foto4Image;
-	}
-
-	public void setFoto4Image(Button foto4Image) {
-		this.foto4Image = foto4Image;
-	}
-
 	public Element getVaadinVerticalLayout() {
 		return vaadinVerticalLayout;
 	}
 
 	public void setVaadinVerticalLayout(Element vaadinVerticalLayout) {
 		this.vaadinVerticalLayout = vaadinVerticalLayout;
+	}
+
+	public Image getFoto2Image() {
+		return foto2Image;
+	}
+
+	public void setFoto2Image(Image foto2Image) {
+		this.foto2Image = foto2Image;
+	}
+
+	public Image getFoto3Image() {
+		return foto3Image;
+	}
+
+	public void setFoto3Image(Image foto3Image) {
+		this.foto3Image = foto3Image;
+	}
+
+	public Image getFoto4Image() {
+		return foto4Image;
+	}
+
+	public void setFoto4Image(Image foto4Image) {
+		this.foto4Image = foto4Image;
+	}
+
+	public TextField getImagen1TFsrc() {
+		return imagen1TFsrc;
+	}
+
+	public void setImagen1TFsrc(TextField imagen1tFsrc) {
+		imagen1TFsrc = imagen1tFsrc;
+	}
+
+	public TextField getImagen2TFsrc() {
+		return imagen2TFsrc;
+	}
+
+	public void setImagen2TFsrc(TextField imagen2tFsrc) {
+		imagen2TFsrc = imagen2tFsrc;
+	}
+
+	public TextField getImagen3TFsrc() {
+		return imagen3TFsrc;
+	}
+
+	public void setImagen3TFsrc(TextField imagen3tFsrc) {
+		imagen3TFsrc = imagen3tFsrc;
+	}
+
+	public TextField getImagen4TFsrc() {
+		return imagen4TFsrc;
+	}
+
+	public void setImagen4TFsrc(TextField imagen4tFsrc) {
+		imagen4TFsrc = imagen4tFsrc;
 	}
 }

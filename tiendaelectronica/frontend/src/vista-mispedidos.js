@@ -12,6 +12,7 @@ class VistaMispedidos extends PolymerElement {
                 :host {
                     display: block;
                     height: 100%;
+        			width: 100%;
                 }
             </style>
 <vaadin-vertical-layout id="vaadinVerticalLayout" style="flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center; align-items: stretch; padding: var(--lumo-space-s);">
@@ -26,12 +27,10 @@ class VistaMispedidos extends PolymerElement {
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="verPedidoButton" style="align-self: center;">
-   Ver pedido
+    Ver pedido 
   </vaadin-button>
-  <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
-  <vaadin-tab></vaadin-tab>
   <vaadin-button theme="primary error" id="cancelarPedidoButton" style="align-self: center;">
-   Cancelar Pedido
+    Cancelar Pedido 
   </vaadin-button>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>

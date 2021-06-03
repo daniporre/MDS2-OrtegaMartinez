@@ -8,10 +8,13 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
 
 import basededatosorm.Producto;
+import basededatosorm.ProyectoWebPersistentManager;
 import basededatosorm.Administrador;
 import basededatosorm.Categoria;
+import basededatosorm.Enviado;
 import basededatosorm.Oferta;
 
 public class BDProductos {
@@ -38,7 +41,7 @@ public class BDProductos {
 			System.out.println("Error en BDProducto crearProducto");
 			t.rollback();
 		}
-
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
 	public void editarProducto(Producto producto, String aNombre, double aPrecio, String aMarca, Oferta aOferta,
@@ -56,60 +59,43 @@ public class BDProductos {
 			p.setMarca(aMarca);
 			p.setOferta(aOferta);
 			p.setDescripcion(aDescripcion);
-
+			Notification.show("Producto editado").setPosition(Position.BOTTOM_END);
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 
 	}
 
 	public Producto obtenerProducto(String aNombreProducto) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Producto[] ads = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
-			int idProducto = 0;
+		Producto[] ads = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+		int idProducto = 0;
 
-			for (Producto producto : ads) {
-				if (producto.getNombre().toLowerCase().equals(aNombreProducto.toLowerCase())) {
-					idProducto = producto.getIdProducto();
-					break;
-				}
+		for (Producto producto : ads) {
+			if (producto.getNombre().toLowerCase().equals(aNombreProducto.toLowerCase())) {
+				idProducto = producto.getIdProducto();
+				break;
 			}
-
-			if (idProducto == 0) {
-				Notification.show("El producto no existe");
-			}
-
-			Producto ad = basededatosorm.ProductoDAO.loadProductoByORMID(idProducto);
-
-			t.commit();
-			System.out.println("este es el producto nombre: " + ad.getNombre());
-			return ad;
-		} catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-			return null;
 		}
+
+		if (idProducto == 0) {
+			Notification.show("El producto no existe");
+		}
+
+		Producto ad = basededatosorm.ProductoDAO.loadProductoByORMID(idProducto);
+
+		System.out.println("este es el producto nombre: " + ad.getNombre());
+		return ad;
 	}
 
 	public Producto[] obtenerProductos() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
 
-		try {
-			Producto[] o = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
+		Producto[] o = basededatosorm.ProductoDAO.listProductoByQuery(null, null);
 
-			t.commit();
-			return o;
-		} catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-			return null;
-		}
+		return o;
 	}
 
 	public Producto[] obtenerProductos(String aNombre) throws PersistentException {
@@ -144,7 +130,6 @@ public class BDProductos {
 		try {
 			Producto o = basededatosorm.ProductoDAO.getProductoByORMID(producto.getIdProducto());
 
-			
 			o.categorias.add(categoria);
 
 			t.commit();

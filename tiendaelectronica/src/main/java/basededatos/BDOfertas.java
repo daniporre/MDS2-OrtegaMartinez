@@ -13,58 +13,40 @@ import basededatosorm.Administrador;
 import basededatosorm.Categoria;
 import basededatosorm.Encargado;
 import basededatosorm.Oferta;
+import basededatosorm.ProyectoWebPersistentManager;
 
 public class BDOfertas {
 	public BDPrincipal _unnamed_BDPrincipal_;
 	public Vector<Oferta> _contiene_oferta = new Vector<Oferta>();
 
 	public Oferta obtenerOferta(String aNombreOferta) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Oferta[] ads = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
-			int idOferta = 0;
+		Oferta[] ads = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
+		int idOferta = 0;
 
-			for (Oferta oferta : ads) {
-				if (oferta.getNombreOferta().toLowerCase().equals(aNombreOferta.toLowerCase())) {
-					idOferta = oferta.getIdOferta();
-					break;
-				}
-
+		for (Oferta oferta : ads) {
+			if (oferta.getNombreOferta().toLowerCase().equals(aNombreOferta.toLowerCase())) {
+				idOferta = oferta.getIdOferta();
+				break;
 			}
 
-			if (idOferta == 0) {
-				Notification.show("La oferta no existe");
-			}
-			
-			Oferta ad = basededatosorm.OfertaDAO.loadOfertaByORMID(idOferta);
-			
-			t.commit();
-			return ad;
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			t.rollback();
-			return null;
 		}
+
+		if (idOferta == 0) {
+			Notification.show("La oferta no existe");
+		}
+
+		Oferta ad = basededatosorm.OfertaDAO.loadOfertaByORMID(idOferta);
+
+		return ad;
+
 	}
 
 	public Oferta[] obtenerOfertas() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
 
-		try {
-			Oferta[] o = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
-			
-			t.commit();
-			return o;
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			t.rollback();
-			return null;
-		}
+		Oferta[] o = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
+
+		return o;
 
 	}
 
@@ -76,7 +58,7 @@ public class BDOfertas {
 			Oferta a = basededatosorm.OfertaDAO.createOferta();
 			a.setNombreOferta(aNombreOferta);
 			a.setPorcentaje(aDescuento);
-			
+
 			basededatosorm.OfertaDAO.save(a);
 
 			t.commit();
@@ -85,6 +67,7 @@ public class BDOfertas {
 			e.printStackTrace();
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
 	public void darBajaOferta(String aNombreOferta) throws PersistentException {
@@ -95,7 +78,7 @@ public class BDOfertas {
 			Oferta[] ads = basededatosorm.OfertaDAO.listOfertaByQuery(null, null);
 
 			for (Oferta oferta : ads) {
-				
+
 				if (oferta.getNombreOferta().toLowerCase().equals(aNombreOferta.toLowerCase())) {
 					basededatosorm.OfertaDAO.delete(oferta);
 					break;
@@ -108,5 +91,6 @@ public class BDOfertas {
 			e.printStackTrace();
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 }

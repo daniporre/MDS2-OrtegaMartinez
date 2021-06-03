@@ -10,6 +10,7 @@ import com.vaadin.flow.component.notification.Notification;
 
 import basededatosorm.Administrador;
 import basededatosorm.Encargado;
+import basededatosorm.ProyectoWebPersistentManager;
 import basededatosorm.Transportista;
 import basededatosorm.Usuario;
 
@@ -27,29 +28,19 @@ public class BDTransportistas {
 			basededatosorm.TransportistaDAO.save(a);
 			t.commit();
 		} catch (PersistentException e) {
-			// TODO: handle exception
 			System.out.println("Error en BDAdministradores crearUsuario");
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
 	public Usuario[] cargarUsuarios() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Transportista[] tr = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
+		Transportista[] tr = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
 
-			System.out.println("Transportistas");
-			System.out.println(Arrays.toString(tr));
-			t.commit();
-			return tr;
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			t.rollback();
-			return null;
-		}
+		System.out.println("Transportistas");
+		System.out.println(Arrays.toString(tr));
+		return tr;
 
 	}
 
@@ -79,46 +70,38 @@ public class BDTransportistas {
 
 			t.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
 	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Transportista[] ads = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
-			int idUsuario = 0;
+		Transportista[] ads = basededatosorm.TransportistaDAO.listTransportistaByQuery(null, null);
+		int idUsuario = 0;
 
-			for (Transportista transportista : ads) {
-				if (transportista.getMail().equals(aCorreo)) {
-					idUsuario = transportista.getIdUsuario();
-					break;
-				}
-
+		for (Transportista transportista : ads) {
+			if (transportista.getMail().equals(aCorreo)) {
+				idUsuario = transportista.getIdUsuario();
+				break;
 			}
 
-			if (idUsuario == 0) {
-				Notification.show("El usuario no existe");
-			}
-			
-			Transportista ad = basededatosorm.TransportistaDAO.loadTransportistaByORMID(idUsuario);
-			
-			if(ad.getContraseña().equals(aContrasenia)) {
-				return ad;
-			} else {
-				Notification.show("La contraseña es incorrecta");
-			}
-
-			t.commit();
-			return new Usuario();
-		} catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-			return null;
 		}
+
+		if (idUsuario == 0) {
+			Notification.show("El usuario no existe");
+		}
+
+		Transportista ad = basededatosorm.TransportistaDAO.loadTransportistaByORMID(idUsuario);
+
+		if (ad.getContraseña().equals(aContrasenia)) {
+			return ad;
+		} else {
+			Notification.show("La contraseña es incorrecta");
+		}
+
+		return new Usuario();
+
 	}
 }

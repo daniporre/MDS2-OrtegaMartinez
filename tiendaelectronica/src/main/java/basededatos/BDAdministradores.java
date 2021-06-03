@@ -15,6 +15,7 @@ import basededatosorm.Encargado;
 import basededatosorm.Fotos;
 import basededatosorm.Oferta;
 import basededatosorm.Producto;
+import basededatosorm.ProyectoWebPersistentManager;
 import basededatosorm.Transportista;
 import basededatosorm.Usuario;
 import basededatosorm.UsuarioRegistrado;
@@ -32,7 +33,7 @@ public class BDAdministradores {
 
 			a.setMail(aMail);
 			a.setContraseña(aContraseña);
-						
+
 			basededatosorm.AdministradorDAO.save(a);
 			t.commit();
 		} catch (Exception e) {
@@ -40,24 +41,16 @@ public class BDAdministradores {
 			System.out.println("Error en BDAdministradores crearUsuario");
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 
 	}
 
 	public Usuario[] cargarUsuarios() throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Administrador[] ad = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
-			System.out.println("Administradores");
-			System.out.println(Arrays.toString(ad));
-			t.commit();
-			return ad;
-		} catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-			return null;
-		}
+		Administrador[] ad = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
+		System.out.println("Administradores");
+		System.out.println(Arrays.toString(ad));
+		return ad;
 
 	}
 
@@ -80,7 +73,7 @@ public class BDAdministradores {
 			if (idUsuario == 0) {
 				Notification.show("El usuario no existe");
 			}
-			
+
 			Administrador ad = basededatosorm.AdministradorDAO.loadAdministradorByORMID(idUsuario);
 			Notification.show("La contraseña se ha cambiado correctamente");
 			ad.setContraseña(aNuevaContrasenia);
@@ -91,98 +84,92 @@ public class BDAdministradores {
 			e.printStackTrace();
 			t.rollback();
 		}
+		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
-	
+
 	public Usuario iniciarSesion(String aCorreo, String aContrasenia) throws PersistentException {
-		PersistentTransaction t = basededatosorm.ProyectoWebPersistentManager.instance().getSession()
-				.beginTransaction();
-		try {
 
-			Administrador[] ads = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
-			int idUsuario = 0;
+		Administrador[] ads = basededatosorm.AdministradorDAO.listAdministradorByQuery(null, null);
+		int idUsuario = 0;
 
-			for (Administrador administrador : ads) {
-				if (administrador.getMail().equals(aCorreo)) {
-					idUsuario = administrador.getIdUsuario();
-					break;
-				}
-
+		for (Administrador administrador : ads) {
+			if (administrador.getMail().equals(aCorreo)) {
+				idUsuario = administrador.getIdUsuario();
+				break;
 			}
 
-			if (idUsuario == 0) {
-				Notification.show("El usuario no existe");
-			}
-			
-			Administrador ad = basededatosorm.AdministradorDAO.loadAdministradorByORMID(idUsuario);
-			
-			if(ad.getContraseña().equals(aContrasenia)) {
-				return ad;
-			} else {
-				Notification.show("La contraseña es incorrecta");
-			}
-
-			t.commit();
-			return new Usuario();
-		} catch (Exception e) {
-			e.printStackTrace();
-			t.rollback();
-			return null;
 		}
-	}
 
-	public Oferta seleccionarOferta(String aNombreOferta) {
-		return null;
+		if (idUsuario == 0) {
+			Notification.show("El usuario no existe");
+		}
 
-	}
+		Administrador ad = basededatosorm.AdministradorDAO.loadAdministradorByORMID(idUsuario);
 
-	public void guardarCambios(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+		if (ad.getContraseña().equals(aContrasenia)) {
+			return ad;
+		} else {
+			Notification.show("La contraseña es incorrecta");
+		}
 
-	}
-
-	public Pedido[] actualizarListadoDeCompras() {
-		return null;
-
-	}
-
-	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+		return new Usuario();
 
 	}
 
-	public Correo[] obtenerMensajesRecibidos() {
-		return null;
+//	public Oferta seleccionarOferta(String aNombreOferta) {
+//		return null;
+//
+//	}
+//
+//	public void guardarCambios(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+//
+//	}
 
-	}
-
-	public Correo[] obtenerMensajesEnviados() {
-		return null;
-
-	}
-
-	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
-			String aFechaEnvio) {
-
-	}
-
-	public Correo obtenerMensaje(String aId) {
-		return null;
-
-	}
-
-	public Producto[] verCatalogo() {
-		return null;
-
-	}
-	public Producto visualizarProducto(int aIdProducto) {
-		return null;
-
-	}
-
-	public void guardarFotos(Fotos aFotos) {
-
-	}
-
-	public Producto obtenerProducto(String aNombreProducto) {
-		return null;
-
-	}
+//	public Pedido[] actualizarListadoDeCompras() {
+//		return null;
+//
+//	}
+//
+//	public void editarProducto(String aNombre, double aPrecio, String aMarca, Oferta aOferta, String aDescripcion) {
+//
+//	}
+//
+//	public Correo[] obtenerMensajesRecibidos() {
+//		return null;
+//
+//	}
+//
+//	public Correo[] obtenerMensajesEnviados() {
+//		return null;
+//
+//	}
+//
+//	public void responderMensaje(String aAsunto, String aMensaje, String aRemitente, String aDestinatario,
+//			String aFechaEnvio) {
+//
+//	}
+//
+//	public Correo obtenerMensaje(String aId) {
+//		return null;
+//
+//	}
+//
+//	public Producto[] verCatalogo() {
+//		return null;
+//
+//	}
+//
+//	public Producto visualizarProducto(int aIdProducto) {
+//		return null;
+//
+//	}
+//
+//	public void guardarFotos(Fotos aFotos) {
+//
+//	}
+//
+//	public Producto obtenerProducto(String aNombreProducto) {
+//		return null;
+//
+//	}
 }

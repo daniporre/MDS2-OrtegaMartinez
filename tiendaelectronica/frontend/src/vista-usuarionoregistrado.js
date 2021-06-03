@@ -1,10 +1,10 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@polymer/iron-icon/iron-icon.js';
 
 class VistaUsuarionoregistrado extends PolymerElement {
 
@@ -25,8 +25,8 @@ class VistaUsuarionoregistrado extends PolymerElement {
   <vaadin-text-field placeholder="Search" id="searchBarUNR" style="flex-grow: 1;">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
   </vaadin-text-field>
-  <vaadin-button theme="icon" aria-label="Add new" id="searchIconUNR">
-   <iron-icon icon="lumo:plus"></iron-icon>
+  <vaadin-button id="searchIconUNR">
+   Buscar
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoUNR">

@@ -11,6 +11,7 @@ import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.server.VaadinSession;
 
@@ -64,6 +65,7 @@ public class Administrador extends VistaAdministrador {
 				}
 				bdp.darBajaOferta(getDarDeBajaComboBox().getValue());
 				recargarOfertas();
+				Notification.show("Oferta dada de baja correctamente");
 			}
 		});
 
@@ -76,6 +78,8 @@ public class Administrador extends VistaAdministrador {
 					vc = new Ver_catálogo(administrador, principalLayout);
 					catalogoVLayout.removeAll();
 					catalogoVLayout.add(vc);
+					getNuevaCategoriaTF().setValue("");
+					Notification.show("Categoría creada correctamente");
 				}
 
 			}
@@ -91,6 +95,9 @@ public class Administrador extends VistaAdministrador {
 				if (!getNombreOfertaTF().getValue().isEmpty()) {
 					bdp.crearNuevaOferta(getNombreOfertaTF().getValue(), descuento);
 					recargarOfertas();
+					getNombreOfertaTF().setValue("");
+					getDescuentoTF().setValue("");
+					Notification.show("Oferta creada correctamente");
 				}
 			}
 		});

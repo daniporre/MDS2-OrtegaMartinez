@@ -27,7 +27,7 @@ public class Ver_producto extends VistaVerproducto {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProducto()
-					.setText(p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText(p.getOferta().getNombreOferta() + ": " + Ver_oferta.formatearNumero(precioConOferta) + "€");
 		} else {
 			this.getPrecioProducto().setText(Double.toString(p.getPrecio()) + "€");
 		}
@@ -58,14 +58,15 @@ public class Ver_producto extends VistaVerproducto {
 		// TODO Auto-generated constructor stub
 		this.getNombreProducto().setText(p.getNombre());
 		this.getDescripcionProducto().setText(p.getDescripcion());
-
+//		this.getImagenProducto().setSrc("https://thumb.pccomponentes.com/w-530-530/articles/32/329375/1313-samsung-chromebook-4-xe310xba-k01es-intel-celeron-n4000-4gb-32gb-emmc-116.jpg");
+		
 		layoutPrincipalVerProducto.setClassName("styled");
 
 		if (p.getOferta().getPorcentaje() != 0) {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProducto()
-					.setText(p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText(p.getOferta().getNombreOferta() + ": " + Ver_oferta.formatearNumero(precioConOferta) + "€");
 		} else {
 			this.getPrecioProducto().setText(Double.toString(p.getPrecio()) + "€");
 		}

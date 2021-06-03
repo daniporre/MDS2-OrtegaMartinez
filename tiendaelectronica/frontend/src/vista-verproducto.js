@@ -13,7 +13,7 @@ class VistaVerproducto extends PolymerElement {
                 }
             </style>
 <vaadin-horizontal-layout class="content" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: stretch; justify-content: center;" id="vaadinHorizontalLayout">
- <img id="imagenProducto" style="width: 30%; height: 20%; flex-grow: 1; align-self: flex-start;">
+ <img id="imagenProducto" style="width: 15%; height: 20%; flex-grow: 1; align-self: flex-start;">
  <vaadin-vertical-layout theme="spacing" style="width: 100%; height: 20%; flex-grow: 1;">
   <h2 id="nombreProducto">Nombreproducto </h2>
   <label id="descripcionProducto">Label</label>

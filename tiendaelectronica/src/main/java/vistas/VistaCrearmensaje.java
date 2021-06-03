@@ -28,8 +28,6 @@ public class VistaCrearmensaje extends PolymerTemplate<VistaCrearmensaje.VistaCr
 	private Button enviarMensajeButton;
 	@Id("cancelarButton")
 	private Button cancelarButton;
-	@Id("aceptarButton")
-	private Button aceptarButton;
 
 	/**
      * Creates a new VistaCrearmensaje.
@@ -77,12 +75,4 @@ public class VistaCrearmensaje extends PolymerTemplate<VistaCrearmensaje.VistaCr
 		this.cancelarButton = cancelarButton;
 	}
 
-
-	public Button getAceptarButton() {
-		return aceptarButton;
-	}
-
-	public void setAceptarButton(Button aceptarButton) {
-		this.aceptarButton = aceptarButton;
-	}
 }

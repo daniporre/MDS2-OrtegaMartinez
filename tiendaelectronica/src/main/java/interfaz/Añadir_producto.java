@@ -54,6 +54,9 @@ public class Añadir_producto extends VistaAniadirproducto {
 			@Override
 			public void onComponentEvent(ClickEvent<Button> event) {
 				if(getDescripcionProductoTF().getValue().length()<=1000) {
+					
+					
+					
 					nombre = getNombreProductoTF().getValue();
 					precio = Double.parseDouble(getPrecioProductoTF().getValue().replace(',', '.'));
 					marca = getMarcaProductoTF().getValue();

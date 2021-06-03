@@ -99,7 +99,7 @@ public class BDCorreo {
 		ProyectoWebPersistentManager.instance().disposePersistentManager();
 	}
 
-	public Correo obtenerMensaje(String aId) {
-		throw new UnsupportedOperationException();
-	}
+//	public Correo obtenerMensaje(String aId) {
+//		throw new UnsupportedOperationException();
+//	}
 }

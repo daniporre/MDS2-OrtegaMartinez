@@ -51,6 +51,7 @@ public class Ver_compra extends VistaVercompra {
 					System.out.println("Boton recibido pulsado");
 					bdp.crearEntregado(usuarioRegistrado, producto, pedido);
 					getRecibidoButton().setEnabled(false);
+					Notification.show("Pedido recibido por el cliente. Actualiza la lista").setPosition(Position.BOTTOM_END);
 				}
 			});
 		}

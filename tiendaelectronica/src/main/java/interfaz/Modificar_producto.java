@@ -45,9 +45,9 @@ public class Modificar_producto extends VistaEditarproducto {
 		if (producto.getOferta().getPorcentaje() != 0) {
 			Double a = producto.getOferta().getPorcentaje();
 			Double precioConOferta = producto.getPrecio() - (producto.getPrecio() * a / 100);
-			this.getPrecioProductoTF().setValue(Double.toString(precioConOferta) + "€");
+			this.getPrecioProductoTF().setValue(Double.toString(precioConOferta));
 		} else {
-			this.getPrecioProductoTF().setValue(Double.toString(producto.getPrecio()) + "€");
+			this.getPrecioProductoTF().setValue(Double.toString(producto.getPrecio()));
 		}
 
 //		if(producto.categorias!=null) {

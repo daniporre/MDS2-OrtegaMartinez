@@ -39,7 +39,7 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProductoLabel()
-					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Ver_oferta.formatearNumero(precioConOferta) + "€");
 		} else {
 			this.getPrecioProductoLabel().setText("Precio: "+Double.toString(p.getPrecio()) + "€");
 		}
@@ -80,7 +80,7 @@ public class Visualizar_producto extends VistaVisualizarproducto {
 			Double a = p.getOferta().getPorcentaje();
 			Double precioConOferta = p.getPrecio() - (p.getPrecio() * a / 100);
 			this.getPrecioProductoLabel()
-					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText("Precio: "+p.getOferta().getNombreOferta() + ": " + Ver_oferta.formatearNumero(precioConOferta) + "€");
 		} else {
 			this.getPrecioProductoLabel().setText("Precio: "+Double.toString(p.getPrecio()) + "€");
 		}

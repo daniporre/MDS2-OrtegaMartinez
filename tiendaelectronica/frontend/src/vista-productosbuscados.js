@@ -1,13 +1,13 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-radio-button/src/vaadin-radio-group.js';
-import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-tabs/src/vaadin-tab.js';
 import '@vaadin/vaadin-combo-box/src/vaadin-combo-box.js';
 import '@vaadin/vaadin-radio-button/src/vaadin-radio-button.js';
+import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@polymer/iron-icon/iron-icon.js';
 
 class VistaProductosbuscados extends PolymerElement {
 
@@ -29,8 +29,8 @@ class VistaProductosbuscados extends PolymerElement {
   <vaadin-text-field placeholder="Busca productos" style="flex-grow: 1;" id="buscarTF">
    <iron-icon icon="lumo:search" slot="prefix"></iron-icon>
   </vaadin-text-field>
-  <vaadin-button theme="icon" aria-label="Add new" id="buscarButton">
-   <iron-icon icon="lumo:plus"></iron-icon>
+  <vaadin-button id="buscarButton">
+   Buscar
   </vaadin-button>
   <vaadin-tab style="flex-grow: 1;"></vaadin-tab>
   <vaadin-button id="carritoButton">
@@ -50,16 +50,16 @@ class VistaProductosbuscados extends PolymerElement {
    <h2>Rango de precio</h2>
    <vaadin-radio-group value="foo" theme="vertical" style="width: 100%; align-self: stretch;" id="radioGroup">
     <vaadin-radio-button name="foo" id="hasta20RadioButton" style="flex-grow: 1;" checked>
-     Hasta 20€
+      Hasta 20€ 
     </vaadin-radio-button>
     <vaadin-radio-button name="bar" checked id="hasta50RadioButton">
-     Hasta 50€
+      Hasta 50€ 
     </vaadin-radio-button>
     <vaadin-radio-button name="baz" id="hasta100RadioButton" checked>
-     Hasta 100€
+      Hasta 100€ 
     </vaadin-radio-button>
     <vaadin-radio-button id="masde100RadioButton">
-     Más 100€
+      Más 100€ 
     </vaadin-radio-button>
    </vaadin-radio-group>
    <h2>Marca</h2>

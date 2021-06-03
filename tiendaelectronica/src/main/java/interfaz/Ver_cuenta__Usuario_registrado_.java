@@ -193,12 +193,17 @@ public class Ver_cuenta__Usuario_registrado_ extends VistaVercuentausuarioregist
 					layoutPrincipal.add(unr);
 					notification.close();
 				});
+				Button botonCancelar = new Button("Cancelar", e -> {
+					notification.close();
+				});
 				botonEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+				botonCancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-				notification.add(label, botonEliminar);
+				notification.add(label,botonCancelar , botonEliminar);
 
 				label.getStyle().set("margin-right", "0.5rem");
 				botonEliminar.getStyle().set("margin-left", "10rem");
+				botonCancelar.getStyle().set("margin-left", "10rem");
 
 				notification.setPosition(Position.MIDDLE);
 				notification.open();

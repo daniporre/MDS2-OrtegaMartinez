@@ -30,7 +30,7 @@ public class Ver_producto_en_carrito extends VistaVerproductoencarrito {
 			Double a = producto.getOferta().getPorcentaje();
 			precioConOferta = producto.getPrecio() - (producto.getPrecio() * a / 100);
 			this.getPrecioLabel()
-					.setText(producto.getOferta().getNombreOferta() + ": " + Double.toString(precioConOferta) + "€");
+					.setText(producto.getOferta().getNombreOferta() + ": " + Ver_oferta.formatearNumero(precioConOferta) + "€");
 		} else {
 			this.getPrecioLabel().setText(Double.toString(producto.getPrecio()) + "€");
 		}

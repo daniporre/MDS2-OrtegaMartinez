@@ -40,7 +40,7 @@ class VistaEditarproducto extends PolymerElement {
    <vaadin-tab id="vaadinTab"></vaadin-tab>
    <vaadin-vertical-layout theme="spacing" style="flex-grow: 1; align-items: stretch; width: 50%;" id="vaadinVerticalLayout3">
     <vaadin-text-field label="Nombre del producto" id="nombreProductoTF"></vaadin-text-field>
-    <vaadin-text-field label="Precio del producto" id="precioProductoTF"></vaadin-text-field>
+    <vaadin-text-field label="Precio del producto en euros" id="precioProductoTF"></vaadin-text-field>
     <vaadin-text-field label="Marca del producto" id="marcaProductoTF"></vaadin-text-field>
     <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; justify-content: space-between;" id="vaadinHorizontalLayout3">
      <h2 style="flex-shrink: 0; flex-grow: 1; width: 45%;" id="h2">Oferta</h2>
